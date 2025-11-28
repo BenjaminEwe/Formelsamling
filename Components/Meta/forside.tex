@@ -1,0 +1,23 @@
+
+% Cover photo, title, credit
+\begin{tikzpicture}[remember picture,overlay]
+% Background image
+\node[anchor=south, % anchor is bottom of picture
+    xshift=0pt, 
+    yshift=-2.9mm] % shifting picture to actually be at the bottom of the page
+    at (current page.south) % placement at bottom of the page
+    {\includegraphics[height=32cm,keepaspectratio]{<tbd>}};
+% Overlayed Title
+\node[anchor=center] 
+    at ([yshift=0.8\paperheight]current page.south) 
+    {\fontsize{60}{72}\selectfont\bfseries\color{black} \shortstack{Matematisk\\Formelsamling}};
+%% Photo credit
+%\node[anchor=south east, xshift=-1mm, yshift=1mm, inner sep=2pt] 
+%     at (current page.south east)
+%     {\begin{tikzpicture}[baseline]
+%         \node[fill=white, opacity=0.8, text opacity=1, inner sep=2pt] 
+%           {\small \href{<tbd>}{Photo by <tbd>}};
+%        \end{tikzpicture}};
+\end{tikzpicture}
+
+
