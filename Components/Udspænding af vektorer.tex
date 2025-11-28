@@ -1,0 +1,242 @@
+\section{Udspænding af vektorer}
+\subsection{Generelt}
+
+\[
+    \spanop(v_1, \cdots v_n) = \{ c_1 v_1 + \cdots + c_n v_n \ | \ c_1, \ldots, c_n \in \mathbb{R} \}
+\]
+
+
+For n vektorer \( v_1, v_2, \cdots, v_n \) i et vektorrum \( V \), er spandet af disse vektorer defineret som mængden af alle linearkombinationer af dem:
+\[
+    Span(v_1, v_2, \cdots, v_n) = \left\{ c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n \ | \ \forall c_1, c_2, \ldots, c_n \in \mathbb{R} \right\}
+\]
+
+Hvis en vektor i mængden kan skrives som en linearkombination af de andre vektorer er den lineært afhængig, og kan fjernes uden at ændre udspændingen. Hvis ingen vektorer kan skrives som en linearkombination af de andre, er de lineært uafhængige.
+
+\subsection{Ordnet basis for udspænding af vektorer}
+Alle vektorer i en ordent basis er lineært uafhængige. 
+\kilde{Korollar 9.2.2}
+
+\label{sec:ordnet-basis-udspaending}
+\subsubsection{Find ordnet bais for span}
+Lav en matrix ud af vektorene
+
+\[
+    \begin{bmatrix}
+        \vline & \vline & \cdots & \vline \\
+        v_1 & v_2 & \cdots & \ v_n \\
+        \vline & \vline & \cdots & \vline \\
+
+    \end{bmatrix}
+\]
+
+Brug rækkeoperationer til at få matrixen på trappeform. 
+For alle søjler med et pivot-element skal den originale vektor på den position med i den ordnede basis.
+
+\kilde{Sætning 9.2.1}
+
+\subsection{Er vektor indeholdt i et span?}
+Vektor $v$ er indeholdt i $\spanop(v_1, \cdots, v_n)$ hvis der findes skalarer $c_1, \dots, c_n$ så:
+\[
+    v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n
+\]
+
+\subsubsection{Rækkeoperationer}
+Lav en matrix med vektorerne i spandet og den nye vektor som ekstra søjle:
+\[
+    \begin{bmatrix}
+        \vline & \vline & \cdots & \vline & \vline \\
+        v_1 & v_2 & \cdots & v_n & v \\
+        \vline & \vline & \cdots & \vline & \vline \\
+    \end{bmatrix}
+\]
+Brug rækkeoperationer til at få matrixen på trappeform. Hvis den ekstra søjle \textbf{ikke} indeholder et pivot-element, er vektoren indeholdt i udspændingen.
+
+
+\subsubsection{Determinant}
+Hvis determinanten af matrixen skabt ved at tilføje den nye vektor som en ekstra søjle er 0, så er vektoren indeholdt i spandet.
+
+\subsection{Find om en en vektor med en ubekendt er i et span}
+Lav en matrix med vektorerne og den nye vektor som ekstra søjle:
+\[
+    \begin{bmatrix}
+        \vline & \vline & \cdots & \vline & \vline \\
+        v_1 & v_2 & \cdots & v_n & v \\
+        \vline & \vline & \cdots & \vline & \vline \\
+    \end{bmatrix}
+\]
+Brug rækkeoperationer til at få matrixen på trappeform. Løs for den ubekendte så den ekstra søjle \textbf{ikke} indeholder et pivot-element, så er vektoren indeholdt i udspændingen.
+
+\subsection{Kernen / Nulrummet af en matrix}
+\label{sec:kerne}
+
+\[ \ker(\mathbf{A}) = \{ \mathbf{v} \in \mathbb{F} \ | \ \mathbf{A} \cdot \mathbf{v} = 0 \} \]
+
+\
+
+Kernen for matrix \textbf{A} findes ved:
+
+Løs det homogene lineære ligningssystem dannet ved at tilføje en 0-søjle
+
+F.eks.
+
+\[
+    \begin{bmatrix}
+        -i & 1 & 0 & \vline & 0 \\
+        2 & -2 & 2 & \vline & 0 \\
+        i & -1 & 0 & \vline & 0
+    \end{bmatrix}
+\]
+
+Første linje giver os
+\[
+    -i \cdot x_1 + x_2 = 0 \implies x_2 = i \cdot x_1
+\]
+
+Nu kan vi finde $x_3$ med anden linje, hvor vi udskifter $x_2$ med $i \cdot x_1$:
+\[
+    2 \cdot x_1 - 2 \cdot (i \cdot x_1) + 2 \cdot x_3 = 0 \implies 2 \cdot x_1 - 2i \cdot x_1 = -2 \cdot x_3 \implies x_1 - i \cdot x_1 = -x_3 \implies x_3 = (i - 1) \cdot x_1
+\]
+
+Vi har nu både $x_2$ og $x_3$ udtrykt ved $x_1$, så vi kan skrive løsningen som:
+
+\[
+    \begin{bmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        x_1 \\
+        i \cdot x_1 \\
+        (i - 1) \cdot x_1
+    \end{bmatrix}
+    =
+    x_1 \cdot
+    \begin{bmatrix}
+        1 \\
+        i \\
+        i - 1
+    \end{bmatrix}
+\]
+
+Kernen er derfor
+\[
+    \spanop
+    \left(
+        \begin{bmatrix}
+            1 \\
+            i \\
+            i - 1
+        \end{bmatrix}
+    \right)
+\]
+
+\kilde{Korollar 9.2.3}
+
+\subsubsection{Ordnet basis for kernen / nulrummet}
+Find kernen som beskrevet ovenfor. Vektorerne der udgør løsningen er også ordnet basis for kernen.
+
+\
+
+Givet vektorer i uordnet kerne kan ordnet basis findes som i sektion \ref{sec:ordnet-basis-udspaending}.
+
+\subsubsection{Er vektor i kernen af en matrix?}
+
+\begin{itemize}
+    \item Hvis \( A \cdot v = 0 \), er vektoren i kernen.
+    \item Hvis \( v \) kan skrives som en linearkombination af basisvektorerne i kernen, er vektoren i kernen.
+\end{itemize}
+
+\subsubsection{Difference mellem vektorer}
+Hvis to vektorer $v_1$ og $v_2$ giver samme resultat i ligningen $\mathbf{A} \cdot v$, så er $v_1 - v_2$ i kernen af $\mathbf{A}$.
+
+Enhver skalar af $v_1+v_2$ er også i kernen af $\mathbf{A}$.
+
+\subsection{Søjle-rum}
+\label{sec:soejlerum}
+
+Søjlerummet for en matrix \( \mathbf{A} \) er mængden af alle linearkombinationer af søjlerne i \( \mathbf{A} \):
+\[
+    \colsp(\mathbf{A}) = \{ \mathbf{A} \cdot \mathbf{v} \ | \ \mathbf{v} \in \mathbb{F}^n \}
+\]
+
+Ordnet basis for søjlerummet kan findes som beskrevet i sektion \ref{sec:ordnet-basis-udspaending}.
+
+\subsection{Dimensionssætningen}
+For en matrix \( \mathbf{A}^{m \times n} \) ($n$ søjler) gælder det at:
+\[
+    \rho(\mathbf{A}) + \nullop(\mathbf{A}) = n \kildetag{Sætning 9.4.2}
+\]
+hvor \( \rho(\mathbf{A}) \) er antal pivoter, aka \textit{søjleranget} af matricen \(\dim(\colsp(\mathbf{A}))\) og \( \nullop(\mathbf{A}) \) er dimensionen af kernen \(\dim(\ker(\mathbf{A}))\).
+
+\
+
+Dimensionen er antallet af vektorer i en ordnet basis for rummet.
+
+\subsection{Koordinater med hensyn til ordnet basis}
+Opstil en matrix med basisvektorerne som søjler og vektoren som ekstra søjle:
+\[
+    \begin{bmatrix}
+        \vline & \vline & \cdots & \vline & \vline \\
+        b_1 & b_2 & \cdots & b_n & v \\
+        \vline & \vline & \cdots & \vline & \vline \\
+    \end{bmatrix}
+\]
+Omskriv til trappeform ved rækkeoperationer og løs for skalarerne \( c_1, c_2, \ldots, c_n \).
+
+Eksempel:
+Givet vektor \( v = \begin{pmatrix}
+    5 \\
+    7 \\
+    4
+\end{pmatrix} \) og ordnet basis \( B = \left\{ \begin{pmatrix}
+    1 \\
+    1 \\
+    0
+\end{pmatrix}, \begin{pmatrix}
+    0 \\
+    1 \\
+    1
+\end{pmatrix}, \begin{pmatrix}
+    1 \\
+    0 \\
+    1
+\end{pmatrix} \right\} \), kan koordinaterne af \( v \) med hensyn til basisen \( B \) findes ved at løse ligningen:
+\[
+    \begin{bmatrix}
+        1 & 0 & 1 & \vline & 5 \\
+        1 & 1 & 0 & \vline & 7 \\
+        0 & 1 & 1 & \vline & 4
+    \end{bmatrix}
+    \rightarrow
+    \begin{bmatrix}
+        1 & 0 & 1 & \vline & 5 \\
+        0 & 1 & -1 & \vline & 2 \\
+        0 & 0 & 1 & \vline & 1
+    \end{bmatrix}
+    \rightarrow
+        \begin{bmatrix}
+        1 & 0 & 0 & \vline & 4 \\
+        0 & 1 & 0 & \vline & 3 \\
+        0 & 0 & 1 & \vline & 1
+    \end{bmatrix}
+\]
+Her ser vi at koordinaterne er \( \begin{pmatrix}
+    4 \\
+    3 \\
+    1
+\end{pmatrix} \).
+
+
+\subsubsection{Find vektor ud fra koordinater med hensyn til base}
+Givet koordinaterne \( \begin{pmatrix}
+    c_1 \\
+    c_2 \\
+    \vdots \\
+    c_n
+\end{pmatrix} \) og en ordnet basis \( B = \{ b_1, b_2, \ldots, b_n \} \), kan vektoren \( v \) findes ved at beregne:
+\[
+    v = c_1 \cdot b_1 + c_2 \cdot b_2 + \ldots + c_n \cdot b_n
+\]

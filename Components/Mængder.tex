@@ -1,0 +1,60 @@
+\section{Mængder}
+
+Mængder tæller ikke samme elementer flere gange. F.eks. \(\{1,1,0,1,1\} = \{1,0\}\)
+
+\begin{table}[H]
+    \centering
+    \textbf{Legemerne og} $\emptyset$ \
+    \begin{tabular}{c l l}
+        \toprule
+        \textbf{Symbol} & \textbf{Navn} & \textbf{Beskrivelse} \\
+        \midrule
+        $\mathbb{N}$ & Naturlige tal & $1, 2, 3, \dots$ \\
+        $\mathbb{Z}$ & Hele tal & $\dots, -2, -1, 0, 1, 2, \dots$ \\
+        $\mathbb{Q}$ & Rationelle tal & $\mathbb{Z}$ og brøker \\
+        $\mathbb{R}$ & Reelle tal & $\mathbb{Q}$ og irrationelle tal (f.eks. $\sqrt{2}$, $\pi$) \\
+        $\mathbb{C}$ & Komplekse tal & $a + bi$, hvor $a,b \in \mathbb{R}$ og $i = \sqrt{-1}$ \\
+        $\emptyset$ & Tomme mængde & Mængde uden elementer \\
+        \bottomrule
+    \end{tabular}
+    %\caption{Talmængder og deres betydninger}
+\end{table}
+
+\subsection{Delmængde}
+\begin{align*}
+    A \subseteq B &\iff \forall a \in A, a \in B \\
+    A \subsetneq B &\iff (A \subseteq B) \land (A \neq B) \\
+    A=B &\iff (A \subseteq B) \land (B \subseteq A) \kildetag{Lemma 2.1.1}
+\end{align*}
+
+\begin{table}[H]
+    \centering
+    \textbf{Mængdeoperationer}
+    \begin{tabular}{>{\ttfamily}c l l c}
+        \toprule
+        \textrm{\textbf{Symbol}} & \textbf{Alment navn} & \textbf{Navn} & \textbf{Eksempel} \\
+        \midrule
+        $A \cup B$ & Foreningsmængde & Union & $\{x \mid x \in A \lor x \in B\}$ \\
+        $A \cap B$ & Fællesmængde & Snit & $\{x \mid x \in A \land x \in B\}$ \\
+        $A \setminus B$ & Mængdedifferens & Differens & $\{x \mid x \in A \land x \notin B\}$ \\
+        $A \times B$ & Kartesisk produkt & Produkt & $\{(a,b) \mid a \in A \land b \in B\}$ \\
+        $A^c$ & - & Komplement & $U - A$ \\
+        \bottomrule
+    \end{tabular}
+    %\caption{Mængdeoperationer og deres betydninger}
+\end{table}
+
+\subsubsection{Kartesisk produkt med flere set}
+\begin{align*}
+    A \times B \times C &= \{(a,b,c) \mid a \in A, b \in B, c \in C\} \\
+    A \times \cdots \times A = A^n &= \{(a_1,\cdots,a_n) \mid a_1,\cdots,a_n \in A\} \kildetag{Ligning 2.3}
+\end{align*}
+
+\subsection{Tautologier}
+\begin{align*}
+    A \cup (B \cup C) &= (A \cup B) \cup C \\
+    A \cap (B \cap C) &= (A \cap B) \cap C \\
+    A \cap (B \cup C) &= (A \cap B) \cup (A \cap C) \\
+    A \cup (B \cap C) &= (A \cup B) \cap (A \cup C)
+\end{align*}
+\kilde{Sætning 2.1.2}

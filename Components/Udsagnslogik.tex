@@ -1,0 +1,36 @@
+\section{Udsagnslogik}
+
+\subsection{Tautologier}
+\begin{align*}
+    P \land (Q \land R) &\iff (P \land Q) \land R \kildetag{S1.3.1 - 1.5} \\
+    P \lor (Q \lor R) &\iff (P \lor Q) \lor R \kildetag{S1.3.1 - 1.6} \\
+    P \land (Q \lor R) &\iff (P \land Q) \lor (P \land R) \kildetag{S1.3.1 - 1.7} \\
+    P \lor (Q \land R) &\iff (P \lor Q) \land (P \lor R) \kildetag{S1.3.1 - 1.8} \\
+    \tag*{}\\
+    \neg (P \lor Q) &\iff \neg P \land \neg Q \kildetag{S1.3.2 - 1.12} \\
+    \neg (P \land Q) &\iff \neg P \lor \neg Q \kildetag{S1.3.2 - 1.13} \\
+    \tag*{}\\
+    P \Rightarrow Q &\iff \neg P \lor Q \kildetag{S1.3.4 - 1.20} \\
+    P \Rightarrow Q &\iff \neg Q \Rightarrow \neg P \kildetag{S1.3.4 - 1.21} \\
+\end{align*}
+
+
+\subsection{Logiske symboler}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{>{\ttfamily}c l l c}
+        \toprule
+        \textrm{\textbf{Symbol}} & \textbf{Alment navn} & \textbf{Navn} & \textbf{Eksempel} \\
+        \midrule
+        $\land$ & og & Konjunktion & $P \land Q$ \\
+        $\lor$ & eller & Disjunktion & $P \lor Q$ \\
+        $\neq$ & ikke lig med & Ulighed & $x \neq y$ \\
+        $\neg P$ & ikke P & Negation af P & $\neg P$ \\
+        $\Rightarrow$ & medfører & Implikation & $P \Rightarrow Q$ \\
+        $\iff$ & hvis og kun hvis & Biimplikation & $P \iff Q$ \\
+        $T$ & sandt & Tautologi & $(P \lor \neg P) \Rightarrow T$ \\
+        $F$ & falsk & Modstrid & $(P \land \neg P) \Rightarrow F$ \\
+        \bottomrule
+    \end{tabular}
+    %\caption{Logical Symbols and Their Meanings}
+\end{table}

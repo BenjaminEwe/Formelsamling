@@ -1,0 +1,33 @@
+\section{Rekursion og Induktion}
+\bemærk{$0! = 1$}
+\subsection{Eksempel på rekursiv funktion}
+\[
+F(n) = \begin{cases}
+    1 & \text{hvis } n=1 \\
+    1 & \text{hvis } n=2 \\
+    F(n-1) + F(n-2) & \text{hvis } n>2
+\end{cases}
+\]
+
+\subsection{Summation}
+Summen af talene \(z_1, z_2, \cdots, z_n\) kan defineres rekursivt som:
+\[
+    \sum_{k=1}^{n} z_n = \begin{cases}
+        z_1 & \text{hvis } n=1 \\
+        \left( \sum_{k=1}^{n-1} z_k \right) + z_n & \text{hvis } n>1
+    \end{cases}
+\]
+
+\subsection{Induktion}
+En påstand $P(n)$ kan bevises sand for alle $n$ over en startværdi med induktion.
+
+\subsubsection{Basistrin}
+Vælg en basisværdi $b$ som er den mindste værdi påstanden du vil vise gælder for. Vis at påstanden er sand for værdien $b$ ved at bevise det specifikke tilfælde.
+
+\subsubsection{Induktionstrin}
+Vi antager at $P(n)$ er sandt for en vilkårlig $n$.
+
+Vi skriver vores påstand med værdien $n+1$, $P(n+1)$
+
+Nu kan vi bruge vores antagelse om $P(n)$ til at vise, at hvis $P(n)$ er sandt, må også $P(n+1)$ være sandt.
+Hermed er påstanden bevist med induktion for $\forall n \ge b$

@@ -1,0 +1,107 @@
+%% Custom operators
+\DeclareMathOperator{\spanop}{Span} % Define \spanop for span operator
+\DeclareMathOperator{\nullop}{null}
+\DeclareMathOperator{\colsp}{colsp} % Define \colsp for column space
+\DeclareMathOperator{\image}{image} % Define \image for image operator
+\DeclareMathOperator{\Arg}{Arg} % Define \Arg for argument operator
+\DeclareMathOperator{\gm}{gm} % Define \gm for geometric multiplicity
+\DeclareMathOperator{\am}{am} % Define \am for algebraic multiplicity
+%% /Custom operators
+
+\definecolor{lightmagenta}{rgb}{0.95,0.7,0.95}
+\definecolor{lightblue}{rgb}{0.7,0.85,0.95}
+
+% For bemærk boxes
+\newcommand{\bemærk}[1]{%
+    \tcbox[
+        colframe=lightmagenta,
+        boxrule=0.5pt,
+        arc=2pt,
+        left=6pt,
+        right=6pt,
+        top=3pt,
+        bottom=3pt,
+        before upper={\textbf{Bemærk: }},
+        on line
+    ]
+    {#1}%
+}
+
+\newcommand{\bemærkBig}[1]{%
+    \begin{tcolorbox}[
+        colframe=lightmagenta,
+        boxrule=0.5pt,
+        arc=2pt,
+        left=6pt,
+        right=6pt,
+        top=6pt,
+        bottom=6pt,
+        before upper={\textbf{Bemærk: }},
+        before skip=10pt,    % Space before the box
+        after skip=10pt,     % Space after the box
+    ]
+    #1
+    \end{tcolorbox}%
+}
+% /For bemærk boxes
+
+% For Kilde boxes
+\newcommand{\kilde}[1]{%
+    \hfill
+    \tcbox[
+        colframe=lightblue,
+        boxrule=0.5pt,
+        arc=2pt,
+        left=6pt,
+        right=6pt,
+        top=3pt,
+        bottom=3pt,
+        on line
+    ]
+    {\kildeformat#1 \kildeend}%
+}
+
+\def\kildeformat#1 #2\kildeend{\textbf{#1} #2}
+
+\newcommand{\kildetag}[1]{%
+    \tag*{%
+        \tcbox[
+            colframe=lightblue,
+            boxrule=0.5pt,
+            arc=2pt,
+            left=2pt,
+            right=2pt,
+            top=0pt,
+            bottom=0pt,
+            on line
+        ]
+        {\formatkildetext{#1}}%
+    }%
+}
+
+\newcommand{\formatkildetext}[1]{%
+    \formatkildetextaux#1 \relax\relax%
+}
+\def\formatkildetextaux#1 #2\relax{%
+    \textbf{#1}%
+    \ifx\relax#2\relax\else\ #2\fi%
+}
+% /For Kilde boxes
+
+% For hidden sections
+\newcommand{\hiddensection}[1]{%
+    \refstepcounter{section}% advance counter
+    \sectionmark{#1}%
+    \addcontentsline{toc}{section}{#1}%
+}
+\newcommand{\hiddensubsection}[1]{%
+    \refstepcounter{subsection}% advance counter
+    \sectionmark{#1}%
+    \addcontentsline{toc}{subsection}{#1}%
+}
+% /For hidden sections
+
+% Change real and imaginary part symbols to 2 letters
+\renewcommand{\Re}{\mathfrak{Re}}
+\renewcommand{\Im}{\mathfrak{Im}}
+% /Change real and imaginary part symbols to 2 letters

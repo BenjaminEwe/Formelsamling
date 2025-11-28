@@ -1,0 +1,41 @@
+\newpage
+\hiddensubsection{Differentiering}
+
+$c$ er en konstant, $x$ er en variabel, og $f(x)$ og $g(x)$ er funktioner af $x$.
+
+\
+\begin{center}
+    \(\sec a = \frac{1}{\cos a}\)  \quad \(\csc a = \frac{1}{\sin a}\) \quad \(\cot a = \frac{1}{\tan a}\)
+\end{center}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{@{}>{\raggedright}p{2.65cm}ll@{}}
+\toprule
+\textbf{Funktion} & \textbf{Værdier} & \textbf{Funktioner} \\
+\midrule
+Konstant & $(c)' = 0$ &  \\
+Linear & $(x)' = 1$ & $(f(x))' = f'(x)$ \\
+Konstantled & $(cx)' = c$ & $(c \cdot f(x))' = c \cdot f'(x)$ \\
+\midrule
+Sum &  & $(f(x) + g(x))' = f'(x) + g'(x)$ \\
+Difference &  & $(f(x) - g(x))' = f'(x) - g'(x)$ \\
+Produkt &  & $(f(x) \cdot g(x))' = f'(x) \cdot g(x) + f(x) \cdot g'(x)$ \\
+Kvotient &  & $\left(\frac{f(x)}{g(x)}\right)' = \frac{f'(x) \cdot g(x) - f(x) \cdot g'(x)}{(g(x))^2}$ \\
+Sammensat &  & $f(g(x))' = f'(g(x)) \cdot g'(x)$ \\
+\midrule
+Exponent & $(x^n)' = n x^{n-1}$ & $((f(x))^n)' = n (f(x))^{n-1} \cdot f'(x)$ \\
+Sinus & $(\sin x)' = \cos x$ & $(\sin f(x))' = \cos(f(x)) \cdot f'(x)$ \\
+Cosinus & $(\cos x)' = -\sin x$ & $(\cos f(x))' = -\sin(f(x)) \cdot f'(x)$ \\
+Tangens & $(\tan x)' = \sec^2 x$ & $(\tan f(x))' = \sec^2(f(x)) \cdot f'(x)$ \\
+Secans & $(\sec x)' = \sec x \tan x$ & $(\sec f(x))' = \sec(f(x)) \tan(f(x)) \cdot f'(x)$ \\
+Cosecans & $(\csc x)' = -\csc x \cot x$ & $(\csc f(x))' = -\csc(f(x)) \cot(f(x)) \cdot f'(x)$ \\
+Cotangens & $(\cot x)' = -\csc^2 x$ & $(\cot f(x))' = -\csc^2(f(x)) \cdot f'(x)$ \\
+Euler & $(e^{c x})' = c \cdot e^{c x}$ & $(e^{f(x)})' = e^{f(x)} \cdot f'(x)$ \\
+Exponent & $(a^x)' = a^x \ln a$ & $(a^{f(x)})' = a^{f(x)} \ln a \cdot f'(x)$ \\
+ln & $(\ln x)' = \frac{1}{x}$ & $(\ln f(x))' = \frac{f'(x)}{f(x)}$ \\
+log$_\text{a}$ & $(\log_a x)' = \frac{1}{x \ln a}$ & $(\log_a f(x))' = \frac{f'(x)}{f(x) \ln a}$ \\
+\bottomrule
+\end{tabular}
+\end{table}

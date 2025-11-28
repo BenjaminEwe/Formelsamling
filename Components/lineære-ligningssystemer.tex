@@ -1,0 +1,159 @@
+\section{Lineære Ligningssystemer}
+
+\subsection{Rækkeoperationer}
+Rækkeoperationer ændrer ikke løsningen.
+\begin{enumerate}
+    \item \textbf{Byt to rækker om:} Række \( R_i \) og række \( R_j \) byttes om.
+    \item \textbf{Gange en række med en skalar:} \( R_i = R_i \cdot k \) hvor \( k \in \mathbb{F} \setminus 0 \).
+    \item \textbf{Læg en række til en anden række:} \( R_i = R_i + k \cdot R_j \) hvor \( k \in \mathbb{F} \).
+\end{enumerate}
+
+\subsection{Har Homogent lineært ligningssystem en løsning?}
+Kun hvis koefficientmatricen og totalmatricen har samme rang. 
+
+\kilde{Korollar 6.4.3}
+
+\subsection{Løs Inhomogent lineært ligningssystem}
+Ikke alle lineære ligningssystemer har en løsning. Hvis der findes en løsning, kaldes systemet \textbf{konsistent}, ellers \textbf{inkonsistent}.
+
+\
+
+For at finde en partikulær løsning opstilles \emph{Total-matricen} for det lineære lignignssystem på reduceret trappeform.
+
+\[
+    \begin{bmatrix}
+        1 & 0 & 6 & 0 & 3 \\
+        0 & 1 & 4 & 0 & 4 \\
+        0 & 0 & 0 & 1 & 5 \\
+    \end{bmatrix}
+\]
+
+Nu opstilles det som ligninger
+
+\[
+    \begin{cases}
+        x_1 + 6 x_3 &= 3 \\
+        x_2 + 4 x_3 &= 4 \\
+        x_4 &= 5
+    \end{cases}
+\]
+
+Vi omskriver så vi har pivot'erne på dene ene side (her $x_1, x_2, x_4$)
+
+\[
+    \begin{cases}
+        x_1 &= 3 - 6 x_3 \\
+        x_2 &= 4 - 4 x_3 \\
+        x_4 &= 5
+    \end{cases}
+\]
+
+Indsætter valgfri værdier for de variable på højre side (her $x_3 = 0$)
+
+\[
+    \begin{cases}
+        x_1 &= 3 - 0 \\
+        x_2 &= 4 - 0 \\
+        x_4 &= 5
+    \end{cases}
+    \implies
+    \begin{bmatrix}
+        x_1 \\
+        x_2 \\
+        x_3 \\
+        x_4 \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        3 \\
+        4 \\
+        0 \\
+        5 \\
+    \end{bmatrix}
+\]
+
+\subsection{Har homogent lineært lignignssystem en løsning?}
+Alle har nul-løsningen. Hvis koefficientmatricen har en rang mindre end antallet af variable, har systemet uendeligt mange løsninger.
+
+\kilde{Korollar 6.4.5}
+
+\subsection{Løs homogent lineært ligningssystem}
+
+Tag et lineært ligningssystem, og opstil det tilsvarende homogene lineære ligningssystem som totalmatrix (skift højre til 0).
+\[
+    \begin{bmatrix}
+        1 & 0 & 6 & 0 & 3 \\
+        0 & 1 & 4 & 0 & 4 \\
+        0 & 0 & 0 & 1 & 5 \\
+    \end{bmatrix}
+    \rightarrow
+    \begin{bmatrix}
+        1 & 0 & 6 & 0 & 0 \\
+        0 & 1 & 4 & 0 & 0 \\
+        0 & 0 & 0 & 1 & 0 \\
+    \end{bmatrix}
+\]
+
+Omskriv så alle pivoterne er på den ene side:
+\[
+    \begin{cases}
+        x_1 + 6 x_3 &= 0 \\
+        x_2 + 4 x_3 &= 0 \\
+        x_4 &= 0
+    \end{cases}
+    \implies
+    \begin{cases}
+        x_1 &= -6 \cdot x_3 \\
+        x_2 &= -4 \cdot x_3 \\
+        x_4 &= 0
+    \end{cases}
+\]
+
+Det viser at for hver $x_1$ skal vi have $-6$ gange $x_3$, og for hver $x_2$ skal vi have $-4$ gange $x_3$. Vi kan nu skrive:
+\[
+    \begin{bmatrix}
+        x_1 \\
+        x_2 \\
+        x_3 \\
+        x_4 \\
+    \end{bmatrix}
+    =
+    s \cdot
+    \begin{bmatrix}
+        -6 \\
+        -4 \\
+        1 \\
+        0 \\
+    \end{bmatrix}
+    \quad \text{hvor } t \in \mathbb{F}
+\]
+
+\subsubsection{Tilsvarende homogent lineært ligningssystem}
+For et lineært ligningssystem:
+\[
+    \begin{cases}
+        a_{11} \cdot x_1 + a_{12} \cdot x_2 + \dots + a_{1n} \cdot x_n = b_1 \\
+        a_{21} \cdot x_1 + a_{22} \cdot x_2 + \dots + a_{2n} \cdot x_n = b_2 \\
+        \vdots \\
+        a_{m1} \cdot x_1 + a_{m2} \cdot x_2 + \dots + a_{mn} \cdot x_n = b_m \\
+    \end{cases}
+\]
+Er det tilsvarende homogene lineære ligningssystem givet ved:
+\[
+    \begin{cases}
+        a_{11} \cdot x_1 + a_{12} \cdot x_2 + \dots + a_{1n} \cdot x_n = 0 \\
+        a_{21} \cdot x_1 + a_{22} \cdot x_2 + \dots + a_{2n} \cdot x_n = 0 \\
+        \vdots \\
+        a_{m1} \cdot x_1 + a_{m2} \cdot x_2 + \dots + a_{mn} \cdot x_n = 0 \\
+    \end{cases}
+\]
+
+\subsubsection{Alle løsninger til et inhomogent lineært ligningssystem}
+Når man har en partikulær løsning til det inhomogene lineære ligningssystem \( (v_1,\dots, v_n) \), 
+samt løsningen til det tilsvarende homogene lineære ligningssystem \( (w_1,\dots,w_n) \) 
+er samtlige løsninger til det inhomogene lineære ligningssystem givet ved:
+\[
+    (v_1 + w_1 \cdot c, v_2 + w_2 \cdot c, \dots, v_n + w_n \cdot c) \quad \text{hvor } c \in \mathbb{F}
+\]
+
+Altså skal man have en partikulær løsning, og addere løsningen til det tilsvarende homogene lineære ligningssystem.

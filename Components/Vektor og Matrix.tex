@@ -1,0 +1,393 @@
+\section{Vektorer og Matricer}
+\begin{minipage}{0.35\textwidth}
+    \[
+        \mathbb{F}^{3 \times 1} =
+        \left\{
+            \begin{bmatrix}
+                a_{1} \\
+                a_{2} \\
+                a_{3}
+                \end{bmatrix}
+            \mid a_{1}, a_{2}, a_{3} \in \mathbb{F}
+        \right\}
+    \]
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+    \[
+        \mathbb{F}^{1 \times 3} =
+        \left\{
+            \begin{bmatrix}
+                a_{1} & a_{2} & a_{3}
+            \end{bmatrix}
+            \mid a_{1}, a_{2}, a_{3} \in \mathbb{F}
+        \right\}
+    \]
+\end{minipage}
+
+
+\subsection{Addition og Subtraktion med matrix}
+Kun defineret hvis begge matricer har samme størrelse.
+
+\[
+    \begin{bmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22}
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        b_{11} & b_{12} \\
+        b_{21} & b_{22}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        a_{11} + b_{11} & a_{12} + b_{12} \\
+        a_{21} + b_{21} & a_{22} + b_{22}
+    \end{bmatrix}
+\]
+
+\[
+    \begin{bmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22}
+    \end{bmatrix}
+    -
+    \begin{bmatrix}
+        b_{11} & b_{12} \\
+        b_{21} & b_{22}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        a_{11} - b_{11} & a_{12} - b_{12} \\
+        a_{21} - b_{21} & a_{22} - b_{22}
+    \end{bmatrix}
+\]
+
+\subsection{Multiplikation af vektor og skalar, matrix og skalar}
+\begin{minipage}{0.25\textwidth}
+    \[
+        k \cdot
+        \begin{bmatrix}
+            a_{1} \\
+            a_{2} \\
+            a_{3}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            k \cdot a_{1} \\
+            k \cdot a_{2} \\
+            k \cdot a_{3}
+        \end{bmatrix}
+    \]
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+    \[
+        k \cdot
+        \begin{bmatrix}
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{32} & a_{33}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            k \cdot a_{11} & k \cdot a_{12} & k \cdot a_{13} \\
+            k \cdot a_{21} & k \cdot a_{22} & k \cdot a_{23} \\
+            k \cdot a_{31} & k \cdot a_{32} & k \cdot a_{33}
+        \end{bmatrix}
+    \]
+\end{minipage}
+
+
+\subsection{Multiplikation af matrix og vektor}
+Kun defineret hvis antallet af kolonner i matricen er lig med antallet af rækker i vektoren. Resultatet bliver en vektor med samme antal rækker som matricen.
+
+\[
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23}
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+        b_{1} \\
+        b_{2} \\
+        b_{3}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        a_{11}b_{1} + a_{12}b_{2} + a_{13}b_{3} \\
+        a_{21}b_{1} + a_{22}b_{2} + a_{23}b_{3}
+    \end{bmatrix}
+\]
+
+\subsection{Multiplikation af matrix og matrix}
+Kun defineret hvis antallet af søjler i den første matrix er lig med antallet af rækker i den anden matrix. Resultatet bliver en matrix med antal rækker fra den første matrix og antal kolonner fra den anden matrix.
+
+\[
+    \begin{bmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22}
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+        b_{11} & b_{12} & b_{13} \\
+        b_{21} & b_{22} & b_{23}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        (a_{11}b_{11} + a_{12}b_{21}) & (a_{11}b_{12} + a_{12}b_{22}) & (a_{11}b_{13} + a_{12}b_{23}) \\
+        (a_{21}b_{11} + a_{22}b_{21}) & (a_{21}b_{12} + a_{22}b_{22}) & (a_{21}b_{13} + a_{22}b_{23})
+    \end{bmatrix}
+\]
+
+
+\bemærk{$A \cdot B \neq B \cdot A$}
+
+\subsection{Algebra}
+\subsubsection{Vektorer}
+\begin{align*}
+    (\mathbf{u} + \mathbf{v}) + \mathbf{w} &= \mathbf{u} + (\mathbf{v} + \mathbf{w}) \\
+    \mathbf{u} + \mathbf{v} &= \mathbf{v} + \mathbf{u} \\
+    c \cdot (d \cdot \mathbf{u}) &= (c \cdot d) \cdot \mathbf{u} \\
+    c \cdot (\mathbf{u} + \mathbf{v}) &= c \cdot \mathbf{u} + c \cdot \mathbf{v} \\
+    (c + d) \cdot \mathbf{u} &= c \cdot \mathbf{u} + d \cdot \mathbf{u}
+\end{align*}
+\kilde{Sætning 7.1.1}
+
+\subsubsection{Matricer}
+For $\mathbf{A} \in \mathbb{F}^{m \times n}$, $\mathbf{B} \in \mathbb{F}^{n \times l}$ og $\mathbf{C} \in \mathbb{F}^{l \times k}$ gælder:
+
+
+\begin{align*}
+    \mathbf{A}_1 + \mathbf{A}_2 &= \mathbf{A}_2 + \mathbf{A}_1 \\
+    (\mathbf{A}_1 + \mathbf{A}_2) + \mathbf{A}_3 &= \mathbf{A}_1 + (\mathbf{A}_2 + \mathbf{A}_3) \\
+    \mathbf{A} \cdot (\mathbf{B} \cdot \mathbf{C}) &= (\mathbf{A} \cdot \mathbf{B}) \cdot \mathbf{C} \\
+    \mathbf{A} \cdot (\mathbf{B}_1 + \mathbf{B}_2) &= \mathbf{A} \cdot \mathbf{B}_1 + \mathbf{A} \cdot \mathbf{B}_2 \\
+    (\mathbf{A}_1 + \mathbf{A}_2) \cdot \mathbf{B} &= \mathbf{A}_1 \cdot \mathbf{B} + \mathbf{A}_2 \cdot \mathbf{B} 
+\end{align*}
+\kilde{Sætning 7.2.1}
+
+\subsection{Transponering af vektorer}
+\[
+    \begin{bmatrix}
+        a_{1} & a_{2} & a_{3}
+    \end{bmatrix}^{T}
+    =
+    \begin{bmatrix}
+        a_{1} \\
+        a_{2} \\
+        a_{3}
+    \end{bmatrix}
+\]
+
+\subsection{Transponering af matricer}
+\[
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23} \\
+        a_{31} & a_{32} & a_{33}
+    \end{bmatrix}^{T}
+    =
+    \begin{bmatrix}
+        a_{11} & a_{21} & a_{31} \\
+        a_{12} & a_{22} & a_{32} \\
+        a_{13} & a_{23} & a_{33}
+    \end{bmatrix}
+\]
+
+For $\mathbf{A} \in \mathbb{F}^{m \times n}$ og $\mathbf{B} \in \mathbb{F}^{n \times l}$ gælder:
+
+\begin{itemize}
+    \item $(\mathbf{A}^T)^T=\mathbf{A}$
+    \item $(\mathbf{A}_1+\mathbf{A}_2)^T=\mathbf{A}_1^T+\mathbf{A}_2^T$
+    \item $(\mathbf{A} \cdot \mathbf{B})^T = \mathbf{B}^T \cdot \mathbf{A}^T $ \hfill \bemærk{Rækkefølgen vendes}
+\end{itemize}
+
+\kilde{Sætning 7.2.2}
+
+\subsection{Inverse matricer}
+\begin{itemize}
+    \item Kun defineret for kvadratiske matricer.
+    \item $A^{-1}$ findes $\iff$ ranget af $A$ er lig med antallet af rækker i $A$.
+    
+    \kilde{Lemma 7.3.1}
+    \item $A \cdot A^{-1}=I_n$ \hfill \kilde{Korollar 7.3.4}
+    \item $A^{-1}$ findes kun hvis $\rho(A) = n$ for $A \in \mathbb{F}^{n \times n} $ \hfill \kilde{Korollar 7.3.5}
+    \item $A$ har en invers $\iff \det(A) \neq 0$ \hfill \kilde{Korollar 8.2.4}
+\end{itemize}
+
+
+
+\subsubsection{Invers ved rækkeoperationer}
+For en kvadratisk matrix $A$ kan $A^{-1}$ findes ved at bruge rækkeoperationer:
+\[
+\bigl[\,A \mid I\,\bigr]
+\;\xrightarrow{\text{rækkeoperationer}}\;
+\bigl[\,I \mid A^{-1}\,\bigr].
+\]
+Hvis venstre side efter reduktion ikke ender som identitetsmatricen, eksisterer $A^{-1}$ ikke (matricen er singulær).
+
+\[
+    \mathbf{A}=
+    \begin{bmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22}
+    \end{bmatrix}
+    \implies
+    \begin{bmatrix}
+        a_{11} & a_{12} & 1 & 0 \\
+        a_{21} & a_{22} & 0 & 1
+    \end{bmatrix}
+    \xrightarrow{\text{række op.}}
+    \begin{bmatrix}
+        1 & 0 & x & y \\
+        0 & 1 & z & w
+    \end{bmatrix}
+    \implies
+    \mathbf{A}^{-1}=
+    \begin{bmatrix}
+        x & y \\
+        z & w
+    \end{bmatrix}
+\]
+
+\kilde{Sætning 7.3.2}
+
+\subsection{Lineær afhængighed}
+Hvis en eller flere vektorer i et sæt kan skrives som en lineær kombination af de andre vektorer i sættet, er vektorerne lineært afhængige. Ellers er de lineært uafhængige.
+
+\subsubsection{Determinant}
+Hvis \(\det(A) = 0 \) er søjlerne i matricen \(A\) lineært afhængige. Ellers er de uafhængige.
+
+\kilde{Korollar 8.2.5}
+
+\subsubsection{Samme rang som vektorer}
+Hvis matricen skabt af vekotrerne som søjler har samme rang som antallet af vektorer, er de lineært uafhængige. Ellers er de lineært afhængige.
+
+\kilde{Sætning 7.1.3}
+
+\newpage
+\section{Determinanter}
+Kun defineret for kvadratiske matricer.
+
+$\det([a]) = a$
+
+\subsection{Determinant af 2×2 matrix}
+\[ 
+    \det
+    \begin{bmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22}
+    \end{bmatrix}
+    =
+    a_{11}a_{22} - a_{12}a_{21}
+\]
+
+\subsection{Determinant af større matricer (Laplace udvikling)}
+\[
+    \det
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23} \\
+        a_{31} & a_{32} & a_{33}
+    \end{bmatrix}
+    =
+    a_{11} \cdot \det \begin{bmatrix}
+        a_{22} & a_{23} \\
+        a_{32} & a_{33}
+    \end{bmatrix} - 
+    a_{12} \cdot \det \begin{bmatrix}
+        a_{21} & a_{23} \\
+        a_{31} & a_{33}
+    \end{bmatrix} +
+    a_{13} \cdot \det \begin{bmatrix}
+        a_{21} & a_{22} \\
+        a_{31} & a_{32}
+    \end{bmatrix}
+\]
+
+
+General formel for en valgfri $i$'te række:
+
+\[
+    \det(\mathbf{A}) = \sum_{j=1}^{n} (-1)^{i+j} \cdot a_{ij} \cdot \det(\mathbf{A}(i;j))
+\]
+
+Generel formel for en valgfri $j$'te kolonne:
+
+\[
+    \det(\mathbf{A}) = \sum_{i=1}^{n} (-1)^{i+j} \cdot a_{ij} \cdot \det(\mathbf{A}(i;j))
+\]
+
+\kilde{Sætning 8.2.1}
+
+\bemærkBig{
+$\mathbf{A}(i;j)$ er \emph{minoren} (matricen) dannet ved at fjerne den $i$'te række og $j$'te kolonne fra matrix $\mathbf{A}$.
+
+Enhver række eller kolonne kan vælges - Brugbart hvis en række eller kolonne indeholder mange nuller.
+}
+
+Man tager altså hvert element i den valgte række eller kolonne, ganger det med determinanten af minoren dannet ved at fjerne den række og kolonne, som elementet befinder sig i, og ganger med $(-1)^{i+j}$ for at tage højde for fortegnet.
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+    \textbf{Fortegns skema for en $n \times n$ matrix}
+    
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        $+a_{11}$ & $-a_{12}$ & $+a_{13}$ & $\cdots$ \\
+        \hline
+        $-a_{21}$ & $+a_{22}$ & $-a_{23}$ & $\cdots$ \\
+        \hline
+        $+a_{31}$ & $-a_{32}$ & $+a_{33}$ & $\cdots$ \\
+        \hline
+        $\vdots$  & $\vdots$  & $\vdots$  & $\ddots$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\
+
+\
+
+\subsection{Egenskaber ved determinanter}
+Hvis en række eller kolonne er nul, er determinanten $0$. 
+
+\kilde{Lemma 8.1.4}
+
+\
+
+Hvis to rækker eller kolonner er ens, er determinanten $0$.
+
+\kilde{Proposition 8.3.5}
+
+\
+
+Hvis to rækker eller kolonner byttes om, skifter determinanten fortegn.
+
+\kilde{Sætning 8.3.6}
+
+\
+
+Hvis en række eller kolonne ganges med en skalar $k$, ganges determinanten med $k$.
+
+\kilde{Korollar 8.3.2}
+
+\
+
+Hvis et skalar af en række eller kolonne lægges til en anden række eller kolonne, ændres determinanten ikke.
+
+\kilde{Sætning 8.3.7}
+
+\
+
+$\det(A) \ne 0 \iff$ det tilsvarende lineære ligningssystem's eneste løsning er nulvektoren. 
+
+\kilde{Korollar 8.2.6}
+
+\begin{align*}
+    \det (\mathbf{A}^{-1} ) &= \frac{1}{\det(\mathbf{A})} \kildetag{Sætning 8.1.1} \\
+    \text{For diagonalmatricer: } \det(\mathbf{D}) &= \prod_{i=1}^{n} d_{ii} \kildetag{Proposition 8.1.2} \\
+    \text{For trekantsmatricer: } \det(\mathbf{T}) &= \prod_{i=1}^{n} t_{ii} \kildetag{Sætning 8.1.(3/5)} \\
+    \det(A^T) &= \det(A) \kildetag{Korollar 8.2.2} \\
+    \det (\mathbf{A} \cdot \mathbf{B}) &= \det(\mathbf{A}) \cdot \det(\mathbf{B}) \kildetag{Sætning 8.2.3}
+\end{align*}

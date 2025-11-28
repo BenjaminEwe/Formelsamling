@@ -1,0 +1,111 @@
+\section{Polynomier}
+Polynomier kan skrives
+\[
+    p(Z) = a_0 + a_1 Z + a_2 Z^2 + \dots + a_n Z^n
+\]
+
+Hvor $n \in \mathbb{N}$, $a_i \in \mathbb{R}$ for alle $i = 0, 1, \dots, n$ og $Z$ er en variabel.
+
+\
+
+Det største $i$ hvor $a_i \neq 0$ kaldes for polynomiets grad, og det tilsvarende $a_i$ kaldes for polynomiets ledende koefficient.
+
+\
+
+Nulpolynomiet har grad $-\infty$.
+
+\
+
+Graden af 2 polynomier multipliceret er summen af deres grader
+
+Graden af 2 polynomier adderet er den største af deres grader
+
+
+\subsection{Rødder}
+
+Hvis $p(\lambda) = 0$, er $\lambda$ en rod af polynomiet $p$.
+
+\
+
+Enhver rod $\lambda$ af et polynomium kan dividere polynomiet. Dvs. der findes et $q$ så $p(Z) = (Z - \lambda) q(Z)$.
+
+\
+
+Hvis en rod $\lambda \in \mathbb{C}$ findes for et polynomium med reelle koefficienter, findes den komplekse konjugerede $\overline{\lambda}$ også som rod.
+\kilde{Lemma 5.3.3}
+
+\
+
+Hvis et polynomie $p(Z)$ kan skrives som $p_1(Z) \cdot p_2(Z)$ så er rødderne af $p(Z)$ summen af rødderne af $p_1(Z)$ og $p_2(Z)$.
+\kilde{Lemma 5.5.1}
+
+
+\subsubsection{Rødder af andengradsligninger}
+\[
+aZ^2 + bZ + c = 0 \hspace{4em} Z = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]
+
+Hvis diskriminanten $D = b^2 - 4ac$ for andengradsligningen $aZ^2 + bZ + c = 0$ er:
+\begin{itemize}
+    \item $D > 0$: To forskellige reelle rødder 
+    \(
+        Z = \frac{-b \pm \sqrt{D}}{2a}
+    \)
+    \item $D = 0$: Én reel rod
+    \(
+        Z = \frac{-b}{2a}
+    \)
+    \item $D < 0$: To komplekse rødder
+\end{itemize}
+\bemærk{For $D<0$ er rødderne komplekst konjugerede af hinanden.}
+
+\subsection{Binomier}
+Binomier er på formen \(Z^n-w\) for et \(n \in \mathbb{N}\) og et \((w \neq 0) \in \mathbb{C}\).
+
+Et binomie vil have \(n\) løsninger som findes ved:
+\[
+    z = \sqrt[n]{|w|} \cdot e^{i \left( \frac{\arg(w)}{n} + p \cdot \frac{2 \pi}{n} \right)} \quad \text{for } p = 0, 1, \dots, n-1
+\]
+Hvilket også kan skrives som:
+\[
+    z = \sqrt[n]{|w|} \left( \cos\left( \frac{\arg(w)}{n} + p \cdot \frac{2 \pi}{n} \right) + i \sin\left( \frac{\arg(w)}{n} + p \cdot \frac{2 \pi}{n} \right) \right) \quad \text{for } p = 0, 1, \dots, n-1
+\]
+
+\subsubsection{Sætrilfælde ved 4. grads binomier}
+For et binomie på formen \(Z^4 - w\) kan de resterende rødder findes hvis du kender en af rødderrne ved:
+\[
+    z_2 = -z_1, \quad z_3 = i z_1, \quad z_4 = -i z_1 \kildetag{Eksempel 5.4.1}
+\]
+
+Mere generelt kan resterende rødder i et $n$'te grads binomie findes ved at bruge en kendt rod \(z_1\) i formlen:
+\[
+    z_k = z_1 \cdot e^{i \cdot (k-1) \cdot \frac{2 \pi}{n}} \quad \text{for } k = 1, 2, \dots, n
+\]
+
+\subsection{Divisions-Algoritmen}
+\subsubsection{Eksempel på polynomie-division}
+
+Her divideres \(2Z^4 - 6Z^3 + 8Z^2 - 12Z + 8\) med \(Z^2 - 3Z + 2\) hvilket giver kvotienten \(2Z^2 + 4\) og resten \(0\).
+
+\begin{align*}
+    Z^2-3Z+2) \quad 
+    2Z^4-6Z^3+8Z^2-12Z+8& \quad (2Z^2+4 \\
+    2Z^4-6Z^3+4Z^2 \hspace{4.7em}& \\
+    \overline{\hspace{6em} 4Z^2-12Z+8} \\
+    4Z^2-12Z+8 \\
+    \overline{\hspace{6em} 0}
+\end{align*}
+
+Divisions-algoritmen virker ved at man tager sin divisor, og finder hvad den skal ganges med for at udeligne det højeste grad-led i dividenden. Dette gøres gentagne gange indtil graden af resten er mindre end graden af divisoren.
+
+\subsection{Multiplicteter og faktorisering}
+
+For ethvert $p(Z) \in \mathbb{C}[Z]$ af grad $n \geq 1$ findes der $n$ rødder $\lambda_1, \lambda_2, \dots, \lambda_n$ (ikke nødvendigvis forskellige) så
+\[
+    p(Z) = a_n (Z - \lambda_1)(Z - \lambda_2) \cdots (Z - \lambda_n) \kildetag{Sætning 5.6.3}
+\]
+
+Det samme $\lambda$ kan optræde flere gange som rod. Antallet af gange en rod optræder kaldes for dens multiplicitiet.
+
+\subsubsection{Reel faktorisering}
+Ethvert polynomium $p(Z) \in \mathbb{R}[Z]$ af grad $n \geq 1$ kan faktoriseres som produktet af polynomier af grad 1 og 2 med reelle koefficienter.
