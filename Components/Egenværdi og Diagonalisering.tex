@@ -1,17 +1,17 @@
 \section{Egenværdier}
 \subsection{Definition}
-For vektorrum $V$ på legeme $\mathbb{F}$ og lineær afbildning $L: V \to V$ siges en skalar $\lambda \in \mathbb{F}$ at være en \textbf{egenværdi} for $L$, hvis der findes en vektor $\mathbf{v} \in V$, $\mathbf{v} \neq 0$, sådan at
+For vektorrum $V$ på legeme $\mathbb{F}$ og lineær afbildning $L: V \to V$ 
+er en skalar $\lambda \in \mathbb{F}$ en \textbf{egenværdi} for $L$, hvis der findes en vektor $\mathbf{v} \in V$, $\mathbf{v} \neq 0$, sådan at
 \[L(v) = \lambda \cdot \mathbf{v}.\]
-Vektoren $\mathbf{v}$ siges at være en \textbf{egenvektor} tilhørende egenværdien $\lambda$.
+Vektoren $\mathbf{v}$ er en \textbf{egenvektor} tilhørende egenværdien $\lambda$.
 
-\bemærk{$\lambda$ må godt være $0$ men dets legeme skal være $V$'s legeme.}
-
+\bemærk{$\lambda$ må godt være $0$}
 \kilde{Definition 12.1.1}
 
 \subsubsection{Matricers egenværdier}
-For en matrix $A \in \mathbb{F}^{n \times n}$ og en vektor $\mathbf{v} \in \mathbb{F}^n$, $\mathbf{v} \neq 0$, siges en skalar $\lambda \in \mathbb{F}$ at være en \textbf{egenværdi} for $A$, hvis
+For en matrix $A \in \mathbb{F}^{n \times n}$ og en vektor $\mathbf{v} \in \mathbb{F}^n$, $\mathbf{v} \neq 0$, er en skalar $\lambda \in \mathbb{F}$ en \textbf{egenværdi} for $A$, hvis
 \[A \mathbf{v} = \lambda \cdot \mathbf{v}.\]
-Vektoren $\mathbf{v}$ siges at være en \textbf{egenvektor} tilhørende egenværdien $\lambda$.
+Vektoren $\mathbf{v}$ er en \textbf{egenvektor} tilhørende egenværdien $\lambda$.
 
 \bemærk{Gælder kun for kvadratiske matricer}
 \kilde{Definition 12.1.2}
@@ -38,53 +38,98 @@ Med andre ord, rødderne i følgende polynomie er egenværdierne for $A$.
 
 \subsubsection{Egenværdi for Lineære afbildinger}
 For en lineær afbildning $L: V \to V$ og en basis $\beta$ for $V$, vil en skalar $\lambda \in \mathbb{F}$ være en egenværdi for $L$ hvis og kun hvis
-\[\det(_\beta[L]_{\beta} - \lambda \cdot \mathbf{I}_n) = 0.\]
+\[
+\det(_\beta[L]_{\beta} - \lambda \cdot \mathbf{I}_n) = 0.
+\kildetag{Sætning 12.1.2}
+\]
 
-\subsection{Find egenvektor-rum}
+\paragraph{Om egenværdier af lineære afbildninger}
 
-For en given egenværdi $\lambda$ for matrix $A \in \mathbb{F}^{n \times n}$, kan egenvektor-rummet tilhørende $\lambda$ findes ved at finde nulrummet for matricen
+\
+
+Den valgte basis er ligegyldig.
+
+\begin{align*}
+    p_{_\beta[L]_\beta}(\lambda) &= p_{_\gamma[L]_\gamma}(\lambda) \kildetag{Sætning 12.1.4} \\
+    \det(_\beta[L]_\beta) &= \det(_\gamma[L]_\gamma) \kildetag{Korollar 12.1.5}
+\end{align*}
+
+Det karakteristiske polynomium for en lineær afbildning $L: V \to V$ betegnes med valgfri basis:
+\[
+p_L(\lambda) = \det(_\beta[L]_\beta - \lambda \cdot \mathbf{I}_n) \kildetag{Definition 12.1.3}
+\]
+
+\subsection{Egenvektorer}
+\begin{align*}
+    E_\lambda = \{ v \in V | L(v) = \lambda \cdot v \} \kildetag{Sætning 12.2.1} \\
+    A_\lambda = \{ v \in V |A \cdot \mathbf{v} = \lambda \cdot \mathbf{v} \} \kildetag{Sætning 12.2.1}
+\end{align*}
+Disse er underrum i hhv. $V$ og $\mathbb{F}^n$.
+
+\subsection{Egenrum}
+
+Egenrummet for en egenværdi $\lambda$ og matrix $A \in \mathbb{F}^{n \times n}$ betegnes $E_{\lambda}$ og defineres som mængden af alle egenvektorer tilhørende $\lambda$ samt \emph{nulvektoren}. Det kan findes ved at finde kernen af matricen:
+
 \[ 
 \begin{bmatrix}
     a_11 - \lambda & a_{12} & \cdots & a_{1n} \\
     a_{21} & a_{22} - \lambda & \cdots & a_{2n} \\
     \vdots & \vdots & \ddots & \vdots \\
     a_{n1} & a_{n2} & \cdots & a_{nn} - \lambda
-\end{bmatrix}
+\end{bmatrix} \kildetag{Lemma 12.2.3}
 \]
 
-
-
+Se evt. sektion \ref{sec:kerne} om hvordan kernen findes.
 
 \section{Diagonalisering}
 
 \subsection{Kan en matrix diagonaliseres?}
-En matrix $A \in \mathbb{F}^{n \times n}$ er \textbf{diagonalisérbar} hvis der findes en invertibel matrix $Q \in \mathbb{F}^{n \times n}$ og en diagonal matrix $D \in \mathbb{F}^{n \times n}$ så
-\[A = Q \cdot D \cdot Q^{-1}.\]
+En lineær afbildning $L: V \to V$ eller matrix $A \in \mathbb{F}^{n \times n}$ kan diagonaliseres hvis og kun hvis der findes en basis for $V$ bestående af egenvektorer tilhørende $L$.
 
-For at dette er sandt må $\gm(A)=\am(A)$
+Det er det samme som at det karakteristiske polynomium for $L$ kan skrives som
+\[
+p_L(Z) = (-1)^n \cdot (Z - \lambda_1)^m_1 \cdots (Z - \lambda_r)^{m_r}
+\kildetag{Sætning 12.3.3}
+\]
+
+Det betyder også at for alle egenværdier $\lambda_i$ gælder
+\(
+gm(\lambda) = am(\lambda)
+\)
+
+Når en afbildnign kan diagonaliseres kan man finde en diagonalmatrix $D$ og en invertibel matrix $Q$ så
+\[
+L = Q \cdot D \cdot Q^{-1} \kildetag{Lemma 12.4.2}
+\]
+
 
 \subsubsection{Algebraisk multiplicitet}
-Den \textbf{algebraiske multiplicitet} af en egenværdi $\lambda$ for matrix $A \in \mathbb{F}^{n \times n}$, betegnet $\am(\lambda)$, er antallet af gange $\lambda$ optræder som en rod i det karakteristiske polynomium for $A$.
+$am(\lambda)$ er antallet af gange egenværdi $\lambda$ optræder i roden af $p_A(\lambda)$.
 
-F.eks. Hvis det karakteristiske polynomium for $A$ er $p_A(\lambda) = (\lambda - 2)^3 (\lambda + 1)^2$, så er $\am(2) = 3$ og $\am(-1) = 2$. 
+F.eks. For $p_A(\lambda) = (\lambda - 2)^3 (\lambda + 1)^2$, er $\am(2) = 3$ og $\am(-1) = 2$. 
 
 \subsubsection{Geometrisk multiplicitet}
-Den \textbf{geometriske multiplicitet} af en egenværdi $\lambda$ for matrix $A \in \mathbb{F}^{n \times n}$, betegnet $\gm(\lambda)$, er dimensionen af egenvektor-rummet tilhørende $\lambda$.
+\[gm(\lambda) = \dim(E_\lambda)\]
 
-F.eks. Hvis 
-\(s \cdot 
+Hvis 
+\(
+E_{-3} = \spanop \left\{
+s \cdot 
 \begin{bmatrix}
 1 \\ 0 \\ 0
 \end{bmatrix} + t \cdot 
 \begin{bmatrix}
     0 \\ 1 \\ 0
-\end{bmatrix}\)
-er egenvektor-rummet tilhørende egenværdien $\lambda = -3$ så er $\gm(-3) = 2$.
+\end{bmatrix}
+\right\}
+\)
+er $\gm(-3) = 2$.
 
 \subsubsection{Generel sammenhæng}
-For lineær afbildning $L: V \to V$ eller matrix $\mathbf{A} \in \mathbb{F}^{n \times n}$ og en egenværdi $\lambda$, gælder:
-
-\[1 \le \gm(\lambda) \le \am(\lambda) \le \dim(V)\]
+\[
+1 \le \gm(\lambda) \le \am(\lambda) \le \dim(V)
+\kildetag{Sætning 12.2.4}
+\]
 
 \subsection{Find Diagonalmatrix}
 Hvis $A \in \mathbb{F}^{n \times n}$ kan diagonaliseres, kan diagonalmatricen findes ved at indsætte egenværdierne for $A$ på diagonalen i en $n \times n$ matrix $D$.
