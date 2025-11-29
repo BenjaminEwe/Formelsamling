@@ -1,1 +1,92 @@
 \section{Systemer af lineære ODE'er}
+En ordinær differentialligning er en ligning på formen
+\[
+F(f^{(n)}(t), \cdots, f'(t), f(t), t) = 0 \kildetag{Definition 13.0.1}
+\]
+Notationen betyder at $F$ er en funktion der tager $n+2$ variabler, og de variabler er så de forskellige afledede af funktionen $f(t)$ samt $t$ selv.
+
+En løsning er en funktion $f(t)$, som opfylder ligningen for alle $t \in \mathbb{R}$.
+
+\subsection{Lineær førsteordens ODE}
+En lineær førsteordens ODE er på formen
+\[
+L(f(t))=q(t)
+\]
+hvor $q(t) \in C_\infty(\mathbb{R})$ og $L: C_\infty(\mathbb{R}) \to C_\infty(\mathbb{R})$ er en lineær afbildning.
+
+Hvis $q(t) = 0$, kaldes ODE'en homogen, ellers inhomogen.
+
+%NOTE: En lineær førsteordens ODE behøver ikke at være uendeligt differentiable, men det er alle dem i bogen.
+
+\subsubsection{Generel lineær førsteordens ODE}
+\[
+f'(t) = a(t) f(t) + q(t)
+\]
+hvor $a(t), q(t)$ er funktioner i $t$ og $q(t)$ er en \emph{forcing function} er den generelle form for en lineær førsteordens ODE.
+
+Hvis $q(t) = 0$, er ODE'en homogen.
+
+\subsubsection{Fuldstændig løsning - Panserformlen}
+\label{sec:Panserformlen}
+\[
+f(t) = e^{P(t)} \int e^{-P(t)} q(t) dt
+\kildetag{Sætning 13.1.1}
+\]
+hvor $P(t)$ er en stamfunktion til $a(t)$, dvs. $P'(t) = a(t)$.
+
+\bemærk{Husk integrations-konstanten $c$ ved udregning!}
+
+\subsubsection{Hvis a(t) er konstant}
+Hvis $a(t) = a_0$ er en konstant, kan den fuldstændige løsning skrives som
+\begin{align*}
+    f(t) &= e^{a_0t} \int e^{-a_0t} q(t) dt
+    \kildetag{Korollar 13.1.2} \\
+    &= c \cdot e^{a_0t} + e^{a_0t} \int e^{-a_0t} q(t) dt \\
+    &= c \cdot e^{a_0t} + e^{a_0t} Q(t)
+\end{align*}
+Her er $Q(t)$ stamfunktionen til $e^{-a_0t} q(t)$.
+
+\subsection{Begyndelsesværdi}
+Givet reel funktion $f(t)$ og reele værdier $t_0, y_0$, så er $f(t_0) = y_0$ begyndelsesværdien.
+\kilde{Definition 13.1.1}
+
+Givet en ODE og begyndelsesværdier kan man løse begyndelses-værdi-problemet.
+ODE: 
+\(
+F(f^{(n)}(t), \cdots, f'(t), f(t), t) = 0
+\)
+
+Begyndelsesværdier:
+\(
+f(t_0) = y_0, f'(t_0) = y_1, \cdots, f^{(n-1)}(t_0) = y_{n-1}
+\)
+
+En funktion der opfylder både ODE'en og begyndelsesværdierne er en løsning til begyndelses-værdi-problemet.
+
+\subsection{Løs begyndelses-værdi-problemet}
+Strategien er at finde den generelle løsning til ODE'en, og så bruge begyndelsesværdierne til at bestemme konstanterne i den generelle løsning.
+
+Eksempel:
+Vi tager ODE'en
+\[
+F(f'(t), f(t), t) = f'(t) + \sin(t) f(t) = \sin(t)
+\]
+med begyndelsesværdien
+\(
+f(\pi) = 2
+\)
+
+Først omskriver vi ODE'en til standardformen:
+\[
+f'(t) = -\sin(t) f(t) + \sin(t)
+\]
+
+Vi gør brug af Panserformlen fra sektion \ref{sec:Panserformlen}:
+\begin{align*}
+    f(t) &= e^{P(t)} \int e^{-P(t)} q(t) dt \\
+    &= e^{\int -\sin(t) dt} \int e^{-\int -\sin(t) dt} \sin(t) dt \\
+    &= e^{\cos(t)} \int e^{-\cos(t)} \sin(t) dt \\
+    \text{let } u &= \cos(t) \text{ then } du = -\sin(t) dt \\
+    &= e^{\cos(t)} \int -e^{-u} [-du] \\
+    &= e^{\cos(t)} - \int e^{-u} du \\
+\end{align*}

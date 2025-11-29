@@ -1,0 +1,37 @@
+\hiddensubsection{Integration}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{@{}>{\raggedright}p{4.65cm}ll@{}}
+\toprule
+\textbf{Funktion} & \textbf{Integrering} \\
+\midrule
+Konstant & $\int a \, dx = ax + C$ \\
+Lineær & $\int ax \, dx = \frac{a x^2}{2} + C$ \\
+Sammensat & $\int f(x) + g(x) \, dx = \int f(x) \, dx + \int g(x) \, dx$ \\
+\midrule
+Eksponent $n \neq -1$ & $\int x^n \, dx = \frac{x^{n+1}}{n+1} + C$ \\
+Eksponent $n = -1$ & $\int \frac{1}{x} \, dx = \ln|x| + C$ \\
+\midrule
+Sinus & $\int \sin(ax) \, dx = -\frac{1}{a} \cos(ax) + C$ \\
+Cosinus & $\int \cos(ax) \, dx = \frac{1}{a} \sin(ax) + C$ \\
+Tangens & $\int \tan(ax) \, dx = \frac{1}{a} \ln|\sec(ax)| + C$ \\
+\midrule
+Secans & $\int \sec(ax) \, dx = \frac{1}{a} \ln|\sec(ax) + \tan(ax)| + C$ \\
+Cosecans & $\int \csc(ax) \, dx = -\frac{1}{a} \ln|\csc(ax) + \cot(ax)| + C$ \\
+Cotangens & $\int \cot(ax) \, dx = \frac{1}{a} \ln|\sin(ax)| + C$ \\
+\midrule
+Secans$^2$ & $\int \sec^2(ax) \, dx = \frac{1}{a} \tan(ax) + C$ \\
+Cosecans$^2$ & $\int \csc^2(ax) \, dx = -\frac{1}{a} \cot(ax) + C$ \\
+%\midrule
+%$\sec \times \tan$ & $\int \sec(x) \tan(x) \, dx = \sec(x) + C$ \\
+%$\csc \times \cot$ & $\int \csc(x) \cot(x) \, dx = -\csc(x) + C$ \\
+\midrule
+Euler & $\int e^{ax} \, dx = \frac{1}{a} \cdot e^{ax} + C$ \\
+Eksponent & $\int a^{x} \, dx = \frac{a^{x}}{\ln(a)} + C$ \\
+Ln & $\int \ln(ax) \, dx = x \ln(ax) - x + C$ \\
+Log$_\text{b}$ & $\int \log_b(ax) \, dx = \frac{x \cdot \ln(ax) - x}{\ln(b)} + C$ \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -208,8 +208,7 @@ For $\mathbf{A} \in \mathbb{F}^{m \times n}$ og $\mathbf{B} \in \mathbb{F}^{n \t
 \subsection{Inverse matricer}
 \begin{itemize}
     \item Kun defineret for kvadratiske matricer.
-    \item $A^{-1}$ findes $\iff$ ranget af $A$ er lig med antallet af rækker i $A$.
-    
+    \item $A^{-1}$ findes iff $\rho(A)$ er lig antallet af rækker i $A$.
     \kilde{Lemma 7.3.1}
     \item $A \cdot A^{-1}=I_n$ \hfill \kilde{Korollar 7.3.4}
     \item $A^{-1}$ findes kun hvis $\rho(A) = n$ for $A \in \mathbb{F}^{n \times n} $ \hfill \kilde{Korollar 7.3.5}
@@ -253,11 +252,27 @@ Hvis venstre side efter reduktion ikke ender som identitetsmatricen, eksisterer 
 
 \kilde{Sætning 7.3.2}
 
+\subsubsection{Invers ved detminant}
+\[
+\begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix}
+^{-1}
+=
+\frac{1}{\det(A)} \cdot
+\begin{bmatrix}
+    d & -b \\
+    -c & a
+\end{bmatrix}
+\kildetag{Sætning 8.1.1}
+\]
+
 \subsection{Lineær afhængighed}
 Hvis en eller flere vektorer i et sæt kan skrives som en lineær kombination af de andre vektorer i sættet, er vektorerne lineært afhængige. Ellers er de lineært uafhængige.
 
 \subsubsection{Determinant}
-Hvis \(\det(A) = 0 \) er søjlerne i matricen \(A\) lineært afhængige. Ellers er de uafhængige.
+Hvis $\det(A) = 0$ er søjlerne i $\mathbf{A}$ lineært afhængige. Ellers uafhængige.
 
 \kilde{Korollar 8.2.5}
 

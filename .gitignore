@@ -1,6 +1,5 @@
 ## Custom
 generated/
-*.txt
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
