@@ -26,11 +26,30 @@
         $\lor$ & eller & Disjunktion & $P \lor Q$ \\
         $\neq$ & ikke lig med & Ulighed & $x \neq y$ \\
         $\neg P$ & ikke P & Negation af P & $\neg P$ \\
-        $\Rightarrow$ & medfører & Implikation & $P \Rightarrow Q$ \\
+        $\implies$ & medfører & Implikation & $P \implies Q$ \\
         $\iff$ & hvis og kun hvis & Biimplikation & $P \iff Q$ \\
-        $T$ & sandt & Tautologi & $(P \lor \neg P) \Rightarrow T$ \\
-        $F$ & falsk & Modstrid & $(P \land \neg P) \Rightarrow F$ \\
+        $T$ & sandt & Tautologi & $(P \lor \neg P) \implies T$ \\
+        $F$ & falsk & Modstrid & $(P \land \neg P) \implies F$ \\
         \bottomrule
     \end{tabular}
     %\caption{Logical Symbols and Their Meanings}
+\end{table}
+\bemærk{$F \implies T$ er sandt.}
+
+
+\subsubsection{Sandhedstabel}
+Det er næsten altid en god idé at lave en sandhedstabel for at undersøge logiske udsagn.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        $P$ & $Q$ & $P \land Q$ & $P \lor Q$ & $\lnot P$ & $P \implies Q$ & $P \iff Q$ \\
+        \hline
+        T & T & T & T & F & T & T \\
+        T & F & F & T & F & F & F \\
+        F & T & F & T & T & T & F \\
+        F & F & F & F & T & T & T \\
+        \hline
+    \end{tabular}
 \end{table}

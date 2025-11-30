@@ -1,39 +1,46 @@
 \section{Funktioner}
 \begin{align*}
-    f : A \to B \\
-    a \mapsto f(a)
+    f : A &\to B \\
+    a &\mapsto f(a)
 \end{align*}
-Beskriver funtkionen fra \emph{Definitionsmængden} \(A\) til \emph{Dispositionsmængden} \(B\), hvor et element \(a\) i \(A\) bliver afbildet til \(f(a)\) i \(B\).
 
-\emph{Billedet}/\emph{Værdimængden} af funktionen er mængden af alle \(\{ f(a) | a \in A \}\).
+\begin{itemize}
+    \item \(A\) er \emph{definitionsmængden} eller \emph{domænet}. $a$ er et \emph{element} i $A$.
+    \item \(B\) er \emph{dispositionsmængden} eller \emph{codomænet}. $b$ er et \emph{element} i $B$.
+    \item \(f(a)\) er \emph{billedet} af elementet \(a\) i dispositionsmængden.
+    \item \(\text{Vm}(f)\) eller \(f(A)\) er \emph{billedet} eller \emph{værdimængden} af funktionen \(f\). 
+    Det er et underrum af \(B\), bestående af alle \(\{ f(a) | a \in A \}\)
+\end{itemize}
 
-\emph{Billedet} $\subsetneq$ \emph{Dispositionsmængden}.
+Alle værdier i definitionsmængden \emph{skal} have en og kun en afbildning i dispositionsmængden.
+Ellers er det ikke en funktion.
 
 \subsubsection{Sammensatte funktioner}
-Givet to funktioner \(f : A \to B\) og \(g : B \to C\), kan man sammensætte dem til en ny funktion \(g \circ f : A \to C\), hvor \((g \circ f)(a) = g(f(a))\).
-
-\subsubsection{Identitetsfunktionen}
-Identitetsfunktionen \(id_A : A \to A\) er defineret som \(id_A(a) = a\) for alle \(a \in A\).
+Givet \(f : A \to B\) og \(g : B \to C\), kan de sammensættes til \(g \circ f : A \to C\), hvor \((g \circ f)(a) = g(f(a))\).
 
 \[f \circ (g \circ h) = (f \circ g) \circ h \kildetag{Lemma 2.2.1}\] 
 
 \subsection{Funktions-egenskaber}
 \subsubsection{Injektiv}
-Der findes ikke to elementer i definitionsmængden, som bliver afbildet til det samme element i dispositionsmængden.
-
-For all injektive funktioner gælder:
-\[
-    a_1 < a_2 \Rightarrow (f(a_1) < f(a_2)) \lor (f(a_1) > f(a_2)) \kildetag{Lemma 2.3.1}
-\]
-
+Der er ikke to forskellige $a \in A$ som begge adbilledes til samme $b \in B$.
 
 \subsubsection{Surjektiv}
-Hvert element i dispositionsmængden har mindst ét element i definitionsmængden, som bliver afbildet til det.
-
-\emph{Billedet} = \emph{Dispositionsmængden}.
+For alle $b \in B$ er der mindst ét $a \in A$, så $f(a) = b$.
+Her er $Vm(f) = B$.
 
 \subsubsection{Bijektiv}
 
 Funktionen er både injektiv og surjektiv.
 
-Hvis og kun hvis en funktion er bijekitv har den en invers funktion \(f^{-1} : B \to A\), hvor \(f^{-1}(f(a)) = a\) for alle \(a \in A\) og \(f(f^{-1}(b)) = b\) for alle \(b \in B\). \kilde{Lemma 2.2.2}
+\emph{Hvis og kun hvis} en funktion er bijekitv har den en invers funktion
+
+\(f^{-1} : B \to A\), hvor \(f^{-1}(f(a)) = a\) for alle \(a \in A\) og \(f(f^{-1}(b)) = b\) for alle \(b \in B\). 
+
+\kilde{Lemma 2.2.2}
+
+\subsubsection{Identitetsfunktionen}
+Identitetsfunktionen \(id_A : A \to A\) er defineret som \(id_A(a) = a\) for alle \(a \in A\).
+
+\
+
+Hvis du ønsker at vise at en funktion $g(x)$ er invers til $f(x)$, skal du vise at både $f(g(x)) = x$ og $g(f(x)) = x$.

@@ -1,112 +1,21 @@
 \section{Komplekse tal}
-\subsubsection{Definition}
-\begin{align*}
-    \sqrt{-1} &= i \\
-    \sqrt{-n} &= i \cdot \sqrt{n} \quad  n,x \in \mathbb{R}^+ \\
-    \\
-    z &= a + bi \quad a,b \in \mathbb{R} \\
-    \Re(z) &= a \\
-    \Im(z) &= b
-\end{align*}
-
-\subsection{Aritmetik}
-\subsubsection{Addition og Subtraktion}
-\begin{align*}
-    z_1 + z_2 &= (a + bi) + (c + di) = (a+c) + (b+d)i \\
-    z_1 - z_2 &= (a + bi) - (c + di) = (a-c) + (b-d)i \\
-\end{align*}
-
-\subsubsection{Multiplikation}
-\[
-    z_1 \cdot z_2 = (a + bi)(c + di) = (a \cdot c - b \cdot d) + (a \cdot d + b \cdot c)i
-\]
-
-\paragraph{Særtilfælde: Multiplikation med det komplekst konjugerede}
-\[
-    (a+bi) \cdot (a-bi) = a^2 + b^2 \kildetag{Lemma 4.2.1} \\
-\]
-
-
-\subsubsection{Division}
-\[
-    \frac{z_1}{z_2} = \frac{a + bi}{c + di} = \frac{(a + bi)(c - di)}{(c + di)(c - di)} = \frac{(a \cdot c + b \cdot d) + (b \cdot c - a \cdot d)i}{c^2 + d^2}
-\]
-
-\paragraph{Særtilfælde: 1 over et komplekst tal}
-\[
-    \frac{1}{c + di} = \frac{c - di}{(c + di)(c - di)} = \frac{c}{c^2 + d^2} - \frac{d}{c^2 + d^2}i \kildetag{Ligning 4.3} \\
-\]
-
-
-\subsection{Kompleks Konjugering}
-
-Det komplekst konjugerede af $z=a+bi$ er $\overline{z}=a-bi$.
-\begin{align*}
-    (z) \cdot (\overline{z}) &= {\Re(z)}^2 + {\Im(z)}^2 \kildetag{Lemma 4.2.1} \\
-    \overline{\overline{z}} &= z \kildetag{Lemma 5.3.1} \\
-    \overline{z_1 + z_2} &= \overline{z_1} + \overline{z_2} \kildetag{Lemma 5.3.1} \\
-    \overline{z_1 \cdot z_2} &= \overline{z_1} \cdot \overline{z_2} \kildetag{Lemma 5.3.1} \\
-    \overline{\left( \frac{1}{z} \right)} &= \frac{1}{\overline{(z)}} \kildetag{Lemma 5.3.1} \\
-    \overline{z^n} &= (\overline{z})^n \quad n \in \mathbb{Z} \kildetag{Lemma 5.3.1} \\
-    \overline{e^z} &= e^{\overline{z}} \kildetag{Lemma 5.3.2} \\
-    \overline{e^{ia}} &= e^{-ia} \quad a \in \mathbb{R} \kildetag{Lemma 5.3.2} \\
-    \overline{z} &= |z| \cdot e^{-i \cdot \arg(z)} \kildetag{Lemma 5.3.2} \\
-\end{align*}
-
-\bemærkBig{Bemærk \(|e| \cdot e^{-i \cdot \arg(z)}\) er den polære form for det komplekst konjugerede af \(z\).}
-
-\subsection{Modulus og argument}
+$\sqrt{-1}=i$ \hfill
+$\sqrt{-n} = i \cdot \sqrt{n}$ \hfill
+$z = a + bi$ \hfill
+$\Re(z) = a$ \quad $\Im(z) = b$
 
 \begin{center}
-\begin{minipage}{0.4\textwidth}
-\begin{align*}
-    r &= |z| = \sqrt{a^2 + b^2} \\
-    \theta &= \arg(z) = \tan^{-1}\left(\frac{b}{a}\right)
-\end{align*}
-\end{minipage}
-\hfill
-\begin{minipage}{0.5\textwidth}
-\begin{tikzpicture}[scale=2, >=Stealth]
-    % Axes
-    \draw[->] (-0.2,0) -- (3,0);
-    \draw[->] (0,-0.2) -- (0,2.2);
+    $a, b \in \mathbb{R}, z \in \mathbb{C}, n \in \mathbb{R}^+$
+
+    \
     
-    % Point z
-    \coordinate (O) at (0,0) node[above left] {$0$};
-    \coordinate (z) at (2,1.5);
-    \coordinate (xaxis) at (3,0);
-    \filldraw (z) circle (1.5pt) node[above right] {$z$};
-    
-    % Dotted line from origin to z
-    \draw[dotted] (O) -- (z) node[midway, above left] {$|z|$};
-    
-    % Projection lines
-    \draw[dashed] (z) -- (z |- O) node[midway, right] {$\Im(z)$};
-    \draw[dashed] (z) -- (z -| O) node[midway, above] {$\Re(z)$};
-    
-    % Angle
-    \pic[draw, ->, angle radius=1cm, angle eccentricity=1.2] 
-        {angle = xaxis--O--z};
-    \node at (1.1,0.25) {arg$(z)$};
-\end{tikzpicture}
-\end{minipage}
+    $z = a + bi$ er rektangulær form. \hfill $z = |z| \cdot e^{i \cdot \arg(z)}$ er polær form.
 \end{center}
 
-For ethvert argument $\theta$ vil $\theta + 2k\pi$ for $k \in \mathbb{Z}$ være det samme argument. 
+\subsection{Fra rektangulær til polær form}
 
-Argumentet i intervallet $]-\pi, \pi]$ kaldes hovedargumentet og skrives $\Arg(z)$.
-
-\subsubsection{Trigonometri}
-\begin{align*}
-    \Re(z) &= |z| \cdot \cos(\arg(z)) \kildetag{Ligning 4.4} \\
-    \Im(z) &= |z| \cdot \sin(\arg(z)) \kildetag{Ligning 4.4} \\
-    z &= |z| \cdot \left(\cos(\arg(z)) + \sin(\arg(z)) \cdot i \right) \kildetag{Ligning 4.5} \\
-    |z| &= \sqrt{\Re(z)^2 + \Im(z)^2} \kildetag{Ligning 4.6} \\
-\end{align*}
-
-\subsubsection{Find argument of modulus fra rektangulær form}
 \[
-    |z| = \sqrt{a^2 + b^2} \kildetag{Sætning 4.3.1}
+    |z| = \sqrt{a^2 + b^2}
 \]
 
 \begin{center}
@@ -138,57 +47,23 @@ Argumentet i intervallet $]-\pi, \pi]$ kaldes hovedargumentet og skrives $\Arg(z
     % Special cases on axes with white backgrounds
     \node[above, fill=white, inner sep=2pt] at (0,1) {$\frac{\pi}{2}$};
     \node[below, fill=white, inner sep=2pt] at (-0.1,-1) {$-\frac{\pi}{2}$};
+    \node[right, fill=white, inner sep=2pt] at (1,0) {$0$};
+    \node[left, fill=white, inner sep=2pt] at (-1,0) {$\pi$};
 \end{tikzpicture}
 \end{minipage}
 \end{center}
 
 \kilde{Sætning 4.3.1}
 
-\subsubsection{Aritmetik}
-Lad $z_1, z_2 \in \mathbb{C} \backslash \{ 0 \}$, så gælder:
-\begin{align*}
-    |z_1 \cdot z_2| &= |z_1| \cdot |z_2| \\
-    \arg(z_1 \cdot z_2) &= \arg(z_1) + \arg(z_2) \\
-    |z_1 / z_2| &= |z_1| / |z_2| \\
-    \arg(z_1 / z_2) &= \arg(z_1) - \arg(z_2) \\
-    |z^n| &= |z|^n \quad n \in \mathbb{Z} \\
-    \arg(z^n) &= n \cdot \arg(z) \quad n \in \mathbb{Z}
-\end{align*}
-\kilde{Sætning 4.6.2}
+\paragraph{Hovedargument}
 
+Et argument $\theta$ + $2k \pi$ for $k \in \mathbb{Z}$ vil være samme argument.
 
-\subsection{Den komplekse eksponentialfunktion}
-\[
-    e^z = e^{a + bi} = e^a \cdot e^{bi} = e^a \cdot \left(\cos(b) + \sin(b) \cdot i \right) \kildetag{Definition 4.4.1}
-\]
+\
 
-Den komplekse eksponentialfunktion betegnes ofte som \(\exp(t)= e^t\)
+Argumentet i intervallet $]-\pi, \pi]$ kaldes hovedargumentet og skrives $\Arg(z)$.
 
-
-\subsection{Polære koordinater}
-\bemærk{Se "Polær form" længere nede}
-
-Talparret $(|z|, \Arg(z))$ kaldes polære koordinater for et komplekst tal $z$.
-
-Hvis et komplekst tal er skrevet \(z = r \cdot \left(\cos(\alpha) + \sin(\alpha) \cdot i \right) \) hvor $r$ er et positivt reelt tal, så er $|z|=r$ og $\arg(z)=\alpha$.
-
-
-\subsection{Yderligere}
-\[
-    (\cos(\alpha_1) + \sin(\alpha_1) i) \cdot (\cos(\alpha_2) + \sin(\alpha_2) i) = \cos(\alpha_1 + \alpha_2) + \sin(\alpha_1 + \alpha_2) i \\
-\]
-\kilde{Lemma 4.4.1}
-
-\begin{align*}
-    e^z &\neq 0 \\
-    \frac{1}{e^z} &= e^{-z} \\ 
-    e^{z_1} \cdot e^{z_2} &= e^{z_1 + z_2} \\
-    e^{z_1}/e^{z_2} &= e^{z_1 - z_2} \\
-    (e^{z})^n &= e^{n \cdot z} \quad n \in \mathbb{Z}
-\end{align*}
-\kilde{Sætning 4.4.2}
-
-\subsection{Eulers formel}
+\subsection{Fra polær til rektangulær form - Eulers formel}
 \[
     e^{it} = \cos(t) + i \sin(t) \kildetag{Euler's formel}
 \]
@@ -207,20 +82,114 @@ Lad $n \in \mathbb{N}$, da gælder
 \kilde{Sætning 4.5.1 - DeMoivres Formler}
 
 
-\subsection{Polær form}
-Et komplekst tal $z$ skrevet som \(|z| \cdot e^{i \cdot \arg(z)}\) er på polær form.
-\[
-    z = |z| \cdot \left(\cos(\arg(z)) + \sin(\arg(z)) \cdot i \right) = |z| \cdot e^{i \cdot \arg(z)} \kildetag{Definition 4.6.1}
-\]
 
-Generelt gælder at:
+\subsection{Aritmetik}
+\subsubsection{Rektangulær form}
+$z_1 = a + bi$ og $z_2 = c + di$ hvor $a,b,c,d \in \mathbb{R}$ og konstant $k \in \mathbb{R}$
 \begin{align*}
-    |e^z| &= e^{\Re(z)} \\
-    \arg(e^{z}) &= \Im(z)
+    z_1 + z_2 &= (a+c) + (b+d)i \\
+    z_1 - z_2 &= (a-c) + (b-d)i \\
+    \\
+    z_1 \cdot k &= (a \cdot k) + (b \cdot k)i\\
+    z_1 \cdot z_2 &= (a \cdot c - b \cdot d) + (a \cdot d + b \cdot c)i \\
+    z_1 \cdot \overline{z_1} &= a^2 + b^2 
+    \kildetag{Lemma 4.2.1} \\
+    \\
+    \frac{z_1}{z_2} &= \frac{(a \cdot c + b \cdot d) + (b \cdot c - a \cdot d)i}{c^2 + d^2} \\
+    \frac{1}{z_1} &= \frac{a}{a^2 + b^2} - \frac{b}{a^2 + b^2}i 
+    \kildetag{Ligning 4.3} \\
 \end{align*}
+
+\subsubsection{Modulus og argument}
+Lad $z_1, z_2 \in \mathbb{C} \backslash \{ 0 \}$, så gælder:
+\begin{align*}
+    |z_1 \cdot z_2| &= |z_1| \cdot |z_2| \\
+    \arg(z_1 \cdot z_2) &= \arg(z_1) + \arg(z_2) \\
+    |z_1 / z_2| &= |z_1| / |z_2| \\
+    \arg(z_1 / z_2) &= \arg(z_1) - \arg(z_2) \\
+    |z^n| &= |z|^n \quad n \in \mathbb{Z} \\
+    \arg(z^n) &= n \cdot \arg(z) \quad n \in \mathbb{Z}
+\end{align*}
+\kilde{Sætning 4.6.2}
+\begin{align*}
+    \Re(z) &= |z| \cdot \cos(\arg(z)) \kildetag{Ligning 4.4} \\
+    \Im(z) &= |z| \cdot \sin(\arg(z)) \kildetag{Ligning 4.4} \\
+    z &= |z| \cdot \left(\cos(\arg(z)) + \sin(\arg(z)) \cdot i \right) \kildetag{Ligning 4.5} \\
+    |z| &= \sqrt{\Re(z)^2 + \Im(z)^2} \kildetag{Ligning 4.6} \\
+    z_3 \cdot z_4 &= |z_3 \cdot z_4| \cdot e^{i \cdot (\arg(z_3) + \arg(z_4))}
+\end{align*}
+
+\begin{center}
+    $|e^z| = e^{\Re(z)}$ \qquad
+    $\arg(e^{z}) = \Im(z)$
+\end{center}
+
 \kilde{Ligning 4.10}
 
-Hvis $w \in \mathbb{C}$ og $w \neq 0$, så er alle $z$ der løse ligningen \(e^z = w\) givet ved:
+
+\subsection{Find kompleks fra e opløftet i kompleks}
+Givet $e^z = w$ hvor $w, z \in \mathbb{C}$ gælder:
 \[
     z = \ln(|w|) + (\Arg(w) + p2\pi) i \quad p \in \mathbb{Z} \kildetag{Lemma 4.6.1}
 \]
+
+\bemærk{Hvis $w=0$ er der ingen løsning}
+
+\subsection{Den komplekse eksponentialfunktion}
+\[
+    e^z = e^{a + bi} = e^a \cdot e^{bi} = e^a \cdot \left(\cos(b) + \sin(b) \cdot i \right) \kildetag{Definition 4.4.1}
+\]
+
+Den komplekse eksponentialfunktion betegnes ofte som \(\exp(t)= e^t\)
+
+
+\subsection{Polære koordinater}
+
+Talparret $(|z|, \Arg(z))$ kaldes polære koordinater for et komplekst tal $z$.
+
+Hvis et komplekst tal er skrevet \(z = r \cdot \left(\cos(\alpha) + \sin(\alpha) \cdot i \right) \) hvor $r$ er et positivt reelt tal, så er $|z|=r$ og $\arg(z)=\alpha$.
+
+
+\subsection{Yderligere}
+\[
+    (\cos(\alpha_1) + \sin(\alpha_1) i) \cdot (\cos(\alpha_2) + \sin(\alpha_2) i) = \cos(\alpha_1 + \alpha_2) + \sin(\alpha_1 + \alpha_2) i \\
+\]
+\kilde{Lemma 4.4.1}
+
+\begin{center}
+    $e^z \neq 0$ \hfill
+    $\frac{1}{e^z} = e^{-z}$ \hfill
+    $e^{z_1} \cdot e^{z_2} = e^{z_1 + z_2}$ \hfill
+    $e^{z_1}/e^{z_2} = e^{z_1 - z_2}$ \hfill
+    $(e^{z})^n = e^{n \cdot z}$
+\end{center}
+
+For $n \in \mathbb{Z}$
+\kilde{Sætning 4.4.2}
+
+\subsection{Kompleks Konjugering}
+
+Det komplekst konjugerede af $z=a+bi$ er $\overline{z}=a-bi$.
+
+For $n \in \mathbb{Z}$, $a \in \mathbb{R}$ og $z, z_1, z_2 \in \mathbb{C}$ gælder:
+
+\begin{center}
+    $\overline{\overline{z}} = z$ \hfill
+    $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$ \hfill
+    $\overline{z_1 \cdot z_2} = \overline{z_1} \cdot \overline{z_2}$ \hfill
+    $\overline{\left( \frac{1}{z} \right)} = \frac{1}{(\overline{z})}$ \hfill
+    $\overline{z^n} = (\overline{z})^n$ \hfill
+\end{center}
+\kilde{Lemma 5.3.1}
+
+\begin{center}
+    $\overline{e^z} = e^{\overline{z}}$ \hfill
+    $\overline{e^{ia}} = e^{-ia}$ \hfill
+    $\overline{z} = |z| \cdot e^{-i \cdot \arg(z)}$
+\end{center}
+\kilde{Lemma 5.3.2}
+
+\begin{center}
+    $(z) \cdot (\overline{z}) = {\Re(z)}^2 + {\Im(z)}^2$
+\end{center}
+\kilde{Lemma 4.2.1}
