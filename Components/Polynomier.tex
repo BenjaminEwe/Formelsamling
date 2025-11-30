@@ -23,15 +23,11 @@ Graden af 2 polynomier adderet er den største af deres grader
 
 \subsection{Rødder}
 
-Hvis $p(\lambda) = 0$, er $\lambda$ en rod af polynomiet $p$.
+Hvis $p(\lambda) = 0$ er $\lambda$ en rod.
 
-\
+For hver rod $\lambda$ kan $(Z - \lambda)$ dividere polynomiet $p(Z)$ så $p(Z) = (Z - \lambda) q(Z)$ for et polynomium $q(Z)$ af grad $n-1$.
 
-Enhver rod $\lambda$ af et polynomium kan dividere polynomiet. Dvs. der findes et $q$ så $p(Z) = (Z - \lambda) q(Z)$.
-
-\
-
-Hvis en rod $\lambda \in \mathbb{C}$ findes for et polynomium med reelle koefficienter, findes den komplekse konjugerede $\overline{\lambda}$ også som rod.
+Hvis $\lambda$ er en kompleks rod til et polynomium med reelle koefficienter, er $\overline{\lambda}$ også en rod.
 \kilde{Lemma 5.3.3}
 
 \
@@ -45,7 +41,7 @@ Hvis et polynomie $p(Z)$ kan skrives som $p_1(Z) \cdot p_2(Z)$ så er rødderne 
 aZ^2 + bZ + c = 0 \hspace{4em} Z = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 \]
 
-Hvis diskriminanten $D = b^2 - 4ac$ for andengradsligningen $aZ^2 + bZ + c = 0$ er:
+Hvis diskriminanten $D = b^2 - 4ac$ for andengradsligningen er:
 \begin{itemize}
     \item $D > 0$: To forskellige reelle rødder 
     \(
@@ -55,12 +51,21 @@ Hvis diskriminanten $D = b^2 - 4ac$ for andengradsligningen $aZ^2 + bZ + c = 0$ 
     \(
         Z = \frac{-b}{2a}
     \)
-    \item $D < 0$: To komplekse rødder
+    \item $D < 0$: To komplekse rødder - $\lambda$ og $\overline{\lambda}$
 \end{itemize}
-\bemærk{For $D<0$ er rødderne komplekst konjugerede af hinanden.}
+
+\subsection{Multiplicteter og faktorisering}
+
+Polynomie $p(Z) \in \mathbb{R}[Z]$ med reele koefficienter kan faktoriseres som produktet af 1. og 2. grads polynomier med reelle koefficienter.
+
+\kilde{Sætning 5.6.3}
+
+Polynomie $p(Z) \in \mathbb{C}[Z]$ med komplekse koefficienter kan faktoriseres som produktet af 1. grads polynomier med komplekse koefficienter.
+
+\kilde{Korollar 5.6.4}
 
 \subsection{Binomier}
-Binomier er på formen \(Z^n-w\) for et \(n \in \mathbb{N}\) og et \((w \neq 0) \in \mathbb{C}\).
+Binomier er på formen \(Z^n = w\) for et \(n \in \mathbb{N}\) og et \((w \neq 0) \in \mathbb{C}\).
 
 Et binomie vil have \(n\) løsninger som findes ved:
 \[
@@ -97,15 +102,3 @@ Her divideres \(2Z^4 - 6Z^3 + 8Z^2 - 12Z + 8\) med \(Z^2 - 3Z + 2\) hvilket give
 \end{align*}
 
 Divisions-algoritmen virker ved at man tager sin divisor, og finder hvad den skal ganges med for at udeligne det højeste grad-led i dividenden. Dette gøres gentagne gange indtil graden af resten er mindre end graden af divisoren.
-
-\subsection{Multiplicteter og faktorisering}
-
-For ethvert $p(Z) \in \mathbb{C}[Z]$ af grad $n \geq 1$ findes der $n$ rødder $\lambda_1, \lambda_2, \dots, \lambda_n$ (ikke nødvendigvis forskellige) så
-\[
-    p(Z) = a_n (Z - \lambda_1)(Z - \lambda_2) \cdots (Z - \lambda_n) \kildetag{Sætning 5.6.3}
-\]
-
-Det samme $\lambda$ kan optræde flere gange som rod. Antallet af gange en rod optræder kaldes for dens multiplicitiet.
-
-\subsubsection{Reel faktorisering}
-Ethvert polynomium $p(Z) \in \mathbb{R}[Z]$ af grad $n \geq 1$ kan faktoriseres som produktet af polynomier af grad 1 og 2 med reelle koefficienter.
