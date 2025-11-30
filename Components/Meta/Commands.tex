@@ -10,6 +10,7 @@
 
 \definecolor{lightmagenta}{rgb}{0.95,0.7,0.95}
 \definecolor{lightblue}{rgb}{0.7,0.85,0.95}
+\definecolor{lightgreen}{rgb}{0.7,0.95,0.7}
 
 % For bemærk boxes
 \newcommand{\bemærk}[1]{%
@@ -105,3 +106,22 @@
 \renewcommand{\Re}{\mathfrak{Re}}
 \renewcommand{\Im}{\mathfrak{Im}}
 % /Change real and imaginary part symbols to 2 letters
+
+% /For Eksempel boxes
+\newcommand{\eksempel}[1]{%
+    \begin{tcolorbox}[
+        colframe=lightgreen,
+        boxrule=0.5pt,
+        arc=2pt,
+        left=6pt,
+        right=6pt,
+        top=6pt,
+        bottom=6pt,
+        before upper={\textbf{Eksempel: }},
+        before skip=10pt,    % Space before the box
+        after skip=10pt,     % Space after the box
+    ]
+    #1
+    \end{tcolorbox}%
+}
+% /For Eksempel boxes

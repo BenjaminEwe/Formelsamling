@@ -1,6 +1,8 @@
 \section{Rekursion og Induktion}
 \bemærk{$0! = 1$}
-\subsection{Eksempel på rekursiv funktion}
+
+\eksempel{
+Rekursiv funktion af Fibonacci tallene
 \[
 F(n) = \begin{cases}
     1 & \text{hvis } n=1 \\
@@ -8,6 +10,7 @@ F(n) = \begin{cases}
     F(n-1) + F(n-2) & \text{hvis } n>2
 \end{cases}
 \]
+}
 
 \subsection{Summation}
 Summen af talene \(z_1, z_2, \cdots, z_n\) kan defineres rekursivt som:
@@ -32,7 +35,7 @@ Vi skriver vores påstand med værdien $n+1$, $P(n+1)$
 Nu kan vi bruge vores antagelse om $P(n)$ til at vise, at hvis $P(n)$ er sandt, må også $P(n+1)$ være sandt.
 Hermed er påstanden bevist med induktion for $\forall n \ge b$
 
-\subsubsection{Hyppigt brugte trin}
+\subsubsection{Hyppigt brugte ligheder}
 \begin{center}
     $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$ \hfill
     $\sum_{i=x}^{n} i + n+1 = \sum_{i=x}^{n+1} i$ \hfill

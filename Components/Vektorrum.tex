@@ -82,39 +82,42 @@ Hvis du kender basisskiftematricerne $_\beta M _\gamma$ (Fra $\gamma$ til $\beta
 \[_\beta M _\delta = _\beta M _\gamma \cdot _\gamma M _\delta \kildetag{Lemma 10.3.2}\]
 \bemærk{Rækkefølgen af multiplikationen er vigtig}
 
-\subsection{Dimension af underrum}
+\subsection{Underrum}
 For underrum $W$ af vektorrum $V$ gælder $\dim(W) \leq \dim(V)$
+
 \kilde{Lemma 10.4.1}
+
+\
+
+For 2 vektorer $\mathbf{u}, \mathbf{v} \in W$ gælder $\mathbf{u} + c \cdot \mathbf{v} \in W$ for alle skalarer $c \in \mathbb{F}$.
+
+\kilde{Lemma 10.4.2}
+
+\eksempel{
+    er mængden $\{ a + bz \mid a, b \in \mathbb{C}\}$ et underrum af vektorrummet af alle komplekse polynomier $\mathbb{C}[z]$?
+    \[
+    (a+bz) + c \cdot (k+jz) = a + ck + bz + cjz = (a + ck) + (b + cj)z
+    \]
+    Det er sandt, da det kunne omskrives til at være et polynomium af samme form.
+}
 
 \subsubsection{Find dimensionen}
 Dimensionen af et underrum er antallet af uafhængige variable i matricen eller vektoren der definerer underrummet. 
 
-%% Make a 4x4 upper-triangular matrix as an example
-\[
-\begin{bmatrix}
-    a_{11} & a_{12} & a_{13} & a_{14} \\
-    0 & a_{22} & a_{23} & a_{24} \\
-    0 & 0 & a_{33} & a_{34} \\
-    0 & 0 & 0 & a_{44}
-\end{bmatrix}
-\]
+\eksempel{
+    \[
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        0 & a_{22} & a_{23} \\
+        0 & 0 & a_{33} \\
+    \end{bmatrix}
+    \]
 
-Eks: Dimensionen af alle \(\mathbb{R}^{4 \times 4}\) øvre-trekantsmatricer er $4 + 3 + 2 + 1 = \frac{4 \cdot (4+1)}{2} = 10$.
+    Dimensionen af alle \(\mathbb{R}^{3 \times 3}\) øvre-trekantsmatricer er $3 + 2 + 1 = \frac{3 \cdot (3+1)}{2} = 6$
+}
 
-\subsection{Andet}
-For 2 vektorer $\mathbf{u}, \mathbf{v}$ i underrum $W$ gælder $\mathbf{u} + c \cdot \mathbf{v} \in W$ for alle skalarer $c \in \mathbb{R}$.
-
-\kilde{Lemma 10.4.2}
-
-\
-
-Givet en ordnet basis $\beta$ for vektorrum $V$, og vektorer i $V$ $v_1, v_2, \cdots, v_n$, 
-så kan den ordnede basis for $\spanop(v_1, v_2, \cdots, v_m)$ findes ved ligsom i sektion \ref{sec:ordnet-basis-udspaending} at række-reducere følgende matrice 
-og tage de vektorer der har pivot.
-\[\begin{bmatrix}
-    \vert & \vert & & \vert \\
-    [\mathbf{v}_1]_\beta & [\mathbf{v}_2]_\beta & \cdots & [\mathbf{v}_n]_\beta \\
-    \vert & \vert & & \vert
-\end{bmatrix}\]
+\subsection{Ordnet basis for underrum}
+Givet en ordnet basis $\beta$ for $V$, og vektorer der udgør et undderum af $V$ $v_1, v_2, \cdots, v_n$, kan du finde en ordnet basis for $\spanop(v_1, v_2, \cdots, v_m)$ ved finde pivotsøjlerne af $[v_1]_\beta, [v_2]_\beta, \cdots, [v_m]_\beta$. Da er de originale den ordnede basis.
+Se sektion \ref{sec:ordnet-basis-udspaending}
 
 \kilde{Sætning 10.4.4}

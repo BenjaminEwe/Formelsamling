@@ -88,9 +88,8 @@ Mere generelt kan resterende rødder i et $n$'te grads binomie findes ved at bru
 \]
 
 \subsection{Divisions-Algoritmen}
-\subsubsection{Eksempel på polynomie-division}
-
-Her divideres \(2Z^4 - 6Z^3 + 8Z^2 - 12Z + 8\) med \(Z^2 - 3Z + 2\) hvilket giver kvotienten \(2Z^2 + 4\) og resten \(0\).
+\eksempel{
+Del \(2Z^4 - 6Z^3 + 8Z^2 - 12Z + 8\) med \(Z^2 - 3Z + 2\).
 
 \begin{align*}
     Z^2-3Z+2) \quad 
@@ -100,5 +99,7 @@ Her divideres \(2Z^4 - 6Z^3 + 8Z^2 - 12Z + 8\) med \(Z^2 - 3Z + 2\) hvilket give
     4Z^2-12Z+8 \\
     \overline{\hspace{6em} 0}
 \end{align*}
+Vi får kvotienten \(2Z^2 + 4\) og resten \(0\).
+}
 
-Divisions-algoritmen virker ved at man tager sin divisor, og finder hvad den skal ganges med for at udeligne det højeste grad-led i dividenden. Dette gøres gentagne gange indtil graden af resten er mindre end graden af divisoren.
+Divisions-algoritmen virker ved at man tager sin divisor, og finder hvad den skal ganges med for at udeligne det højeste grad led i dividenden. Dette gøres gentagne gange indtil graden af resten er mindre end graden af divisoren.

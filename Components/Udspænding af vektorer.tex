@@ -35,37 +35,80 @@ For alle søjler med et pivot-element skal den originale vektor på den position
 
 \kilde{Sætning 9.2.1}
 
-\subsection{Er vektor indeholdt i et span?}
-Vektor $v$ er indeholdt i $\spanop(v_1, \cdots, v_n)$ hvis der findes skalarer $c_1, \dots, c_n$ så:
-\[
-    v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n
-\]
-
-\subsubsection{Rækkeoperationer}
-Lav en matrix med vektorerne i spandet og den nye vektor som ekstra søjle:
-\[
-    \begin{bmatrix}
-        \vline & \vline & \cdots & \vline & \vline \\
-        v_1 & v_2 & \cdots & v_n & v \\
-        \vline & \vline & \cdots & \vline & \vline \\
-    \end{bmatrix}
-\]
-Brug rækkeoperationer til at få matrixen på trappeform. Hvis den ekstra søjle \textbf{ikke} indeholder et pivot-element, er vektoren indeholdt i udspændingen.
-
+\subsection{Kan en vektor skrives som en linearkombination af andre vektorer?}
 
 \subsubsection{Determinant}
 Hvis determinanten af matrixen skabt ved at tilføje den nye vektor som en ekstra søjle er 0, så er vektoren indeholdt i spandet.
+
+
+\subsubsection{Rækkeoperationer}
+Lav en matrix med vektorerne i spanet og den nye vektor som ekstra søjle:
+\[
+    \begin{bmatrix}
+        \vline & \vline & \cdots & \vline & \vline \\
+        v_1 & v_2 & \cdots & v_n & v_x \\
+        \vline & \vline & \cdots & \vline & \vline \\
+    \end{bmatrix}
+\]
+Få matricen på reduceret rækkeform. Hvis den ekstra søjle \textbf{ikke} indeholder et pivot-element, er vektoren indeholdt i udspændingen.
+
+I så fald kan vektoren linearkombinationen aflæses fra søjlen.
+
+
+\eksempel{
+\[
+\begin{bmatrix}
+    1 & 3 & 7 \\
+    2 & 3 & 8 \\
+    1 & 0 & 1 \\
+    4 & 1 & 6
+\end{bmatrix}
+\xrightarrow{rref}
+\begin{bmatrix}
+    1 & 0 & 1 \\
+    0 & 1 & 2 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+\end{bmatrix}
+\]
+
+Her kan aflæses at \(
+    v_x = 1 \cdot v_1 + 2 \cdot v_2
+\)
+}
 
 \subsection{Find om en en vektor med en ubekendt er i et span}
 Lav en matrix med vektorerne og den nye vektor som ekstra søjle:
 \[
     \begin{bmatrix}
         \vline & \vline & \cdots & \vline & \vline \\
-        v_1 & v_2 & \cdots & v_n & v \\
+        v_1 & v_2 & \cdots & v_n & v_x \\
         \vline & \vline & \cdots & \vline & \vline \\
     \end{bmatrix}
 \]
 Brug rækkeoperationer til at få matrixen på trappeform. Løs for den ubekendte så den ekstra søjle \textbf{ikke} indeholder et pivot-element, så er vektoren indeholdt i udspændingen.
+
+\subsection{Dimensionssætningen}
+For en matrix \( \mathbf{A}^{m \times n} \) ($n$ søjler) gælder det at:
+\[
+    \rho(\mathbf{A}) + \nullop(\mathbf{A}) = n \kildetag{Sætning 9.4.2}
+\]
+hvor \( \rho(\mathbf{A}) \) er antal pivoter, aka \textit{søjleranget} af matricen \(\dim(\colsp(\mathbf{A}))\) og \( \nullop(\mathbf{A}) \) er dimensionen af kernen \(\dim(\ker(\mathbf{A}))\).
+
+\
+
+Dimensionen er antallet af vektorer i en ordnet basis for rummet.
+
+\subsection{Søjle-rum}
+\label{sec:soejlerum}
+
+Søjlerummet for en matrix \( \mathbf{A} \) er mængden af alle linearkombinationer af søjlerne i \( \mathbf{A} \):
+\[
+    \colsp(\mathbf{A}) = \{ \mathbf{A} \cdot \mathbf{v} \ | \ \mathbf{v} \in \mathbb{F}^n \}
+\]
+
+Ordnet basis for søjlerummet kan findes som beskrevet i sektion \ref{sec:ordnet-basis-udspaending}.
+
 
 \subsection{Kernen / Nulrummet af en matrix}
 \label{sec:kerne}
@@ -74,64 +117,63 @@ Brug rækkeoperationer til at få matrixen på trappeform. Løs for den ubekendt
 
 \
 
-Kernen for matrix \textbf{A} findes ved:
+Kernen for matrix \textbf{A} findes ved at løse det homogene lineære ligningssystem dannet ved at tilføje en 0-søjle.
 
-Løs det homogene lineære ligningssystem dannet ved at tilføje en 0-søjle
+\eksempel{
+    \[
+        \begin{bmatrix}
+            -i & 1 & 0 & \vline & 0 \\
+            2 & -2 & 2 & \vline & 0 \\
+            i & -1 & 0 & \vline & 0
+        \end{bmatrix}
+    \]
 
-F.eks.
+    Første linje giver os
+    \[
+        -i \cdot x_1 + x_2 = 0 \implies x_2 = i \cdot x_1
+    \]
 
-\[
-    \begin{bmatrix}
-        -i & 1 & 0 & \vline & 0 \\
-        2 & -2 & 2 & \vline & 0 \\
-        i & -1 & 0 & \vline & 0
-    \end{bmatrix}
-\]
+    Nu kan vi finde $x_3$ med anden linje, hvor vi udskifter $x_2$ med $i \cdot x_1$:
+    \[
+        2 \cdot x_1 - 2 \cdot (i \cdot x_1) + 2 \cdot x_3 = 0 \Rightarrow 2 \cdot x_1 - 2i \cdot x_1 = -2 \cdot x_3 \Rightarrow x_1 - i \cdot x_1 = -x_3 \Rightarrow x_3 = (i - 1) \cdot x_1
+    \]
 
-Første linje giver os
-\[
-    -i \cdot x_1 + x_2 = 0 \implies x_2 = i \cdot x_1
-\]
+    Vi har nu både $x_2$ og $x_3$ udtrykt ved $x_1$, så vi kan skrive løsningen som:
 
-Nu kan vi finde $x_3$ med anden linje, hvor vi udskifter $x_2$ med $i \cdot x_1$:
-\[
-    2 \cdot x_1 - 2 \cdot (i \cdot x_1) + 2 \cdot x_3 = 0 \implies 2 \cdot x_1 - 2i \cdot x_1 = -2 \cdot x_3 \implies x_1 - i \cdot x_1 = -x_3 \implies x_3 = (i - 1) \cdot x_1
-\]
-
-Vi har nu både $x_2$ og $x_3$ udtrykt ved $x_1$, så vi kan skrive løsningen som:
-
-\[
-    \begin{bmatrix}
-        x_1 \\
-        x_2 \\
-        x_3
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-        x_1 \\
-        i \cdot x_1 \\
-        (i - 1) \cdot x_1
-    \end{bmatrix}
-    =
-    x_1 \cdot
-    \begin{bmatrix}
-        1 \\
-        i \\
-        i - 1
-    \end{bmatrix}
-\]
-
-Kernen er derfor
-\[
-    \spanop
-    \left(
+    \[
+        \begin{bmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            x_1 \\
+            i \cdot x_1 \\
+            (i - 1) \cdot x_1
+        \end{bmatrix}
+        =
+        x_1 \cdot
         \begin{bmatrix}
             1 \\
             i \\
             i - 1
         \end{bmatrix}
-    \right)
-\]
+    \]
+
+    Kernen er derfor
+    \[
+        \spanop
+        \left(
+            \begin{bmatrix}
+                1 \\
+                i \\
+                i - 1
+            \end{bmatrix}
+        \right)
+    \]
+}
+
 
 \kilde{Korollar 9.2.3}
 
@@ -154,27 +196,6 @@ Hvis to vektorer $v_1$ og $v_2$ giver samme resultat i ligningen $\mathbf{A} \cd
 
 Enhver skalar af $v_1+v_2$ er også i kernen af $\mathbf{A}$.
 
-\subsection{Søjle-rum}
-\label{sec:soejlerum}
-
-Søjlerummet for en matrix \( \mathbf{A} \) er mængden af alle linearkombinationer af søjlerne i \( \mathbf{A} \):
-\[
-    \colsp(\mathbf{A}) = \{ \mathbf{A} \cdot \mathbf{v} \ | \ \mathbf{v} \in \mathbb{F}^n \}
-\]
-
-Ordnet basis for søjlerummet kan findes som beskrevet i sektion \ref{sec:ordnet-basis-udspaending}.
-
-\subsection{Dimensionssætningen}
-For en matrix \( \mathbf{A}^{m \times n} \) ($n$ søjler) gælder det at:
-\[
-    \rho(\mathbf{A}) + \nullop(\mathbf{A}) = n \kildetag{Sætning 9.4.2}
-\]
-hvor \( \rho(\mathbf{A}) \) er antal pivoter, aka \textit{søjleranget} af matricen \(\dim(\colsp(\mathbf{A}))\) og \( \nullop(\mathbf{A}) \) er dimensionen af kernen \(\dim(\ker(\mathbf{A}))\).
-
-\
-
-Dimensionen er antallet af vektorer i en ordnet basis for rummet.
-
 \subsection{Koordinater med hensyn til ordnet basis}
 Opstil en matrix med basisvektorerne som søjler og vektoren som ekstra søjle:
 \[
@@ -186,49 +207,51 @@ Opstil en matrix med basisvektorerne som søjler og vektoren som ekstra søjle:
 \]
 Omskriv til trappeform ved rækkeoperationer og løs for skalarerne \( c_1, c_2, \ldots, c_n \).
 
-Eksempel:
-Givet vektor \( v = \begin{pmatrix}
-    5 \\
-    7 \\
-    4
-\end{pmatrix} \) og ordnet basis \( B = \left\{ \begin{pmatrix}
-    1 \\
-    1 \\
-    0
-\end{pmatrix}, \begin{pmatrix}
-    0 \\
-    1 \\
-    1
-\end{pmatrix}, \begin{pmatrix}
-    1 \\
-    0 \\
-    1
-\end{pmatrix} \right\} \), kan koordinaterne af \( v \) med hensyn til basisen \( B \) findes ved at løse ligningen:
-\[
-    \begin{bmatrix}
-        1 & 0 & 1 & \vline & 5 \\
-        1 & 1 & 0 & \vline & 7 \\
-        0 & 1 & 1 & \vline & 4
-    \end{bmatrix}
-    \rightarrow
-    \begin{bmatrix}
-        1 & 0 & 1 & \vline & 5 \\
-        0 & 1 & -1 & \vline & 2 \\
-        0 & 0 & 1 & \vline & 1
-    \end{bmatrix}
-    \rightarrow
-        \begin{bmatrix}
-        1 & 0 & 0 & \vline & 4 \\
-        0 & 1 & 0 & \vline & 3 \\
-        0 & 0 & 1 & \vline & 1
-    \end{bmatrix}
-\]
-Her ser vi at koordinaterne er \( \begin{pmatrix}
-    4 \\
-    3 \\
-    1
-\end{pmatrix} \).
+\eksempel{
 
+    Givet vektor \( v = \begin{pmatrix}
+        5 \\
+        7 \\
+        4
+    \end{pmatrix} \) og ordnet basis \( B = \left\{ \begin{pmatrix}
+        1 \\
+        1 \\
+        0
+    \end{pmatrix}, \begin{pmatrix}
+        0 \\
+        1 \\
+        1
+    \end{pmatrix}, \begin{pmatrix}
+        1 \\
+        0 \\
+        1
+    \end{pmatrix} \right\} \), kan koordinaterne af \( v \) med hensyn til basisen \( B \) findes ved at løse ligningen:
+    \[
+        \begin{bmatrix}
+            1 & 0 & 1 & \vline & 5 \\
+            1 & 1 & 0 & \vline & 7 \\
+            0 & 1 & 1 & \vline & 4
+        \end{bmatrix}
+        \rightarrow
+        \begin{bmatrix}
+            1 & 0 & 1 & \vline & 5 \\
+            0 & 1 & -1 & \vline & 2 \\
+            0 & 0 & 1 & \vline & 1
+        \end{bmatrix}
+        \rightarrow
+            \begin{bmatrix}
+            1 & 0 & 0 & \vline & 4 \\
+            0 & 1 & 0 & \vline & 3 \\
+            0 & 0 & 1 & \vline & 1
+        \end{bmatrix}
+    \]
+    Her ser vi at koordinaterne er \( \begin{pmatrix}
+        4 \\
+        3 \\
+        1
+    \end{pmatrix} \).
+
+}
 
 \subsubsection{Find vektor ud fra koordinater med hensyn til base}
 Givet koordinaterne \( \begin{pmatrix}
