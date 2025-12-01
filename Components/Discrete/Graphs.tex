@@ -1,0 +1,69 @@
+\setcounter{section}{9}
+\section{Graphs}
+
+\begin{table}[h]
+    \centering
+    \caption{Graph Terminology}
+    \begin{tabular}{llcc}
+        \toprule
+        \textbf{Type} & \textbf{Edges} & \textbf{Allow Multiple Edges?} & \textbf{Allow Loops?} \\
+        \midrule
+        Simple graph & Undirected & No & No \\
+        Multigraph & Undirected & Yes & No \\
+        Pseudograph & Undirected & Yes & Yes \\
+        Simple directed graph & Directed & No & No \\
+        Directed multigraph & Directed & Yes & Yes \\
+        Mixed graph & Both & Yes & Yes \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+Multiple edge mean multiple edge between the same pair of vertices. A loop is an edge that connects a vertex to itself.
+
+\subsection{Basic knowledge}
+The sum of the degrees of all vertices is 2 times the number of edges. Therefore the sum is always even.
+
+This means the number of vertices with odd degree is always even.
+
+The sum of in-degrees is equal to the sum of out-degrees, and both are equal to the number of edges.
+
+\subsection{Common Graphs}
+\plainBox{
+    \subsubsection{Complete Graphs $K_n$}
+    Graph with one edge between each pair of vertices.
+    \begin{center}
+        \textbf{Vertices:} $n$ \hfill
+        \textbf{Edges:} $\frac{n(n-1)}{2}$ \hfill
+        \textbf{Degrees of vertices:} $n-1$
+    \end{center}
+}
+
+\plainBox{
+    \subsubsection{Cycles $C_n$}
+    Graph where the vertices are connected in a closed chain. Only defined for $n \geq 3$.
+    \begin{center}
+        \textbf{Vertices:} $n$ \hfill
+        \textbf{Edges:} $n$ \hfill
+        \textbf{Degrees of vertices:} $2$
+    \end{center}
+}
+
+\plainBox{
+    \subsubsection{Wheels $W_n$}
+    A cycle with an additional center vertex connected to all other vertices. Only defined for $n \geq 4$.
+    \begin{center}
+        \textbf{Vertices:} $n$ \hfill
+        \textbf{Edges:} $2(n-1)$ \hfill
+        \textbf{Degrees of vertices:} Center: $n-1$, Other: $3$
+    \end{center}
+}
+
+\plainBox{
+    \subsubsection{n-cubes $Q_n$}
+    A cube of dimension $n$. A cube of dimension $n$ can be made by connecting the corresponding vertices of two cubes of dimension $n-1$.
+    \begin{center}
+        \textbf{Vertices:} $2^n$ \hfill
+        \textbf{Edges:} $n2^{n-1}$ \hfill
+        \textbf{Degrees of vertices:} $n$
+    \end{center}
+}
+
