@@ -26,67 +26,222 @@ hvor $a(t), q(t)$ er funktioner i $t$ og $q(t)$ er en \emph{forcing function} er
 
 Hvis $q(t) = 0$, er ODE'en homogen.
 
-\subsubsection{Fuldstændig løsning - Panserformlen}
-\label{sec:Panserformlen}
-\[
-f(t) = e^{P(t)} \int e^{-P(t)} q(t) dt
-\kildetag{Sætning 13.1.1}
-\]
-hvor $P(t)$ er en stamfunktion til $a(t)$, dvs. $P'(t) = a(t)$.
+\subsection{Er differentialligningen lineær?}
+En differentialligning med $f(t)$ er lineær hvis:
+\begin{enumerate}
+    \item Ikke indeholder funktioner som $sin(f(t))$, $e^{f(t)}$, $f(t)^2$, $f(t) \cdot f'(t)$ osv.
+    \item Hver afledede af $f(t)$ optræder kun i første potens.
+    \item mm.
+\end{enumerate}
 
-\bemærk{Husk integrations-konstanten $c$ ved udregning!}
 
-\subsubsection{Hvis a(t) er konstant}
-Hvis $a(t) = a_0$ er en konstant, kan den fuldstændige løsning skrives som
+\eksempel{
+Følgende er lineære.
 \begin{align*}
-    f(t) &= e^{a_0t} \int e^{-a_0t} q(t) dt
-    \kildetag{Korollar 13.1.2} \\
-    &= c \cdot e^{a_0t} + e^{a_0t} \int e^{-a_0t} q(t) dt \\
-    &= c \cdot e^{a_0t} + e^{a_0t} Q(t)
+    f'(t) + 2 f(t) &= 0 \\
+    f'(t) + (t+1) \cdot f(t) +4 &= t^3 -2t \\
+    f'(t) + t^2 \cdot (f(t)+4) &= 0
 \end{align*}
-Her er $Q(t)$ stamfunktionen til $e^{-a_0t} q(t)$.
+}
 
-\subsection{Begyndelsesværdi}
-Givet reel funktion $f(t)$ og reele værdier $t_0, y_0$, så er $f(t_0) = y_0$ begyndelsesværdien.
-\kilde{Definition 13.1.1}
+\subsection{Find førstegradspolynomium}
+Givet en lineær førsteordens ODE og viden at løsningen er et polynomium af første grad, $f(t) = c_1 t + c_0$, kan man finde konstanterne $c_1$ og $c_0$ ved at indsætte $f(t)$ i ODE'en og løse for konstanterne.
 
-Givet en ODE og begyndelsesværdier kan man løse begyndelses-værdi-problemet.
-ODE: 
-\(
-F(f^{(n)}(t), \cdots, f'(t), f(t), t) = 0
-\)
+$f'(t) = c_1$, så indsætter vi i ODE'en og får en ligning i $t$. Vi kan så sammenligne koefficienterne for hver potens af $t$ på begge sider af ligningen for at finde $c_1$ og $c_0$.
 
-Begyndelsesværdier:
-\(
-f(t_0) = y_0, f'(t_0) = y_1, \cdots, f^{(n-1)}(t_0) = y_{n-1}
-\)
-
-En funktion der opfylder både ODE'en og begyndelsesværdierne er en løsning til begyndelses-værdi-problemet.
-
-\subsection{Løs begyndelses-værdi-problemet}
-Strategien er at finde den generelle løsning til ODE'en, og så bruge begyndelsesværdierne til at bestemme konstanterne i den generelle løsning.
-
-Eksempel:
-Vi tager ODE'en
+\subsection{Løs matrix ODE}
+Givet en matrix $A$ og en ODE på formen
 \[
-F(f'(t), f(t), t) = f'(t) + \sin(t) f(t) = \sin(t)
+\begin{bmatrix}
+    f_1'(t) \\
+    f_2'(t) \\
+\end{bmatrix}
+=
+\textbf{A} \cdot
+\begin{bmatrix}
+    f_1(t) \\
+    f_2(t) \\
+\end{bmatrix}
 \]
-med begyndelsesværdien
-\(
-f(\pi) = 2
-\)
-
-Først omskriver vi ODE'en til standardformen:
+Kan løsningen findes ved at finde egenværdierne og egenvektorerne for matrixen $A$.
+Da kan løsningen skrives som
 \[
-f'(t) = -\sin(t) f(t) + \sin(t)
+c_1 e^{\lambda_1 t} v_1 + c_2 e^{\lambda_2 t} v_2
 \]
 
-Vi gør brug af Panserformlen fra sektion \ref{sec:Panserformlen}:
-\begin{align*}
-    f(t) &= e^{P(t)} \int e^{-P(t)} q(t) dt \\
-    &= e^{\int -\sin(t) dt} \int e^{-\int -\sin(t) dt} \sin(t) dt \\
-    &= e^{\cos(t)} \int e^{-\cos(t)} \sin(t) dt \\
-    \text{let } u &= \cos(t) \text{ then } du = -\sin(t) dt \\
-    &= e^{\cos(t)} \int -e^{-u} [-du] \\
-    &= e^{\cos(t)} - \int e^{-u} du \\
-\end{align*}
+\subsection{Løs for betingelsesværdier}
+Givet den generelle løsning til en ODE med konstanter $c_1, c_2, \ldots, c_n$ og begyndelsesværdier
+\[
+\begin{bmatrix}
+    f_1(t) \\
+    f_2(t) \\
+\end{bmatrix}
+=
+c_1 \cdot
+\begin{bmatrix}
+    y_1 \\
+    y_2 \\
+\end{bmatrix}
+\cdot e^{\lambda_1 t}
++ c_2 \cdot
+\begin{bmatrix}
+    z_1 \\
+    z_2 \\
+\end{bmatrix}
+\cdot e^{\lambda_2 t}
+\]
+
+Kan $c_1, c_2$ findes ved at indsætte begyndelseværdierne, og udregne lignings-systemet.
+
+\eksempel{
+Egenværdier $2, 4$ med egenvkeotrer 
+$\begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix}$,
+$\begin{bmatrix}
+    1 \\
+    -1
+\end{bmatrix}$
+
+Er den generelle løsning
+\[
+\begin{bmatrix}
+    f_1(t) \\
+    f_2(t) \\
+\end{bmatrix}
+=
+c_1 \cdot
+\begin{bmatrix}
+    1 \\
+    1 \\
+\end{bmatrix}
+\cdot e^{2 t}
++ c_2 \cdot
+\begin{bmatrix}
+    1 \\
+    -1 \\
+\end{bmatrix}
+\cdot e^{4 t}
+\]
+Med begyndelseværider
+\(
+\begin{bmatrix}
+    f_1(0) \\
+    f_2(0)
+\end{bmatrix}
+= \begin{bmatrix}
+    6 \\
+    0
+\end{bmatrix}
+\)
+Vil værdierne indsættes og give
+\[
+\begin{bmatrix}
+    6 \\
+    0 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+    c_1 \cdot e^{0} + c_2 \cdot e^{0} \\
+    c_1 \cdot e^{0} - c_2 \cdot e^{0} \\
+\end{bmatrix}
+\xrightarrow{\text{Siden } e^0=1}
+\begin{bmatrix}
+    6 \\
+    0 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+    c_1 + c_2 \\
+    c_1 - c_2 \\
+\end{bmatrix}
+\]
+Omskrevet til ligningssystem er det:
+\[
+\begin{cases}
+6 = c_1 + c_2 \\
+0 = c_1 - c_2
+\end{cases}
+\]
+
+Her er det tydeligt at $c_1 = c_2$, og at $c_1 + c_2 = 6$, derfor $c_1 = c_2 = 3$.
+\[
+\begin{bmatrix}
+    f_1(t) \\
+    f_2(t) \\
+\end{bmatrix}
+=
+3 \cdot
+\begin{bmatrix}
+    1 \\
+    1 \\
+\end{bmatrix}
+\cdot e^{2 t}
++ 3 \cdot
+\begin{bmatrix}
+    1 \\
+    -1 \\
+\end{bmatrix}
+\cdot e^{4 t}
+\]
+}
+
+
+\newpage
+
+\subsection{Løs Lineære anden-ordens ODE'er}
+\subsubsection{Homogen}
+En homogen lineær anden-ordens ODE er på formen
+\[
+f''(t) + a_1(t) f'(t) + a_0(t) f(t) = 0
+\]
+
+\textbf{Karakteristisk Polynomium}
+
+Det karakteristiske polynomium for en homogen lineær anden-ordens ODE med konstante koefficienter er:
+\[
+Z^2 + a_1 Z + a_0 = 0
+\]
+
+Find determinanten af det karaktistiske polynomium:
+\[
+D = {a_1}^2 - 4 a_0
+\]
+
+\textbf{D > 0}
+
+Her vil rødderne være:
+\[
+\lambda_1 = \frac{-a_1 + \sqrt{D}}{2} \qquad \lambda_2 = \frac{-a_1 - \sqrt{D}}{2}
+\] 
+
+Den generelle løsning er da:
+\[
+f(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t}
+\]
+
+\textbf{D = 0}
+
+Her vil rødderne være:
+\[
+\lambda_1 = \lambda_2 = \frac{-a_1}{2}
+\]
+
+Den generelle løsning er da:
+\[
+c_1 e^{\lambda_1 t} + c_2 t e^{\lambda_2 t} 
+\]
+
+\textbf{D < 0}
+
+Her vil rødderne være:
+\[
+\lambda_1 = \frac{-a_1 + i \sqrt{|D|}}{2} \qquad \lambda_2 = \frac{-a_1 - i \sqrt{|D|}}{2}
+\]
+
+Den generelle (reelle) løsning er da:
+\[
+f(t) = c_1 e^{\frac{-a_1}{2} t} \cos\left(\frac{\sqrt{|D|}}{2} t\right) + c_2 e^{\frac{-a_1}{2} t} \sin\left(\frac{\sqrt{|D|}}{2} t\right)
+\]
+

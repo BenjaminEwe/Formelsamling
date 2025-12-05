@@ -1,0 +1,49 @@
+\section{Polynomials}
+An n'th degree polynomial can be written as $P(x)=a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0$ where $a_n \neq 0$. The degree of the polynomial is $n$.
+
+$[x^k]P(x)$ denotes the k'th degree coefficient. So for $P(x)=3x^2+4x+2$ then $[x^1]P(x) = 4$
+
+\subsubsection{Algebra}
+\plainBox{
+\textbf{Addition:}
+\[
+(ax^2 + bx + c) + (dx^2 + ex + f) = (a+d)x^2 + (b+e)x + (c+f)
+\]
+Which means that:
+\[
+[x^k] (P(x) + Q(x)) = [x^k] P(x) + [x^k] Q(x)
+\]
+}
+
+\plainBox{
+\textbf{Scalar multiplication:}
+\[
+c \cdot 4x^2+7 = (c \cdot 4)x^2 + (c \cdot 7)
+\]
+
+Which means that:
+\[
+[x^k] (cP(x)) = c [x^k]
+\]
+}
+
+\plainBox{
+\textbf{Multiplication:}
+For \(P(x) = a x^3 +b x \) and \(Q(x) = c x^3 + d x^2 + e x + f\):
+\[
+P(x) Q(x) = (ac)x^6 + (ad)x^5 + (ae + bc)x^4 + (af + bd)x^3 + (be)x^2 + (bf)x
+\]
+Which means that:
+\[
+[x^k] (P(x) Q(x)) = \sum_{k=0}^{n} [x^k] P(x) \cdot [x^{n-k}] Q(x)
+\]
+}
+
+\subsection{Other info}
+The division algorithm for polynomials states that for two polynomials \(P(x)\) and \(D(x)\), there exist unique polynomials \(Q(x)\) (the quotient) and \(R(x)\) (the remainder) such that:
+\[
+P(x) = D(x) Q(x) + R(x)
+\]
+where $\deg(R(x)) < deg(D(x))$ or $R(x) = 0$.
+\kilde{Theorem 6.1}
+

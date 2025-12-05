@@ -208,10 +208,9 @@ For $\mathbf{A} \in \mathbb{F}^{m \times n}$ og $\mathbf{B} \in \mathbb{F}^{n \t
 \subsection{Inverse matricer}
 \begin{itemize}
     \item Kun defineret for kvadratiske matricer.
-    \item $A^{-1}$ findes iff $\rho(A)$ er lig antallet af rækker i $A$.
+    \item $A$ har en invers $\iff$ $\rho(A) =$ antallet af rækker i $A$.
     \kilde{Lemma 7.3.1}
     \item $A \cdot A^{-1}=I_n$ \hfill \kilde{Korollar 7.3.4}
-    \item $A^{-1}$ findes kun hvis $\rho(A) = n$ for $A \in \mathbb{F}^{n \times n} $ \hfill \kilde{Korollar 7.3.5}
     \item $A$ har en invers $\iff \det(A) \neq 0$ \hfill \kilde{Korollar 8.2.4}
 \end{itemize}
 
@@ -283,20 +282,27 @@ Hvis matricen skabt af vekotrerne som søjler har samme rang som antallet af vek
 
 \newpage
 \section{Determinanter}
-Kun defineret for kvadratiske matricer.
+Kun defineret for kvadratiske matricer. \hfill $\det([a]) = a$
 
-$\det([a]) = a$
-
-\subsection{Determinant af 2×2 matrix}
-\[ 
+\subsection{Determinant af 2×2 og 3×3 matrix}
+\begin{align*}
     \det
     \begin{bmatrix}
-        a_{11} & a_{12} \\
-        a_{21} & a_{22}
+        a & b \\
+        c & d
     \end{bmatrix}
-    =
-    a_{11}a_{22} - a_{12}a_{21}
-\]
+    &=
+    ad - bc \\
+    \det
+    \begin{bmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i
+    \end{bmatrix}
+    &=
+    aei + bfg + cdh - ceg - bdi - afh
+    \kildetag{Sarrus' regel}
+\end{align*}
 
 \subsection{Determinant af større matricer (Laplace udvikling)}
 \[
@@ -360,9 +366,7 @@ Man tager altså hvert element i den valgte række eller kolonne, ganger det med
     \end{tabular}
 \end{center}
 
-\
 
-\
 
 \subsection{Egenskaber ved determinanter}
 Hvis en række eller kolonne er nul, er determinanten $0$. 
