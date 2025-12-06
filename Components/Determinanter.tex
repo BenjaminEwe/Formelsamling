@@ -1,0 +1,132 @@
+\section{Determinanter}
+Kun defineret for kvadratiske matricer.
+
+\subsection{Determinant af 2×2 og 3×3 matrix}
+\begin{align*}
+    \begin{bmatrix}
+        a
+    \end{bmatrix} &= a \\
+    \det
+    \begin{bmatrix}
+        a & b \\
+        c & d
+    \end{bmatrix}
+    &=
+    ad - bc \\
+    \det
+    \begin{bmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i
+    \end{bmatrix}
+    &=
+    aei + bfg + cdh - ceg - bdi - afh
+    \kildetag{Sarrus' regel}
+\end{align*}
+
+\subsection{Determinant af større matricer (Laplace udvikling)}
+\[
+\det
+\begin{bmatrix}
+    a & b & c \\
+    d & e & f \\
+    g & h & i
+\end{bmatrix}
+=
+a \cdot \det \begin{bmatrix}
+    e & f \\
+    h & i
+\end{bmatrix} - 
+b \cdot \det \begin{bmatrix}
+    d & f \\
+    g & i
+\end{bmatrix} +
+c \cdot \det \begin{bmatrix}
+    d & e \\
+    g & h
+\end{bmatrix}
+\]
+
+
+General formel for en valgfri $i$'te række:
+
+\[
+    \det(\mathbf{A}) = \sum_{j=1}^{n} (-1)^{i+j} \cdot a_{ij} \cdot \det(\mathbf{A}(i;j))
+\]
+
+Generel formel for en valgfri $j$'te kolonne:
+
+\[
+    \det(\mathbf{A}) = \sum_{i=1}^{n} (-1)^{i+j} \cdot a_{ij} \cdot \det(\mathbf{A}(i;j))
+\]
+
+\kilde{Sætning 8.2.1}
+
+\bemærkBig{
+$\mathbf{A}(i;j)$ er matricen dannet ved at fjerne den $i$'te række og $j$'te kolonne fra matrix $\mathbf{A}$.
+
+Enhver række eller kolonne kan vælges - Brugbart hvis en række eller kolonne indeholder mange nuller.
+}
+
+Man tager altså hvert element i den valgte række eller kolonne, ganger det med determinanten af minoren dannet ved at fjerne den række og kolonne, som elementet befinder sig i, og ganger med $(-1)^{i+j}$ for at tage højde for fortegnet.
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+    \textbf{Fortegns skema for en $n \times n$ matrix}
+    
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        $+a_{11}$ & $-a_{12}$ & $+a_{13}$ & $\cdots$ \\
+        \hline
+        $-a_{21}$ & $+a_{22}$ & $-a_{23}$ & $\cdots$ \\
+        \hline
+        $+a_{31}$ & $-a_{32}$ & $+a_{33}$ & $\cdots$ \\
+        \hline
+        $\vdots$  & $\vdots$  & $\vdots$  & $\ddots$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+
+
+\subsection{Egenskaber ved determinanter}
+Hvis der er en nul-række, er determinanten $0$. 
+
+\kilde{Lemma 8.1.4}
+
+\
+
+Hvis to rækker er ens, er determinanten $0$.
+
+\kilde{Proposition 8.3.5}
+
+\
+
+Hvis to rækker byttes om, skifter determinanten fortegn.
+
+\kilde{Sætning 8.3.6}
+
+\
+
+Hvis en række eller søjle ganges med en skalar $k$, ganges determinanten med $k$.
+
+\kilde{Korollar 8.3.2}
+
+\
+
+Hvis en række lægges til en anden række, ændres determinanten ikke.
+
+\kilde{Sætning 8.3.7}
+
+\
+
+$\det(A) \ne 0 \iff$ det tilsvarende lineære ligningssystem's eneste løsning er nulvektoren. 
+
+\kilde{Korollar 8.2.6}
+
+\begin{align*}
+    \det (\mathbf{A}^{-1} ) &= \frac{1}{\det(\mathbf{A})} \kildetag{Sætning 8.1.1} \\
+    \text{For diagonalmatricer: } \det(\mathbf{D}) &= \prod_{i=1}^{n} d_{ii} \kildetag{Proposition 8.1.2} \\
+    \text{For trekantsmatricer: } \det(\mathbf{T}) &= \prod_{i=1}^{n} t_{ii} \kildetag{Sætning 8.1.(3/5)} \\
+    \det(A^T) &= \det(A) \kildetag{Korollar 8.2.2} \\
+    \det (\mathbf{A} \cdot \mathbf{B}) &= \det(\mathbf{A}) \cdot \det(\mathbf{B}) \kildetag{Sætning 8.2.3}
+\end{align*}

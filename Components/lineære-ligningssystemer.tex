@@ -1,24 +1,33 @@
 \section{Lineære Ligningssystemer}
 
+\begin{tabular}{r | l}
+    LLS & Lineært lignings-system \\
+    Hom.LLS & Homogent lineært ligningssystem \\
+    Inhom.LLS & Inhomogent lineært ligningssystem \\
+\end{tabular}
+
 \subsection{Rækkeoperationer}
-Rækkeoperationer ændrer ikke løsningen.
-\begin{enumerate}
-    \item \textbf{Byt to rækker om:} Række \( R_i \) og række \( R_j \) byttes om.
-    \item \textbf{Gange en række med en skalar:} \( R_i = R_i \cdot k \) hvor \( k \in \mathbb{F} \setminus 0 \).
-    \item \textbf{Læg en række til en anden række:} \( R_i = R_i + k \cdot R_j \) hvor \( k \in \mathbb{F} \).
-\end{enumerate}
+Rækkeoperationer ændrer ikke løsningen. For $k \in \mathbb{F}$:
 
-\subsection{Har Homogent lineært ligningssystem en løsning?}
-Kun hvis koefficientmatricen og totalmatricen har samme rang. 
+\begin{tabular}{r|l}
+    \textbf{Byt to rækker om} & $R_i \leftrightarrow R_j$ \\
+    \textbf{Gange en række med en skalar} & $R_i = R_i \cdot k$ \\
+    \textbf{Læg en række til en anden række} & $R_i = R_i + k \cdot R_j$ \\
+\end{tabular}
 
+\subsection{Har Lineært ligningssystem en løsning?}
+Hvis $\rho(A) = \rho([A|b])$, har det mindst en løsning.
 \kilde{Korollar 6.4.3}
 
-\subsection{Løs Inhomogent lineært ligningssystem}
-Ikke alle lineære ligningssystemer har en løsning.
+\subsection{Løs LLS}
+\bemærk{Hvis $\rho(A) < \rho([A|b])$, har LLS'et ingen løsning.}
 
 \
 
-Opstil totalmatricen for ligningssystemet på redueceret trappeform.
+Dette virker for både Hom.LLS og InHom.LLS.
+
+\eksempel{
+Opstil totalmatricen for LLS'et på redueceret trappeform.
 
 \[
     \begin{bmatrix}
@@ -28,7 +37,7 @@ Opstil totalmatricen for ligningssystemet på redueceret trappeform.
     \end{bmatrix}
 \]
 
-Omskriv det til et ligningssystem og isoler pivoterne:
+Omskriv det til et LS og isoler pivoterne:
 
 \[
     \begin{cases}
@@ -76,91 +85,22 @@ $x_3$ er nu fri variabel. Vi giver den en parameter \(t \in \mathbb{F}\):
     \end{bmatrix}
     \quad t \in \mathbb{F}
 \]
+}
 
-En partikulær løsning findes nemt ved $t=0$
+Sættes alle parametre til $0$ findes en partikulær løsning til LLS'et. \\
+Fjernes vektoren der ikke ganges med en parameter, fås den generelle løsning til det tilsvarende Hom.LLS.
 
-\subsection{Har homogent lineært lignignssystem en løsning?}
-Alle har nul-løsningen. Hvis koefficientmatricen har en rang mindre end antallet af variable, har systemet uendeligt mange løsninger.
+\subsection{Har Hom.LLS en løsning?}
+Alle har nul-løsningen. Hvis koefficientmatricen har en rang mindre end antallet af variable, har systemet også andre løsninger.
 
 \kilde{Korollar 6.4.5}
 
-\subsection{Løs homogent lineært ligningssystem}
-
-Tag et lineært ligningssystem, og opstil det tilsvarende homogene lineære ligningssystem som totalmatrix (skift højre til 0).
-\[
-    \begin{bmatrix}
-        1 & 0 & 6 & 0 & 3 \\
-        0 & 1 & 4 & 0 & 4 \\
-        0 & 0 & 0 & 1 & 5 \\
-    \end{bmatrix}
-    \rightarrow
-    \begin{bmatrix}
-        1 & 0 & 6 & 0 & 0 \\
-        0 & 1 & 4 & 0 & 0 \\
-        0 & 0 & 0 & 1 & 0 \\
-    \end{bmatrix}
-\]
-
-Omskriv så alle pivoterne er på den ene side:
-\[
-    \begin{cases}
-        x_1 + 6 x_3 &= 0 \\
-        x_2 + 4 x_3 &= 0 \\
-        x_4 &= 0
-    \end{cases}
-    \implies
-    \begin{cases}
-        x_1 &= -6 x_3 \\
-        x_2 &= -4 x_3 \\
-        x_4 &= 0
-    \end{cases}
-\]
-
-Det viser at for hver $x_1$ skal vi have $-6$ gange $x_3$, og for hver $x_2$ skal vi have $-4$ gange $x_3$. Vi kan nu skrive:
-\[
-    \begin{bmatrix}
-        x_1 \\
-        x_2 \\
-        x_3 \\
-        x_4 \\
-    \end{bmatrix}
-    =
-    t \cdot
-    \begin{bmatrix}
-        -6 \\
-        -4 \\
-        1 \\
-        0 \\
-    \end{bmatrix}
-    \quad \text{hvor } t \in \mathbb{F}
-\]
-
 \subsubsection{Tilsvarende homogent lineært ligningssystem}
-For et lineært ligningssystem:
-\[
-    \begin{cases}
-        a_{11} \cdot x_1 + a_{12} \cdot x_2 + \dots + a_{1n} \cdot x_n = b_1 \\
-        a_{21} \cdot x_1 + a_{22} \cdot x_2 + \dots + a_{2n} \cdot x_n = b_2 \\
-        \vdots \\
-        a_{m1} \cdot x_1 + a_{m2} \cdot x_2 + \dots + a_{mn} \cdot x_n = b_m \\
-    \end{cases}
-\]
-Er det tilsvarende homogene lineære ligningssystem givet ved:
-\[
-    \begin{cases}
-        a_{11} \cdot x_1 + a_{12} \cdot x_2 + \dots + a_{1n} \cdot x_n = 0 \\
-        a_{21} \cdot x_1 + a_{22} \cdot x_2 + \dots + a_{2n} \cdot x_n = 0 \\
-        \vdots \\
-        a_{m1} \cdot x_1 + a_{m2} \cdot x_2 + \dots + a_{mn} \cdot x_n = 0 \\
-    \end{cases}
-\]
+Man tager et InHom.LLS og ændrer sidste søjle ($b$ søjlen) til $0$
 
 \subsubsection{Alle løsninger til et inhomogent lineært ligningssystem}
-Når man har en partikulær løsning til det inhomogene lineære ligningssystem \( (v_1,\dots, v_n) \), 
-samt løsningen til det tilsvarende homogene lineære ligningssystem \( (w_1,\dots,w_n) \) 
-er samtlige løsninger til det inhomogene lineære ligningssystem givet ved:
+Givet en partikulær løsning $v_p$ til et InHom.LLS og en løsning $v_h$ til det tilsvarende Hom.LLS, er samtlige løsninger til det InHom.LLS givet ved:
 \[
-    (v_1 + w_1 \cdot c, v_2 + w_2 \cdot c, \dots, v_n + w_n \cdot c) \quad \text{hvor } c \in \mathbb{F}
+    v = v_p + c \cdot v_h
 \]
-
-Altså skal man have en partikulær løsning, og addere løsningen til det tilsvarende homogene lineære ligningssystem.
+For \( c \in \mathbb{F} \)

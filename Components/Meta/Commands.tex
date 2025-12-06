@@ -111,17 +111,27 @@
 \newcommand{\eksempel}[1]{%
     \begin{tcolorbox}[
         colframe=lightgreen,
-        boxrule=0.5pt,
+        colback=white,
+        boxrule=1 pt,
         arc=2pt,
         left=6pt,
         right=6pt,
         top=6pt,
         bottom=6pt,
         before upper={\textbf{Eksempel: }},
-        before skip=10pt,    % Space before the box
-        after skip=10pt,     % Space after the box
+        before skip=10pt,
+        after skip=10pt,
     ]
     #1
     \end{tcolorbox}%
 }
 % /For Eksempel boxes
+
+% Change ugly empty set symbol
+\renewcommand{\emptyset}{\text{Ø}}
+% /Change ugly empty set symbol
+
+\newcommand*\cleartoleftpage{%
+    \clearpage
+    \ifodd\value{page}\hbox{}\newpage\fi
+}

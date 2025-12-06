@@ -1,17 +1,12 @@
 \section{Lineære Afbildninger}
 
 Lineære afbildninger tager en vektor fra et vektorrum og afbilder den til en anden vektor i et andet (eller samme) vektorrum.
-For at en afbildning \( L : V \rightarrow W \) skal være lineær, skal den opfylde to betingelser for alle vektorer \( v_1, v_2 \in V \) og alle skalarer \( c \in \mathbb{R} \):
-\begin{itemize}
-    \item Additivitet: \( L(v_1 + v_2) = L(v_1) + L(v_2) \)
-    \item Homogenitet: \( L(c \cdot v) = c \cdot L(v) \)
-\end{itemize}
 
-En hurtig test kan være at tjekke om \( L(u + c \cdot v) = L(u) + c \cdot L(v) \).
-
-En anden hurtig test er at tjekke om \( L(0) = 0 \). (dog kun som modbevis)
+En afbildning er lineær $\iff L(u + c \cdot v) = L(u) + c \cdot L(v) $
 
 \kilde{Definition 11.0.1}
+
+Et hurtigt \emph{modbevis} for at en afbildning er lineær er hvis $ L(0) \ne 0 $.
 
 \subsection{Matricer som lineære afbildninger}
 
@@ -54,32 +49,19 @@ Eksempel:
 
 \subsubsection{Billedet af lineær afbildning}
 Givet en afbildnings-matrice \( \mathbf{A} \), er billedet af den lineære afbildning \( L_A \) givet ved  \( \colsp(\mathbf{A}) \).
-Se sektion \ref{sec:soejlerum}.
+Se sektion \ref{sec:soejlerum} for at finde søjlerummet.
 
 \kilde{Lemma 11.1.2}
 
 \subsubsection{Kerne af lineær afbildning}
 Givet en afbildnings-matrice \( \mathbf{A} \), er \(\ker(L_A) = \ker(A)\).
-Se sektion \ref{sec:kerne}.
+Se sektion \ref{sec:kerne} for at finde kernen.
 
 \kilde{Definition 11.1.2}
 
-\subsection{Generelle vektorrum}
-
-\subsubsection{Sammensætning af lineære afbildninger}
-Hvis \( L_1 : U \rightarrow V \) og \( L_2 : V \rightarrow W \) er lineære afbildninger, så er sammensætningen \( L_2 \circ L_1 : U \rightarrow W \) også en lineær afbildning. 
-
-\kilde{Sætning 11.2.1}
-
-Hvis \( \alpha, \beta, \gamma \) er baser for henholdsvis \( U, V, W \), så gælder:
+Givet en generel lineær afbildning \( L : V \rightarrow W \), er kernen af \( L \) mængden af alle vektorer i \( V \), der afbildes til nulvektoren i \( W \):
 \[
-_\gamma [L_2 \circ L_1]_\alpha = _\gamma [L_2]_\beta \cdot _\beta [L_1]_\alpha
-\]
-
-\subsubsection{Kerne af generelle lineære afbildninger}
-Kernen af en lineær afbildning \( L : V \rightarrow W \) er mængden af alle vektorer i \( V \), der afbildes til nulvektoren i \( W \):
-\[
-\ker(L) = \{ v \in V \mid L(v) = 0 \} 
+\ker(L) = \{ v \in V \mid L(v) = 0 \}
 \kildetag{Definition 11.2.1}
 \]
 
@@ -90,22 +72,8 @@ For \(L: V_1 \to V_2\)
 \kildetag{Korollar 11.4.3}
 \]
 
-\subsection{Basisskift som lineær afbildning}
-Givet vektorrum $V$ og ordnet basis \( \beta = \{ v_1, v_2, \ldots, v_n \} \)
-er funktionen \( L_\beta : V \rightarrow \mathbb{R}^n \) defineret ved:
-\[
-L_\beta(v) \mapsto [v]_\beta
-\]
-En lineær afbildning.
-
-Funktionen \(\mathbb{F}^n \to V\) defineret ved
-\( (c_1, c_2, \ldots, c_n) \mapsto c_1 v_1 + c_2 v_2 + \ldots + c_n v_n\)
-er også en lineær afbildning, og er den inverse af \( L_\beta \).
-
-\kilde{Lemma 11.3.1}
-
 \subsection{Find afbildnings-matrix}
-For en lineær afbildning \(L: \mathbb{F}^n \to \mathbb{F}^m\) kan afbildnings-matricen \( [L] \) findes ved at anvende \(L\) på standardbasens vektorer \(e_1, e_2, \ldots, e_n\) og sætte resultaterne som søjler i en matrix:
+For lineær afbildning \(L: \mathbb{F}^n \to \mathbb{F}^m\) kan afbildnings-matricen \( [L] \) findes ved at anvende \(L\) på standardbasens vektorer \(e_1, e_2, \ldots, e_n\) og sætte resultaterne som søjler i en matrix:
 \[
 A = \begin{bmatrix}
     L(e_1) & L(e_2) & \ldots & L(e_n)
@@ -114,6 +82,7 @@ A = \begin{bmatrix}
 \]
 
 \subsubsection{Find afbildningsmatrix of afbilled en vektor}
+\eksempel{
 Givet vektor
 \(
     \begin{bmatrix}
@@ -122,7 +91,7 @@ Givet vektor
         1
     \end{bmatrix}
 \)
-og lineær afbildning \( L : \mathbb{R}^3 \rightarrow \mathbb{R}^2 \) defineret ved:
+og lineær afbildning \( L : \mathbb{R}^3 \rightarrow \mathbb{R}^2 \)
 \[
     L\begin{bmatrix}
         x_1 \\
@@ -136,7 +105,7 @@ og lineær afbildning \( L : \mathbb{R}^3 \rightarrow \mathbb{R}^2 \) defineret 
     \end{bmatrix}
 \]
 
-Først tager vi den ordnede standardbasis for \(\mathbb{R}^3\):
+tag den ordnede standardbasis for \(\mathbb{R}^3\):
 \(
     e_1 = \begin{bmatrix}
         1 \\
@@ -154,6 +123,7 @@ Først tager vi den ordnede standardbasis for \(\mathbb{R}^3\):
         1
     \end{bmatrix}
 \)
+
 Vi afbilleder nu hver af basisvektorene med \(L\):
 \[
     L \begin{bmatrix}
@@ -169,7 +139,7 @@ Vi afbilleder nu hver af basisvektorene med \(L\):
         2 \\
         0
     \end{bmatrix}
-\quad
+\hspace{6em}
     L \begin{bmatrix}
         0 \\
         1 \\
@@ -183,7 +153,8 @@ Vi afbilleder nu hver af basisvektorene med \(L\):
         1 \\
         -1
     \end{bmatrix}
-\quad
+\]
+\[
     L \begin{bmatrix}
         0 \\
         0 \\
@@ -235,9 +206,10 @@ Og vi kan nu finde afbildningen af vores vektor ved at multiplicere afbildningsm
         1
     \end{bmatrix}
 \]
+}
 
 \subsection{Afbildningsmatrice med hensyn til basis}
-Givet en lineær afbildning \( L : V \rightarrow W \) med ordnede baser \( \beta = \{ v_1, v_2, \ldots, v_n \} \) for \( V \) og \( \gamma = \{ w_1, w_2, \ldots, w_m \} \) for \( W \), kan afbildningsmatricen \( _\gamma [L]_\beta \) findes ved at afbilde hver basisvektor i \( V \) og udtrykke resultatet i basis \( \gamma \):
+Givet lineær afbildning \( L : V \rightarrow W \) med ordnede baser \( \beta = \{ v_1, v_2, \ldots, v_n \} \) for \( V \) og \( \gamma = \{ w_1, w_2, \ldots, w_m \} \) for \( W \), kan afbildningsmatricen \( _\gamma [L]_\beta \) findes ved at afbilde hver basisvektor i \( V \) og udtrykke resultatet i basis \( \gamma \):
 
 \[
 _\gamma [L]_\beta = \begin{bmatrix}
@@ -245,6 +217,13 @@ _\gamma [L]_\beta = \begin{bmatrix}
 \end{bmatrix}
 \kildetag{Lemma 11.3.3}
 \]
+
+Dvs., for hver basisvektor \( v_i \) i \( V \):
+\begin{enumerate}
+    \item beregn \( L(v_i) \)
+    \item skriv \( L(v_i) \) med hensyn til basis \( \gamma \) for at få \( [L(v_i)]_\gamma \). Se sektion \ref{sec:beta-koordinater}
+    \item Du har nu søjle $i$ i afbildningsmatricen. $_\gamma [L]_\beta$
+\end{enumerate}
 
 \subsubsection{Om afbildningsmatricer med hensyn til baser}
 
@@ -274,8 +253,33 @@ Det er bare en anden måde at skrive en basisskift-matrice.
 \end{align*}
 \kilde{Lemma 11.3.6}
 
+\subsection{Sammensætning}
+Hvis \( L_1 : U \rightarrow V \) og \( L_2 : V \rightarrow W \) er lineære afbildninger, så er sammensætningen \( L_2 \circ L_1 : U \rightarrow W \) også en lineær afbildning. 
+
+\kilde{Sætning 11.2.1}
+
+Hvis \( \alpha, \beta, \gamma \) er baser for henholdsvis \( U, V, W \), så gælder:
+\[
+_\gamma [L_2 \circ L_1]_\alpha 
+= {_\gamma [L_2]_\beta} \cdot {_\beta [L_1]_\alpha}
+\]
+
+\subsection{Basisskift som lineær afbildning}
+Givet vektorrum $V$ og \( \beta = \{ v_1, v_2, \ldots, v_n \} \)
+er funktionen \( L_\beta : V \rightarrow \mathbb{R}^n \) defineret ved
+\(
+L_\beta(v) \mapsto [v]_\beta
+\)
+En lineær afbildning. \\
+
+Funktionen \(\mathbb{F}^n \to V\) defineret ved
+\( (c_1, c_2, \ldots, c_n) \mapsto c_1 v_1 + c_2 v_2 + \ldots + c_n v_n\)
+er også en lineær afbildning, og er den inverse af \( L_\beta \).
+
+\kilde{Lemma 11.3.1}
+
 \subsection{Find vektor der afbildes til en given vektor}
-Givet lineær afbildning \( L : V \rightarrow W \) og vektor \( w \in W \), kan vi  \( v \in V \), så \( L(v) = w \), ved at løse ligningen:
+Givet lineær afbildning \( L : V \rightarrow W \) og vektor \( w \in W \), kan \( v \in V \) findes så \( L(v) = w \), ved at løse ligningen:
 \[
 _\gamma [L]_\beta \cdot [v]_\beta = [w]_\gamma
 \]
@@ -291,23 +295,19 @@ hvor \( v_p \) er den fundne løsning og \( v_{ker} \) er en vilkårlig vektor i
 
 \subsection{Eksempler på lineære afbildninger}
 \begin{itemize}
-    \item Sporet af en matrix:
-    \begin{align*}
-        \mathbb{R}^{n \times n} &\rightarrow \mathbb{R} \\
-        A &\mapsto \sum_{i=1}^{n} a_{ii}
-    \end{align*}
+    \item Sporet af en matrix; en funktion der lægger alle diagonalerne sammen.
+    
     \kilde{Eksempel 11.2.2}
-    \item En vektor til samme vektor med færre dimensioner:
-    \begin{align*}
-        L : \mathbb{R}^3 &\rightarrow \mathbb{R}^2 \\
+    \item Vektor til lavere dimension:
+    \(
         \begin{bmatrix}
-            x_1 \\ x_2 \\ x_3
+            x_1 & x_2 & x_3
         \end{bmatrix}
-        &\mapsto
+        \mapsto
         \begin{bmatrix}
-            x_1 \\ x_2
+            x_1 & x_2
         \end{bmatrix}
-    \end{align*}
+    \)
 \end{itemize}
 
 \subsection{Find all vektorer der afbiledes til w ved ordnet basis}

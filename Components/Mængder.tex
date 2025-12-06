@@ -1,8 +1,6 @@
 \section{Mængder}
 
-Mængder tæller ikke samme elementer flere gange. \(\{1,1,0,1,1\} = \{1,0\}\)
-
-Med større udtryk som $A \cap (B \cup C)$ bør man tage det én del af gangen.
+Mængder tæller ikke samme element flere gange. \(\{1,1,0,1,1\} = \{1,0\}\)
 
 \begin{table}[H]
     \centering
@@ -24,7 +22,7 @@ Med større udtryk som $A \cap (B \cup C)$ bør man tage det én del af gangen.
 
 \subsection{Delmængde}
 \begin{align*}
-    A \subseteq B &\iff \forall a \in A, a \in B \\
+    A \subseteq B &\iff \forall a \in A \ ( a \in A \implies a \in B) \\
     A \subsetneq B &\iff (A \subseteq B) \land (A \neq B) \\
     A=B &\iff (A \subseteq B) \land (B \subseteq A) \kildetag{Lemma 2.1.1}
 \end{align*}

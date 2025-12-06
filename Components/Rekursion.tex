@@ -12,14 +12,15 @@ F(n) = \begin{cases}
 \]
 }
 
-\subsection{Summation}
+\eksempel{
 Summen af talene \(z_1, z_2, \cdots, z_n\) kan defineres rekursivt som:
 \[
-    \sum_{k=1}^{n} z_n = \begin{cases}
+    \sum_{k=1}^{n} (z_n) = \begin{cases}
         z_1 & \text{hvis } n=1 \\
-        \left( \sum_{k=1}^{n-1} z_k \right) + z_n & \text{hvis } n>1
+        \sum_{k=1}^{n-1} (z_k) + z_n & \text{hvis } n>1
     \end{cases}
 \]
+}
 
 \subsection{Induktion}
 En påstand $P(n)$ kan bevises sand for alle $n$ over en startværdi med induktion.
@@ -37,8 +38,8 @@ Hermed er påstanden bevist med induktion for $\forall n \ge b$
 
 \subsubsection{Hyppigt brugte ligheder}
 \begin{center}
-    $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$ \hfill
-    $\sum_{i=x}^{n} i + n+1 = \sum_{i=x}^{n+1} i$ \hfill
-    $x^n \cdot x+1 = x^{n+1}$ \hfill
+    $\sum_{i=1}^{n} (i) = \frac{n(n+1)}{2}$ \hfill
+    $\sum_{i=x}^{n} (i) + (n+1) = \sum_{i=x}^{n+1} (i)$ \hfill
+    $x^n \cdot x = x^{n+1}$ \hfill
     $n! = n \cdot (n-1)!$
 \end{center}

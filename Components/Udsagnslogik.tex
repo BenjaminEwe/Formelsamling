@@ -42,14 +42,14 @@ Det er næsten altid en god idé at lave en sandhedstabel for at undersøge logi
 
 \begin{table}[h]
     \centering
-    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
         \hline
-        $P$ & $Q$ & $P \land Q$ & $P \lor Q$ & $\lnot P$ & $P \implies Q$ & $P \iff Q$ \\
+        $P$ & $Q$ & $P \land Q$ & $P \lor Q$ & $\lnot P$ & $P \implies Q$ & $P \iff Q$ & $(P \lor Q) \implies \neg P$ \\
         \hline
-        T & T & T & T & F & T & T \\
-        T & F & F & T & F & F & F \\
-        F & T & F & T & T & T & F \\
-        F & F & F & F & T & T & T \\
+        T & T & T & T & F & T & T & F \\
+        T & F & F & T & F & F & F & F \\
+        F & T & F & T & T & T & F & T \\
+        F & F & F & F & T & T & T & T \\
         \hline
     \end{tabular}
 \end{table}

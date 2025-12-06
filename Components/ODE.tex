@@ -8,17 +8,7 @@ Notationen betyder at $F$ er en funktion der tager $n+2$ variabler, og de variab
 En løsning er en funktion $f(t)$, som opfylder ligningen for alle $t \in \mathbb{R}$.
 
 \subsection{Lineær førsteordens ODE}
-En lineær førsteordens ODE er på formen
-\[
-L(f(t))=q(t)
-\]
-hvor $q(t) \in C_\infty(\mathbb{R})$ og $L: C_\infty(\mathbb{R}) \to C_\infty(\mathbb{R})$ er en lineær afbildning.
 
-Hvis $q(t) = 0$, kaldes ODE'en homogen, ellers inhomogen.
-
-%NOTE: En lineær førsteordens ODE behøver ikke at være uendeligt differentiable, men det er alle dem i bogen.
-
-\subsubsection{Generel lineær førsteordens ODE}
 \[
 f'(t) = a(t) f(t) + q(t)
 \]
@@ -91,10 +81,10 @@ c_1 \cdot
 \cdot e^{\lambda_2 t}
 \]
 
-Kan $c_1, c_2$ findes ved at indsætte begyndelseværdierne, og udregne lignings-systemet.
+Kan $c_1, c_2$ findes ved at udregne LLS'et med indsatte begyndelsesværdier.
 
 \eksempel{
-Egenværdier $2, 4$ med egenvkeotrer 
+Egenværdier $2, 4$ med egenvektorer 
 $\begin{bmatrix}
     1 \\
     1
@@ -104,7 +94,7 @@ $\begin{bmatrix}
     -1
 \end{bmatrix}$
 
-Er den generelle løsning
+Den generelle løsning:
 \[
 \begin{bmatrix}
     f_1(t) \\
@@ -157,7 +147,7 @@ Vil værdierne indsættes og give
     c_1 - c_2 \\
 \end{bmatrix}
 \]
-Omskrevet til ligningssystem er det:
+Som LLS er det:
 \[
 \begin{cases}
 6 = c_1 + c_2 \\
@@ -209,6 +199,9 @@ Find determinanten af det karaktistiske polynomium:
 D = {a_1}^2 - 4 a_0
 \]
 
+\hrule
+\
+
 \textbf{D > 0}
 
 Her vil rødderne være:
@@ -220,6 +213,9 @@ Den generelle løsning er da:
 \[
 f(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t}
 \]
+
+\hrule
+\
 
 \textbf{D = 0}
 
@@ -233,7 +229,10 @@ Den generelle løsning er da:
 c_1 e^{\lambda_1 t} + c_2 t e^{\lambda_2 t} 
 \]
 
-\textbf{D < 0}
+\hrule
+\
+
+\textbf{D < 0} 
 
 Her vil rødderne være:
 \[

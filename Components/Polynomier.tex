@@ -1,38 +1,37 @@
 \section{Polynomier}
-Polynomier kan skrives
-\[
+Polynomier er på formen: \hfill
+\(
     p(Z) = a_0 + a_1 Z + a_2 Z^2 + \dots + a_n Z^n
-\]
+\)
 
-Hvor $n \in \mathbb{N}$, $a_i \in \mathbb{R}$ for alle $i = 0, 1, \dots, n$ og $Z$ er en variabel.
+$n \in \mathbb{N}$, $a_i \in \mathbb{R}$, $Z$ en variabel \\
 
-\
-
-Det største $i$ hvor $a_i \neq 0$ kaldes for polynomiets grad, og det tilsvarende $a_i$ kaldes for polynomiets ledende koefficient.
-
-\
+Polynomiets grad er det største $i$ hvor $a_i \neq 0$. \\
+Polynomiets ledende koefficient er det tilsvarende $a_i$. \\
 
 Nulpolynomiet har grad $-\infty$.
 
-\
-
-Graden af 2 polynomier multipliceret er summen af deres grader
-
-Graden af 2 polynomier adderet er den største af deres grader
-
+\begin{align*}
+    \deg(p(Z) \cdot q(Z)) &= \deg(p(Z)) + \deg(q(Z)) \\
+    \deg(p(Z) + q(Z)) &= \max( \deg(p(Z)), \deg(q(Z)) )
+\end{align*}
 
 \subsection{Rødder}
 
-Hvis $p(\lambda) = 0$ er $\lambda$ en rod.
+\begin{align*}
+    p(\lambda) = 0 &\iff \lambda \text{ er en rod i p} \\
+    \lambda \text{ er en rod} &\iff \lambda \text{ deler p så } p(Z) = (Z - \lambda) q(Z) \\
+    \deg(p(Z)) = n &\iff p(Z) \text{ har } n \text{ rødder, målt med multiplicitet}
+\end{align*}
 
-For hver rod $\lambda$ kan $(Z - \lambda)$ dividere polynomiet $p(Z)$ så $p(Z) = (Z - \lambda) q(Z)$ for et polynomium $q(Z)$ af grad $n-1$.
+For komplekse $\lambda$ i polynomier med reele koefficienter er $\overline{\lambda}$ også en rod.
 
-Hvis $\lambda$ er en kompleks rod til et polynomium med reelle koefficienter, er $\overline{\lambda}$ også en rod.
 \kilde{Lemma 5.3.3}
 
 \
 
-Hvis et polynomie $p(Z)$ kan skrives som $p_1(Z) \cdot p_2(Z)$ så er rødderne af $p(Z)$ summen af rødderne af $p_1(Z)$ og $p_2(Z)$.
+Hvis $p(Z) = p_1(Z) \cdot p_2(Z)$ er rødderene af $p(Z)$ rødderne af $p_1(Z)$ og $p_2(Z)$
+
 \kilde{Lemma 5.5.1}
 
 
@@ -65,13 +64,13 @@ Polynomie $p(Z) \in \mathbb{C}[Z]$ med komplekse koefficienter kan faktoriseres 
 \kilde{Korollar 5.6.4}
 
 \subsection{Binomier}
-Binomier er på formen \(z^n = w\) for et \(n \in \mathbb{N}\) og et \((w \neq 0) \in \mathbb{C}\).
+Binomier er på formen \(z^n = w\) for et \(n \in \mathbb{N}\) og et \(w \in \{ \mathbb{C} \setminus 0 \} \) og har $n$ løsninger.
 
-Et binomie vil have \(n\) løsninger som findes ved:
+\subsubsection{Polær løsning}
 \[
     z = \sqrt[n]{|w|} \cdot e^{i \left( \frac{\arg(w)}{n} + p \cdot \frac{2 \pi}{n} \right)} \quad \text{for } p = 0, 1, \dots, n-1
 \]
-Hvilket også kan skrives som:
+\subsubsection{Rektangulær løsning}
 \[
     z = \sqrt[n]{|w|} \left( \cos\left( \frac{\arg(w)}{n} + p \cdot \frac{2 \pi}{n} \right) + i \sin\left( \frac{\arg(w)}{n} + p \cdot \frac{2 \pi}{n} \right) \right) \quad \text{for } p = 0, 1, \dots, n-1
 \]
@@ -85,6 +84,7 @@ For et binomie på formen \(Z^4 - w\) kan de resterende rødder findes hvis du k
 Mere generelt kan resterende rødder i et $n$'te grads binomie findes ved at bruge en kendt rod \(z_1\) i formlen:
 \[
     z_k = z_1 \cdot e^{i \cdot (k-1) \cdot \frac{2 \pi}{n}} \quad \text{for } k = 1, 2, \dots, n
+    \kildetag{\text{Ikke i bogen}}
 \]
 
 \subsection{Divisions-Algoritmen}

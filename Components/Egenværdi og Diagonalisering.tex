@@ -1,6 +1,6 @@
 \section{Egenværdier}
 \subsection{Definition}
-For vektorrum $V$ på legeme $\mathbb{F}$ og lineær afbildning $L: V \to V$ 
+Givet vektorrum $V$ på $\mathbb{F}$ og lineær afbildning $L: V \to V$ 
 er en skalar $\lambda \in \mathbb{F}$ en \textbf{egenværdi} for $L$, hvis der findes en vektor $\mathbf{v} \in V$, $\mathbf{v} \neq 0$, sådan at
 \[L(v) = \lambda \cdot \mathbf{v}.\]
 Vektoren $\mathbf{v}$ er en \textbf{egenvektor} tilhørende egenværdien $\lambda$.
@@ -9,7 +9,7 @@ Vektoren $\mathbf{v}$ er en \textbf{egenvektor} tilhørende egenværdien $\lambd
 \kilde{Definition 12.1.1}
 
 \subsubsection{Matricers egenværdier}
-For en matrix $A \in \mathbb{F}^{n \times n}$ og en vektor $\mathbf{v} \in \mathbb{F}^n$, $\mathbf{v} \neq 0$, er en skalar $\lambda \in \mathbb{F}$ en \textbf{egenværdi} for $A$, hvis
+Givet matrix $A \in \mathbb{F}^{n \times n}$ og vektor $\mathbf{v} \in \mathbb{F}^n \setminus 0$, er skalar $\lambda \in \mathbb{F}$ en \textbf{egenværdi} for $A$, hvis
 \[A \mathbf{v} = \lambda \cdot \mathbf{v}.\]
 Vektoren $\mathbf{v}$ er en \textbf{egenvektor} tilhørende egenværdien $\lambda$.
 
@@ -17,9 +17,9 @@ Vektoren $\mathbf{v}$ er en \textbf{egenvektor} tilhørende egenværdien $\lambd
 \kilde{Definition 12.1.2}
 
 \subsection{Løs Egenværdiproblemet}
-For matrix $A \in \mathbb{F}^{n \times n}$, vil en værdi $\lambda \in \mathbb{F}$ være en egenværdi for $A$ hvis og kun hvis
+For matrix $A \in \mathbb{F}^{n \times n}$, vil skalar $\lambda \in \mathbb{F}$ være en egenværdi for $A \iff$
 \[\det(A - \lambda \cdot \mathbf{I}_n) = 0.\]
-Dette kaldes også for \textbf{karakteristisk polynomium} for $A$ og betegnes $p_{\mathbf{A}}(\lambda)$.
+Dette er det \textbf{karakteristiske polynomium} for $A$ og betegnes $p_{\mathbf{A}}(\lambda)$.
 
 \
 
@@ -33,6 +33,8 @@ Med andre ord, rødderne i følgende polynomie er egenværdierne for $A$.
         a_{n1} & a_{n2} & \cdots & a_{nn} - \lambda 
     \end{bmatrix}\right) = 0
 \]
+
+Dette vil give er polynomie af grad $n$, som løses for det ubekendte $\lambda$.
 
 \kilde{Sætning 12.1.1}
 
@@ -59,13 +61,6 @@ Det karakteristiske polynomium for en lineær afbildning $L: V \to V$ betegnes m
 p_L(\lambda) = \det(_\beta[L]_\beta - \lambda \cdot \mathbf{I}_n) \kildetag{Definition 12.1.3}
 \]
 
-\subsection{Egenvektorer}
-\begin{align*}
-    E_\lambda = \{ \mathbf{v} \in V | L(\mathbf{v}) = \lambda \cdot \mathbf{v} \} \kildetag{Sætning 12.2.1} \\
-    A_\lambda = \{ \mathbf{v} \in V |A \cdot \mathbf{v} = \lambda \cdot \mathbf{v} \} \kildetag{Sætning 12.2.1}
-\end{align*}
-Disse er underrum i hhv. $V$ og $\mathbb{F}^n$.
-
 \subsection{Egenrum}
 
 Egenrummet for en egenværdi $\lambda$ og matrix $A \in \mathbb{F}^{n \times n}$ betegnes $E_{\lambda}$ og defineres som mængden af alle egenvektorer tilhørende $\lambda$ samt \emph{nulvektoren}. Det kan findes ved at finde kernen af matricen:
@@ -81,10 +76,19 @@ Egenrummet for en egenværdi $\lambda$ og matrix $A \in \mathbb{F}^{n \times n}$
 
 Se evt. sektion \ref{sec:kerne} om hvordan kernen findes.
 
+\subsubsection{Egenrum er underrum}
+\begin{align*}
+    E_\lambda = \{ \mathbf{v} \in V | L(\mathbf{v}) = \lambda \cdot \mathbf{v} \} \kildetag{Sætning 12.2.1} \\
+    A_\lambda = \{ \mathbf{v} \in V |A \cdot \mathbf{v} = \lambda \cdot \mathbf{v} \} \kildetag{Sætning 12.2.1}
+\end{align*}
+Disse er underrum i hhv. $V$ og $A$.
+
 \section{Diagonalisering}
 
 \subsection{Kan en matrix diagonaliseres?}
-En lineær afbildning $L: V \to V$ eller matrix $A \in \mathbb{F}^{n \times n}$ kan diagonaliseres hvis og kun hvis der findes en basis for $V$ bestående af egenvektorer tilhørende $L$.
+Lineær afbildning $L: V \to V$ eller matrix $A \in \mathbb{F}^{n \times n}$ er diagonaliserbar $\iff$ der findes en basis for $V$ bestående af egenvektorer tilhørende $L$.
+
+Det skal gælde for alle egenvædier at $\gm(\lambda) = am(\lambda)$.
 
 Det er det samme som at det karakteristiske polynomium for $L$ kan skrives som
 \[
@@ -92,46 +96,14 @@ p_L(Z) = (-1)^n \cdot (Z - \lambda_1)^m_1 \cdots (Z - \lambda_r)^{m_r}
 \kildetag{Sætning 12.3.3}
 \]
 
-Det betyder også at for alle egenværdier $\lambda_i$ gælder
-\(
-gm(\lambda) = am(\lambda)
-\)
-
 Når en afbildnign kan diagonaliseres kan man finde en diagonalmatrix $D$ og en invertibel matrix $Q$ så
 \[
 L = Q \cdot D \cdot Q^{-1} \kildetag{Lemma 12.4.2}
 \]
-
-
-\subsubsection{Algebraisk multiplicitet}
-$am(\lambda)$ er antallet af gange egenværdi $\lambda$ optræder i roden af $p_A(\lambda)$.
-
-F.eks. For $p_A(\lambda) = (\lambda - 2)^3 (\lambda + 1)^2$, er $\am(2) = 3$ og $\am(-1) = 2$. 
-
-\subsubsection{Geometrisk multiplicitet}
-\[gm(\lambda) = \dim(E_\lambda)\]
-
-Hvis 
-\(
-E_{-3} = \spanop \left\{
-s \cdot 
-\begin{bmatrix}
-1 \\ 0 \\ 0
-\end{bmatrix} + t \cdot 
-\begin{bmatrix}
-    0 \\ 1 \\ 0
-\end{bmatrix}
-\right\}
-\)
-er $\gm(-3) = 2$.
-
-\subsubsection{Generel sammenhæng}
-\[
-1 \le \gm(\lambda) \le \am(\lambda) \le \dim(V)
-\kildetag{Sætning 12.2.4}
-\]
+Se sektion \ref{sec:diagonal_matrix} og \ref{sec:invertibel_matrix}.
 
 \subsection{Find Diagonalmatrix}
+\label{sec:diagonal_matrix}
 Hvis $A \in \mathbb{F}^{n \times n}$ kan diagonaliseres, kan diagonalmatricen findes ved at indsætte egenværdierne for $A$ på diagonalen i en $n \times n$ matrix $D$.
 \[D = 
 \begin{bmatrix}
@@ -144,7 +116,8 @@ Hvis $A \in \mathbb{F}^{n \times n}$ kan diagonaliseres, kan diagonalmatricen fi
 \bemærkBig{Hvis en egenværdi har algebraisk multiplicitet $n$, skal den optræde $n$ gange efter hinanden på diagonalen i $D$.}
 
 \subsection{Find invertibel matrix}
-Diagonalmatrix $D$ kan skrives som $D = Q^{-1} \cdot A \cdot Q$, hvor $Q$ er en invertibel matrix bestående af egenvektorerne tilhørende egenværdierne i $D$ som søjler.
+\label{sec:invertibel_matrix}
+Diagonalmatrix $D$ kan skrives som $D = Q^{-1} \cdot A \cdot Q$, hvor $Q$ er en invertibel matrix bestående af egenvektorerne for egenværdierne i $D$ som søjler.
 \[Q =
 \begin{bmatrix}
     | & | & & | \\
@@ -154,39 +127,62 @@ Diagonalmatrix $D$ kan skrives som $D = Q^{-1} \cdot A \cdot Q$, hvor $Q$ er en 
 
 \bemærkBig{Rækkefølgen af egenvektorerne i $Q$ skal svare til rækkefølgen af egenværdierne i $D$.}
 
+
+\subsubsection{Algebraisk multiplicitet}
+$am(\lambda)$ er antallet af gange egenværdi $\lambda$ optræder i roden af $p_A(\lambda)$.
+
+\eksempel{
+$\lambda^{10} \cdot (\lambda-5)^6 \cdot (\lambda+8)^{10} = 0$
+$ \implies \am(-8) = 10, \am(0) = 10, \am(5) = 6$.
+}
+
+\subsubsection{Geometrisk multiplicitet}
+\[gm(\lambda) = \dim(E_\lambda)\]
+
+\eksempel{
+Givet
+\(
+E_{-3} = \spanop \left\{
+s \cdot 
+\begin{bmatrix}
+1 \\ 0 \\ 0
+\end{bmatrix} + t \cdot 
+\begin{bmatrix}
+    0 \\ 1 \\ 0
+\end{bmatrix}
+\right\}
+\)
+er $\gm(-3) = 2$.
+}
+
+\subsubsection{Generel sammenhæng}
+\[
+1 \le \gm(\lambda) \le \am(\lambda) \le \dim(V)
+\kildetag{Sætning 12.2.4}
+\]
+
 \subsection{Koordinater med hensyn til egenvektor, når kun egenværdi er kendt}
 Hvis der gives to vektorer $\mathbf{v_1}, \mathbf{v_2} \in V$ og en lineær afbildning $f: V \to V$, og det angives at $\mathbf{v_1}$ er en egenvektor tilhørende egenværdien $\lambda_1$ og $\mathbf{v_2}$ er en egenvektor tilhørende egenværdien $\lambda_2$, kan koordinaterne for \(f(2 \cdot v_1 - 4 \cdot v_2)\) med hensyn til basis \(\beta = \{v_1, v_2\}\) findes som følger:
 \[
     (2 \cdot \lambda_1, \quad -4 \cdot \lambda_2)
 \]
 
-\subsection{Analyser egenværdier fra polynomium}
-
-For et givent polynomuim \(\lambda^{10} \cdot (\lambda-5)^6 \cdot (\lambda+8)^{10} = 0\), og med forudsætningen at $\lambda_1 < \lambda_2 < \lambda_3$ kan man finde egenværdier samt algebraisk multiplicitet.
-
-Her er Ses at de tre egenværdier, (værdierne det gør polynomiet lig 0) er: $0, 5, -8$, derfor er:
-\begin{itemize}
-    \item $\lambda_1 = -8$ med $\am(\lambda_1) = 10$
-    \item $\lambda_2 = 0$ med $\am(\lambda_2) = 10$
-    \item $\lambda_3 = 5$ med $\am(\lambda_3) = 6$
-\end{itemize}
-
 \subsection{Find Diagonalmatrix fra egenvektor matrix}
 
 Gives en matrix $A$ \( \begin{bmatrix}
-    a_{11} & a_{12} \\
-    a_{21} & a_{22}
+    a & b \\
+    c & d
 \end{bmatrix}
 \) og en invertibel matrix $Q$ \( \begin{bmatrix}
-    v_{11} & v_{12} \\
-    v_{21} & v_{22}
+    w & x \\
+    y & z
 \end{bmatrix}
 \) bestående af egenvektorerne til $A$ som søjler, kan diagonalmatrix $D$ fines ved at gange hver af søjlerne i $Q$ med $A$, og se hvilket multiplum af søjlen man får.
 
 
 \subsection{Andet}
 
-For en $2 \times 2$ matrix med kendt determinant og en eigenværdi er den anden egenværdi givet ved
+For en $2 \times 2$ matrix med kendt determinant og en egenværdi er den anden egenværdi givet ved
 \[\lambda_2 = \frac{\det(A)}{\lambda_1}.\]
 
 \

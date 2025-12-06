@@ -2,26 +2,22 @@
 \begin{minipage}{0.35\textwidth}
     \[
         \mathbb{F}^{3 \times 1} =
-        \left\{
             \begin{bmatrix}
                 a_{1} \\
                 a_{2} \\
                 a_{3}
                 \end{bmatrix}
             \mid a_{1}, a_{2}, a_{3} \in \mathbb{F}
-        \right\}
     \]
 \end{minipage}
 \hfill
 \begin{minipage}{0.55\textwidth}
     \[
         \mathbb{F}^{1 \times 3} =
-        \left\{
             \begin{bmatrix}
                 a_{1} & a_{2} & a_{3}
             \end{bmatrix}
             \mid a_{1}, a_{2}, a_{3} \in \mathbb{F}
-        \right\}
     \]
 \end{minipage}
 
@@ -31,35 +27,35 @@ Kun defineret hvis begge matricer har samme størrelse.
 
 \[
     \begin{bmatrix}
-        a_{11} & a_{12} \\
-        a_{21} & a_{22}
+        a & b \\
+        c & d
     \end{bmatrix}
     +
     \begin{bmatrix}
-        b_{11} & b_{12} \\
-        b_{21} & b_{22}
+        w & x \\
+        y & z
     \end{bmatrix}
     =
     \begin{bmatrix}
-        a_{11} + b_{11} & a_{12} + b_{12} \\
-        a_{21} + b_{21} & a_{22} + b_{22}
+        a + w & b + x \\
+        c + y & d + z
     \end{bmatrix}
 \]
 
 \[
     \begin{bmatrix}
-        a_{11} & a_{12} \\
-        a_{21} & a_{22}
+        a & b \\
+        c & d
     \end{bmatrix}
     -
     \begin{bmatrix}
-        b_{11} & b_{12} \\
-        b_{21} & b_{22}
+        w & x \\
+        y & z
     \end{bmatrix}
     =
     \begin{bmatrix}
-        a_{11} - b_{11} & a_{12} - b_{12} \\
-        a_{21} - b_{21} & a_{22} - b_{22}
+        a - w & b - x \\
+        c - y & d - z
     \end{bmatrix}
 \]
 
@@ -85,15 +81,15 @@ Kun defineret hvis begge matricer har samme størrelse.
     \[
         k \cdot
         \begin{bmatrix}
-            a_{11} & a_{12} & a_{13} \\
-            a_{21} & a_{22} & a_{23} \\
-            a_{31} & a_{32} & a_{33}
+            a & b & c \\
+            d & e & f \\
+            g & h & i
         \end{bmatrix}
         =
         \begin{bmatrix}
-            k \cdot a_{11} & k \cdot a_{12} & k \cdot a_{13} \\
-            k \cdot a_{21} & k \cdot a_{22} & k \cdot a_{23} \\
-            k \cdot a_{31} & k \cdot a_{32} & k \cdot a_{33}
+            k a & k b & k c \\
+            k d & k e & k f \\
+            k g & k h & k i
         \end{bmatrix}
     \]
 \end{minipage}
@@ -104,19 +100,19 @@ Kun defineret hvis antallet af kolonner i matricen er lig med antallet af række
 
 \[
     \begin{bmatrix}
-        a_{11} & a_{12} & a_{13} \\
-        a_{21} & a_{22} & a_{23}
+        a & b & c \\
+        d & e & f
     \end{bmatrix}
     \cdot
     \begin{bmatrix}
-        b_{1} \\
-        b_{2} \\
-        b_{3}
+        x \\
+        y \\
+        z
     \end{bmatrix}
     =
     \begin{bmatrix}
-        a_{11}b_{1} + a_{12}b_{2} + a_{13}b_{3} \\
-        a_{21}b_{1} + a_{22}b_{2} + a_{23}b_{3}
+        ax + by + cz \\
+        dx + ey + fz
     \end{bmatrix}
 \]
 
@@ -125,18 +121,18 @@ Kun defineret hvis antallet af søjler i den første matrix er lig med antallet 
 
 \[
     \begin{bmatrix}
-        a_{11} & a_{12} \\
-        a_{21} & a_{22}
+        w & x \\
+        y & z
     \end{bmatrix}
     \cdot
     \begin{bmatrix}
-        b_{11} & b_{12} & b_{13} \\
-        b_{21} & b_{22} & b_{23}
+        a & b & c \\
+        d & e & f
     \end{bmatrix}
     =
     \begin{bmatrix}
-        (a_{11}b_{11} + a_{12}b_{21}) & (a_{11}b_{12} + a_{12}b_{22}) & (a_{11}b_{13} + a_{12}b_{23}) \\
-        (a_{21}b_{11} + a_{22}b_{21}) & (a_{21}b_{12} + a_{22}b_{22}) & (a_{21}b_{13} + a_{22}b_{23})
+        (wa + xd) & (wb + xe) & (wc + xf) \\
+        (ya + zd) & (yb + ze) & (yc + zf)
     \end{bmatrix}
 \]
 
@@ -155,7 +151,7 @@ Kun defineret hvis antallet af søjler i den første matrix er lig med antallet 
 \kilde{Sætning 7.1.1}
 
 \subsubsection{Matricer}
-For $\mathbf{A} \in \mathbb{F}^{m \times n}$, $\mathbf{B} \in \mathbb{F}^{n \times l}$ og $\mathbf{C} \in \mathbb{F}^{l \times k}$ gælder:
+%For $\mathbf{A} \in \mathbb{F}^{m \times n}$, $\mathbf{B} \in \mathbb{F}^{n \times l}$ og $\mathbf{C} \in \mathbb{F}^{l \times k}$ gælder:
 
 
 \begin{align*}
@@ -167,35 +163,38 @@ For $\mathbf{A} \in \mathbb{F}^{m \times n}$, $\mathbf{B} \in \mathbb{F}^{n \tim
 \end{align*}
 \kilde{Sætning 7.2.1}
 
-\subsection{Transponering af vektorer}
+\subsection{Transponering}
+\begin{minipage}{0.35\textwidth}
+    \[
+        \begin{bmatrix}
+            a & b & c
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            a \\
+            b \\
+            c
+        \end{bmatrix}^{T}
+    \]
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
 \[
     \begin{bmatrix}
-        a_{1} & a_{2} & a_{3}
-    \end{bmatrix}^{T}
+        a & b & c \\
+        d & e & f \\
+        g & h & i
+    \end{bmatrix}^{\!T}
     =
     \begin{bmatrix}
-        a_{1} \\
-        a_{2} \\
-        a_{3}
+        a & d & g \\
+        b & e & h \\
+        c & f & i
     \end{bmatrix}
 \]
+\end{minipage}
 
-\subsection{Transponering af matricer}
-\[
-    \begin{bmatrix}
-        a_{11} & a_{12} & a_{13} \\
-        a_{21} & a_{22} & a_{23} \\
-        a_{31} & a_{32} & a_{33}
-    \end{bmatrix}^{T}
-    =
-    \begin{bmatrix}
-        a_{11} & a_{21} & a_{31} \\
-        a_{12} & a_{22} & a_{32} \\
-        a_{13} & a_{23} & a_{33}
-    \end{bmatrix}
-\]
-
-For $\mathbf{A} \in \mathbb{F}^{m \times n}$ og $\mathbf{B} \in \mathbb{F}^{n \times l}$ gælder:
+%For $\mathbf{A} \in \mathbb{F}^{m \times n}$ og $\mathbf{B} \in \mathbb{F}^{n \times l}$ gælder:
 
 \begin{itemize}
     \item $(\mathbf{A}^T)^T=\mathbf{A}$
@@ -223,20 +222,20 @@ For en kvadratisk matrix $A$ kan $A^{-1}$ findes ved at bruge rækkeoperationer:
 \;\xrightarrow{\text{rækkeoperationer}}\;
 \bigl[\,I \mid A^{-1}\,\bigr].
 \]
-Hvis venstre side efter reduktion ikke ender som identitetsmatricen, eksisterer $A^{-1}$ ikke (matricen er singulær).
+Kun hvis venstre side ender som identitetsmatricen, eksisterer $A^{-1}$.
 
 \[
     \mathbf{A}=
     \begin{bmatrix}
-        a_{11} & a_{12} \\
-        a_{21} & a_{22}
+        a & b \\
+        c & d
     \end{bmatrix}
     \implies
     \begin{bmatrix}
-        a_{11} & a_{12} & 1 & 0 \\
-        a_{21} & a_{22} & 0 & 1
+        a & b & 1 & 0 \\
+        c & d & 0 & 1
     \end{bmatrix}
-    \xrightarrow{\text{række op.}}
+    \xrightarrow{\text{rref}}
     \begin{bmatrix}
         1 & 0 & x & y \\
         0 & 1 & z & w
@@ -279,134 +278,3 @@ Hvis $\det(A) = 0$ er søjlerne i $\mathbf{A}$ lineært afhængige. Ellers uafh�
 Hvis matricen skabt af vekotrerne som søjler har samme rang som antallet af vektorer, er de lineært uafhængige. Ellers er de lineært afhængige.
 
 \kilde{Sætning 7.1.3}
-
-\newpage
-\section{Determinanter}
-Kun defineret for kvadratiske matricer. \hfill $\det([a]) = a$
-
-\subsection{Determinant af 2×2 og 3×3 matrix}
-\begin{align*}
-    \det
-    \begin{bmatrix}
-        a & b \\
-        c & d
-    \end{bmatrix}
-    &=
-    ad - bc \\
-    \det
-    \begin{bmatrix}
-        a & b & c \\
-        d & e & f \\
-        g & h & i
-    \end{bmatrix}
-    &=
-    aei + bfg + cdh - ceg - bdi - afh
-    \kildetag{Sarrus' regel}
-\end{align*}
-
-\subsection{Determinant af større matricer (Laplace udvikling)}
-\[
-    \det
-    \begin{bmatrix}
-        a_{11} & a_{12} & a_{13} \\
-        a_{21} & a_{22} & a_{23} \\
-        a_{31} & a_{32} & a_{33}
-    \end{bmatrix}
-    =
-    a_{11} \cdot \det \begin{bmatrix}
-        a_{22} & a_{23} \\
-        a_{32} & a_{33}
-    \end{bmatrix} - 
-    a_{12} \cdot \det \begin{bmatrix}
-        a_{21} & a_{23} \\
-        a_{31} & a_{33}
-    \end{bmatrix} +
-    a_{13} \cdot \det \begin{bmatrix}
-        a_{21} & a_{22} \\
-        a_{31} & a_{32}
-    \end{bmatrix}
-\]
-
-
-General formel for en valgfri $i$'te række:
-
-\[
-    \det(\mathbf{A}) = \sum_{j=1}^{n} (-1)^{i+j} \cdot a_{ij} \cdot \det(\mathbf{A}(i;j))
-\]
-
-Generel formel for en valgfri $j$'te kolonne:
-
-\[
-    \det(\mathbf{A}) = \sum_{i=1}^{n} (-1)^{i+j} \cdot a_{ij} \cdot \det(\mathbf{A}(i;j))
-\]
-
-\kilde{Sætning 8.2.1}
-
-\bemærkBig{
-$\mathbf{A}(i;j)$ er \emph{minoren} (matricen) dannet ved at fjerne den $i$'te række og $j$'te kolonne fra matrix $\mathbf{A}$.
-
-Enhver række eller kolonne kan vælges - Brugbart hvis en række eller kolonne indeholder mange nuller.
-}
-
-Man tager altså hvert element i den valgte række eller kolonne, ganger det med determinanten af minoren dannet ved at fjerne den række og kolonne, som elementet befinder sig i, og ganger med $(-1)^{i+j}$ for at tage højde for fortegnet.
-\renewcommand{\arraystretch}{1.3}
-\begin{center}
-    \textbf{Fortegns skema for en $n \times n$ matrix}
-    
-    \begin{tabular}{|c|c|c|c|}
-        \hline
-        $+a_{11}$ & $-a_{12}$ & $+a_{13}$ & $\cdots$ \\
-        \hline
-        $-a_{21}$ & $+a_{22}$ & $-a_{23}$ & $\cdots$ \\
-        \hline
-        $+a_{31}$ & $-a_{32}$ & $+a_{33}$ & $\cdots$ \\
-        \hline
-        $\vdots$  & $\vdots$  & $\vdots$  & $\ddots$ \\
-    \hline
-    \end{tabular}
-\end{center}
-
-
-
-\subsection{Egenskaber ved determinanter}
-Hvis en række eller kolonne er nul, er determinanten $0$. 
-
-\kilde{Lemma 8.1.4}
-
-\
-
-Hvis to rækker eller kolonner er ens, er determinanten $0$.
-
-\kilde{Proposition 8.3.5}
-
-\
-
-Hvis to rækker eller kolonner byttes om, skifter determinanten fortegn.
-
-\kilde{Sætning 8.3.6}
-
-\
-
-Hvis en række eller kolonne ganges med en skalar $k$, ganges determinanten med $k$.
-
-\kilde{Korollar 8.3.2}
-
-\
-
-Hvis et skalar af en række eller kolonne lægges til en anden række eller kolonne, ændres determinanten ikke.
-
-\kilde{Sætning 8.3.7}
-
-\
-
-$\det(A) \ne 0 \iff$ det tilsvarende lineære ligningssystem's eneste løsning er nulvektoren. 
-
-\kilde{Korollar 8.2.6}
-
-\begin{align*}
-    \det (\mathbf{A}^{-1} ) &= \frac{1}{\det(\mathbf{A})} \kildetag{Sætning 8.1.1} \\
-    \text{For diagonalmatricer: } \det(\mathbf{D}) &= \prod_{i=1}^{n} d_{ii} \kildetag{Proposition 8.1.2} \\
-    \text{For trekantsmatricer: } \det(\mathbf{T}) &= \prod_{i=1}^{n} t_{ii} \kildetag{Sætning 8.1.(3/5)} \\
-    \det(A^T) &= \det(A) \kildetag{Korollar 8.2.2} \\
-    \det (\mathbf{A} \cdot \mathbf{B}) &= \det(\mathbf{A}) \cdot \det(\mathbf{B}) \kildetag{Sætning 8.2.3}
-\end{align*}

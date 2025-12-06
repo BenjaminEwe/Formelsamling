@@ -1,24 +1,14 @@
 \section{Udspænding af vektorer}
-\subsection{Generelt}
+En udspænding af vektorer er mængden af alle vektorer der kan dannes ved linearkombinationer af et givent sæt vektorer. (hvor vektorer ganges med $c \in \mathbb{F}$ og lægges sammen)
 
-\[
-    \spanop(v_1, \cdots v_n) = \{ c_1 v_1 + \cdots + c_n v_n \ | \ c_1, \ldots, c_n \in \mathbb{R} \}
-\]
-
-
-For n vektorer \( v_1, v_2, \cdots, v_n \) i et vektorrum \( V \), er spandet af disse vektorer defineret som mængden af alle linearkombinationer af dem:
-\[
-    Span(v_1, v_2, \cdots, v_n) = \left\{ c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n \ | \ \forall c_1, c_2, \ldots, c_n \in \mathbb{R} \right\}
-\]
-
-Hvis en vektor i mængden kan skrives som en linearkombination af de andre vektorer er den lineært afhængig, og kan fjernes uden at ændre udspændingen. Hvis ingen vektorer kan skrives som en linearkombination af de andre, er de lineært uafhængige.
+Hvis en af vektorerne kan skrives some en linearkombination af de andre vektorer, er vektorene lineært afhængige, og denne vektor kan fjernes uden at ændre udspændingen. Ellers er vektorene lineært uafhængige.
 
 \subsection{Ordnet basis for udspænding af vektorer}
 Alle vektorer i en ordent basis er lineært uafhængige. 
 \kilde{Korollar 9.2.2}
 
 \label{sec:ordnet-basis-udspaending}
-\subsubsection{Find ordnet bais for span}
+\subsubsection{Find ordnet basis for udspænding}
 Lav en matrix ud af vektorene
 
 \[
@@ -31,11 +21,12 @@ Lav en matrix ud af vektorene
 \]
 
 Brug rækkeoperationer til at få matrixen på trappeform. 
-For alle søjler med et pivot-element skal den originale vektor på den position med i den ordnede basis.
+For alle søjler med et pivot-element skal den \textbf{originale vektor} på den position med i den ordnede basis.
 
 \kilde{Sætning 9.2.1}
 
-\subsection{Kan en vektor skrives som en linearkombination af andre vektorer?}
+\subsection{Er vektor i udspænding?}
+\label{sec:span}
 
 \subsubsection{Determinant}
 Hvis determinanten af matrixen skabt ved at tilføje den nye vektor som en ekstra søjle er 0, så er vektoren indeholdt i spandet.
@@ -52,7 +43,7 @@ Lav en matrix med vektorerne i spanet og den nye vektor som ekstra søjle:
 \]
 Få matricen på reduceret rækkeform. Hvis den ekstra søjle \textbf{ikke} indeholder et pivot-element, er vektoren indeholdt i udspændingen.
 
-I så fald kan vektoren linearkombinationen aflæses fra søjlen.
+I så fald kan vektorens linearkombinationen aflæses fra søjlen $v_x$
 
 
 \eksempel{
@@ -77,7 +68,7 @@ Her kan aflæses at \(
 \)
 }
 
-\subsection{Find om en en vektor med en ubekendt er i et span}
+\subsection{Vektor med ubekendt i udspænding}
 Lav en matrix med vektorerne og den nye vektor som ekstra søjle:
 \[
     \begin{bmatrix}
@@ -91,33 +82,38 @@ Brug rækkeoperationer til at få matrixen på trappeform. Løs for den ubekendt
 \subsection{Dimensionssætningen}
 For en matrix \( \mathbf{A}^{m \times n} \) ($n$ søjler) gælder det at:
 \[
-    \rho(\mathbf{A}) + \nullop(\mathbf{A}) = n \kildetag{Sætning 9.4.2}
+    \rho(\mathbf{A}) + \dim(\ker(\mathbf{A})) = n \kildetag{Sætning 9.4.2}
 \]
-hvor \( \rho(\mathbf{A}) \) er antal pivoter, aka \textit{søjleranget} af matricen \(\dim(\colsp(\mathbf{A}))\) og \( \nullop(\mathbf{A}) \) er dimensionen af kernen \(\dim(\ker(\mathbf{A}))\).
+$\rho(A) = \dim(\colsp(\mathbf{A})) =$ antal pivoter \hfill $\dim(\ker(\mathbf{A})) = \nullop(A)$
 
 \
 
 Dimensionen er antallet af vektorer i en ordnet basis for rummet.
 
+\subsubsection{Difference mellem vektorer}
+Hvis \(\mathbf{A} \cdot v_1 = \mathbf{A} \cdot v_2\) er \(c \cdot (v_1-v_2)\) i \(\ker(\mathbf{A})\) 
+
+\kilde{Logik}
+
 \subsection{Søjle-rum}
 \label{sec:soejlerum}
 
-Søjlerummet for en matrix \( \mathbf{A} \) er mængden af alle linearkombinationer af søjlerne i \( \mathbf{A} \):
+Mængden af alle linearkombinationer af søjlerne i en matrix.
+
 \[
     \colsp(\mathbf{A}) = \{ \mathbf{A} \cdot \mathbf{v} \ | \ \mathbf{v} \in \mathbb{F}^n \}
 \]
 
 Ordnet basis for søjlerummet kan findes som beskrevet i sektion \ref{sec:ordnet-basis-udspaending}.
 
-
 \subsection{Kernen / Nulrummet af en matrix}
 \label{sec:kerne}
 
 \[ \ker(\mathbf{A}) = \{ \mathbf{v} \in \mathbb{F} \ | \ \mathbf{A} \cdot \mathbf{v} = 0 \} \]
 
-\
-
 Kernen for matrix \textbf{A} findes ved at løse det homogene lineære ligningssystem dannet ved at tilføje en 0-søjle.
+
+\kilde{Korollar 9.2.3}
 
 \eksempel{
     \[
@@ -134,9 +130,13 @@ Kernen for matrix \textbf{A} findes ved at løse det homogene lineære ligningss
     \]
 
     Nu kan vi finde $x_3$ med anden linje, hvor vi udskifter $x_2$ med $i \cdot x_1$:
-    \[
-        2 \cdot x_1 - 2 \cdot (i \cdot x_1) + 2 \cdot x_3 = 0 \Rightarrow 2 \cdot x_1 - 2i \cdot x_1 = -2 \cdot x_3 \Rightarrow x_1 - i \cdot x_1 = -x_3 \Rightarrow x_3 = (i - 1) \cdot x_1
-    \]
+    \begin{align*}
+        2 \cdot x_1 - 2 \cdot (i \cdot x_1) + 2 \cdot x_3 &= 0 \\
+        \implies 2 \cdot x_1 - 2i \cdot x_1 &= -2 \cdot x_3 \\
+        \implies x_1 - i \cdot x_1 &= -x_3 \\
+        \implies (1 - i) \cdot x_1 &= -x_3 \\
+        \implies (i - 1) \cdot x_1 &= x_3
+    \end{align*}
 
     Vi har nu både $x_2$ og $x_3$ udtrykt ved $x_1$, så vi kan skrive løsningen som:
 
@@ -174,27 +174,15 @@ Kernen for matrix \textbf{A} findes ved at løse det homogene lineære ligningss
     \]
 }
 
-
-\kilde{Korollar 9.2.3}
-
 \subsubsection{Ordnet basis for kernen / nulrummet}
-Find kernen som beskrevet ovenfor. Vektorerne der udgør løsningen er også ordnet basis for kernen.
-
-\
+Ovenstående metode giver en ordnet basis for kernen.
 
 Givet vektorer i uordnet kerne kan ordnet basis findes som i sektion \ref{sec:ordnet-basis-udspaending}.
 
 \subsubsection{Er vektor i kernen af en matrix?}
-
-\begin{itemize}
-    \item Hvis \( A \cdot v = 0 \), er vektoren i kernen.
-    \item Hvis \( v \) kan skrives som en linearkombination af basisvektorerne i kernen, er vektoren i kernen.
-\end{itemize}
-
-\subsubsection{Difference mellem vektorer}
-Hvis to vektorer $v_1$ og $v_2$ giver samme resultat i ligningen $\mathbf{A} \cdot v$, så er $v_1 - v_2$ i kernen af $\mathbf{A}$.
-
-Enhver skalar af $v_1+v_2$ er også i kernen af $\mathbf{A}$.
+$v$ er i kernen af matrix $\mathbf{A}$ hvis: \\
+\( \mathbf{A} \cdot v = 0 \) \\
+\( v \) er lineært afhængig med vetktorerne i kernen af \( A \) (se sektion \ref{sec:span})
 
 \subsection{Koordinater med hensyn til ordnet basis}
 Opstil en matrix med basisvektorerne som søjler og vektoren som ekstra søjle:
@@ -209,11 +197,11 @@ Omskriv til trappeform ved rækkeoperationer og løs for skalarerne \( c_1, c_2,
 
 \eksempel{
 
-    Givet vektor \( v = \begin{pmatrix}
+    Givet \( v = \begin{pmatrix}
         5 \\
         7 \\
         4
-    \end{pmatrix} \) og ordnet basis \( B = \left\{ \begin{pmatrix}
+    \end{pmatrix} \), \quad \( \beta = \left\{ \begin{pmatrix}
         1 \\
         1 \\
         0
@@ -225,7 +213,7 @@ Omskriv til trappeform ved rækkeoperationer og løs for skalarerne \( c_1, c_2,
         1 \\
         0 \\
         1
-    \end{pmatrix} \right\} \), kan koordinaterne af \( v \) med hensyn til basisen \( B \) findes ved at løse ligningen:
+    \end{pmatrix} \right\} \), findes \( [v]_\beta \) ved at løse LLS'et:
     \[
         \begin{bmatrix}
             1 & 0 & 1 & \vline & 5 \\
@@ -244,22 +232,17 @@ Omskriv til trappeform ved rækkeoperationer og løs for skalarerne \( c_1, c_2,
             0 & 1 & 0 & \vline & 3 \\
             0 & 0 & 1 & \vline & 1
         \end{bmatrix}
+        \implies
+        [v]_\beta = \begin{pmatrix}
+            4 \\
+            3 \\
+            1
+        \end{pmatrix}
     \]
-    Her ser vi at koordinaterne er \( \begin{pmatrix}
-        4 \\
-        3 \\
-        1
-    \end{pmatrix} \).
-
 }
 
 \subsubsection{Find vektor ud fra koordinater med hensyn til base}
-Givet koordinaterne \( \begin{pmatrix}
-    c_1 \\
-    c_2 \\
-    \vdots \\
-    c_n
-\end{pmatrix} \) og en ordnet basis \( B = \{ b_1, b_2, \ldots, b_n \} \), kan vektoren \( v \) findes ved at beregne:
+Givet \( [v]_\beta = (c_1, c_2, \ldots, c_n)^T \), og \( \beta = \{ b_1, b_2, \ldots, b_n \} \), findes \( v \) ved:
 \[
     v = c_1 \cdot b_1 + c_2 \cdot b_2 + \ldots + c_n \cdot b_n
 \]

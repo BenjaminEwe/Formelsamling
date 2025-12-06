@@ -63,16 +63,20 @@ Et argument $\theta$ + $2k \pi$ for $k \in \mathbb{Z}$ vil være samme argument.
 
 Argumentet i intervallet $]-\pi, \pi]$ kaldes hovedargumentet og skrives $\Arg(z)$.
 
-\subsection{Fra polær til rektangulær form - Eulers formel}
+\subsection{Fra polær til rektangulær form}
+\[
+    z = |z| \cdot \left(\cos(\arg(z)) + \sin(\arg(z)) \cdot i \right) \kildetag{Ligning 4.5}
+\]
+
 \[
     e^{it} = \cos(t) + i \sin(t) \kildetag{Euler's formel}
 \]
 Medfører:
-\begin{align*}
-    e^{-it} &= \cos(t) - i \sin(t) \kildetag{Ligning 4.8} \\
-    \cos(t) &= \frac{e^{it} + e^{-it}}{2} \kildetag{Ligning 4.9} \\
-    \sin(t) &= \frac{e^{it} - e^{-it}}{2i} \kildetag{Ligning 4.9}
-\end{align*}
+\begin{center}
+    $\cos(t) = \frac{e^{it} + e^{-it}}{2}$ \hfill
+    $\sin(t) = \frac{e^{it} - e^{-it}}{2i}$ \hfill
+    \kilde{Ligning 4.9}
+\end{center}
 
 Lad $n \in \mathbb{N}$, da gælder
 \begin{align*}
@@ -114,7 +118,6 @@ Lad $z_1, z_2 \in \mathbb{C} \backslash \{ 0 \}$, så gælder:
 \begin{align*}
     \Re(z) &= |z| \cdot \cos(\arg(z)) \kildetag{Ligning 4.4} \\
     \Im(z) &= |z| \cdot \sin(\arg(z)) \kildetag{Ligning 4.4} \\
-    z &= |z| \cdot \left(\cos(\arg(z)) + \sin(\arg(z)) \cdot i \right) \kildetag{Ligning 4.5} \\
     |z| &= \sqrt{\Re(z)^2 + \Im(z)^2} \kildetag{Ligning 4.6} \\
     z_3 \cdot z_4 &= |z_3 \cdot z_4| \cdot e^{i \cdot (\arg(z_3) + \arg(z_4))}
 \end{align*}
@@ -143,11 +146,11 @@ Givet $e^z = w$ hvor $w, z \in \mathbb{C}$ gælder:
 Den komplekse eksponentialfunktion betegnes ofte som \(\exp(t)= e^t\)
 
 
-\subsection{Polære koordinater}
-
-Talparret $(|z|, \Arg(z))$ kaldes polære koordinater for et komplekst tal $z$.
-
-Hvis et komplekst tal er skrevet \(z = r \cdot \left(\cos(\alpha) + \sin(\alpha) \cdot i \right) \) hvor $r$ er et positivt reelt tal, så er $|z|=r$ og $\arg(z)=\alpha$.
+%\subsection{Polære koordinater}
+%
+%Talparret $(|z|, \Arg(z))$ kaldes polære koordinater for et komplekst tal $z$.
+%
+%Hvis et komplekst tal er skrevet \(z = r \cdot \left(\cos(\alpha) + \sin(\alpha) \cdot i \right) \) hvor $r$ er et positivt reelt tal, så er $|z|=r$ og $\arg(z)=\alpha$.
 
 
 \subsection{Yderligere}
