@@ -15,3 +15,36 @@
     #1
     \end{tcolorbox}%
 }
+
+\definecolor{lightmagenta}{rgb}{0.95,0.7,0.95}
+\newcommand{\note}[1]{%
+    \tcbox[
+        colframe=lightmagenta,
+        boxrule=0.5pt,
+        arc=2pt,
+        left=6pt,
+        right=6pt,
+        top=3pt,
+        bottom=3pt,
+        before upper={\textbf{Do note: }},
+        on line
+    ]
+    {#1}%
+}
+
+\newcommand{\noteBig}[1]{%
+    \begin{tcolorbox}[
+        colframe=lightmagenta,
+        boxrule=0.5pt,
+        arc=2pt,
+        left=6pt,
+        right=6pt,
+        top=6pt,
+        bottom=6pt,
+        before upper={\textbf{Do note: }},
+        before skip=10pt,    % Space before the box
+        after skip=10pt,     % Space after the box
+    ]
+    #1
+    \end{tcolorbox}%
+}

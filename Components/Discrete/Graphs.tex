@@ -19,12 +19,13 @@
 \end{table}
 Multiple edge mean multiple edge between the same pair of vertices. A loop is an edge that connects a vertex to itself.
 
-\subsection{Basic knowledge}
-The sum of the degrees of all vertices is 2 times the number of edges. Therefore the sum is always even.
+\subsection{Degrees and vertices}
 
-This means the number of vertices with odd degree is always even.
-
-The sum of in-degrees is equal to the sum of out-degrees, and both are equal to the number of edges.
+\begin{center}
+    Sum(degrees) = 2 * Number of edges = even \\
+    Count(odd degree vertices) = even \\
+    Sum(in-degrees) = Sum(out-degrees) = Number of edges
+\end{center}
 
 \subsection{Common Graphs}
 \plainBox{
@@ -67,3 +68,271 @@ The sum of in-degrees is equal to the sum of out-degrees, and both are equal to 
     \end{center}
 }
 
+\subsection{Bipartite Graphs}
+A graph that can be split in two subsets, where no items in the same subsets are connected to each other.
+
+All elements in one subset do not need to be connected to all elements in the other subset.
+
+An easy test if a graph is bipartite is to try to color the graph with two colours, where no two connected vertices have the same color.
+
+\plainBox{
+\textbf{Properties of common graphs:}
+
+\emph{Complete graphs} are not bipartite for $n > 2$.
+
+\emph{Cycles} are bipartite if they have an even number of vertices.
+
+\emph{Wheels} are not bipartite.
+
+\emph{n-cubes} are bipartite.
+}
+
+\subsubsection{Complete bipartite graphs}
+A bipartite graph where all vertices in one subset are connected to all vertices in the other subset. Denoted $K_{m,n}$, where $m$ and $n$ are the number of vertices in each subset.
+
+\subsubsection{Matchings}
+A matching $M$ in a graph $G$ is a subset of edges such that no two edges in $M$ share a common vertex. 
+No vertex is neighbour to more than one vertex in the matching.
+
+Vertices at the ends of edges in the matching are said to be \emph{matched}, while vertices not connected to any edge in the matching are \emph{unmatched}.
+
+A \emph{Maximum matching} is a matching that contains the largest possible number of edges.
+
+A matching in a bipartite graph $G=(V,E)$ with bipartition $(V_1,V_2)$ is a \emph{complete matching} from $V_1$ to $V_2$ if every vertex in $V_1$ is a connected.
+
+\note{Not every element in $V_2$ needs to be connected.}
+
+\subsubsection{Necessary and sufficient conditions for complete matching}
+\plainBox{
+    \textbf{Hall's Marriage Theorem}
+
+    The bipartite graph $G=(V,E)$ with bipartition $(V_1,V_2)$ has a complete matching from $V_1$ to $V_2$ $\iff \forall S \subseteq V_1: |N(S)| \geq |S|$,
+
+    where $N(S)$ is the set of all neighbours of vertices in $S$.
+}
+
+\subsection{New graphs}
+
+\plainBox{
+    \subsubsection{Subgraphs}
+
+    Graph $H=(W,F)$ is a subgraph of $G=(V,E)$ if $W \subseteq V$ and $F \subseteq E$.
+
+    $H$ is a \emph{proper subgraph} of $G$ if $H \neq G$.
+}
+Given graph $G=(V,E)$, an \emph{induced subgraph} is a subgraph made by taking all vertices of a subset $W \subseteq V$ and all edges in $E$ that connect to vertices in $W$ on both ends.
+
+\subsubsection{Adding and removing Edges}
+
+The subgraph induced by removing edge $e$ from $G$ is denoted by $G - e = (V,E-\{e\})$.
+
+Likewise, an edge $e$ can be added to $G$ to form $G + e = (V, E \cup \{e\})$.
+
+\subsubsection{Edge Contractions}
+The contraction of edge $e = \{u,v\}$ in graph $G$ is denoted by $G/e$. 
+It is formed by removing $u$ and $v$ from $G$, adding a new vertex $w$, and connecting all neighbours of $u$ and $v$ to $w$. \\
+
+\note{This is not a subgraph of $G$.}
+
+\subsubsection{Removing vertices}
+The subgraph induced by removing vertex $v$ from $G$ is denoted by $G - v = (V-\{v\}, E')$, where $E'$ is the set of edges in $E$ that do not connect to $v$.
+
+\subsubsection{Graph unions}
+The union of graphs $G_1=(V_1,E_1)$ and $G_2=(V_2,E_2)$ is denoted by $G_1 \cup G_2 = (V_1 \cup V_2, E_1 \cup E_2)$. Includes all vertices and edges from both graphs, does not double up on vertices or edges that are in both graphs.
+
+\subsection{Graph representation}
+\subsubsection{Adjacency lists}
+Graphs can be represented as adjacency lists. Example:
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{c|c}
+            Vertex & Neighbours \\
+            \hline
+            A & B, C \\
+            B & A, D \\
+            C & A, D \\
+            D & B, C
+        \end{tabular}
+    \end{center}
+    \caption{Adjacency list of undirected graph A}
+\end{table}
+A directed graph can also be represented with an initial and terminal column. 
+Example (not the same graph as above):
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{c|c|c}
+            Initial Vertex & Terminal Vertex \\
+            \hline
+            A & A,B,C,D \\
+            B & C,D \\
+            C & - \\
+            D & A,C,D
+        \end{tabular}
+    \end{center}
+    \caption{Adjacency list of directed graph B}
+\end{table}
+
+\subsubsection{Adjacency matrices}
+
+Graphs can also be represented as adjacency matrices. 
+Given graph $G$ with $n$ vertices, the adjacency matrix of G $A_G$ is an $n \times n$ matrix where for entry $a_{ij}$, it is 1 if there is an edge from vertex $i$ to vertex $j$, and 0 otherwise.
+Example:
+\begin{table}[H]
+    \[
+        A_G =
+        \begin{bmatrix}
+            0 & 1 & 1 & 0 \\
+            1 & 0 & 0 & 1 \\
+            1 & 0 & 0 & 1 \\
+            0 & 1 & 1 & 0
+        \end{bmatrix}
+    \]
+    \caption{Adjacency matrix of undirected graph A}
+\end{table}
+This is the same as the vertex-neighbour representation above.
+
+\noteBig{There is often no objective way to number the vertices, so adjacency matrices can vary for the same graph. (up to $n!$ matrices)}
+
+Adjacency matrices can also represent multigraphs and pseudographs, where the entries represent the amount of edges. The diagonal represents the amount of loops.
+Example:
+\begin{table}[H]
+    \[
+        A_G =
+        \begin{bmatrix}
+            2 & 3 & 1 & 0 \\
+            3 & 0 & 0 & 1 \\
+            1 & 0 & 1 & 2 \\
+            0 & 1 & 2 & 0
+        \end{bmatrix}
+    \]
+    \caption{Adjacency matrix of a pseudograph C}
+\end{table}
+Here vertex 1 has 2 loops, 3 edges to vertex 2 and 1 edge to vertex 3.
+
+\plainBox{
+    \textbf{Symmetry:}
+    Undirected graphs have symmetric adjacency matrices, directed graphs might not.
+}
+
+Graphs for directed graphs are the same, but $a_{ij}$ represents an edge from vertex $i$ to vertex $j$.
+Example:
+\begin{table}[H]
+    \[
+        A_G =
+        \begin{bmatrix}
+            1 & 1 & 1 & 1 \\
+            0 & 0 & 1 & 1 \\
+            0 & 0 & 0 & 0 \\
+            1 & 0 & 1 & 1
+        \end{bmatrix}
+    \]
+    \caption{Adjacency matrix of directed graph B}
+\end{table}
+\note{If $v_1$ connects to $v_2$, then row $1$, column $2$ is 1.}
+
+\subsubsection{Incidence matrices}
+An incidence matrix represents the connections between vertices and edges.
+Given graph $G$ with $n$ vertices and $m$ edges, the incidence matrix of G $I_G$ is an $n \times m$ matrix where for entry $i_{ij}$, it is 1 if vertex $i$ is connected to edge $j$, and 0 otherwise.
+Example:
+\begin{table}[H]
+    \[
+        I_G =
+        \begin{bmatrix}
+                & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 \\
+            v_1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+            v_2 & 1 & 0 & 1 & 0 & 1 & 0 \\
+            v_3 & 0 & 1 & 1 & 1 & 0 & 0 \\
+            v_4 & 0 & 0 & 0 & 1 & 1 & 1
+        \end{bmatrix}
+    \]
+    \caption{Incidence matrix of undirected graph A}
+\end{table} 
+\note{This only makes sense with numbered edges.}
+
+By looking at a column, you can see which vertices are connected to that edge.
+
+Incidence matrices can also represent multiple edges by having multiple of the same column, and loops by having a column with only one 1 in it.
+
+\subsection{Isomorphism}
+An isomorphism is a one-to-one function between the vertex sets of two graphs that preserves adjacency.
+Two graphs $G$ and $H$ are isomorphic if there exists an isomorphism between them. This means that just by moving vertices and edges around, the two graphs can be made identical.
+
+To determine that two graphs \textbf{are not} isomorphic, you can check:
+\begin{itemize}
+    \item Different number of vertices
+    \item Different number of edges
+    \item Different degree sequences
+    \item Different properties (e.g. bipartiteness, presence of cycles)
+    \item Different subgraph structures (e.g. one has a complete subgraph that the other lacks)
+    \item Different paths between vertices (e.g. one has a path length 3 passing through vertices of degrees 2,3,2, while the other does not)
+    \item Different connectedness (e.g. one is connected, the other is not, or for directed graphs, one is strongly connected while the other is not)
+\end{itemize}
+
+\subsection{Connectedness}
+A path is a sequence of edges that connects a sequence of vertices. For simple graphs, they can also be described as a sequence of vertices. Paths can only connect neighbours.
+
+A path is simple if no edges are repeated.
+A path is a cycle if it starts and ends at the same vertex.
+
+\subsubsection{Undirected graphs}
+An undirected graph is connected if there is a path between every pair of vertices.
+
+A connected component is a maximal connected subgraph of an undirected graph.
+
+\subsubsection{Directed graphs}
+A directed graph is strongly connected if there is a directed path from every vertex to every other vertex.
+
+A directed graph is weakly connected if the underlying undirected graph is connected.
+
+A strong component is a maximal strongly connected subgraph of a directed graph.
+
+\subsection{Disconnecting graphs}
+A \emph{cut-vertex} is a vertex that, when removed along with its incident edges, increases the number of connected components of the graph. Graphs without cut-vertices are called nonseparable.
+
+A \emph{cut-edge} (or \emph{bridge}) is an edge that, when removed, increases the number of connected components of the graph.
+
+A \emph{vertex cut} or \emph{separating set} is a set of vertices that, when removed along with their incident edges, increases the number of connected components of the graph.
+
+An \emph{edge cut} is a set of edges that, when removed, increases the number of connected components of the graph.
+
+\subsubsection{Relation}
+The \emph{connectivity} $\kappa(G)$ of a graph $G$ is the size of the smallest vertex cut.
+
+The \emph{edge-connectivity} $\lambda(G)$ of a graph $G$ is the size of the smallest edge cut.
+
+\[
+    \kappa(G) \leq \lambda(G) \leq \min_{v \in V} (\deg(v))
+\]
+
+Only complete graphs have $\kappa(G) = \lambda(G) = \min_{v \in V} (\deg(v)) = n-1$.
+
+Only disconnected graphs have $\kappa(G) = \lambda(G) = \min_{v \in V} (\deg(v)) = 0$.
+
+\subsection{Amount of paths between vertices and shortest distance}
+Given adjacency matrix $A$ of graph $G$, the entry $a_{ij}$ in matrix $A^k$ gives the amount of different paths of length $k$ from vertex $i$ to vertex $j$.
+
+The shortest distance $d(u,v)$ between vertices $u$ and $v$ is the smallest value of $k$ for which $a_{uv} \ne 0$ in $A^k$.
+
+\subsection{Euler paths}
+An \emph{Euler path} is a path that uses every edge in a graph exactly once.
+
+An \emph{Euler circuit} is an Euler path that starts and ends at the same vertex.
+
+A connected multigraph has an Euler circuit $\iff$ all vertices have even degree.
+
+A connected multigraph has an Euler path $\iff$ exactly two vertices have odd degree.
+
+\subsection{Hamilton Paths}
+A \emph{Hamilton path} is a path that visits every vertex in a graph exactly once.
+
+A \emph{Hamilton circuit} is a Hamilton path that starts and ends at the same vertex.
+
+\textbf{Dirac's Theorem}: If $G$ is a simple graph with $n$ vertices ($n \geq 3$) such that the degree of every vertex in $G$ is at least $n/2$, then $G$ has a Hamilton circuit.
+
+\textbf{Ore's Theorem}: If $G$ is a simple graph with $n$ vertices ($n \geq 3$) such that for every pair of non-adjacent vertices $u$ and $v$, $\deg(u) + \deg(v) \geq n$, then $G$ has a Hamilton circuit.
+
+If a graph has a vertex of degree 1, it cannot have a Hamilton circuit.
+
+2 edges of every vertex must be part of any Hamilton circuit.
+
+Complete graphs $K_n$ with $n \geq 3$ have Hamilton circuits.

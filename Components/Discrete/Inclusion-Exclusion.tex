@@ -1,11 +1,10 @@
 
 \section{Inclusion-Exclusion}
-\subsection{General}
-\subsubsection{For n=2}
+\subsubsection{2 sets}
 \[ |A \cup B| = |A| + |B| - |A \cap B| \]
-\subsubsection{For n=3}
+\subsubsection{3 sets}
 \[ |A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C| \]
-\subsubsection{For $n=4$}
+\subsubsection{4 sets}
 \begin{align*}
     |A \cup B \cup C \cup D|
     =& |A| + |B| + |C| + |D| \\
@@ -48,4 +47,15 @@ A derangement is a permutation that leaves no object in its original position.
 The amount of derangements of $n$ objects, denoted by \(!n\), is given by:
 \[
     D_n = n! \left[ 1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \cdots + (-1)^{n}\frac{1}{n!} \right]
+\]
+
+\subsection{Binomial expanesions}
+The binomial expansion of \((x + y)^n\) is given by:
+\[
+    (x + y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k
+\]
+
+Example with coefficients:
+\[
+    (2x^2-3y^3)^8 = \sum_{k=0}^{8} \binom{8}{k} (2x^2)^{8-k} (-3y^3)^k
 \]
