@@ -91,14 +91,15 @@
 
 % For hidden sections
 \newcommand{\hiddensection}[1]{%
-    \refstepcounter{section}% advance counter
+    \refstepcounter{section}%
     \sectionmark{#1}%
-    \addcontentsline{toc}{section}{#1}%
+    \addcontentsline{toc}{section}{\protect\sectionSize #1}%
 }
+
 \newcommand{\hiddensubsection}[1]{%
-    \refstepcounter{subsection}% advance counter
+    \refstepcounter{subsection}%
     \sectionmark{#1}%
-    \addcontentsline{toc}{subsection}{#1}%
+    \addcontentsline{toc}{subsection}{\protect\subsecSize #1}%
 }
 % /For hidden sections
 

@@ -1,0 +1,32 @@
+\usepackage{titletoc}
+\usepackage{multicol}
+
+\let\sectionSize\small
+\let\subsecSize\footnotesize
+
+\renewcommand{\contentsname}{\doctitle} % Change "Contents" title
+\titlecontents{section}               % Section
+    [0em]                             % Left
+    {\sectionSize \vspace{0.4em}}                  % Above code
+    {\sectionSize \bfseries \thecontentslabel\quad} % Numbered format
+    {\sectionSize \bfseries \thecontentslabel}      % Numberless format
+    {\sectionSize \dotfill \thecontentspage}    % Filler
+    []                                % Separator
+\titlecontents{subsection}            % Section
+    [0em]                             % Left
+    {}                                % Above code
+    {\subsecSize}                          % Numbered format
+    {}                                % Numberless format
+    {}                                % Filler
+    []                                % Separator
+
+\usepackage[hidelinks]{hyperref}
+
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{
+    \newgeometry{left=2cm,right=1cm,top=1cm,bottom=1cm}
+    \begin{multicols}{2}
+    \oldtableofcontents
+    \end{multicols}
+    \restoregeometry
+}

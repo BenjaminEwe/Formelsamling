@@ -1,33 +1,38 @@
 \section{Lineære Ligningssystemer}
 
-\begin{tabular}{r | l}
-    LLS & Lineært lignings-system \\
-    Hom.LLS & Homogent lineært ligningssystem \\
-    Inhom.LLS & Inhomogent lineært ligningssystem \\
-\end{tabular}
+\begin{center}
+    \begin{tabular}{r | l}
+        LLS & Lineært lignings-system \\
+        Hom.LLS & Homogent lineært ligningssystem \\
+        Inhom.LLS & Inhomogent lineært ligningssystem \\
+    \end{tabular}
+
+    $A =$ koefficientmatrix \hfill $[A|b] =$ totalmatrix \hfill $\rho(A) =$ rang \hfill $n =$ antal variable
+\end{center}
 
 \subsection{Rækkeoperationer}
 Rækkeoperationer ændrer ikke løsningen. For $k \in \mathbb{F}$:
 
-\begin{tabular}{r|l}
-    \textbf{Byt to rækker om} & $R_i \leftrightarrow R_j$ \\
-    \textbf{Gange en række med en skalar} & $R_i = R_i \cdot k$ \\
-    \textbf{Læg en række til en anden række} & $R_i = R_i + k \cdot R_j$ \\
-\end{tabular}
+\begin{center}
+    \begin{tabular}{r|l}
+        \textbf{Byt to rækker om} & $R_i \leftrightarrow R_j$ \\
+        \textbf{Gange en række med en skalar} & $R_i = R_i \cdot k$ \\
+        \textbf{Læg en række til en anden række} & $R_i = R_i + k \cdot R_j$ \\
+    \end{tabular}
+\end{center}
 
 \subsection{Har Lineært ligningssystem en løsning?}
-Hvis $\rho(A) = \rho([A|b])$, har det mindst en løsning.
+
+\textbf{Generelt:} $\rho(A) = \rho([A|b]) \iff$ LLS'et har løsning(er).
 \kilde{Korollar 6.4.3}
 
-\subsection{Løs LLS}
-\bemærk{Hvis $\rho(A) < \rho([A|b])$, har LLS'et ingen løsning.}
+\textbf{Homogent} altid 0-løsningen, $\rho(A) \ne n \implies \infty$ løsninger.
+\kilde{Korollar 6.4.5}
 
-\
-
-Dette virker for både Hom.LLS og InHom.LLS.
+\subsection{Løs LLS (Hom og InHom)}
 
 \eksempel{
-Opstil totalmatricen for LLS'et på redueceret trappeform.
+Isolér pivoterne af systemet fra totalmatricen på RREF.
 
 \[
     \begin{bmatrix}
@@ -35,11 +40,7 @@ Opstil totalmatricen for LLS'et på redueceret trappeform.
         0 & 1 & 4 & 0 & 4 \\
         0 & 0 & 0 & 1 & 5 \\
     \end{bmatrix}
-\]
-
-Omskriv det til et LS og isoler pivoterne:
-
-\[
+    \implies
     \begin{cases}
         x_1 + 6 x_3 &= 3 \\
         x_2 + 4 x_3 &= 4 \\
@@ -53,13 +54,13 @@ Omskriv det til et LS og isoler pivoterne:
     \end{cases}
 \]
 
-$x_3$ er nu fri variabel. Vi giver den en parameter \(t \in \mathbb{F}\):
+$x_3$ er nu fri variabel. Vi giver den en parameter \(t_1 \in \mathbb{F}\):
 
 \[
     \begin{cases}
         x_1 &= 3 - 6 \cdot t \\
         x_2 &= 4 - 4 \cdot t \\
-        x_3 &= t \\
+        x_3 &= t_1 \\
         x_4 &= 5
     \end{cases}
     \implies
@@ -76,31 +77,23 @@ $x_3$ er nu fri variabel. Vi giver den en parameter \(t \in \mathbb{F}\):
         0 \\
         5 \\
     \end{bmatrix}
-    + t \cdot
+    + t_1 \cdot
     \begin{bmatrix}
         -6 \\
         -4 \\
         1 \\
         0 \\
     \end{bmatrix}
-    \quad t \in \mathbb{F}
+    \quad t_1 \in \mathbb{F}
 \]
 }
+Sættes alle $t_i = 0$ fås en \textbf{partikulær løsning}. 
 
-Sættes alle parametre til $0$ findes en partikulær løsning til LLS'et. \\
-Fjernes vektoren der ikke ganges med en parameter, fås den generelle løsning til det tilsvarende Hom.LLS.
+Fjernes vektoren der ikke ganges med en parameter, fås den generelle \textbf{løsning til det tilsvarende Hom.LLS}.
 
-\subsection{Har Hom.LLS en løsning?}
-Alle har nul-løsningen. Hvis koefficientmatricen har en rang mindre end antallet af variable, har systemet også andre løsninger.
 
-\kilde{Korollar 6.4.5}
+\paragraph{Tilsvarende Hom.LLS}
+Findes ved at sætte sidste søjle i totalmatricen $=0$.
 
-\subsubsection{Tilsvarende homogent lineært ligningssystem}
-Man tager et InHom.LLS og ændrer sidste søjle ($b$ søjlen) til $0$
-
-\subsubsection{Alle løsninger til et inhomogent lineært ligningssystem}
-Givet en partikulær løsning $v_p$ til et InHom.LLS og en løsning $v_h$ til det tilsvarende Hom.LLS, er samtlige løsninger til det InHom.LLS givet ved:
-\[
-    v = v_p + c \cdot v_h
-\]
-For \( c \in \mathbb{F} \)
+\paragraph{Alle løsninger til et InHom.LLS}
+Givet partikulæs løsning til InHom.LLS $v_p$ og løsning til tilsvarende Hom.LLS $v_h$ er det alle $v_p + c \cdot v_h$ for $c \in \mathbb{F}$.

@@ -1,5 +1,7 @@
 ## Custom
 generated/
+.vscode/
+.github/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

@@ -1,0 +1,18 @@
+\usepackage{titletoc}
+\renewcommand{\contentsname}{\doctitle} % Change "Contents" title
+\titlecontents{section}               % Section
+    [0em]                             % Left
+    {\vspace*{\baselineskip}}         % Above code
+    {\bfseries\thecontentslabel\quad} % Numbered format
+    {\bfseries\thecontentslabel}      % Numberless format
+    { \textit{S. \thecontentspage}}         % Filler
+    []                                % Separator
+\titlecontents*{subsection}           % Section
+    [0em]                             % Left
+    {\space}                          % Above code
+    {\thecontentslabel~}              % Numbered format
+    {}                                % Numberless format
+    {}                                % Filler
+    [\hspace{3em}]                    % Separator
+
+\usepackage[hidelinks]{hyperref}

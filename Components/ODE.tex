@@ -17,22 +17,15 @@ hvor $a(t), q(t)$ er funktioner i $t$ og $q(t)$ er en \emph{forcing function} er
 Hvis $q(t) = 0$, er ODE'en homogen.
 
 \subsection{Er differentialligningen lineær?}
-En differentialligning med $f(t)$ er lineær hvis:
-\begin{enumerate}
-    \item Ikke indeholder funktioner som $sin(f(t))$, $e^{f(t)}$, $f(t)^2$, $f(t) \cdot f'(t)$ osv.
-    \item Hver afledede af $f(t)$ optræder kun i første potens.
-    \item mm.
-\end{enumerate}
+\label{sec:diff.lineær}
+En differentialligning med $f(t)$ er lineær hvis den kan skrives på formen:
+\[
+f'(t) + a(t) \cdot f(t) = q(t)
+\]
 
+Hver af $f^{(n)}(t)$ skal have eksponent $1$ og må ikke ganges med andre $f^{(n)}(t)$.
 
-\eksempel{
-Følgende er lineære.
-\begin{align*}
-    f'(t) + 2 f(t) &= 0 \\
-    f'(t) + (t+1) \cdot f(t) +4 &= t^3 -2t \\
-    f'(t) + t^2 \cdot (f(t)+4) &= 0
-\end{align*}
-}
+Ingen af $f^{(n)}(t)$ må være i en funktion som $\sin(\cdot)$, $e^{(\cdot)}$ osv.
 
 \subsection{Find førstegradspolynomium}
 Givet en lineær førsteordens ODE og viden at løsningen er et polynomium af første grad, $f(t) = c_1 t + c_0$, kan man finde konstanterne $c_1$ og $c_0$ ved at indsætte $f(t)$ i ODE'en og løse for konstanterne.
@@ -56,10 +49,14 @@ Givet en matrix $A$ og en ODE på formen
 Kan løsningen findes ved at finde egenværdierne og egenvektorerne for matrixen $A$.
 Da kan løsningen skrives som
 \[
-c_1 e^{\lambda_1 t} v_1 + c_2 e^{\lambda_2 t} v_2
+\begin{split}
+    f_1(t) \\
+    f_2(t) \\
+\end{split}
+= c_1 e^{\lambda_1 t} v_1 + c_2 e^{\lambda_2 t} v_2
 \]
 
-\subsection{Løs for betingelsesværdier}
+\subsection{Løs for begyndelsesværdier}
 Givet den generelle løsning til en ODE med konstanter $c_1, c_2, \ldots, c_n$ og begyndelsesværdier
 \[
 \begin{bmatrix}
@@ -243,4 +240,18 @@ Den generelle (reelle) løsning er da:
 \[
 f(t) = c_1 e^{\frac{-a_1}{2} t} \cos\left(\frac{\sqrt{|D|}}{2} t\right) + c_2 e^{\frac{-a_1}{2} t} \sin\left(\frac{\sqrt{|D|}}{2} t\right)
 \]
+Eller
+\[
+f(t) = e^{\frac{-a_1}{2} t} \left( c_1 \cos\left(\frac{\sqrt{|D|}}{2} t\right) + c_2 \sin\left(\frac{\sqrt{|D|}}{2} t\right) \right)
+\]
 
+\subsection{Lineartitet}
+
+En ODE som:
+\[
+\begin{split}
+    f_1'(t) = f_1(t) + 2 f_2(t) \\
+    f_2'(t) = 2 f_1(t) + f_2(t) \\
+\end{split}
+\]
+Er lineær, da hver af ligningerne er lineær som beskrevet i sektion \ref{sec:diff.lineær}.
