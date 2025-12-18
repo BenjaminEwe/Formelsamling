@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IndledendeProgrammering.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="indledende-programmering-noter">Indledende programmering Noter</h1>
+<h2 id="naming-conventions">Naming conventions</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class</td>
+<td>PascalCase</td>
+<td>&quot;myClass&quot;</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>camelCase</td>
+<td>&quot;myMethod&quot;</td>
+</tr>
+<tr>
+<td>Variable</td>
+<td>camelCase</td>
+<td>&quot;myVariable&quot;</td>
+</tr>
+<tr>
+<td>Constant</td>
+<td>SCREAMING_SNAKE_CASE</td>
+<td>&quot;THIS_IS_MY_CONSTANT&quot;</td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code><div><span class="hljs-comment">// Note, for the class myClass, filename must be myClass.java</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">myClass</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String MY_CONSTANT = <span class="hljs-string">"I can't be changed"</span>; 
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">myMethod</span><span class="hljs-params">()</span> </span>{
+        String myVariable = <span class="hljs-string">"Hello"</span>;
+        System.out.println(myVariable + <span class="hljs-string">""</span> + MY_CONSTANT);
+    }
+}
+</div></code></pre>
+<h2 id="comments">Comments</h2>
+<pre class="hljs"><code><div><span class="hljs-comment">// This is a one-line comment</span>
+
+<span class="hljs-comment">/* This is a
+multi-line
+Comment */</span>
+</div></code></pre>
+<h2 id="data-types">Data types</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Signed Integers</strong></td>
+<td>Integers within a specific range</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>8-bit signed integer (-128 to 127)</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16-bit signed integer (−32.768 to 32.767)</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32-bit signed integer ($−2^{31}$ to $2^{31}-1$)</td>
+</tr>
+<tr>
+<td>long</td>
+<td>64-bit signed integer ($−2^{63}$ to $2^{63}-1$)</td>
+</tr>
+<tr>
+<td><strong>Floats</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>float</td>
+<td>Single-precision floating point</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double-precision floating point</td>
+</tr>
+<tr>
+<td><strong>Others</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>True/False or 1/0 toggle</td>
+</tr>
+<tr>
+<td>char</td>
+<td>A single character (UTF16, no emojis)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="integer-operators">Integer Operators</h3>
+<table>
+<thead>
+<tr>
+<th>Navn</th>
+<th>Symbol</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Addition</td>
+<td>+</td>
+<td>2+2=4</td>
+</tr>
+<tr>
+<td>Subtraction</td>
+<td>-</td>
+<td>2-2=0</td>
+</tr>
+<tr>
+<td>Multiplication</td>
+<td>*</td>
+<td>2*3=6</td>
+</tr>
+<tr>
+<td>Division</td>
+<td>/</td>
+<td>3/2=1 3./2=1.5</td>
+</tr>
+<tr>
+<td>Exponent</td>
+<td>Math.pow(a,b)</td>
+<td>Math.pow(2, 3)=8</td>
+</tr>
+<tr>
+<td>Modulo</td>
+<td>%</td>
+<td>3%2=1</td>
+</tr>
+</tbody>
+</table>
+<h4 id="order-of-operations">Order of operations</h4>
+<p>Just use plenty of parentheses to make sure everything works correctly.</p>
+<ol>
+<li>Functions like <code>Math.pow</code></li>
+<li>Multiplication/Division</li>
+<li>Addition/subtraction</li>
+</ol>
+<h3 id="signed-integer-overflow">Signed integer overflow</h3>
+<p>When going over or under the range, the number will wrap around.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">byte</span> a = <span class="hljs-number">127</span>;
+System.out.println(a+<span class="hljs-number">1</span>);
+<span class="hljs-comment">// Prints -128</span>
+</div></code></pre>
+<h3 id="converting-integers">Converting integers</h3>
+<p>Integers can be cast:</p>
+<pre class="hljs"><code><div>(<span class="hljs-keyword">int</span>) <span class="hljs-number">4.2</span> <span class="hljs-comment">// returns 4</span>
+(<span class="hljs-keyword">double</span>) <span class="hljs-number">4</span> <span class="hljs-comment">// returns 4.0</span>
+</div></code></pre>
+<h3 id="string">String</h3>
+<p>Not a primitive data type, therefore written as <code>String</code> not <code>string</code></p>
+<pre class="hljs"><code><div>System.out.println(<span class="hljs-string">"\t"</span>); <span class="hljs-comment">// tab character</span>
+System.out.println(<span class="hljs-string">"\n"</span>); <span class="hljs-comment">// newline</span>
+System.out.println(<span class="hljs-string">"\""</span>); <span class="hljs-comment">// quotation mark</span>
+System.out.println(<span class="hljs-string">"\\"</span>); <span class="hljs-comment">// backslash</span>
+</div></code></pre>
+<h4 id="converting-types-to-string">Converting types to String</h4>
+<pre class="hljs"><code><div><span class="hljs-comment">// Integer, all these do the same</span>
+Integer.toString(integer);
+integer + <span class="hljs-string">""</span>;
+String.valueOf(integer);
+
+<span class="hljs-comment">// Double</span>
+Double.toString(<span class="hljs-keyword">double</span>);
+<span class="hljs-keyword">double</span> + <span class="hljs-string">""</span>;
+String.valueOf(<span class="hljs-keyword">double</span>)
+</div></code></pre>
+<h4 id="comparing-strings">Comparing strings</h4>
+<pre class="hljs"><code><div>String s = <span class="hljs-string">"Hello"</span>
+<span class="hljs-keyword">if</span> (s == <span class="hljs-string">"Hello"</span>) {
+    System.out.println(<span class="hljs-string">"Does not work"</span>);
+}
+<span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"Hello"</span>)) {
+    System.out.println(<span class="hljs-string">"This works!"</span>);
+}
+<span class="hljs-keyword">if</span> (s.equalsIgnoreCase(<span class="hljs-string">"hELlO"</span>)) {
+    System.out.println(<span class="hljs-string">"This also works!"</span>);
+}
+</div></code></pre>
+<h3 id="char">Char</h3>
+<p>a <code>char</code> is saved as a number, typically written with single quotes.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">char</span> myChar = <span class="hljs-string">'a'</span>;
+<span class="hljs-keyword">char</span> backslash = <span class="hljs-string">'\\'</span>;
+<span class="hljs-keyword">char</span> quote = <span class="hljs-string">'\''</span>;
+
+System.out.println(myChar); <span class="hljs-comment">// prints a</span>
+System.out.println(myChar+<span class="hljs-number">1</span>); <span class="hljs-comment">// prints 98</span>
+System.out.println(myChar+quote) <span class="hljs-comment">// prints 136</span>
+</div></code></pre>
+<p>To see what number a char becomes, see ASCII Table.</p>
+<h3 id="floats">Floats</h3>
+<p><code>double</code> and <code>float</code> are floating point, so the math is a bit weird. In general, it is a good idea to round them off if you need to compare them.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Note, these are the same calculations in different orders</span>
+<span class="hljs-keyword">double</span> foo = <span class="hljs-number">0.01</span> + <span class="hljs-number">0.05</span> + <span class="hljs-number">0.10</span> + <span class="hljs-number">0.25</span>; <span class="hljs-comment">// foo=0.41000000000000003</span>
+<span class="hljs-keyword">double</span> bar = <span class="hljs-number">0.25</span> + <span class="hljs-number">0.10</span> + <span class="hljs-number">0.05</span> + <span class="hljs-number">0.01</span>; <span class="hljs-comment">// bar=0.41</span>
+
+System.out.println(<span class="hljs-number">0.1</span> + <span class="hljs-number">0.2</span> == <span class="hljs-number">0.3</span>) <span class="hljs-comment">// prints false, answer is 0.30000000000000004</span>
+
+<span class="hljs-comment">// check if two numbers are within 0.001 of each other</span>
+<span class="hljs-keyword">if</span> (Math.abs(foo - bar) &lt; <span class="hljs-number">0.001</span>) {
+    System.out.println(<span class="hljs-string">"This works!"</span>);
+}
+</div></code></pre>
+<h3 id="assignment-operators">Assignment operators</h3>
+<p>Simpler way of modifying an existing value</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> x = <span class="hljs-number">4</span>;
+
+x +=<span class="hljs-number">1</span>; <span class="hljs-comment">// x=5</span>
+x -=<span class="hljs-number">1</span>; <span class="hljs-comment">// x=4</span>
+x *=<span class="hljs-number">2</span> <span class="hljs-comment">// x=8</span>
+x /=<span class="hljs-number">2</span> <span class="hljs-comment">// x=4</span>
+</div></code></pre>
+<h3 id="incrementing">Incrementing</h3>
+<p>Note: just always use the ones with symbols on the right.</p>
+<pre class="hljs"><code><div>x++ <span class="hljs-comment">// adds 1</span>
+++x <span class="hljs-comment">// adds 1</span>
+
+x-- <span class="hljs-comment">// subtracts 1</span>
+--x <span class="hljs-comment">// subtracts 1</span>
+</div></code></pre>
+<h2 id="printing-to-console">Printing to console</h2>
+<pre class="hljs"><code><div>System.out.print(<span class="hljs-string">"Does not go to next line"</span>);
+System.out.println(<span class="hljs-string">"Prints and goes to next line"</span>);
+System.out.println(<span class="hljs-string">""</span><span class="hljs-string">"
+This allows
+for printing
+multiple lines
+easily
+                    it also trims leading spaces!
+"</span><span class="hljs-string">""</span>);
+</div></code></pre>
+<h3 id="printf">printf</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> myInt = <span class="hljs-number">3</span>
+<span class="hljs-keyword">float</span> myFloat = <span class="hljs-number">4</span>
+System.out.printf(<span class="hljs-string">"these are the values: %d %f \n"</span>, myInt, myFloat)
+</div></code></pre>
+<p>Note that printf does not automatically print a newline, therefore the included <code>\n</code>.</p>
+<p>The commands for the formatting are written like:</p>
+<pre class="hljs"><code><div>d = <span class="hljs-keyword">int</span>, f = <span class="hljs-keyword">double</span>, s = String, b = <span class="hljs-keyword">boolean</span>, etc.
+
+- = left-alligned, + = positive numbers prefixed with +, [a space] = prefix positive numbers with a space, <span class="hljs-number">0</span> = pad numbers with zeroes on the left
+
+numbers = width
+
+.numbers = how many decimals to include
+
+<span class="hljs-comment">// Examples</span>
+
+%<span class="hljs-number">8</span>d    = <span class="hljs-keyword">int</span>, right alligned, in <span class="hljs-number">8</span>-space-wide-field
+%<span class="hljs-number">12.4f</span> = <span class="hljs-keyword">double</span>, right alligned, in <span class="hljs-number">12</span>-space-wide-field, rounded to <span class="hljs-number">4</span> decimals
+&amp;-<span class="hljs-number">6</span>d   = <span class="hljs-keyword">int</span>, left alligned, <span class="hljs-number">6</span>-space-wide-field
+%-<span class="hljs-number">9</span>s   = String, left alligned, <span class="hljs-number">9</span>-space-wide-field 
+</div></code></pre>
+<h2 id="if-statements">If statements</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (test1 &amp;&amp; test2) {
+    <span class="hljs-comment">// this requires both are true</span>
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (test1 || test1) {
+    <span class="hljs-comment">// this requires at least one is true </span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// this runs if no other runs</span>
+}
+
+String input = <span class="hljs-string">"Hello"</span>;
+<span class="hljs-keyword">int</span> a = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">switch</span>(input) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"Hello"</span>:
+        a=<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-comment">// Cases without break roll over to the next one down</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"John"</span>:
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"Josephine"</span>:
+        a=<span class="hljs-number">4</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-comment">// Default is used when no others match</span>
+    <span class="hljs-keyword">default</span>:
+        a=-<span class="hljs-number">1</span>;
+}
+</div></code></pre>
+<h3 id="ternary-statements">Ternary statements</h3>
+<p>Ternary operators allow for doing an if/else check on values. Ternary operators must return values.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Assigns myValue = inputValue unless inputValue &lt; 0, instead assigning myValue = 0</span>
+Int myValue = inputValue &lt; <span class="hljs-number">0</span> ? <span class="hljs-number">0</span> : inputValue;
+
+<span class="hljs-comment">// Prints "Hello World" if myValue is 5, prints "Hello Everyone!" otherwise.</span>
+System.out.pritnln(<span class="hljs-string">"Hello "</span> + (myValue == <span class="hljs-number">5</span> ? <span class="hljs-string">"World"</span> : <span class="hljs-string">"Everyone!"</span>))
+</div></code></pre>
+<p>Ternary operators cen be stacked, but this should almost always be avoided</p>
+<pre class="hljs"><code><div>String x = y == <span class="hljs-number">4</span> ? <span class="hljs-string">"A"</span> : (y == <span class="hljs-number">3</span> ? <span class="hljs-string">"B"</span> : <span class="hljs-string">"C"</span>)
+</div></code></pre>
+<h2 id="loops">Loops</h2>
+<pre class="hljs"><code><div><span class="hljs-comment">// declares i, checks i &lt; myVariable, if it is, executes block and adds 1 to i</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; myVariable; i++) {
+    System.out.println(i);
+    <span class="hljs-keyword">if</span> (i == <span class="hljs-number">3</span>) {
+        <span class="hljs-keyword">break</span>;
+    }
+}
+
+<span class="hljs-comment">// Keeps executing as long as the given condition is true</span>
+<span class="hljs-keyword">boolean</span> under3 = <span class="hljs-keyword">true</span>;
+<span class="hljs-keyword">while</span> (under3) {
+    System.out.println(i);
+    <span class="hljs-keyword">if</span> (i == <span class="hljs-number">3</span>) {
+        under3 = <span class="hljs-keyword">false</span>;
+    }
+} 
+
+<span class="hljs-comment">// Like while loop, but always executes once before checking condition</span>
+<span class="hljs-keyword">do</span> {
+    System.out.println(i);
+    <span class="hljs-keyword">if</span> (i == <span class="hljs-number">3</span>) {
+        under3 = <span class="hljs-keyword">false</span>;
+    }
+}
+<span class="hljs-keyword">while</span> (under3)
+</div></code></pre>
+<h3 id="fenceposting">Fenceposting</h3>
+<p>To print a fencepost of a given length, we need some extra work.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fenceBuilder</span><span class="hljs-params">(<span class="hljs-keyword">int</span> length)</span> </span>{
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; length; i++) {
+        System.out.print(<span class="hljs-string">"|--"</span>);
+    }
+}
+<span class="hljs-comment">// For fenceBuilder(4) this would print |--|--|--|-- which is missing its last post.</span>
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">betterFenceBuilder</span><span class="hljs-params">(<span class="hljs-keyword">int</span> length)</span> </span>{
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; length; i++) {
+        System.out.print(<span class="hljs-string">"|--"</span>);
+    }
+    System.out.print(<span class="hljs-string">"|"</span>);
+}
+<span class="hljs-comment">// For betterFenceBuilder(4) this would print |--|--|--|--|</span>
+</div></code></pre>
+<p>There are many way to solve fenceposting problems, but usually you just need to make some redundant code outside the loop</p>
+<h3 id="short-circuit-evaluation">Short-circuit evaluation</h3>
+<p>Short-circuit evaluation makes checking possibly illegal things possible.</p>
+<p>Here, we want to check that the value in our array at a given index is greater than 4. We cannot get an IndexOutOfBounds exception, because checking the length always happens first, and at the first failure in an and statement, Java just gives up.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span>[] myIntArr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>};
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">valueChecker</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>{
+    <span class="hljs-keyword">if</span> (index &gt; myIntArr.length &amp;&amp; myIntArr[index] &gt; <span class="hljs-number">4</span>) {
+        System.out.println(<span class="hljs-string">"Wow!"</span>);
+    }
+}
+</div></code></pre>
+<p>Likewise, using the or <code>||</code> it terminates as soon as a true value is found</p>
+<h2 id="classes">Classes</h2>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">myClass</span> </span>{
+    <span class="hljs-comment">// Fields</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> myIntField;
+    <span class="hljs-keyword">private</span> String myStringField;
+    <span class="hljs-comment">// Public field, can be directly modified by client code, should generally be avoided.</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> myDoubleField;
+    <span class="hljs-comment">// Fields may have default values</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> foo = <span class="hljs-keyword">false</span>; 
+
+    <span class="hljs-comment">//Constructor, must be public</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">myClass</span><span class="hljs-params">(<span class="hljs-keyword">int</span> myIntField, String myStringField)</span> </span>{
+        <span class="hljs-comment">// 'This' keyword refers to the field of the instance, when another variable has the same name.</span>
+        <span class="hljs-keyword">this</span>.myIntField = myIntField;
+        <span class="hljs-keyword">this</span>.myStringField = myStringField;
+        <span class="hljs-comment">// Only use the this. keyword when it makes sense</span>
+        myDoubleField = <span class="hljs-number">0.0</span>;
+    }
+
+    <span class="hljs-comment">// ToString method, allows for printing meaningful data</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> Integer.toString(myIntField) + <span class="hljs-string">":"</span> + myStringField;
+    }
+}
+</div></code></pre>
+<h3 id="static">Static</h3>
+<p>The static keyword indicates that for a given class, this will not change. All instances will have the same version of this.
+If one instance updates a static value, it is updated for all instances of the class.</p>
+<h3 id="acces-rules">Acces rules</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">myClass</span></span>{
+    <span class="hljs-keyword">public</span> String myString; <span class="hljs-comment">// Can be accesed by everything</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">int</span> myInt; <span class="hljs-comment">// Can be accessed by files in the same package, and subclasses</span>
+    <span class="hljs-keyword">double</span> myDouble; <span class="hljs-comment">// Can be accessed by files in the same package</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> myBool; <span class="hljs-comment">// Can only be accesed by this class</span>
+}
+</div></code></pre>
+<h3 id="inheritance">Inheritance</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> </span>{
+    <span class="hljs-keyword">private</span> String brand;
+    <span class="hljs-keyword">private</span> String model;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> price;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getBrand</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.brand;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getModel</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.model;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getPrice</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.price;
+    }
+}
+
+<span class="hljs-comment">// Note, must be in separate files.</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UsedCar</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Car</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> milesDriven;
+    <span class="hljs-keyword">private</span> Date lastServiced;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> previousOwners;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getMilesDriven</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.milesDriven;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Date <span class="hljs-title">getLastServiced</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.lastServiced;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getPreviousOwners</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.previousOwners;
+    }
+
+    <span class="hljs-comment">// Overrides the method in the superclass</span>
+    <span class="hljs-meta">@override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getPrice</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// super.getPrice allows you to access overwritten methods.</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.getPrice - ((<span class="hljs-keyword">this</span>.getMilesDriven()/<span class="hljs-number">1000</span>)*(Math.pow(<span class="hljs-keyword">this</span>.getPreviousOwners,<span class="hljs-number">2</span>)));
+    }
+}
+</div></code></pre>
+<h4 id="superclass-constructors">Superclass constructors</h4>
+<p>Subclasses can use their superclasses constructor and add some of their own.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">One</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> number;
+    <span class="hljs-keyword">private</span> String name;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">One</span><span class="hljs-params">(number, name)</span> </span>{
+        <span class="hljs-keyword">this</span>.number = number
+        <span class="hljs-keyword">this</span>.name = name
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Two</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">One</span> </span>{
+    <span class="hljs-keyword">private</span> String address;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Two</span><span class="hljs-params">(number, name, address)</span> </span>{
+        <span class="hljs-keyword">super</span>(number, name);
+        <span class="hljs-keyword">this</span>.address = address;
+    }
+}
+</div></code></pre>
+<h3 id="overloading">Overloading</h3>
+<p>Overloading allows for multiple constructors, where default values for the other fields can then be chosen.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PassedCourses</span> </span>{
+    <span class="hljs-keyword">boolean</span> math;
+    <span class="hljs-keyword">boolean</span> english;
+    <span class="hljs-keyword">boolean</span> music;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">PassedCourses</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> math, <span class="hljs-keyword">boolean</span> english, <span class="hljs-keyword">boolean</span> music)</span> </span>{
+        <span class="hljs-keyword">this</span>.math = math;
+        <span class="hljs-keyword">this</span>.english = english;
+        <span class="hljs-keyword">this</span>.music = music;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">PassedCourses</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> math)</span> </span>{
+        <span class="hljs-keyword">this</span>(<span class="hljs-keyword">true</span>, <span class="hljs-keyword">false</span>, <span class="hljs-keyword">false</span>)
+    }
+}
+</div></code></pre>
+<h2 id="exceptions">Exceptions</h2>
+<p>Giving a method the permission to throw exceptions can be required when working with files, where the compiler knows errors are inevitable.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">myClass</span> </span>{
+    <span class="hljs-comment">// Adding the "throws Exception", the method is allowed to throw an exception</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">UnknownError</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception</span>{
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception(<span class="hljs-string">"Unknown error occurred"</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SpecificError</span><span class="hljs-params">(String a)</span> <span class="hljs-keyword">throws</span> IllegalArgumentException</span>{
+        <span class="hljs-keyword">if</span> (a != <span class="hljs-number">5</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"You gave the wrong input fool!"</span>);
+        }
+    }
+
+    <span class="hljs-comment">// Try/Catch methods allow graceful handling of errors.</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getIntegerInput</span><span class="hljs-params">(Scanner scanner)</span> </span>{
+        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-keyword">return</span> scanner.nextInt();
+            } <span class="hljs-keyword">catch</span> (Exception e) {
+                scanner.nextLine();
+                System.out.println(<span class="hljs-string">"Wrong input!"</span>);
+            }
+        }
+    }
+}
+</div></code></pre>
+<h2 id="scanners">Scanners</h2>
+<p>Scanners turn a piece of text into tokens, usully delimited by spaces, tabs, newlines, and once a token has been read it gets thrown out.</p>
+<p>Scanners have the <code>scanner.nextVariable</code> methods to return the next token as that type. If the next token the scanner is going over is not of the type requested, it will throw an exception.</p>
+<p>The method <code>scanner.hasNextVariable</code> methods check if the next token does fit the variable type.</p>
+<pre class="hljs"><code><div>.nextInt() <span class="hljs-comment">// int</span>
+.nextDouble() <span class="hljs-comment">// double</span>
+.next() <span class="hljs-comment">// String</span>
+.nextLine() <span class="hljs-comment">// Entire line, String</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> java.util.*;
+
+Scanner consoleScanner = <span class="hljs-keyword">new</span> Scanner(System.in);
+
+<span class="hljs-keyword">if</span> (consoleScanner.hasNextInt()) {
+    <span class="hljs-keyword">int</span> x = consoleScanner.nextInt();
+} <span class="hljs-keyword">else</span> {
+    consoleScanner.nextLine(); <span class="hljs-comment">// throw away the current line to go to next</span>
+    System.out.println(<span class="hljs-string">"You have to write a real integer!"</span>);
+}
+</div></code></pre>
+<h2 id="files">Files</h2>
+<p>Note, when working with files, you either need <code>throws FileNotFoundException</code> in the method or need to wrap it in <code>try/catch</code></p>
+<p>Common methods:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> java.io.*; <span class="hljs-comment">// Needs the io package</span>
+
+File foo = <span class="hljs-keyword">new</span> File(bar.baz); <span class="hljs-comment">// Makes object foo that represents the file bar.baz</span>
+
+foo.exsits(); <span class="hljs-comment">// true/false if the file exists</span>
+
+foo.canRead(); <span class="hljs-comment">// true/false if the file can be read</span>
+
+foo.isDirectory(); <span class="hljs-comment">// true/false if the file is a directory</span>
+
+foo.isFile(); <span class="hljs-comment">// true/false if the file is a file</span>
+
+foo.length(); <span class="hljs-comment">// long integer for the size in bytes</span>
+
+foo.getAbsolutePath(); <span class="hljs-comment">// returns absolute path including filename C:/path/to/file/bar.baz</span>
+
+foo.delete(); <span class="hljs-comment">// deletes the actual file</span>
+
+foo.getName(); <span class="hljs-comment">// returns String of the files name without path, bar.baz</span>
+
+foo.renameTo(otherFile) <span class="hljs-comment">// renames foo to the name that otherFile has, that means it does NOT rename the file bar.baz to "otherFile", but instead renames bar.baz to whatever the file that otherFile represents is named.</span>
+</div></code></pre>
+<p>Example usage</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> java.io.File;
+<span class="hljs-keyword">import</span> java.io.PrintStream;
+<span class="hljs-keyword">import</span> java.util.scanner;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">fileStuffs</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        File myFile = <span class="hljs-keyword">new</span> File(<span class="hljs-string">"FileLocation.txt"</span>); <span class="hljs-comment">// Just creates path in memory, no exceptions</span>
+        
+        <span class="hljs-comment">// Reading from file</span>
+        <span class="hljs-keyword">try</span> {
+            Scanner fileContents = <span class="hljs-keyword">new</span> Scanner(myfile);
+        } <span class="hljs-keyword">catch</span> (FileNotFoundException e) {
+            System.out.println(<span class="hljs-string">"The file was not found"</span>);
+        }
+
+        <span class="hljs-comment">// Writing to files</span>
+        <span class="hljs-comment">// If the file does not exist, it is created</span>
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Note, the file is wiped when first loaded.</span>
+            PrintStream myPrintStream = <span class="hljs-keyword">new</span> PrintStream(myFile);
+            myPrintStream.print(<span class="hljs-string">"Hello"</span>);
+            myPrintStream.println(<span class="hljs-string">" World!"</span>);
+
+
+            myPrintStream.close();
+        } <span class="hljs-keyword">catch</span> (FileNotFoundException e) {
+            System.out.println(<span class="hljs-string">"The file was not found"</span>);
+        }
+
+        <span class="hljs-comment">// printstream empties the file first</span>
+        close it agian
+    }
+}
+
+
+</div></code></pre>
+<h2 id="random">Random</h2>
+<pre class="hljs"><code><div><span class="hljs-comment">// Using java.util.Random</span>
+<span class="hljs-keyword">import</span> java.util.Random
+
+Random randGen = <span class="hljs-keyword">new</span> Random();
+
+<span class="hljs-keyword">int</span> a = randGen.nextInt(<span class="hljs-number">43</span>); <span class="hljs-comment">// Number in range [0, 42]</span>
+<span class="hljs-keyword">double</span> b = randGen.nextDouble(); <span class="hljs-comment">// Number in range [0.0, 1.0[</span>
+<span class="hljs-keyword">boolean</span> c = randGen.nextBoolean(); <span class="hljs-comment">// True/false</span>
+<span class="hljs-keyword">double</span> d = randGen.nextGaussian(); <span class="hljs-comment">// Normal distribution, mean=0, standard deviation=1</span>
+
+<span class="hljs-comment">// Using Math.random</span>
+<span class="hljs-keyword">double</span> random = Math.random(); <span class="hljs-comment">// Number in range [0.0, 1.0[</span>
+</div></code></pre>
+<h2 id="arrays">Arrays</h2>
+<p>On primitive types, unset values are <code>0</code> or <code>false</code> whereas objects get <code>null</code></p>
+<p><code>myArray.length</code> returns the length.</p>
+<p><code>myArray[i]</code> gives the value of the i´th object, 0-indexed.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Declaring empty int array named "myIntArr" with length 4</span>
+<span class="hljs-keyword">int</span>[] myIntArr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">4</span>];
+
+<span class="hljs-comment">// Declaring an array containing 3 integer arrays, each containing 5 integers.</span>
+<span class="hljs-keyword">int</span>[][] myIntArrArr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">3</span>][<span class="hljs-number">5</span>];
+
+<span class="hljs-comment">// Declaring array with preset values</span>
+String[] names = {<span class="hljs-string">"John"</span>, <span class="hljs-string">"Adam"</span>, <span class="hljs-string">"Afton"</span>};
+
+<span class="hljs-comment">// Declaring array of arrays with preset values</span>
+String[][] names = {{<span class="hljs-string">"Michael"</span>,<span class="hljs-string">"Aton"</span>},{<span class="hljs-string">"William"</span>,<span class="hljs-string">"Afton"</span>}}
+</div></code></pre>
+<h3 id="changeability">Changeability</h3>
+<p>If a gets assigned to be equal to array b, and a then gets changed, b will also get changed.</p>
+<pre class="hljs"><code><div>String[] names = {<span class="hljs-string">"Correct"</span>, <span class="hljs-string">"Adam"</span>, <span class="hljs-string">"Afton"</span>};
+String[] foo = names;
+names[<span class="hljs-number">0</span>] = <span class="hljs-string">"Wrong"</span>;
+System.out.println(foo[<span class="hljs-number">0</span>]);
+<span class="hljs-comment">// prints "Wrong"</span>
+</div></code></pre>
+<p>To be able to get an independent copy, use <code>Arrays.copyOf</code> or <code>.clone()</code></p>
+<pre class="hljs"><code><div>String[] names = {<span class="hljs-string">"Correct"</span>, <span class="hljs-string">"Adam"</span>, <span class="hljs-string">"Afton"</span>};
+String[] foo = Arrays.copyOf(names, names.length)
+String[] bar = names.clone()
+names[<span class="hljs-number">0</span>] = <span class="hljs-string">"Wrong"</span>;
+
+System.out.println(foo[<span class="hljs-number">0</span>]);
+<span class="hljs-comment">// prints "Correct"</span>
+
+System.out.println(bar[<span class="hljs-number">0</span>]);
+<span class="hljs-comment">// prints "Correct"</span>
+</div></code></pre>
+<p><code>Arrays.copyOf</code> can also be used to increase the size of the array when copying. (can both be shorter or longer).</p>
+<p>Note that this is only a <em>shallow copy</em>, so if it is an array of objects, and one of the underlying objects gets changed in one, it the object is still changed in the other.</p>
+<h3 id="foreach">ForEach</h3>
+<p>ForEach loops allow simpler loops, but dont allow you to use the <code>i</code> index variable.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span>[] myArr = {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>}
+
+<span class="hljs-keyword">for</span> (in n : myArr) {
+    System.out.print(n);
+}
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; myArr.length; i++) {
+    System.out.print(myArr[i]);
+}
+</div></code></pre>
+<p>Note that the objects used in a ForEach loop is a copy, so changing it will not work:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n : myArr) {
+	n += <span class="hljs-number">1</span>;
+}
+<span class="hljs-comment">// This does NOT work</span>
+</div></code></pre>
+<h3 id="superclass-arrays">Superclass Arrays</h3>
+<p>Arrays can be made containing any object. If a class is a subclass of a superclass, it can be added to arrays of that superclass.</p>
+<p>If you have class <code>Car</code> and suclass <code>UsedCar</code> any usedcar objects can also be put in the car array.</p>
+<p>Likewise, any class implementing the inteface <code>HasWheels</code> is able to be added to a <code>HasWheels[]</code> array.</p>
+<h3 id="other">Other</h3>
+<p>To string: <code>Arrays.toString(arr)</code></p>
+<p>To string multi-dimensional: <code>Arrays.deepToString(myArr)</code></p>
+<p>Compare: <code>Arrays.equals(arr1,arr2);</code></p>
+<p>Fill: <code>Arrays.fill(arr, value)</code></p>
+<p>Sort: <code>Arrays.sort(arr)</code></p>
+<h2 id="lambda-function">lambda function</h2>
+<p>In <code>Function&lt;Integer, String&gt;</code> the first denotes input, the second denotes output.</p>
+<p>In <code>(x -&gt; x + 32)</code> we denote that value <code>x</code> gets turned into <code>x+32</code></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> java.util.function.Function;
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">lambdaTest</span><span class="hljs-params">()</span> </span>{
+    Function&lt;Integer, Integer&gt; func = (x -&gt; x + <span class="hljs-number">32</span>);
+    System.out.println(func.apply(<span class="hljs-number">32</span>));
+}
+</div></code></pre>
+<h2 id="enums">Enums</h2>
+<p>Enums are a custom variable type with a set list of possible values. Written in their own file, typically in caps.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> Suit {
+	CLUBS, DIAMONDS, HEARTS, SPADES
+}
+
+<span class="hljs-comment">// In client code</span>
+Suit myCardSuit = Suit.DIAMONDS;
+</div></code></pre>
+<h2 id="javadoc">JavaDoc</h2>
+<p>JavaDoc are comments written either above the class, methods, fields and more.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/**
+ * My super cool class
+ * <span class="hljs-doctag">@author</span> John Doe
+ */</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">myClass</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> num;
+    
+    <span class="hljs-comment">/**
+     * Adds an integer to num
+     * The number must be greater than or equal to 4
+     * 
+     * <span class="hljs-doctag">@param</span> a the number to be added
+     * <span class="hljs-doctag">@return</span> returns boolean for if the number exceeds 49
+     * <span class="hljs-doctag">@exception</span> IllegalArgumentException
+     */</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">addNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span> </span>{
+        <span class="hljs-keyword">if</span> (a&lt;<span class="hljs-number">4</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Incompatible number "</span> + a);
+        }
+        num += a;
+
+        <span class="hljs-keyword">return</span> num&gt;<span class="hljs-number">49</span>;
+    }
+}
+</div></code></pre>
+<h2 id="creating-a-jar-file">Creating a Jar file</h2>
+<p>In the folder with the classes, create file <code>manifest.mf</code> with contents:</p>
+<pre class="hljs"><code><div>Manifest-Version: 1.0
+Main-Class: &lt;main-class-name&gt;
+
+</div></code></pre>
+<p>In the terminal write <code>jar cvmf manifest.mf &lt;jar-filename&gt;.jar *.class</code></p>
+<h2 id="ascii-table">ASCII table</h2>
+<table>
+<thead>
+<tr>
+<th>Dec</th>
+<th>Hex</th>
+<th>Char</th>
+<th></th>
+<th>Dec</th>
+<th>Hex</th>
+<th>Char</th>
+<th></th>
+<th>Dec</th>
+<th>Hex</th>
+<th>Char</th>
+<th></th>
+<th>Dec</th>
+<th>Hex</th>
+<th>Char</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>32</strong></td>
+<td>20</td>
+<td></td>
+<td></td>
+<td><strong>48</strong></td>
+<td>30</td>
+<td>0</td>
+<td></td>
+<td><strong>65</strong></td>
+<td>41</td>
+<td>A</td>
+<td></td>
+<td><strong>97</strong></td>
+<td>61</td>
+<td>a</td>
+</tr>
+<tr>
+<td><strong>33</strong></td>
+<td>21</td>
+<td>!</td>
+<td></td>
+<td><strong>49</strong></td>
+<td>31</td>
+<td>1</td>
+<td></td>
+<td><strong>66</strong></td>
+<td>42</td>
+<td>B</td>
+<td></td>
+<td><strong>98</strong></td>
+<td>62</td>
+<td>b</td>
+</tr>
+<tr>
+<td><strong>34</strong></td>
+<td>22</td>
+<td>&quot;</td>
+<td></td>
+<td><strong>50</strong></td>
+<td>32</td>
+<td>2</td>
+<td></td>
+<td><strong>67</strong></td>
+<td>43</td>
+<td>C</td>
+<td></td>
+<td><strong>99</strong></td>
+<td>63</td>
+<td>c</td>
+</tr>
+<tr>
+<td><strong>35</strong></td>
+<td>23</td>
+<td>#</td>
+<td></td>
+<td><strong>51</strong></td>
+<td>33</td>
+<td>3</td>
+<td></td>
+<td><strong>68</strong></td>
+<td>44</td>
+<td>D</td>
+<td></td>
+<td><strong>100</strong></td>
+<td>64</td>
+<td>d</td>
+</tr>
+<tr>
+<td><strong>36</strong></td>
+<td>24</td>
+<td>$</td>
+<td></td>
+<td><strong>52</strong></td>
+<td>34</td>
+<td>4</td>
+<td></td>
+<td><strong>69</strong></td>
+<td>45</td>
+<td>E</td>
+<td></td>
+<td><strong>101</strong></td>
+<td>65</td>
+<td>e</td>
+</tr>
+<tr>
+<td><strong>37</strong></td>
+<td>25</td>
+<td>%</td>
+<td></td>
+<td><strong>53</strong></td>
+<td>35</td>
+<td>5</td>
+<td></td>
+<td><strong>70</strong></td>
+<td>46</td>
+<td>F</td>
+<td></td>
+<td><strong>102</strong></td>
+<td>66</td>
+<td>f</td>
+</tr>
+<tr>
+<td><strong>38</strong></td>
+<td>26</td>
+<td>&amp;</td>
+<td></td>
+<td><strong>54</strong></td>
+<td>36</td>
+<td>6</td>
+<td></td>
+<td><strong>71</strong></td>
+<td>47</td>
+<td>G</td>
+<td></td>
+<td><strong>103</strong></td>
+<td>67</td>
+<td>g</td>
+</tr>
+<tr>
+<td><strong>39</strong></td>
+<td>27</td>
+<td>'</td>
+<td></td>
+<td><strong>55</strong></td>
+<td>37</td>
+<td>7</td>
+<td></td>
+<td><strong>72</strong></td>
+<td>48</td>
+<td>H</td>
+<td></td>
+<td><strong>104</strong></td>
+<td>68</td>
+<td>h</td>
+</tr>
+<tr>
+<td><strong>40</strong></td>
+<td>28</td>
+<td>(</td>
+<td></td>
+<td><strong>56</strong></td>
+<td>38</td>
+<td>8</td>
+<td></td>
+<td><strong>73</strong></td>
+<td>49</td>
+<td>I</td>
+<td></td>
+<td><strong>105</strong></td>
+<td>69</td>
+<td>i</td>
+</tr>
+<tr>
+<td><strong>41</strong></td>
+<td>29</td>
+<td>)</td>
+<td></td>
+<td><strong>57</strong></td>
+<td>39</td>
+<td>9</td>
+<td></td>
+<td><strong>74</strong></td>
+<td>4A</td>
+<td>J</td>
+<td></td>
+<td><strong>106</strong></td>
+<td>6A</td>
+<td>j</td>
+</tr>
+<tr>
+<td><strong>42</strong></td>
+<td>2A</td>
+<td>*</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>75</strong></td>
+<td>4B</td>
+<td>K</td>
+<td></td>
+<td><strong>107</strong></td>
+<td>6B</td>
+<td>k</td>
+</tr>
+<tr>
+<td><strong>43</strong></td>
+<td>2B</td>
+<td>+</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>76</strong></td>
+<td>4C</td>
+<td>L</td>
+<td></td>
+<td><strong>108</strong></td>
+<td>6C</td>
+<td>l</td>
+</tr>
+<tr>
+<td><strong>44</strong></td>
+<td>2C</td>
+<td>,</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>77</strong></td>
+<td>4D</td>
+<td>M</td>
+<td></td>
+<td><strong>109</strong></td>
+<td>6D</td>
+<td>m</td>
+</tr>
+<tr>
+<td><strong>45</strong></td>
+<td>2D</td>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>78</strong></td>
+<td>4E</td>
+<td>N</td>
+<td></td>
+<td><strong>110</strong></td>
+<td>6E</td>
+<td>n</td>
+</tr>
+<tr>
+<td><strong>46</strong></td>
+<td>2E</td>
+<td>.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>79</strong></td>
+<td>4F</td>
+<td>O</td>
+<td></td>
+<td><strong>111</strong></td>
+<td>6F</td>
+<td>o</td>
+</tr>
+<tr>
+<td><strong>47</strong></td>
+<td>2F</td>
+<td>/</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>80</strong></td>
+<td>50</td>
+<td>P</td>
+<td></td>
+<td><strong>112</strong></td>
+<td>70</td>
+<td>p</td>
+</tr>
+<tr>
+<td><strong>58</strong></td>
+<td>3A</td>
+<td>:</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>81</strong></td>
+<td>51</td>
+<td>Q</td>
+<td></td>
+<td><strong>113</strong></td>
+<td>71</td>
+<td>q</td>
+</tr>
+<tr>
+<td><strong>59</strong></td>
+<td>3B</td>
+<td>;</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>82</strong></td>
+<td>52</td>
+<td>R</td>
+<td></td>
+<td><strong>114</strong></td>
+<td>72</td>
+<td>r</td>
+</tr>
+<tr>
+<td><strong>60</strong></td>
+<td>3C</td>
+<td>&lt;</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>83</strong></td>
+<td>53</td>
+<td>S</td>
+<td></td>
+<td><strong>115</strong></td>
+<td>73</td>
+<td>s</td>
+</tr>
+<tr>
+<td><strong>61</strong></td>
+<td>3D</td>
+<td>=</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>84</strong></td>
+<td>54</td>
+<td>T</td>
+<td></td>
+<td><strong>116</strong></td>
+<td>74</td>
+<td>t</td>
+</tr>
+<tr>
+<td><strong>62</strong></td>
+<td>3E</td>
+<td>&gt;</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>85</strong></td>
+<td>55</td>
+<td>U</td>
+<td></td>
+<td><strong>117</strong></td>
+<td>75</td>
+<td>u</td>
+</tr>
+<tr>
+<td><strong>63</strong></td>
+<td>3F</td>
+<td>?</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>86</strong></td>
+<td>56</td>
+<td>V</td>
+<td></td>
+<td><strong>118</strong></td>
+<td>76</td>
+<td>v</td>
+</tr>
+<tr>
+<td><strong>64</strong></td>
+<td>40</td>
+<td>@</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>87</strong></td>
+<td>57</td>
+<td>W</td>
+<td></td>
+<td><strong>119</strong></td>
+<td>77</td>
+<td>w</td>
+</tr>
+<tr>
+<td><strong>91</strong></td>
+<td>5B</td>
+<td>[</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>88</strong></td>
+<td>58</td>
+<td>X</td>
+<td></td>
+<td><strong>120</strong></td>
+<td>78</td>
+<td>x</td>
+</tr>
+<tr>
+<td><strong>92</strong></td>
+<td>5C</td>
+<td>\</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>89</strong></td>
+<td>59</td>
+<td>Y</td>
+<td></td>
+<td><strong>121</strong></td>
+<td>79</td>
+<td>y</td>
+</tr>
+<tr>
+<td><strong>93</strong></td>
+<td>5D</td>
+<td>]</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>90</strong></td>
+<td>5A</td>
+<td>Z</td>
+<td></td>
+<td><strong>122</strong></td>
+<td>7A</td>
+<td>z</td>
+</tr>
+<tr>
+<td><strong>94</strong></td>
+<td>5E</td>
+<td>^</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>95</strong></td>
+<td>5F</td>
+<td>_</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>96</strong></td>
+<td>60</td>
+<td>`</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>123</strong></td>
+<td>7B</td>
+<td>{</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>124</strong></td>
+<td>7C</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>125</strong></td>
+<td>7D</td>
+<td>}</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>126</strong></td>
+<td>7E</td>
+<td>~</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
