@@ -23,7 +23,7 @@ Dette er det \textbf{karakteristiske polynomium} for $A$ og betegnes $p_{\mathbf
 
 \
 
-Med andre ord, rødderne i følgende polynomie er egenværdierne for $A$.
+Med andre ord, rødderne i følgende polynomium er egenværdierne for $A$.
 \[
 \det \left(
     \begin{bmatrix}
@@ -34,7 +34,7 @@ Med andre ord, rødderne i følgende polynomie er egenværdierne for $A$.
     \end{bmatrix}\right) = 0
 \]
 
-Dette vil give er polynomie af grad $n$, som løses for det ubekendte $\lambda$.
+Dette vil give et polynomium af grad $n$, som løses for det ubekendte $\lambda$.
 
 \kilde{Sætning 12.1.1}
 
@@ -88,15 +88,15 @@ Disse er underrum i hhv. $V$ og $A$.
 \subsection{Kan en matrix diagonaliseres?}
 Lineær afbildning $L: V \to V$ eller matrix $A \in \mathbb{F}^{n \times n}$ er diagonaliserbar $\iff$ der findes en basis for $V$ bestående af egenvektorer tilhørende $L$.
 
-Det skal gælde for alle egenvædier at $\gm(\lambda) = am(\lambda)$.
+Det skal gælde for alle egenværdier at $\gm(\lambda) = \am(\lambda)$.
 
 Det er det samme som at det karakteristiske polynomium for $L$ kan skrives som
 \[
-p_L(Z) = (-1)^n \cdot (Z - \lambda_1)^m_1 \cdots (Z - \lambda_r)^{m_r}
+p_L(Z) = (-1)^n \cdot (Z - \lambda_1)^{m_1} \cdots (Z - \lambda_r)^{m_r}
 \kildetag{Sætning 12.3.3}
 \]
 
-Når en afbildnign kan diagonaliseres kan man finde en diagonalmatrix $D$ og en invertibel matrix $Q$ så
+Når en afbildning kan diagonaliseres kan man finde en diagonalmatrix $D$ og en invertibel matrix $Q$ så
 \[
 L = Q \cdot D \cdot Q^{-1} \kildetag{Lemma 12.4.2}
 \]
@@ -129,7 +129,7 @@ Diagonalmatrix $D$ kan skrives som $D = Q^{-1} \cdot A \cdot Q$, hvor $Q$ er en 
 
 
 \subsubsection{Algebraisk multiplicitet}
-$am(\lambda)$ er antallet af gange egenværdi $\lambda$ optræder i roden af $p_A(\lambda)$.
+$\am(\lambda)$ er antallet af gange egenværdi $\lambda$ optræder i roden af $p_A(\lambda)$.
 
 \eksempel{
 $\lambda^{10} \cdot (\lambda-5)^6 \cdot (\lambda+8)^{10} = 0$
@@ -137,7 +137,7 @@ $ \implies \am(-8) = 10, \am(0) = 10, \am(5) = 6$.
 }
 
 \subsubsection{Geometrisk multiplicitet}
-\[gm(\lambda) = \dim(E_\lambda)\]
+\[\gm(\lambda) = \dim(E_\lambda)\]
 
 \eksempel{
 Givet

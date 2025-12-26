@@ -93,13 +93,13 @@
 \newcommand{\hiddensection}[1]{%
     \refstepcounter{section}%
     \sectionmark{#1}%
-    \addcontentsline{toc}{section}{\protect\sectionSize #1}%
+    \addcontentsline{toc}{section}{\texorpdfstring{\protect\sectionSize #1}{#1}}%
 }
 
 \newcommand{\hiddensubsection}[1]{%
     \refstepcounter{subsection}%
     \sectionmark{#1}%
-    \addcontentsline{toc}{subsection}{\protect\subsecSize #1}%
+    \addcontentsline{toc}{subsection}{\texorpdfstring{\protect\subsecSize #1}{#1}}%
 }
 % /For hidden sections
 
