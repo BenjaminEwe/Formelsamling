@@ -111,7 +111,7 @@ Ordnet basis for søjlerummet kan findes som beskrevet i sektion \ref{sec:ordnet
 
 \[ \ker(\mathbf{A}) = \{ \mathbf{v} \in \mathbb{F} \ | \ \mathbf{A} \cdot \mathbf{v} = 0 \} \]
 
-Kernen for matrix \textbf{A} findes ved at løse det homogene lineære ligningssystem dannet ved at tilføje en 0-søjle.
+Kernen for matrix \textbf{A} findes ved at løse det Hom.LLS dannet ved at tilføje en 0-søjle.
 
 \kilde{Korollar 9.2.3}
 
@@ -185,7 +185,7 @@ $v$ er i kernen af matrix $\mathbf{A}$ hvis: \\
 \( v \) er lineært afhængig med vektorerne i kernen af \( A \) (se sektion \ref{sec:span})
 
 \subsection{Koordinater med hensyn til ordnet basis}
-Opstil en matrix med basisvektorerne som søjler og vektoren som ekstra søjle:
+Lav en matrix med basisvektorerne og vektoren der skal findes koordinater for:
 \[
     \begin{bmatrix}
         \vline & \vline & \cdots & \vline & \vline \\
@@ -193,7 +193,8 @@ Opstil en matrix med basisvektorerne som søjler og vektoren som ekstra søjle:
         \vline & \vline & \cdots & \vline & \vline \\
     \end{bmatrix}
 \]
-Omskriv til trappeform ved rækkeoperationer og løs for skalarerne \( c_1, c_2, \ldots, c_n \).
+
+Omskriv til \emph{rref}, sidste søjle er koordinaterne med hensyn til basisen.
 
 \eksempel{
 

@@ -1,7 +1,6 @@
 \hiddensubsection{Differentiering}
 
-$c$ er en konstant, $x$ er en variabel, og $f(x)$ og $g(x)$ er funktioner af $x$.
-
+$c =$ konstant, $x =$ variabel, $f(x), g(x) =$ funktioner af $x$.
 \
 \begin{center}
     \(\sec a = \frac{1}{\cos a}\)  \quad \(\csc a = \frac{1}{\sin a}\) \quad \(\cot a = \frac{1}{\tan a}\)
@@ -9,7 +8,9 @@ $c$ er en konstant, $x$ er en variabel, og $f(x)$ og $g(x)$ er funktioner af $x$
 
 \begin{table}[H]
 \centering
-\renewcommand{\arraystretch}{2}
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.6}
 \begin{tabular}{@{}>{\raggedright}p{2.65cm}ll@{}}
 \toprule
 \textbf{Funktion} & \textbf{Værdier} & \textbf{Funktioner} \\
@@ -25,16 +26,25 @@ Kvotient &  & $\left(\frac{f(x)}{g(x)}\right)' = \frac{f'(x) \cdot g(x) - f(x) \
 Sammensat &  & $f(g(x))' = f'(g(x)) \cdot g'(x)$ \\
 \midrule
 Exponent & $(x^n)' = n x^{n-1}$ & $((f(x))^n)' = n (f(x))^{n-1} \cdot f'(x)$ \\
+Euler & $(e^{c x})' = c \cdot e^{c x}$ & $(e^{c f(x)})' = c \cdot e^{c f(x)} \cdot f'(x)$ \\
+Exponent & $(a^x)' = a^x \ln a$ & $(a^{f(x)})' = a^{f(x)} \ln a \cdot f'(x)$ \\
+ln & $(\ln x)' = \frac{1}{x}$ & $(\ln f(x))' = \frac{f'(x)}{f(x)}$ \\
+log$_\text{a}$ & $(\log_a x)' = \frac{1}{x \ln a}$ & $(\log_a f(x))' = \frac{f'(x)}{f(x) \ln a}$ \\
+\midrule
 Sinus & $(\sin x)' = \cos x$ & $(\sin f(x))' = \cos(f(x)) \cdot f'(x)$ \\
 Cosinus & $(\cos x)' = -\sin x$ & $(\cos f(x))' = -\sin(f(x)) \cdot f'(x)$ \\
 Tangens & $(\tan x)' = \sec^2 x$ & $(\tan f(x))' = \sec^2(f(x)) \cdot f'(x)$ \\
 Secans & $(\sec x)' = \sec x \tan x$ & $(\sec f(x))' = \sec(f(x)) \tan(f(x)) \cdot f'(x)$ \\
 Cosecans & $(\csc x)' = -\csc x \cot x$ & $(\csc f(x))' = -\csc(f(x)) \cot(f(x)) \cdot f'(x)$ \\
 Cotangens & $(\cot x)' = -\csc^2 x$ & $(\cot f(x))' = -\csc^2(f(x)) \cdot f'(x)$ \\
-Euler & $(e^{c x})' = c \cdot e^{c x}$ & $(e^{f(x)})' = e^{f(x)} \cdot f'(x)$ \\
-Exponent & $(a^x)' = a^x \ln a$ & $(a^{f(x)})' = a^{f(x)} \ln a \cdot f'(x)$ \\
-ln & $(\ln x)' = \frac{1}{x}$ & $(\ln f(x))' = \frac{f'(x)}{f(x)}$ \\
-log$_\text{a}$ & $(\log_a x)' = \frac{1}{x \ln a}$ & $(\log_a f(x))' = \frac{f'(x)}{f(x) \ln a}$ \\
+\midrule
+Sinh & $(\sinh x)' = \cosh x$ & $(\sinh f(x))' = \cosh(f(x)) \cdot f'(x)$ \\
+Cosh & $(\cosh x)' = \sinh x$ & $(\cosh f(x))' = \sinh(f(x)) \cdot f'(x)$ \\
+Tanh & $(\tanh x)' = \sech^2 x$ & $(\tanh f(x))' = \sech^2(f(x)) \cdot f'(x)$ \\
+Sech & $(\sech x)' = -\sech x \tanh x$ & $(\sech f(x))' = -\sech(f(x)) \tanh(f(x)) \cdot f'(x)$ \\
+Cosech & $(\csch x)' = -\csch x \coth x$ & $(\csch f(x))' = -\csch(f(x)) \coth(f(x)) \cdot f'(x)$ \\
+Coth & $(\coth x)' = -\csch^2 x$ & $(\coth f(x))' = -\csch^2(f(x)) \cdot f'(x)$ \\
 \bottomrule
 \end{tabular}
+\endgroup
 \end{table}
