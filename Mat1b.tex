@@ -1,0 +1,33 @@
+\date{\today}
+\newcommand{\doctitle}{Mat1a Formelsamling}
+\newcommand{\docauthor}{Benjamin Bjørn Ewe}
+\newcommand{\docversion}{v1.0.0}
+
+\input{Components/Meta/BookStuffs.tex}
+\input{Components/Meta/Preamble}
+\input{Components/Meta/TOC_dual.tex}
+\input{Components/Meta/Commands}
+
+\begin{document}
+
+\pagestyle{empty}
+%%\include{Components/forside}
+%%\include{Components/forord}
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+%% Actual start of document
+\newpage
+\clearpage
+\pagestyle{fancy}
+% Beware, will mess with book-style page indentation
+% \setcounter{page}{1}
+
+\input{Components/mat1b/Preliminaries.tex}
+
+\input{Components/mat1b/VectorFunctions.tex}
+
+\newpage
+\hiddensection{Bilag}
+\cleartoleftpage 
+\end{document}

@@ -1,0 +1,33 @@
+\section{Vektor-funktioner}
+
+Givet en funktion $f(x) = \mathbf{A} \cdot \mathbf{x}$, hvor $\mathbf{A}$ er en $m \times n$ matrix og $\mathbf{x}$ er en $n \times 1$ vektor, kan vi udlede følgende egenskaber:
+\begin{itemize}
+    \item \textbf{Lineær transformation:} Funktionen $f$ er en lineær transformation, da den opfylder både additivitet og homogenitet:
+    \begin{align*}
+        f(\mathbf{x} + \mathbf{y}) &= \mathbf{A} \cdot (\mathbf{x} + \mathbf{y}) = \mathbf{A} \cdot \mathbf{x} + \mathbf{A} \cdot \mathbf{y} = f(\mathbf{x}) + f(\mathbf{y}), \\
+        f(c\mathbf{x}) &= \mathbf{A} \cdot (c\mathbf{x}) = c(\mathbf{A} \cdot \mathbf{x}) = c f(\mathbf{x}),
+    \end{align*}
+    hvor $\mathbf{y}$ er en anden $n \times 1$ vektor og $c$ er en skalar.
+    
+    \item \textbf{Kernel og billede:} Kernel (nulrum) af $f$ er mængden af alle vektorer $\mathbf{x}$, der opfylder $f(\mathbf{x}) = \mathbf{0}$, hvilket svarer til løsningen af det homogene system $\mathbf{A} \cdot \mathbf{x} = \mathbf{0}$. Billedet (range) af $f$ er mængden af alle vektorer $\mathbf{y}$, der kan skrives som $f(\mathbf{x})$ for nogen $\mathbf{x}$, hvilket svarer til søjlerummet af $\mathbf{A}$.
+    
+    \item \textbf{Injektivitet og surjektivitet:} Funktionen $f$ er injektiv (en-til-en) hvis og kun hvis kernel kun indeholder den trivielle løsning $\{\mathbf{0}\}$, hvilket sker når $\text{rank}(\mathbf{A}) = n$. Funktionen er surjektiv (på) hvis og kun hvis billedet dækker hele codomain, hvilket sker når $\text{rank}(\mathbf{A}) = m$.
+    
+    \item \textbf{Matrixrepræsentation:} Hvis vi har en basis for både domænet og codomain, kan vi repræsentere funktionen $f$ som en matrix. For eksempel, hvis vi har standardbasen for $\mathbb{R}^n$ og $\mathbb{R}^m$, så er matrixen $\mathbf{A}$ netop den matrix, der repræsenterer $f$ i disse baser.
+    
+\end{itemize}
+
+\subsection{Normer}
+
+En norm er en funktion $\|\cdot\|: V \to \mathbb{R}$, hvor $V$ er et vektorrum, der opfylder følgende egenskaber for alle $\mathbf{u}, \mathbf{v} \in V$ og skalar $c \in \mathbb{R}$:
+\begin{itemize}
+    \item \textbf{Positivitet:} $\|\mathbf{v}\| \geq 0$, og $\|\mathbf{v}\| = 0 \implies \mathbf{v} = 0$.
+    \item \textbf{Homogenitet:} $\|c\mathbf{v}\| = |c| \cdot \|\mathbf{v}\|$.
+    \item \textbf{Trekantsuligheden:} $\|\mathbf{u} + \mathbf{v}\| \leq \|\mathbf{u}\| + \|\mathbf{v}\|$.
+\end{itemize}
+
+\subsection{Andre noter}
+
+Vectorer er ortogonale hvis deres indre produkt er nul, dvs. $\mathbf{u} \cdot \mathbf{v} = 0$. Dette betyder, at de er vinkelrette på hinanden i det geometriske rum.
+
+(Indre produkt er u1*v1 + u2*v2 + ... + un*vn for vektorer u og v i R^n)

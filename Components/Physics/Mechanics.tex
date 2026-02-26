@@ -1,0 +1,66 @@
+\section{1D mekanik}
+
+$\overline{x}$ betyder gennemsnit af $x$ over et interval.
+
+Det antages at $y$ er positiv opad i formler for tyngdekraft $g$.
+
+Frit fald er uden luftmodstand og med konstant tyngdeacceleration $g$.
+
+\begin{table}[h]
+    \begin{minipage}
+        {0.65\textwidth}
+        \centering
+        \renewcommand{\arraystretch}{1.2} % Increase space between rows
+        \begin{tabular}{l|l}
+            %% Increase space between rows
+
+            \textbf{Begreb} & \textbf{Formel} \\ \hline
+            Displacement & $\Delta x = x-x_0$ \\
+            Total Displacement & $\Delta x_{total} = \sum \Delta x_i$ \\
+            \\
+            Average Velocity & $\overline{v} = \frac{\Delta x}{\Delta t} = \frac{v_0 + v}{2}$ \\
+            Instantaneous Velocity & $v(t) = \frac{dx}{dt}$ \\
+            \\
+            Average Speed & $\overline{s} = \frac{\text{Distance}}{\Delta t}$ \\
+            Instantaneous Speed & $s = |v(t)|$ \\
+            \\
+            Average Acceleration & $\overline{a} = \frac{\Delta v}{\Delta t}$ \\
+            Instantaneous Acceleration & $a = \frac{dv}{dt}$ \\
+            \\
+            Position & $x = x_0 + \overline{v} t$ \\
+            Velocity & $v = v_0 + \overline{a} t$ \\
+        \end{tabular}
+    \end{minipage}
+    \hfill
+    \begin{minipage}
+        {0.3\textwidth}
+        \centering
+
+        \textbf{Konstant acceleration}
+        \begin{align*}
+            v &= v_0 + at \\
+            x &= x_0 + v_0t + \frac{1}{2}at^2 \\
+            v^2 &= v_0^2 + 2a(x-x_0)
+        \end{align*}
+        \vspace{2em} \\
+        \textbf{Frit Fald}
+        \begin{align*}
+            g &\approx 9.81 \text{ m/s}^2 \\
+            v &= v_0 - gt \\
+            y &= y_0 + v_0t - \frac{1}{2}gt^2 \\
+            v^2 &= v_0^2 - 2g(y-y_0)
+        \end{align*}
+    \end{minipage}
+\end{table}
+
+\textbf{Integration}
+\begin{align*}
+    v(t) &= \int a(t) dt + v_0 \\
+    x(t) &= \int v(t) dt + x_0 
+\end{align*}
+
+Fart er absolut hastighed, og hastighed er fart med retning.
+
+$n$ km/h $\approx$ $\frac{n}{3.6}$ m/s
+
+\section{2D mekanik}

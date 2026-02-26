@@ -1,0 +1,27 @@
+\date{\today}
+\newcommand{\doctitle}{Fysik Formelsamling}
+\newcommand{\docauthor}{Benjamin Bjørn Ewe}
+\newcommand{\docversion}{v0.1.0}
+
+\input{Components/Meta/BookStuffs.tex}
+\input{Components/Meta/Preamble}
+\input{Components/Meta/TOC_dual.tex}
+\input{Components/Meta/Commands}
+
+\begin{document}
+
+\pagestyle{empty}
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+%% Actual start of document
+\newpage
+\clearpage
+\pagestyle{fancy}
+
+% Components
+\include{Components/Physics/Trigonometri}
+\include{Components/Physics/Mechanics}
+
+
+\end{document}
