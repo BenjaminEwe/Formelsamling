@@ -1,33 +1,124 @@
-\section{Vektor-funktioner}
+\section{Funktioner af flere variable}
 
-Givet en funktion $f(x) = \mathbf{A} \cdot \mathbf{x}$, hvor $\mathbf{A}$ er en $m \times n$ matrix og $\mathbf{x}$ er en $n \times 1$ vektor, kan vi udlede følgende egenskaber:
-\begin{itemize}
-    \item \textbf{Lineær transformation:} Funktionen $f$ er en lineær transformation, da den opfylder både additivitet og homogenitet:
-    \begin{align*}
-        f(\mathbf{x} + \mathbf{y}) &= \mathbf{A} \cdot (\mathbf{x} + \mathbf{y}) = \mathbf{A} \cdot \mathbf{x} + \mathbf{A} \cdot \mathbf{y} = f(\mathbf{x}) + f(\mathbf{y}), \\
-        f(c\mathbf{x}) &= \mathbf{A} \cdot (c\mathbf{x}) = c(\mathbf{A} \cdot \mathbf{x}) = c f(\mathbf{x}),
-    \end{align*}
-    hvor $\mathbf{y}$ er en anden $n \times 1$ vektor og $c$ er en skalar.
-    
-    \item \textbf{Kernel og billede:} Kernel (nulrum) af $f$ er mængden af alle vektorer $\mathbf{x}$, der opfylder $f(\mathbf{x}) = \mathbf{0}$, hvilket svarer til løsningen af det homogene system $\mathbf{A} \cdot \mathbf{x} = \mathbf{0}$. Billedet (range) af $f$ er mængden af alle vektorer $\mathbf{y}$, der kan skrives som $f(\mathbf{x})$ for nogen $\mathbf{x}$, hvilket svarer til søjlerummet af $\mathbf{A}$.
-    
-    \item \textbf{Injektivitet og surjektivitet:} Funktionen $f$ er injektiv (en-til-en) hvis og kun hvis kernel kun indeholder den trivielle løsning $\{\mathbf{0}\}$, hvilket sker når $\text{rank}(\mathbf{A}) = n$. Funktionen er surjektiv (på) hvis og kun hvis billedet dækker hele codomain, hvilket sker når $\text{rank}(\mathbf{A}) = m$.
-    
-    \item \textbf{Matrixrepræsentation:} Hvis vi har en basis for både domænet og codomain, kan vi repræsentere funktionen $f$ som en matrix. For eksempel, hvis vi har standardbasen for $\mathbb{R}^n$ og $\mathbb{R}^m$, så er matrixen $\mathbf{A}$ netop den matrix, der repræsenterer $f$ i disse baser.
-    
-\end{itemize}
+\subsection{Niveaukurver}
+En niveaukurve for en en funktion og et niveau er mængden af alle værdier i domænet, hvor funktionen giver samme niveau.
+
+\subsection{Vektor-felter}
+Vektor-felter tegnes ved at i hvert punkt i domænet, tegne en vektor, der repræsenterer funktionen i det punkt. Kan bruges til at visualisere funktioner der ellers skulle bruge 4 dimensioner.
+
+\subsection{Kontinuitet}
+
+Givet $f: \dom(f) \to \mathbb R, \quad \dom(f) \subseteq \mathbb R$
+og $x_0 \in \dom(f)$ som er et indre punkt af $\dom(f)$ (ikke i randen),
+så er $f$ kontinuert i $x_0$ hvis og kun hvis
+\[
+\lim_{x \to x_0} f(x) = f(x_0) \kildetag{Definition 3.1.1}
+\]
+
+For vektorer:
+\[
+    \lim_{\vec x \to \vec x_0} f(\vec x) = f(\vec x_0) \iff ||f(\vec x) - f(\vec x_0)|| \to 0 \text{ for } ||\vec x - \vec x_0|| \to 0
+    \kildetag{Definition 3.2.1}
+\]
+
+\subsubsection{Præcis Definition}
+\[
+\forall \varepsilon > 0, \exists \delta > 0: \forall x \in \dom(f) : |x - x_0| < \delta \implies |f(x) - f(x_0)| < \varepsilon.
+\]
+
+\subsubsection{Overførsel af kontinuitet}
+Sum, produkt, skalarmultiplikation og sammensætningen af kontinuert funktioner er kontinuert.
+
+Polynomier er kontinuerte.
+
+\subsection{Nogle funktioner}
+\subsubsection{ReLU}
+ReLU er en aktiveringsfunktion.
+\[
+\text{ReLU}(x) =
+    \begin{cases}
+    0 & \text{for } x < 0 \\
+    x & \text{for } x \geq 0
+    \end{cases}
+\]
+
+\subsubsection{Netværksfunktion}
+Netværksfunktionen $\Phi$ tager $\vec x$ og multiplicerer den med en matrix $\mathbf{A}$ og lægger $\vec b$ til, hvorefter en aktiveringsfunktion $\sigma$ anvendes elementvist på resultatet:
+\[
+    \sigma(\mathbf{A} \cdot \vec x + \vec b)
+\]
+Bemærk at output vil være en vektor. Derfor kan netværksfunktioner laves med flere lag, f.eks.
+\[
+    \sigma_2(\mathbf{A}_2 \cdot \left( \sigma_1(\mathbf{A}_1 \cdot \vec x + \vec b_1) \right) + \vec b_2)
+\]
 
 \subsection{Normer}
+Normer er en funktion $\|\cdot\|: V \to \mathbb{R}$, hvor $V$ er et vektorrum, der opfylder følgende egenskaber
+for alle $\vec u, \vec v \in V$ og skalar $c \in \mathbb{R}$:
+\begin{enumerate}
+    \item \textbf{Positivitet:} $\|\vec v\| \geq 0$, og $\|\vec v\| = 0 \implies \vec v = 0$.
+    \item \textbf{Homogenitet:} $\|c\vec v\| = |c| \cdot \|\vec v\|$.
+    \item \textbf{Trekantsuligheden:} $\|\vec u + \vec v\| \leq \|\vec u\| + \|\vec v\|$.
+\end{enumerate}
 
-En norm er en funktion $\|\cdot\|: V \to \mathbb{R}$, hvor $V$ er et vektorrum, der opfylder følgende egenskaber for alle $\mathbf{u}, \mathbf{v} \in V$ og skalar $c \in \mathbb{R}$:
+\kilde{Definition 2.1.1}
+
+\subsection{Kvadratisk Form}
+
+Tt 2. grads polynomium og giver et tal.
+
+\[
+    q: \mathbb{R}^n \to \mathbb{R}, \qquad q(\vec x) = \vec x^T \mtrix A \vec x + \vec x^T \vec b + c
+\]
+
+\kilde{Definition 1.2.1}
+
+\[
+    \vec x^T \mtrix A \vec x + \vec x^T \vec b + c = \vec x^T \mtrix A^T \vec x + \vec b^T \vec x + c
+\]
+
+I nogle bøger anses kun første led \( (\vec x^T \mtrix A \vec x) \) for at være en kvadratisk form.
+
+\subsection{Åbne og Afsluttede mængder}
+
+\subsubsection{Rand}
+Randen til $A$, kaldet $\partial A$, er mængden af punkter på kanten af A: Enhver kugle omkring et punkt i randen indeholder både punkter i $A$ og udenfor $A$.
+
 \begin{itemize}
-    \item \textbf{Positivitet:} $\|\mathbf{v}\| \geq 0$, og $\|\mathbf{v}\| = 0 \implies \mathbf{v} = 0$.
-    \item \textbf{Homogenitet:} $\|c\mathbf{v}\| = |c| \cdot \|\mathbf{v}\|$.
-    \item \textbf{Trekantsuligheden:} $\|\mathbf{u} + \mathbf{v}\| \leq \|\mathbf{u}\| + \|\mathbf{v}\|$.
+    \item \textbf{Åben}: Mængden indeholder \emph{intet} af sin rand. F.eks. $]a,b[$ er åben.
+    \item \textbf{Afsluttet}: Mængden indeholder \emph{hele} sin rand. F.eks. $[a,b]$ er afsluttet.
+
 \end{itemize}
 
-\subsection{Andre noter}
 
-Vectorer er ortogonale hvis deres indre produkt er nul, dvs. $\mathbf{u} \cdot \mathbf{v} = 0$. Dette betyder, at de er vinkelrette på hinanden i det geometriske rum.
+%Givet en funktion $f(x) = \mathbf{A} \cdot \mathbf{x}$, hvor $\mathbf{A}$ er en $m \times n$ matrix og $\mathbf{x}$ er en $n \times 1$ vektor, kan vi udlede følgende egenskaber:
+%\begin{itemize}
+%    \item \textbf{Lineær transformation:} Funktionen $f$ er en lineær transformation, da den opfylder både additivitet og homogenitet:
+%    \begin{align*}
+%        f(\mathbf{x} + \mathbf{y}) &= \mathbf{A} \cdot (\mathbf{x} + \mathbf{y}) = \mathbf{A} \cdot \mathbf{x} + \mathbf{A} \cdot \mathbf{y} = f(\mathbf{x}) + f(\mathbf{y}), \\
+%        f(c\mathbf{x}) &= \mathbf{A} \cdot (c\mathbf{x}) = c(\mathbf{A} \cdot \mathbf{x}) = c f(\mathbf{x}),
+%    \end{align*}
+%    hvor $\mathbf{y}$ er en anden $n \times 1$ vektor og $c$ er en skalar.
+%    
+%    \item \textbf{Kernel og billede:} Kernel (nulrum) af $f$ er mængden af alle vektorer $\mathbf{x}$, der opfylder $f(\mathbf{x}) = \mathbf{0}$, hvilket svarer til løsningen af det homogene system $\mathbf{A} \cdot \mathbf{x} = \mathbf{0}$. Billedet (range) af $f$ er mængden af alle vektorer $\mathbf{y}$, der kan skrives som $f(\mathbf{x})$ for nogen $\mathbf{x}$, hvilket svarer til søjlerummet af $\mathbf{A}$.
+%    
+%    \item \textbf{Injektivitet og surjektivitet:} Funktionen $f$ er injektiv (en-til-en) hvis og kun hvis kernel kun indeholder den trivielle løsning $\{\mathbf{0}\}$, hvilket sker når $\text{rank}(\mathbf{A}) = n$. Funktionen er surjektiv (på) hvis og kun hvis billedet dækker hele codomain, hvilket sker når $\text{rank}(\mathbf{A}) = m$.
+%    
+%    \item \textbf{Matrixrepræsentation:} Hvis vi har en basis for både domænet og codomain, kan vi repræsentere funktionen $f$ som en matrix. For eksempel, hvis vi har standardbasen for $\mathbb{R}^n$ og $\mathbb{R}^m$, så er matrixen $\mathbf{A}$ netop den matrix, der repræsenterer $f$ i disse baser.
+%    
+%\end{itemize}
+%
+%\subsection{Normer}
+%
+%En norm er en funktion $\|\cdot\|: V \to \mathbb{R}$, hvor $V$ er et vektorrum, der opfylder følgende egenskaber for alle $\mathbf{u}, \mathbf{v} \in V$ og skalar $c \in \mathbb{R}$:
+%\begin{itemize}
+%    \item \textbf{Positivitet:} $\|\mathbf{v}\| \geq 0$, og $\|\mathbf{v}\| = 0 \implies \mathbf{v} = 0$.
+%    \item \textbf{Homogenitet:} $\|c\mathbf{v}\| = |c| \cdot \|\mathbf{v}\|$.
+%    \item \textbf{Trekantsuligheden:} $\|\mathbf{u} + \mathbf{v}\| \leq \|\mathbf{u}\| + \|\mathbf{v}\|$.
+%\end{itemize}
+%
+%\subsection{Andre noter}
+%
+%Vectorer er ortogonale hvis deres indre produkt er nul, dvs. $\mathbf{u} \cdot \mathbf{v} = 0$. Dette betyder, at de er vinkelrette på hinanden i det geometriske rum.
 
-(Indre produkt er u1*v1 + u2*v2 + ... + un*vn for vektorer u og v i R^n)
+%(Indre produkt er u1*v1 + u2*v2 + ... + un*vn for vektorer u og v i R^n)
