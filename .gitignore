@@ -1,5 +1,7 @@
 ## Custom
 generated/
+.generated/
+.bak/
 .vscode/
 .github/
 
