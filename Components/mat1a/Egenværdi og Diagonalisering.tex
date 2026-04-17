@@ -1,17 +1,17 @@
 \section{Egenværdier}
 \subsection{Definition}
 Givet vektorrum $V$ på $\mathbb{F}$ og lineær afbildning $L: V \to V$ 
-er en skalar $\lambda \in \mathbb{F}$ en \textbf{egenværdi} for $L$, hvis der findes en vektor $\mathbf{v} \in V$, $\mathbf{v} \neq 0$, sådan at
-\[L(v) = \lambda \cdot \mathbf{v}.\]
-Vektoren $\mathbf{v}$ er en \textbf{egenvektor} tilhørende egenværdien $\lambda$.
+er en skalar $\lambda \in \mathbb{F}$ en \textbf{egenværdi} for $L$, hvis der findes en vektor $\vec{v} \in V$, $\vec{v} \neq 0$, sådan at
+\[L(v) = \lambda \cdot \vec{v}.\]
+Vektoren $\vec{v}$ er en \textbf{egenvektor} tilhørende egenværdien $\lambda$.
 
 \bemærk{$\lambda$ må godt være $0$}
 \kilde{Definition 12.1.1}
 
 \subsubsection{Matricers egenværdier}
-Givet matrix $A \in \mathbb{F}^{n \times n}$ og vektor $\mathbf{v} \in \mathbb{F}^n \setminus 0$, er skalar $\lambda \in \mathbb{F}$ en \textbf{egenværdi} for $A$, hvis
-\[A \mathbf{v} = \lambda \cdot \mathbf{v}.\]
-Vektoren $\mathbf{v}$ er en \textbf{egenvektor} tilhørende egenværdien $\lambda$.
+Givet matrix $A \in \mathbb{F}^{n \times n}$ og vektor $\vec{v} \in \{ \mathbb{F}^n \setminus 0 \}$, er skalar $\lambda \in \mathbb{F}$ en \textbf{egenværdi} for $A$, hvis
+\[A \vec{v} = \lambda \cdot \vec{v}.\]
+Vektoren $\vec{v}$ er en \textbf{egenvektor} tilhørende egenværdien $\lambda$.
 
 \bemærk{Gælder kun for kvadratiske matricer}
 \kilde{Definition 12.1.2}
@@ -23,7 +23,7 @@ Dette er det \textbf{karakteristiske polynomium} for $A$ og betegnes $p_{\mathbf
 
 \
 
-Med andre ord, rødderne i følgende polynomium er egenværdierne for $A$.
+Med andre ord, rødderne i følgende polynomium er egenværdierne for $\mathbf{A}$.
 \[
 \det \left(
     \begin{bmatrix}
@@ -63,7 +63,7 @@ p_L(\lambda) = \det(_\beta[L]_\beta - \lambda \cdot \mathbf{I}_n) \kildetag{Defi
 
 \subsection{Egenrum}
 
-Egenrummet for en egenværdi $\lambda$ og matrix $A \in \mathbb{F}^{n \times n}$ betegnes $E_{\lambda}$ og defineres som mængden af alle egenvektorer tilhørende $\lambda$ samt \emph{nulvektoren}. Det kan findes ved at finde kernen af matricen:
+Egenrummet for en egenværdi $\lambda$ og matrix $\mathbf{A} \in \mathbb{F}^{n \times n}$ betegnes $E_{\lambda}$ og defineres som mængden af alle egenvektorer tilhørende $\lambda$ samt \emph{nulvektoren}. Det kan findes ved at finde kernen af matricen:
 
 \[ 
 \begin{bmatrix}
@@ -78,15 +78,15 @@ Se evt. sektion \ref{sec:kerne} om hvordan kernen findes.
 
 \subsubsection{Egenrum er underrum}
 \begin{align*}
-    E_\lambda = \{ \mathbf{v} \in V | L(\mathbf{v}) = \lambda \cdot \mathbf{v} \} \kildetag{Sætning 12.2.1} \\
-    A_\lambda = \{ \mathbf{v} \in V |A \cdot \mathbf{v} = \lambda \cdot \mathbf{v} \} \kildetag{Sætning 12.2.1}
+    E_\lambda = \{ \vec{v} \in V | L(\vec{v}) = \lambda \cdot \vec{v} \} \kildetag{Sætning 12.2.1} \\
+    A_\lambda = \{ \vec{v} \in V |A \cdot \vec{v} = \lambda \cdot \vec{v} \} \kildetag{Sætning 12.2.1}
 \end{align*}
 Disse er underrum i hhv. $V$ og $A$.
 
 \section{Diagonalisering}
 
 \subsection{Kan en matrix diagonaliseres?}
-Lineær afbildning $L: V \to V$ eller matrix $A \in \mathbb{F}^{n \times n}$ er diagonaliserbar $\iff$ der findes en basis for $V$ bestående af egenvektorer tilhørende $L$.
+Lineær afbildning $L: V \to V$ eller matrix $\mathbf{A} \in \mathbb{F}^{n \times n}$ er diagonaliserbar $\iff$ der findes en basis for $V$ bestående af egenvektorer tilhørende $L$.
 
 Det skal gælde for alle egenværdier at $\gm(\lambda) = \am(\lambda)$.
 
@@ -96,16 +96,16 @@ p_L(Z) = (-1)^n \cdot (Z - \lambda_1)^{m_1} \cdots (Z - \lambda_r)^{m_r}
 \kildetag{Sætning 12.3.3}
 \]
 
-Når en afbildning kan diagonaliseres kan man finde en diagonalmatrix $D$ og en invertibel matrix $Q$ så
+Når en afbildning kan diagonaliseres kan man finde en diagonalmatrix $\mathbf{D}$ og en invertibel matrix $\mathbf{Q}$ så
 \[
-L = Q \cdot D \cdot Q^{-1} \kildetag{Lemma 12.4.2}
+L = \mathbf{Q} \cdot \mathbf{D} \cdot \mathbf{Q}^{-1} \kildetag{Lemma 12.4.2}
 \]
 Se sektion \ref{sec:diagonal_matrix} og \ref{sec:invertibel_matrix}.
 
 \subsection{Find Diagonalmatrix}
 \label{sec:diagonal_matrix}
-Hvis $A \in \mathbb{F}^{n \times n}$ kan diagonaliseres, kan diagonalmatricen findes ved at indsætte egenværdierne for $A$ på diagonalen i en $n \times n$ matrix $D$.
-\[D = 
+Hvis $\mathbf{A} \in \mathbb{F}^{n \times n}$ kan diagonaliseres, kan diagonalmatricen findes ved at indsætte egenværdierne for $\mathbf{A}$ på diagonalen i en $n \times n$ matrix $\mathbf{D}$.
+\[\mathbf{D} = 
 \begin{bmatrix}
     \lambda_1 & 0 & \cdots & 0 \\
     0 & \lambda_2 & \cdots & 0 \\
@@ -113,23 +113,23 @@ Hvis $A \in \mathbb{F}^{n \times n}$ kan diagonaliseres, kan diagonalmatricen fi
     0 & 0 & \cdots & \lambda_n
 \end{bmatrix}\]
 
-\bemærkBig{Hvis en egenværdi har algebraisk multiplicitet $n$, skal den optræde $n$ gange efter hinanden på diagonalen i $D$.}
+\bemærkBig{Hvis en egenværdi har algebraisk multiplicitet $n$, skal den optræde $n$ gange efter hinanden på diagonalen i $\mathbf{D}$.}
 
 \subsection{Find invertibel matrix}
 \label{sec:invertibel_matrix}
-Diagonalmatrix $D$ kan skrives som $D = Q^{-1} \cdot A \cdot Q$, hvor $Q$ er en invertibel matrix bestående af egenvektorerne for egenværdierne i $D$ som søjler.
-\[Q =
+Diagonalmatrix $\mathbf{D}$ kan skrives som $\mathbf{D} = \mathbf{Q}^{-1} \cdot \mathbf{A} \cdot \mathbf{Q}$, hvor $\mathbf{Q}$ er en invertibel matrix bestående af egenvektorerne for egenværdierne i $\mathbf{D}$ som søjler.
+\[\mathbf{Q} =
 \begin{bmatrix}
     | & | & & | \\
-    \mathbf{v_1} & \mathbf{v_2} & \cdots & \mathbf{v_n} \\
+    \vec{v_1} & \vec{v_2} & \cdots & \vec{v_n} \\
     | & | & & |
 \end{bmatrix}\]
 
-\bemærkBig{Rækkefølgen af egenvektorerne i $Q$ skal svare til rækkefølgen af egenværdierne i $D$.}
+\bemærkBig{Rækkefølgen af egenvektorerne i $\mathbf{Q}$ skal svare til rækkefølgen af egenværdierne i $\mathbf{D}$.}
 
 
 \subsubsection{Algebraisk multiplicitet}
-$\am(\lambda)$ er antallet af gange egenværdi $\lambda$ optræder i roden af $p_A(\lambda)$.
+$\am(\lambda)$ er antallet af gange egenværdi $\lambda$ optræder i roden af $p_\mathbf{A}(\lambda)$.
 
 \eksempel{
 $\lambda^{10} \cdot (\lambda-5)^6 \cdot (\lambda+8)^{10} = 0$
@@ -162,28 +162,28 @@ er $\gm(-3) = 2$.
 \]
 
 \subsection{Koordinater mht. egenvektor, fra egenværdi}
-Hvis der gives to vektorer $\mathbf{v_1}, \mathbf{v_2} \in V$ og en lineær afbildning $f: V \to V$, og det angives at $\mathbf{v_1}$ er en egenvektor tilhørende egenværdien $\lambda_1$ og $\mathbf{v_2}$ er en egenvektor tilhørende egenværdien $\lambda_2$, vil koordinaterne for \(f(2 \cdot v_1 - 4 \cdot v_2)\) med hensyn til basis \(\beta = \{v_1, v_2\}\) være:
+Hvis der gives to vektorer $\vec{v_1}, \vec{v_2} \in V$ og en lineær afbildning $f: V \to V$, og det angives at $\vec{v_1}$ er en egenvektor tilhørende egenværdien $\lambda_1$ og $\vec{v_2}$ er en egenvektor tilhørende egenværdien $\lambda_2$, vil koordinaterne for \(f(2 \cdot \vec{v_1} - 4 \cdot \vec{v_2})\) med hensyn til basis \(\beta = \{\vec{v_1}, \vec{v_2}\}\) være:
 \[
     (2 \cdot \lambda_1, \quad -4 \cdot \lambda_2)
 \]
 
 \subsection{Find Diagonalmatrix fra egenvektor matrix}
 
-Gives en matrix $A$ \( \begin{bmatrix}
+Gives en matrix \( \mathbf{A} = \begin{bmatrix}
     a & b \\
     c & d
 \end{bmatrix}
-\) og en invertibel matrix $Q$ \( \begin{bmatrix}
+\) og en invertibel matrix \( \mathbf{Q} = \begin{bmatrix}
     w & x \\
     y & z
 \end{bmatrix}
-\) bestående af egenvektorerne til $A$ som søjler, kan diagonalmatrix $D$ fines ved at gange hver af søjlerne i $Q$ med $A$, og se hvilket multiplum af søjlen man får.
+\) bestående af egenvektorerne til $\mathbf{A}$ som søjler, kan diagonalmatrix $\mathbf{D}$ fines ved at gange hver af søjlerne i $\mathbf{Q}$ med $\mathbf{A}$, og se hvilket multiplum af søjlen man får.
 
 
 \subsection{Andet}
 
-For en $2 \times 2$ matrix med kendt determinant og en egenværdi er den anden egenværdi givet ved
-\[\lambda_2 = \frac{\det(A)}{\lambda_1}.\]
+For $\mathbf{A}^{2 \times 2}$ med kendt determinant og en egenværdi er den anden egenværdi givet ved
+\[\lambda_2 = \frac{\det(\mathbf{A})}{\lambda_1}.\]
 
 \
 
@@ -191,7 +191,7 @@ $x$ forskellige egenværdier $\implies$ mindst $x$ lineært uafhængige egenvekt
 
 \
 
-Egneværdierne for $A^{-1}$ er givet ved $\frac{1}{\lambda_i}$ hvor $\lambda_i$ er egenværdierne for $A$.
+Egneværdierne for $\mathbf{A}^{-1}$ er givet ved $\frac{1}{\lambda_i}$ hvor $\lambda_i$ er egenværdierne for $\mathbf{A}$.
 
 \
 

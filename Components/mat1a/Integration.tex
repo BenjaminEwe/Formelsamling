@@ -13,7 +13,7 @@ Konstant & $\int a \, dx = ax + C$ \\
 Lineær & $\int ax \, dx = \frac{a x^2}{2} + C$ \\
 Sammensat & $\int f(x) + g(x) \, dx = \int f(x) \, dx + \int g(x) \, dx$ \\
 \midrule
-Eksponent $n \neq -1$ & $\int x^n \, dx = \frac{x^{n+1}}{n+1} + C$ \\
+Eksponent $n \neq -1$ & $\int x^n \, dx = \frac{1}{n+1} \cdot x^{n+1} + C$ \\
 Eksponent $n = -1$ & $\int \frac{1}{x} \, dx = \ln|x| + C$ \\
 \midrule
 Potens & $\int a^{x} \, dx = \frac{a^{x}}{\ln(a)} + C$ \\
@@ -30,10 +30,13 @@ Cotangens & $\int \cot(ax) \, dx = \frac{1}{a} \ln|\sin(ax)| + C$ \\
 \midrule
 Secans$^2$ & $\int \sec^2(ax) \, dx = \frac{1}{a} \tan(ax) + C$ \\
 Cosecans$^2$ & $\int \csc^2(ax) \, dx = -\frac{1}{a} \cot(ax) + C$ \\
-%\midrule
-%$\sec \times \tan$ & $\int \sec(x) \tan(x) \, dx = \sec(x) + C$ \\
-%$\csc \times \cot$ & $\int \csc(x) \cot(x) \, dx = -\csc(x) + C$ \\
+\midrule
+Speciel & $\int \frac{1}{1+x^2} \ dx = \arctan(x) + C$ \\
+Sammensat & $\int \cos(x+1) \, dx = \sin(x+1) + C$ \\
 \bottomrule
 \end{tabular}
 \endgroup
 \end{table}
+\bemærk{
+    $\frac{1}{x^n} = x^{-n}$, $\sqrt{x} = x^{\frac{1}{2}}$, $\sqrt[n]{x} = x^{\frac{1}{n}}$.
+}

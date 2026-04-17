@@ -1,0 +1,334 @@
+\section{Lineære Afbildninger}
+
+Lineære afbildninger tager en vektor fra et vektorrum og afbilder den til en anden vektor i et andet (eller samme) vektorrum.
+
+En afbildning er lineær $\iff L(\vec{u} + c \cdot \vec{v}) = L(\vec{u}) + c \cdot L(\vec{v}) $
+
+\kilde{Definition 11.0.1}
+
+Et hurtigt \emph{modbevis} for at en afbildning er lineær er hvis $ L(0) \ne 0 $.
+
+\subsection{Matricer som lineære afbildninger}
+
+Givet en matrix \( \mathbf{A} \in \mathbb{F}^{m \times n}\), kan vi definere en lineær afbildning \( L_\mathbf{A} : \mathbb{R}^n \rightarrow \mathbb{R}^m \) ved:
+\[
+    L_\mathbf{A}(\vec v) = \mathbf{A} \cdot \vec v
+\]
+\kilde{Definition 11.1.1}
+
+Eksempel:
+
+\begin{minipage}{0.45\textwidth}
+    \[
+    \mathbf{A} = \begin{bmatrix}
+        1 & 2 \\
+        3 & 4
+    \end{bmatrix}, \quad \vec v = \begin{bmatrix}
+        5 \\
+        6
+    \end{bmatrix}
+    \]
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \[
+    L_\mathbf{A}(\vec v) = \mathbf{A} \cdot \vec v = \begin{bmatrix}
+        1 & 2 \\
+        3 & 4
+    \end{bmatrix} \cdot \begin{bmatrix}
+        5 \\
+        6
+    \end{bmatrix} = \begin{bmatrix}
+        17 \\
+        39
+    \end{bmatrix}
+    \]
+\end{minipage}
+
+\bemærkBig{Alle lineære afbildninger mellem endelig-dimensionelle vektorrum kan repræsenteres som matrix-multiplikationer.}
+
+\subsubsection{Billedet af lineær afbildning}
+Givet en afbildnings-matrice \( \mathbf{A} \), er billedet af den lineære afbildning \( L_\mathbf{A} \) givet ved  \( \colsp(\mathbf{A}) \).
+Se sektion \ref{sec:soejlerum} for at finde søjlerummet.
+
+\kilde{Lemma 11.1.2}
+
+\subsubsection{Kerne af lineær afbildning}
+Givet en afbildnings-matrice \( \mathbf{A} \), er \(\ker(L_\mathbf{A}) = \ker(\mathbf{A})\).
+Se sektion \ref{sec:kerne} for at finde kernen.
+
+\kilde{Definition 11.1.2}
+
+Givet en generel lineær afbildning \( L : V \rightarrow W \), er kernen af \( L \) mængden af alle vektorer i \( V \), der afbildes til nulvektoren i \( W \):
+\[
+\ker(L) = \{ \vec v \in V \mid L(\vec{v}) = 0 \}
+\kildetag{Definition 11.2.1}
+\]
+
+\subsubsection{Dimensionssætningen for lineære afbildninger}
+For \(L: V_1 \to V_2\)
+\[
+\dim(\ker(L)) + \dim(\image(L)) = \dim(V_1)
+\kildetag{Korollar 11.4.3}
+\]
+
+\subsection{Find afbildnings-matrix}
+For lineær afbildning \(L: \mathbb{F}^n \to \mathbb{F}^m\) kan afbildnings-matricen \( [L] \) findes ved at anvende \(L\) på standardbasens vektorer \(\vec{e_1}, \vec{e_2}, \ldots, \vec{e_n}\) og sætte resultaterne som søjler i en matrix:
+\[
+A = \begin{bmatrix}
+    L(\vec{e_1}) & L(\vec{e_2}) & \ldots & L(\vec{e_n})
+\end{bmatrix}
+\kildetag{Lemma 11.3.2}
+\]
+
+\subsubsection{Find afbildningsmatrix of afbilled en vektor}
+\eksempel{
+    Givet vektor
+    \(
+        \begin{bmatrix}
+            3 \\
+            2 \\
+            1
+        \end{bmatrix}
+    \)
+    og lineær afbildning \( L : \mathbb{R}^3 \rightarrow \mathbb{R}^2 \)
+    \[
+        L\begin{bmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            2x_1 + x_2 \\
+            -x_2 + 3x_3
+        \end{bmatrix}
+    \]
+
+    tag den ordnede standardbasis for \(\mathbb{R}^3\):
+    \(
+        \vec{e_1} = \begin{bmatrix}
+            1 \\
+            0 \\
+            0
+        \end{bmatrix},
+        \vec{e_2} = \begin{bmatrix}
+            0 \\
+            1 \\
+            0
+        \end{bmatrix}, 
+        \vec{e_3} = \begin{bmatrix}
+            0 \\
+            0 \\
+            1
+        \end{bmatrix}
+    \)
+
+    Vi afbilleder nu hver af basisvektorene med \(L\):
+    \[
+        L \begin{bmatrix}
+            1 \\
+            0 \\
+            0
+        \end{bmatrix} =
+        \begin{bmatrix}
+            2 \cdot 1 + 0 \\
+            -0 + 3 \cdot 0
+        \end{bmatrix} =
+        \begin{bmatrix}
+            2 \\
+            0
+        \end{bmatrix}
+    \hspace{6em}
+        L \begin{bmatrix}
+            0 \\
+            1 \\
+            0
+        \end{bmatrix} =
+        \begin{bmatrix}
+            2 \cdot 0 + 1 \\
+            -1 + 3 \cdot 0
+        \end{bmatrix} =
+        \begin{bmatrix}
+            1 \\
+            -1
+        \end{bmatrix}
+    \]
+    \[
+        L \begin{bmatrix}
+            0 \\
+            0 \\
+            1
+        \end{bmatrix} =
+        \begin{bmatrix}
+            2 \cdot 0 + 0 \\
+            -0 + 3 \cdot 1
+        \end{bmatrix} =
+        \begin{bmatrix}
+            0 \\
+            3
+        \end{bmatrix}
+    \]
+
+    Vi har nu afbildningsmatricen:
+    \(
+        [L] =
+        \begin{bmatrix}
+            2 & 1 & 0 \\
+            0 & -1 & 3
+        \end{bmatrix}
+    \)
+
+    Og vi kan nu finde afbildningen af vores vektor ved at multiplicere afbildningsmatricen med vektoren:
+    \[
+        L
+        \begin{bmatrix}
+            3 \\
+            2 \\
+            1
+        \end{bmatrix} 
+        =
+        \begin{bmatrix}
+            2 & 1 & 0 \\
+            0 & -1 & 3
+        \end{bmatrix} \cdot
+        \begin{bmatrix}
+            3 \\
+            2 \\
+            1
+        \end{bmatrix} =
+        \begin{bmatrix}
+            2 \cdot 3 + 1 \cdot 2 + 0 \cdot 1 \\
+            0 \cdot 3 + (-1) \cdot 2 + 3 \cdot 1
+        \end{bmatrix} =
+        \begin{bmatrix}
+            8 \\
+            1
+        \end{bmatrix}
+    \]
+}
+
+\subsection{Afbildningsmatrice med hensyn til basis}
+Givet lineær afbildning \( L : V \rightarrow W \) med ordnede baser \( \beta = \{ \vec{v_1}, \vec{v_2}, \ldots, \vec{v_n} \} \) for \( V \) og \( \gamma = \{ \vec{w_1}, \vec{w_2}, \ldots, \vec{w_m} \} \) for \( W \), kan afbildningsmatricen \( _\gamma [L]_\beta \) findes ved at afbilde hver basisvektor i \( V \) og udtrykke resultatet i basis \( \gamma \):
+
+\[
+_\gamma [L]_\beta = \begin{bmatrix}
+    [L(\vec{v_1})]_\gamma & [L(\vec{v_2})]_\gamma & \ldots & [L(\vec{v_n})]_\gamma
+\end{bmatrix}
+\kildetag{Lemma 11.3.3}
+\]
+
+Dvs., for hver basisvektor \( \vec{v_i} \) i \( V \):
+\begin{enumerate}
+    \item beregn \( L(\vec{v_i}) \)
+    \item skriv \( L(\vec{v_i}) \) med hensyn til basis \( \gamma \) for at få \( [L(\vec{v_i})]_\gamma \). Se sektion \ref{sec:beta-koordinater}
+    \item Du har nu søjle $i$ i afbildningsmatricen. $_\gamma [L]_\beta$
+\end{enumerate}
+
+\subsubsection{Om afbildningsmatricer med hensyn til baser}
+
+\begin{align*}
+    [L(v)]_\gamma = \gamma [L]_\beta \cdot [v]_\beta \\
+    _\delta [M \circ L]_\beta = _\delta [M]_\gamma \cdot _\gamma [L]_\beta
+\end{align*}
+\kilde{Sætning 11.3.4}
+
+\subsubsection{Afbildningsmatrix på samme vektorrum}
+Giver lineær afbildning \( L : V \rightarrow V \) med ordnet basis \( \beta = \{ \vec{v_1}, \vec{v_2}, \ldots, \vec{v_n} \} \) og ordnet basis \( \gamma = \{ \vec{w_1}, \vec{w_2}, \ldots, \vec{w_n} \} \):
+\[
+_\gamma [\vec{id_V}]_\beta = \begin{bmatrix}
+    [\vec{v_1}]_\gamma & [\vec{v_2}]_\gamma & \ldots & [\vec{v_n}]_\gamma
+\end{bmatrix}
+\kildetag{Lemma 11.3.5}
+\]
+
+\paragraph{Om afbildning på samme vektorrum}
+
+Det er bare en anden måde at skrive en basisskift-matrice.
+
+\begin{align*}
+    _\delta [\vec{id_V}]_\gamma \cdot _\gamma [\vec{id_V}]_\beta = _\delta [\vec{id_V}]_\beta \\
+    _\beta [\vec{id_V}]_\beta = I_n \\
+    (_\gamma [\vec{id_V}]_\beta)^{-1} = _\beta [\vec{id_V}]_\gamma
+\end{align*}
+\kilde{Lemma 11.3.6}
+
+\subsection{Sammensætning}
+Hvis \( L_1 : U \rightarrow V \) og \( L_2 : V \rightarrow W \) er lineære afbildninger, så er \( L_2 \circ L_1 : U \rightarrow W \) også en lineær afbildning. 
+
+\kilde{Sætning 11.2.1}
+
+Hvis \( \alpha, \beta, \gamma \) er baser for henholdsvis \( U, V, W \), så gælder:
+\[
+_\gamma [L_2 \circ L_1]_\alpha 
+= {_\gamma [L_2]_\beta} \cdot {_\beta [L_1]_\alpha}
+\]
+
+\subsection{Basisskift som lineær afbildning}
+Givet vektorrum $V$ og \( \beta = \{ \vec{v_1}, \vec{v_2}, \ldots, \vec{v_n} \} \)
+er funktionen \( L_\beta : V \rightarrow \mathbb{R}^n \) defineret ved
+\(
+L_\beta(v) \mapsto [v]_\beta
+\)
+En lineær afbildning. \\
+
+Funktionen \(\mathbb{F}^n \to V\) defineret ved
+\( (c_1, c_2, \ldots, c_n) \mapsto c_1 \vec{v_1} + c_2 \vec{v_2} + \ldots + c_n \vec{v_n}\)
+er også en lineær afbildning, og er den inverse af \( L_\beta \).
+
+\kilde{Lemma 11.3.1}
+
+\subsection{Find vektor der afbildes til en given vektor}
+Givet lineær afbildning \( L : V \rightarrow W \) og \( \vec{w} \in W \), kan \( \vec{v} \in V \) findes så \( L(\vec{v}) = \vec{w} \), ved at løse ligningen:
+\[
+_\gamma [L]_\beta \cdot [\vec{v}]_\beta = [\vec{w}]_\gamma
+\]
+
+For vektoren \([\vec{v}]_\beta\) indsættes blot $(x,y,z, \cdots)$ og løses som et almindeligt ligningssystem.
+
+Når en løsning er fundet vil alle vektorer der afbildes til $\vec{w}$ være givet ved:
+\[
+    \vec{v} = \vec{v_p} + \vec{v_{ker}}
+\]
+hvor $\vec{v_p}$ er den fundne løsning og $\vec{v_{ker}}$ er en vilkårlig vektor i kernen af $L$. 
+
+
+\subsection{Eksempler på lineære afbildninger}
+\begin{itemize}
+    \item Sporet af en matrix; en funktion der lægger alle diagonalerne sammen.
+    
+    \kilde{Eksempel 11.2.2}
+    \item Vektor til lavere dimension:
+    \(
+        \begin{bmatrix}
+            x_1 & x_2 & x_3
+        \end{bmatrix}
+        \mapsto
+        \begin{bmatrix}
+            x_1 & x_2
+        \end{bmatrix}
+    \)
+\end{itemize}
+
+\subsection{Find all vektorer der afbiledes til w ved ordnet basis}
+Givet lineær afbildning \(L: V_1 \to V_2\) med ordnet basis \(\beta\) for \(V_1\) og \(\gamma\) for \(V_2\), og vektor \(\vec{w} \in V_2\).
+
+Det er muligt at finde alle vektorer \(\vec{v} \in V_1\), så \(L(\vec{v}) = \vec{w}\), ved at løse ligningen:
+\[
+_\gamma [L]_\beta \cdot [\vec{v}]_\beta = [\vec{w}]_\gamma
+\]
+For vektoren \([\vec{v}]_\beta\) indsættes blot \((x_1, x_2, \ldots, x_n)\) og løses som et almindeligt ligningssystem.
+
+Da er det $\vec{v}$ som er løsningen til $L(\vec{v}) = w$.
+
+\subsubsection{Kerne ved samme metode}
+På samme måde kan kernen for $L$ findes ved at løse ligningen:
+\[
+_\gamma [L]_\beta \cdot [v]_\beta = 0
+\]
+
+Igen er det her $\vec{v}$ som er løsningen til $L(\vec{v}) = 0$.
+
+\subsection{Surjektivitet}
+
+Den lineære afbildning $L(\vec{v}) = \mathbf{A} \cdot \vec{v}$ er surjektiv $\iff \rho(\mathbf{A})$ er fuld 

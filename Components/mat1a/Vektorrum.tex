@@ -1,0 +1,141 @@
+\section{Vektorrum}
+Alle vektorrum skal opfylde aksiomerne:
+\begin{itemize}
+\itemsep0em 
+    \item \( \vec{u} + (\vec{v} + \vec{w}) = (\vec{u} + \vec{v}) + \vec{w} \)
+    \item \( \vec{u} + \vec{v} = \vec{v} + \vec{u} \)
+    \item Der findes en nulvektor \( \vec{0} \) sådan at \( \vec{u} + \vec{0} = \vec{u} \)
+    \item For hver vektor \( \vec{u} \) findes en modsat vektor \( -\vec{u} \) sådan at \( \vec{u} + (-\vec{u}) = \vec{0} \)
+    \item \( c \cdot (d \cdot \vec{u}) = (c \cdot d) \cdot \vec{u} \)
+    \item \( 1 \cdot \vec{u} = \vec{u} \)
+    \item \( c \cdot (\vec{u} + \vec{v}) = c \cdot \vec{u} + c \cdot \vec{v} \)
+    \item \( (c + d) \cdot \vec{u} = c \cdot \vec{u} + d \cdot \vec{u} \)
+\end{itemize}
+\kilde{Definition 10.1.1}
+
+\subsection{Standardbasisvektorene}
+\[
+    \vec e_1 =
+    \begin{bmatrix}
+        1 \\ 0 \\ \vdots \\ 0
+    \end{bmatrix}, \quad
+    \vec e_2 =
+    \begin{bmatrix}
+        0 \\ 1 \\ \vdots \\ 0
+    \end{bmatrix}, \quad
+    \cdots, \quad
+    \vec e_n =
+    \begin{bmatrix}
+        0 \\ 0 \\ \vdots \\ 1
+    \end{bmatrix}
+\]
+
+
+\subsection{Find Beta-koordinater for en vektor}
+\label{sec:beta-koordinater}
+Givet vektor $\vec{v}$ og basis $\beta = \{\vec{b}_1, \vec{b}_2, \ldots, \vec{b}_n\}$ for vektorrum $V$, kan vi finde $[\vec{v}]_\beta$ ved at række-reducere \([\vec{b}|\vec{v}]\) matricen til reduceret trappeform.
+\[
+\begin{bmatrix}
+    \vert & & \vert & \vert \\
+    \vec{b}_1 & \cdots & \vec{b}_n & \vec{v} \\
+    \vert & & \vert & \vert
+\end{bmatrix}
+\xrightarrow{\text{Række-operationer}}
+\begin{bmatrix}
+    1 & \cdots & 0 & \vert \\
+    \vdots & 1 & \vdots & \vec{v}_\beta \\
+    0 & \cdots & 1 & \vert
+\end{bmatrix}
+\]
+
+\subsection{Om beta-koordinater}
+\( [\vec{v} + \vec{u}]_\beta = [\vec{v}]_\beta + [\vec{u}]_\beta \)
+\hfill
+\( [c \cdot \vec{v}]_\beta = c \cdot [\vec{v}]_\beta \)
+\kilde{Lemma 10.2.3}
+
+\[ c_1 \cdot \vec{v}_1 + c_2 \cdot \vec{v}_2 + \cdots + c_n \cdot \vec{v}_n = \vec{0} \iff c_1 \cdot [\vec{v}_1]_\beta + c_2 \cdot [\vec{v}_2]_\beta + \cdots + c_n \cdot [\vec{v}_n]_\beta = \vec{0} \]
+\kilde{Sætning 10.2.4}
+
+\subsection{Ordnet basis af vektorrum}
+For vektorrum \(V=\spanop(\vec{v_1},\vec{v_2},\cdots,\vec{v_n})\) kan den ordnede basis findes som beskrevet i sektion \ref{sec:ordnet-basis-udspaending}
+
+\subsubsection{Er givent sæt vektorer en ordnet basis?}
+\begin{enumerate}
+    \item Antal vektorer $=$ dimension af vektorrummet.
+    \item Vektorerne er lineært uafhængige.
+\end{enumerate}
+\kilde{Sætning 10.2.7}
+
+De er lineært uafhængige hvis matricen dannet af vektorerne har pivot i alle søjler efter række-reduktion til trappeform.
+
+\subsection{Bestem basisskiftematrix}
+\subsubsection{Ved individuelle søjler}
+Givet to basiser
+$\gamma = \{\vec{w}_1, \vec{w}_2, \cdots, \vec{w}_n\}$ og $\beta = \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\}$
+for vektorrum $V$, kan vi bestemme basisskiftematricen $_\beta \mathbf{M} _\gamma$ (Fra $\gamma$ til $\beta$) 
+ved at finde koordinaterne for hver eneste basisvektor i $\gamma$ i forhold til basisen $\beta$ som i sektion \ref{sec:beta-koordinater}
+
+De resulterende koordinatvektorer udgør søjlerne i basisskiftematricen:
+\[_\beta \mathbf{M}_\gamma = \begin{bmatrix} [\vec{w}_1]_\beta & [\vec{w}_2]_\beta & \cdots & [\vec{w}_n]_\beta \end{bmatrix} \kildetag{Sætning 10.3.1} \]
+
+\subsubsection{Basisskiftematricer skifter basis}
+\[_\gamma \mathbf{M}_\beta \cdot [\vec{v}]_\beta = [\vec{v}]_\gamma \kildetag{Sætning 10.3.1}\]
+
+\subsubsection{Sætilfælde: Fra den ordnede standarbasis}
+Enhver basisskiftematrix $_\beta \mathbf{M} _\epsilon$ (Fra standardbasis til $\beta$) kan findes ved at danne en matrix med basisvektorerne i $\beta$ som søjler:
+\[_\beta \mathbf{M}_\epsilon = \begin{bmatrix} \vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n \end{bmatrix}\]
+Det er altså bare at skrive basisvektorerne ved siden af hinanden som søjler i en matrix.
+
+\subsubsection{Hvis du kender den modsattet basisskiftematix}
+Hvis du kender basisskiftematricen $_\beta \mathbf{M} _\gamma$ (Fra $\gamma$ til $\beta$), kan du finde den modsatte basisskiftematrix $_\gamma \mathbf{M} _\beta$ (Fra $\beta$ til $\gamma$) ved at tage den inverse af $_\beta \mathbf{M} _\gamma$:
+\[_\gamma \mathbf{M} _\beta = \left(_\beta \mathbf{M} _\gamma\right)^{-1} \kildetag{Lemma 10.3.2}\]
+
+\subsubsection{Kombination af basisikftematricer}
+Hvis du kender basisskiftematricerne $_\beta \mathbf{M} _\gamma$ (Fra $\gamma$ til $\beta$) og $_\gamma \mathbf{M} _\delta$ (Fra $\delta$ til $\gamma$), kan du finde basisskiftematricen $_\beta \mathbf{M} _\delta$ (Fra $\delta$ til $\beta$) ved at multiplicere de to matricer:
+\[_\beta \mathbf{M} _\delta = _\beta \mathbf{M} _\gamma \cdot _\gamma \mathbf{M} _\delta \kildetag{Lemma 10.3.2}\]
+\bemærk{Rækkefølgen af multiplikationen er vigtig}
+
+\subsection{Underrum}
+For underrum $W$ af vektorrum $V$ gælder $\dim(W) \leq \dim(V)$
+
+\kilde{Lemma 10.4.1}
+
+\
+
+For $\vec{u}, \vec{v} \in W$ gælder $\vec{u} + c \cdot \vec{v} \in W$ for alle skalarer $c \in \mathbb{F}$.
+
+\kilde{Lemma 10.4.2}
+
+\eksempel{
+    er mængden $\{ a + bz \mid a, b \in \mathbb{C}\}$ et underrum af vektorrummet af alle komplekse polynomier $\mathbb{C}[z]$?
+    \[
+    (a+bz) + c \cdot (k+jz) = a + ck + bz + cjz = (a + ck) + (b + cj)z
+    \]
+    Det er sandt, da det kunne omskrives til at være et polynomium af samme form.
+}
+
+\subsubsection{Find dimensionen}
+Dimensionen af et underrum er antallet af variabler der kan vælges frit.
+
+\eksempel{
+    \[
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        0 & a_{22} & a_{23} \\
+        0 & 0 & a_{33} \\
+    \end{bmatrix}
+    \]
+
+    Dimensionen af alle \(\mathbb{R}^{3 \times 3}\) øvre-trekantsmatricer er $3 + 2 + 1 = \frac{3 \cdot (3+1)}{2} = 6$
+}
+
+\subsection{Ordnet basis for underrum}
+Vektorer er en ordnet basis for et underrum hvis de er:
+
+Lineært uafhængige, i underrummet, og der er samme antal vektorer som dimensionen af underrummet.
+
+Se sektion \ref{sec:ordnet-basis-udspaending} for ordnede baser.
+
+%Givet en ordnet basis $\beta$ for $V$, og vektorer der udgør et underum af $V$ $v_1, v_2, \cdots, v_n$, kan du finde en ordnet basis for $\spanop(v_1, v_2, \cdots, v_m)$ ved finde pivotsøjlerne af $[v_1]_\beta, [v_2]_\beta, \cdots, [v_m]_\beta$. Da er de originale den ordnede basis.
+%\kilde{Sætning 10.4.4}

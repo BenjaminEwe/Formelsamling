@@ -14,14 +14,14 @@ Lav en matrix ud af vektorene
 \[
     \begin{bmatrix}
         \vline & \vline & \cdots & \vline \\
-        v_1 & v_2 & \cdots & \ v_n \\
+        \vec{v_1} & \vec{v_2} & \cdots &  \vec{v_n} \\
         \vline & \vline & \cdots & \vline \\
 
     \end{bmatrix}
 \]
 
 Brug rækkeoperationer til at få matrixen på trappeform. 
-For alle søjler med et pivot-element skal den \textbf{originale vektor} på den position med i den ordnede basis.
+For alle søjler med et pivot-element skal den \emph{originale vektor} på den position med i den ordnede basis.
 
 \kilde{Sætning 9.2.1}
 
@@ -37,13 +37,13 @@ Lav en matrix med vektorerne i spanet og den nye vektor som ekstra søjle:
 \[
     \begin{bmatrix}
         \vline & \vline & \cdots & \vline & \vline \\
-        v_1 & v_2 & \cdots & v_n & v_x \\
+        \vec{v_1} & \vec{v_2} & \cdots & \vec{v_n} & \vec{v_x} \\
         \vline & \vline & \cdots & \vline & \vline \\
     \end{bmatrix}
 \]
-Få matricen på reduceret rækkeform. Hvis den ekstra søjle \textbf{ikke} indeholder et pivot-element, er vektoren indeholdt i udspændingen.
+Få matricen på reduceret rækkeform. Hvis den ekstra søjle \emph{ikke} indeholder et pivot-element, er vektoren indeholdt i udspændingen.
 
-I så fald kan vektorens linearkombinationen aflæses fra søjlen $v_x$
+I så fald kan vektorens linearkombinationen aflæses fra søjlen $\vec{v_x}$
 
 
 \eksempel{
@@ -64,7 +64,7 @@ I så fald kan vektorens linearkombinationen aflæses fra søjlen $v_x$
 \]
 
 Her kan aflæses at \(
-    v_x = 1 \cdot v_1 + 2 \cdot v_2
+    \vec{v_x} = 1 \cdot \vec{v_1} + 2 \cdot \vec{v_2}
 \)
 }
 
@@ -73,35 +73,35 @@ Lav en matrix med vektorerne og den nye vektor som ekstra søjle:
 \[
     \begin{bmatrix}
         \vline & \vline & \cdots & \vline & \vline \\
-        v_1 & v_2 & \cdots & v_n & v_x \\
+        \vec{v_1} & \vec{v_2} & \cdots & \vec{v_n} & \vec{v_x} \\
         \vline & \vline & \cdots & \vline & \vline \\
     \end{bmatrix}
 \]
-Brug rækkeoperationer til at få matrixen på trappeform. Løs for den ubekendte så den ekstra søjle \textbf{ikke} indeholder et pivot-element, så er vektoren indeholdt i udspændingen.
+Brug rækkeoperationer til at få matrixen på trappeform. Løs for den ubekendte så den ekstra søjle \emph{ikke} indeholder et pivot-element, så er vektoren indeholdt i udspændingen.
 
 \subsection{Dimensionssætningen}
 For en matrix \( \mathbf{A}^{m \times n} \) ($n$ søjler) gælder det at:
 \[
     \rho(\mathbf{A}) + \dim(\ker(\mathbf{A})) = n \kildetag{Sætning 9.4.2}
 \]
-$\rho(A) = \dim(\colsp(\mathbf{A})) =$ antal pivoter \hfill $\dim(\ker(\mathbf{A})) = \nullop(A)$
+$\rho(\mathbf{A}) = \dim(\colsp(\mathbf{A})) =$ antal pivoter \hfill $\dim(\ker(\mathbf{A})) = \nullop(\mathbf{A})$
 
 \
 
 Dimensionen er antallet af vektorer i en ordnet basis for rummet.
 
 \subsubsection{Difference mellem vektorer}
-Hvis \(\mathbf{A} \cdot v_1 = \mathbf{A} \cdot v_2\) er \(c \cdot (v_1-v_2)\) i \(\ker(\mathbf{A})\) 
-
-\kilde{Logik}
+Hvis \(\mathbf{A} \cdot \vec{v_1} = \mathbf{A} \cdot \vec{v_2}\) er \(c \cdot (\vec{v_1}-\vec{v_2})\) i \(\ker(\mathbf{A})\) 
 
 \subsection{Søjle-rum}
 \label{sec:soejlerum}
 
 Mængden af alle linearkombinationer af søjlerne i en matrix.
 
+Spanet over alle søjler med et pivot-element.
+
 \[
-    \colsp(\mathbf{A}) = \{ \mathbf{A} \cdot \mathbf{v} \ | \ \mathbf{v} \in \mathbb{F}^n \}
+    \colsp(\mathbf{A}) = \{ \mathbf{A} \cdot \vec{v} \ | \ \vec{v} \in \mathbb{F}^n \}
 \]
 
 Ordnet basis for søjlerummet kan findes som beskrevet i sektion \ref{sec:ordnet-basis-udspaending}.
@@ -109,87 +109,92 @@ Ordnet basis for søjlerummet kan findes som beskrevet i sektion \ref{sec:ordnet
 \subsection{Kernen / Nulrummet af en matrix}
 \label{sec:kerne}
 
-\[ \ker(\mathbf{A}) = \{ \mathbf{v} \in \mathbb{F} \ | \ \mathbf{A} \cdot \mathbf{v} = 0 \} \]
+\[ \ker(\mathbf{A}) = \{ \vec{v} \in \mathbb{F} \ | \ \mathbf{A} \cdot \vec{v} = 0 \} \]
 
-Kernen for matrix \textbf{A} findes ved at løse det Hom.LLS dannet ved at tilføje en 0-søjle.
+Kernen for matrix \textbf{A} findes ved at løse det Hom.LLS dannet ved at tilføje en 0-søjle til højre.
+Se sektion \ref{sec:LLS-løsning} for løsning af LLS.
 
 \kilde{Korollar 9.2.3}
 
-\eksempel{
-    \[
-        \begin{bmatrix}
-            -i & 1 & 0 & \vline & 0 \\
-            2 & -2 & 2 & \vline & 0 \\
-            i & -1 & 0 & \vline & 0
-        \end{bmatrix}
-    \]
-
-    Første linje giver os
-    \[
-        -i \cdot x_1 + x_2 = 0 \implies x_2 = i \cdot x_1
-    \]
-
-    Nu kan vi finde $x_3$ med anden linje, hvor vi udskifter $x_2$ med $i \cdot x_1$:
-    \begin{align*}
-        2 \cdot x_1 - 2 \cdot (i \cdot x_1) + 2 \cdot x_3 &= 0 \\
-        \implies 2 \cdot x_1 - 2i \cdot x_1 &= -2 \cdot x_3 \\
-        \implies x_1 - i \cdot x_1 &= -x_3 \\
-        \implies (1 - i) \cdot x_1 &= -x_3 \\
-        \implies (i - 1) \cdot x_1 &= x_3
-    \end{align*}
-
-    Vi har nu både $x_2$ og $x_3$ udtrykt ved $x_1$, så vi kan skrive løsningen som:
-
-    \[
-        \begin{bmatrix}
-            x_1 \\
-            x_2 \\
-            x_3
-        \end{bmatrix}
-        =
-        \begin{bmatrix}
-            x_1 \\
-            i \cdot x_1 \\
-            (i - 1) \cdot x_1
-        \end{bmatrix}
-        =
-        x_1 \cdot
-        \begin{bmatrix}
-            1 \\
-            i \\
-            i - 1
-        \end{bmatrix}
-    \]
-
-    Kernen er derfor
-    \[
-        \spanop
-        \left(
-            \begin{bmatrix}
-                1 \\
-                i \\
-                i - 1
-            \end{bmatrix}
-        \right)
-    \]
-}
+%\eksempel{
+%    \[
+%        \begin{bmatrix}
+%            -i & 1 & 0 & \vline & 0 \\
+%            2 & -2 & 2 & \vline & 0 \\
+%            i & -1 & 0 & \vline & 0
+%        \end{bmatrix}
+%    \]
+%
+%    Første linje giver os
+%    \[
+%        -i \cdot x_1 + x_2 = 0 \implies x_2 = i \cdot x_1
+%    \]
+%
+%    Nu kan vi finde $x_3$ med anden linje, hvor vi udskifter $x_2$ med $i \cdot x_1$:
+%    \begin{align*}
+%        2 \cdot x_1 - 2 \cdot (i \cdot x_1) + 2 \cdot x_3 &= 0 \\
+%        \implies 2 \cdot x_1 - 2i \cdot x_1 &= -2 \cdot x_3 \\
+%        \implies x_1 - i \cdot x_1 &= -x_3 \\
+%        \implies (1 - i) \cdot x_1 &= -x_3 \\
+%        \implies (i - 1) \cdot x_1 &= x_3
+%    \end{align*}
+%
+%    Vi har nu både $x_2$ og $x_3$ udtrykt ved $x_1$, så vi kan skrive løsningen som:
+%
+%    \[
+%        \begin{bmatrix}
+%            x_1 \\
+%            x_2 \\
+%            x_3
+%        \end{bmatrix}
+%        =
+%        \begin{bmatrix}
+%            x_1 \\
+%            i \cdot x_1 \\
+%            (i - 1) \cdot x_1
+%        \end{bmatrix}
+%        =
+%        x_1 \cdot
+%        \begin{bmatrix}
+%            1 \\
+%            i \\
+%            i - 1
+%        \end{bmatrix}
+%    \]
+%
+%    Kernen er derfor
+%    \[
+%        \spanop
+%        \left(
+%            \begin{bmatrix}
+%                1 \\
+%                i \\
+%                i - 1
+%            \end{bmatrix}
+%        \right)
+%    \]
+%}
 
 \subsubsection{Ordnet basis for kernen / nulrummet}
-Ovenstående metode giver en ordnet basis for kernen.
+En ordnet basis for kernen findes ved spandet over de parametre-afhlængige vektorer i løsningen til det tilsvarende Hom.LLS.
 
 Givet vektorer i uordnet kerne kan ordnet basis findes som i sektion \ref{sec:ordnet-basis-udspaending}.
 
 \subsubsection{Er vektor i kernen af en matrix?}
-$v$ er i kernen af matrix $\mathbf{A}$ hvis: \\
-\( \mathbf{A} \cdot v = 0 \) \\
-\( v \) er lineært afhængig med vektorerne i kernen af \( A \) (se sektion \ref{sec:span})
+$\vec{v}$ er i kernen af matrix $\mathbf{A}$ hvis:
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item $\mathbf{A} \cdot \vec{v} = 0$
+    \item $\vec{v}$ er i udspændingen af vektorerne i kernen (Se sektion \ref{sec:span})
+\end{itemize}
+
 
 \subsection{Koordinater med hensyn til ordnet basis}
 Lav en matrix med basisvektorerne og vektoren der skal findes koordinater for:
 \[
     \begin{bmatrix}
         \vline & \vline & \cdots & \vline & \vline \\
-        b_1 & b_2 & \cdots & b_n & v \\
+        \vec{b_1} & \vec{b_2} & \cdots & \vec{b_n} & \vec{v} \\
         \vline & \vline & \cdots & \vline & \vline \\
     \end{bmatrix}
 \]
@@ -198,7 +203,7 @@ Omskriv til \emph{rref}, sidste søjle er koordinaterne med hensyn til basisen.
 
 \eksempel{
 
-    Givet \( v = \begin{pmatrix}
+    Givet \( \vec{v} = \begin{pmatrix}
         5 \\
         7 \\
         4
@@ -214,7 +219,7 @@ Omskriv til \emph{rref}, sidste søjle er koordinaterne med hensyn til basisen.
         1 \\
         0 \\
         1
-    \end{pmatrix} \right\} \), findes \( [v]_\beta \) ved at løse LLS'et:
+    \end{pmatrix} \right\} \), findes \( \vec{[v]_\beta} \) ved at løse LLS'et:
     \[
         \begin{bmatrix}
             1 & 0 & 1 & \vline & 5 \\
@@ -234,7 +239,7 @@ Omskriv til \emph{rref}, sidste søjle er koordinaterne med hensyn til basisen.
             0 & 0 & 1 & \vline & 1
         \end{bmatrix}
         \implies
-        [v]_\beta = \begin{pmatrix}
+        \vec{[v]_\beta} = \begin{pmatrix}
             4 \\
             3 \\
             1
@@ -243,7 +248,7 @@ Omskriv til \emph{rref}, sidste søjle er koordinaterne med hensyn til basisen.
 }
 
 \subsubsection{Find vektor ud fra koordinater med hensyn til base}
-Givet \( [v]_\beta = (c_1, c_2, \ldots, c_n)^T \), og \( \beta = \{ b_1, b_2, \ldots, b_n \} \), findes \( v \) ved:
+Givet \( \vec{[v]_\beta} = (c_1, c_2, \ldots, c_n)^T \), og \( \beta = \{ \vec{b_1}, \vec{b_2}, \ldots, \vec{b_n} \} \), findes \( \vec{v} \) ved:
 \[
-    v = c_1 \cdot b_1 + c_2 \cdot b_2 + \ldots + c_n \cdot b_n
+    \vec{v} = c_1 \cdot b_1 + c_2 \cdot b_2 + \ldots + c_n \cdot b_n
 \]

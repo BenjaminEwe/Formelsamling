@@ -30,6 +30,7 @@ Rækkeoperationer ændrer ikke løsningen. For $k \in \mathbb{F}$:
 \kilde{Korollar 6.4.5}
 
 \subsection{Løs LLS (Hom og InHom)}
+\label{sec:LLS-løsning}
 
 \eksempel{
 Isolér pivoterne af systemet fra totalmatricen på RREF.
@@ -58,10 +59,10 @@ $x_3$ er nu fri variabel. Vi giver den en parameter \(t_1 \in \mathbb{F}\):
 
 \[
     \begin{cases}
-        x_1 &= 3 - 6 \cdot t \\
-        x_2 &= 4 - 4 \cdot t \\
-        x_3 &= t_1 \\
-        x_4 &= 5
+        x_1 &= 3 - 6 \cdot t_1 \\
+        x_2 &= 4 - 4 \cdot t_1 \\
+        x_3 &= 0 + 1 \cdot t_1 \\
+        x_4 &= 5 + 0 \cdot t_1
     \end{cases}
     \implies
     \begin{bmatrix}
@@ -87,9 +88,9 @@ $x_3$ er nu fri variabel. Vi giver den en parameter \(t_1 \in \mathbb{F}\):
     \quad t_1 \in \mathbb{F}
 \]
 }
-Sættes alle $t_i = 0$ fås en \textbf{partikulær løsning}. 
+Sættes alle $t_i = 0$ fås en \emph{partikulær løsning}. 
 
-Fjernes vektoren der ikke ganges med en parameter, fås den generelle \textbf{løsning til det tilsvarende Hom.LLS}.
+Fjernes vektoren der ikke ganges med en parameter, fås den generelle \emph{løsning til det tilsvarende Hom.LLS}.
 
 
 \paragraph{Tilsvarende Hom.LLS}
