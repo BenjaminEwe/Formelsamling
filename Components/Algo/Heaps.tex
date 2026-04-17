@@ -1,0 +1,67 @@
+\section{Heaps and Priority Queues}
+
+Priority queues support the operations:
+\begin{enumerate}
+    \setlength{\itemsep}{0em}
+    \item \textbf{Max()}: Return elment with largest key.
+    \item \textbf{ExtractMax()}: Remove and return element with largest key.
+    \item \textbf{IncreaseKey(x, k)}: Increase the key of element $x$ to $k$.
+    \item \textbf{Insert(x)}: Insert element $x$ into the priority queue.
+\end{enumerate}
+
+\subsection{Heaps}
+Heaps are \emph{almost complete} binary trees\footnote{All nodes have two children except for the last level, which is filled from left to right}
+where each node has a key that is greater than or equal to the keys of its children.
+
+\subsubsection{Operations}
+\textbf{BubbleUp(x)}: If the key of $x$ is greater than the key of its parent, swap $x$ with its parent and repeat until the heap property is restored.
+
+\textbf{BubbleDown(x)}: If the key of $x$ is less than the key of one of its children, swap $x$ with the child with the largest key and repeat until the heap property is restored.
+
+\timeComplexity{\log n}{1}
+
+\subsubsection{Representations}
+
+\textbf{Linked list}:
+Each node has pointers to its parent and children.
+Allows arbitrary size. 
+
+\textbf{Array}:
+The root is at index 1, the left child of $i$ is $2i$, the right child $2i + 1$, and the parent is $\lfloor i / 2 \rfloor$.
+More space efficient than linked list.
+
+\subsection{Building heaps}
+To turn an array into a heap we use \emph{Bottom-up construction}.
+For the first $[1, \lfloor n / 2 \rfloor]$ elements, we call \textbf{BubbleDown(i)}, starting from $\lfloor n / 2 \rfloor$ and going down to 1.
+
+\timeComplexity{n}{1}
+
+\subsection{Using heaps for priority queues}
+Below is baed on heaps as arrays. Logic is similar for linked lists.
+\begin{python}
+def max(heap):
+    return heap[1]
+
+def extract_max(heap):
+    max_element = heap[1]
+    heap[1] = heap[length] # Move last element to root.
+    length -= 1 # Remove last element.
+    bubble_down(heap, 1) # Restore heap property.
+    return max_element
+
+def increase_key(heap, i, k):
+    heap[i] = k
+    bubble_up(heap, i) # Restore heap property.
+
+def insert(heap, k):
+    length += 1
+    heap[length] = k
+    bubble_up(heap, length) # Restore heap property.
+\end{python}
+
+\subsection{HeapSort}
+To sort an array, build a heap and repeatedly run \verb|extractMax()|.
+
+This has the advantage of being an in-place sorting algorithm.
+
+\timeComplexity{n \lg n}

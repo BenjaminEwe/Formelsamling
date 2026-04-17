@@ -1,0 +1,81 @@
+\usepackage{xparse} % For defining commands with multiple arguments (Polymorphic commands)
+
+\NewDocumentCommand{\timeComplexity}{m g}{%
+    \hfill
+    \tcbox[
+        colframe=lightmagenta,
+        boxrule=0.5pt,
+        arc=2pt,
+        left=6pt,
+        right=6pt,
+        top=3pt,
+        bottom=3pt,
+        before upper={\textbf{Time: }},
+        on line
+    ]
+    {\IfNoValueTF{#2}
+        {\(\Theta(#1)\)}
+        {\(O(#1) \quad \Omega(#2)\)}
+        }%
+}
+
+\NewDocumentCommand{\spaceComplexity}{m g}{
+    \tcbox[
+        colframe=lightgreen,
+        boxrule=0.5pt,
+        arc=2pt,
+        left=6pt,
+        right=6pt,
+        top=3pt,
+        bottom=3pt,
+        before upper={\textbf{Space: }},
+        on line
+    ]
+    {\IfNoValueTF{#2}
+        {\(\Theta(#1)\)}
+        {\(O(#1)\) \quad \(\Omega(#2)\)}
+        }%
+}
+
+\setmonofont{CascadiaMonoNF}[
+    Path = ./Assets/Fonts/Cascadia_Code/,
+    Extension = .ttf,
+    UprightFont = CascadiaMonoNF,
+    BoldFont = CascadiaMonoNF-Bold,
+    ItalicFont = CascadiaMonoNFItalic,
+]
+
+\usepackage{minted}
+%\usemintedstyle{colorful}
+%\setminted{
+%    fontsize=\small,
+%    breaklines,
+%    funcnamehighlighting=true,
+%    linenos=false,
+%    fontfamily=tt,
+%}
+
+\tcbuselibrary{minted,skins,breakable}
+
+\newtcblisting{python}{
+  listing engine=minted,
+  colback=gray!5,
+  colframe=lightblue!50,
+  arc=4pt,
+  boxrule=1pt,
+  listing only,
+  minted language=python,
+  minted options={
+    fontsize=\scriptsize,
+    breaklines,
+    funcnamehighlighting=true,
+    linenos=false,
+    fontfamily=tt,
+  },
+  left=4pt,
+  right=4pt,
+  top=4pt,
+  bottom=4pt
+}
+
+%% \\ Code highlighting

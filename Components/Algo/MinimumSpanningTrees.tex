@@ -1,0 +1,23 @@
+\section{Minimum Spanning Trees}
+Given a weighted undirected graph, a MST is a tree connecting all vertices with the least total weight.
+
+To computer a MST, we can use adjacency matrices, adjacency lists, or edge lists.
+
+\subsection{Prim's algorithm}
+Given an adjacency list or matrix and starting vertex, at each step add the edge with the least weight that connects a vertex in the tree to a vertex outside the tree.
+Repeat until all vertices are in the tree.
+
+To implement, maintain a priority queue of vertices outside the tree, where the priority is the weight of the least weight edge connecting the vertex to a vertex in the tree. 
+At each step, pop the vertex with the least priority and add it to the tree. 
+Then update the priorities of its neighbors.
+
+\subsection{Kruskal's algorithm}
+Given an edge list, sort the edges by weight. 
+Then go through the edges in order and add them to the tree if they connect two vertices that are not already connected. Repeat until all vertices are in the tree.
+
+To implement, maintain a union-find data structure to keep track of which vertices are in the same tree.
+Each time an edge is added, union the two vertices.
+
+
+Given a graph with \verb|n| vertices and \verb|m| edges, both are
+\timeComplexity{m \lg n}

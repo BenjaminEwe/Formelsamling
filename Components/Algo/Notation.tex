@@ -1,0 +1,43 @@
+\section{Notation}
+
+\begin{list}{}{}
+    \setlength\itemsep{0em}
+    \item $O(f(n))$: Upper bound - Rate of growth for worst-case input of size $n$
+    \item $\Omega(f(n))$: Lower bound - Rate of growth for best-case input of size $n$
+    \item $\Theta(f(n))$: Tight bound - When $O(f(n)) = \Omega(f(n))$
+    \item $o(g(n))$: Strictly upper bound - $f(n)$ grows slower than $g(n)$
+    \item $\omega(g(n))$: Strictly lower bound - $f(n)$ grows faster than $g(n)$ 
+\end{list}
+
+When finding complexity, only the fastest growing term is kept, and constants are dropped.
+Only $\Theta$ needs be tight, the others just have to be upper/lower bounds, even if they are far from tight.
+
+
+\subsection{Hierarchy of growth rates}
+
+\[
+    1 < \lg \lg n < \lg n < \lg^k n < n^{k \in ]0,1[} < n < n \lg n < n^2 < n^3 < 2^n < n! < n^n
+\]
+
+Note: $\sqrt{n} = n^{1/2}$
+
+\subsection{Ackermann functions}
+\begin{list}{}{}
+    \setlength\itemsep{0em}
+    \item $A_m(n)$: The Ackermann function is practically infinite for $n > 4$.
+    \item $\alpha(n)$: The Inverse Ackermann function is $\leq 4$ for all practical values $n$.
+\end{list}
+
+\subsubsection{Use}
+
+Example of the Ackermann function:
+
+Given that $A_2(1)=7$:
+\[
+    A_3(1) = A_2(A_2(1)) = A_2(7) = 2^{7+1}-1=2047
+\]
+
+This means that:
+\[
+    A_4(1) = A_3(A_3(1)) = A_3(2047) = A_2(A_2(...A_2(1)...)) \text{ [2047 times]} \approx \infty
+\]

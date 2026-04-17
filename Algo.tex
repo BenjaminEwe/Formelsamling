@@ -1,0 +1,49 @@
+%% Notes
+% Due to the limited nature of lstlistings, minted is used which requires python and pygments to be installed.
+% To compile without, remove the package from /Assets/Algo/commands.tex and change snippets to lstlistings.
+% Would prefer better solution as minted is still limited, but it is the least bad solution.
+
+\date{\today}
+\newcommand{\doctitle}{Algoritmer Formelsamling}
+\newcommand{\docauthor}{Benjamin Bjørn Ewe}
+\newcommand{\docversion}{v0.1.0}
+
+\input{Components/Meta/BookStuffs.tex}
+\input{Components/Meta/Preamble}
+\input{Components/Meta/TOC_multiline.tex}
+\input{Components/Meta/Commands}
+\input{Components/Algo/commands.tex}
+
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table}
+
+\begin{document}
+
+\pagestyle{empty}
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+%% Actual start of document
+\newpage
+\clearpage
+\pagestyle{fancy}
+
+% Components
+\input{Components/Algo/Notation.tex}
+\newpage
+\input{Components/Algo/SearchNSort.tex}
+\newpage
+\input{Components/Algo/StacksNQueues.tex}
+\newpage
+\input{Components/Algo/Graphs.tex}
+\newpage
+\input{Components/Algo/Heaps.tex}
+\newpage
+\input{Components/Algo/UnionFind.tex}
+\newpage
+\input{Components/Algo/Trees.tex}
+\newpage
+\input{Components/Algo/MinimumSpanningTrees.tex}
+
+
+\end{document}

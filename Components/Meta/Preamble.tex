@@ -1,9 +1,8 @@
 %% Notes
 %% This document requires XeLaTeX or LuaLaTeX to compile due to the use of system fonts.
-%% Remove the section named "Remove for vanilla LaTeX" if you want to compile with pdfLaTeX.
 %%
 
-%% Custom fonts - Remove for vanilla LaTeX
+%% Custom fonts
 \usepackage{fontspec}
 \setmainfont{RobotoSerif-Regular.ttf}[
     Path = Assets/Fonts/Roboto_Serif/,
@@ -12,9 +11,8 @@
     ItalicFont = RobotoSerif-Italic.ttf,
     BoldItalicFont = RobotoSerif-BoldItalic.ttf
 ]
-%% /Custom fonts - Remove for vanilla LaTeX
-%% Add this if not using XeLaTeX or LuaLaTeX
-%\usepackage[utf8]{inputenc}
+%% /Custom fonts
+
 
 \usepackage[none]{hyphenat} %% Ensures no hyphenation
 \emergencystretch=2em % Allows more empty space between words on lines
@@ -96,3 +94,7 @@
 % For pretty tables
 \usepackage{booktabs}
 % /For pretty tables
+
+% For having TikZ pictures in separate files
+\usepackage{standalone}
+% /For having TikZ pictures in separate files

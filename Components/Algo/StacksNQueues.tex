@@ -1,0 +1,119 @@
+\section{Stacks}
+\textbf{FIFO} (First In First Out) data structure.
+
+\begin{enumerate}
+    \setlength\itemsep{0em}
+    \item \textbf{push(x)}: Add element $x$ to the top of the stack.
+    \item \textbf{pop()}: Remove and return the top element of the stack.
+    \item \textbf{isEmpty()}: Return true if the stack is empty, false otherwise.
+\end{enumerate}
+
+\subsection{Implementations}
+\subsubsection{Array-based implementation}
+Make an array of size \verb|N| and a variable \verb|t| to keep track of the top index.
+
+\begin{list}{}{}
+    \setlength\itemsep{0em}
+    \item \textbf{push(x)}: If \verb|t < N-1|, set \verb|t++| and \verb|arr[t] = x|.
+    \item \textbf{pop()}: If \verb|t != -1|, return \verb|arr[t]| and \verb|t--|.
+    \item \textbf{isEmpty()}: Return true if \verb|t < 0|, false otherwise.
+\end{list}
+\timeComplexity{1}
+\spaceComplexity{N}
+
+\subsubsection{Linked list-based implementation}
+Dynamic data structure. More efficient than array-based implementation.
+
+\begin{python}
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+class Stack:
+    def __init__(self):
+        self.top = None
+    def push(self, x):
+        new_node = Node(x)
+        new_node.next = self.top
+        self.top = new_node
+    def pop(self):
+        if self.top is None:
+            return None
+        value = self.top.value
+        self.top = self.top.next
+        return value
+    def isEmpty(self):
+        return self.top is None
+\end{python}
+
+\timeComplexity{1}
+\spaceComplexity{n}
+
+\subsubsection{Dynamic array-based implementation}
+Make array \verb|A| size \verb|N|, array \verb|B| size \verb|2N| and variable \verb|t| for top index.
+\emph{Push} adds to \verb|A| and copies 2 from \verb|A| to \verb|B|. When \verb|A| is full, set \verb|A = B| and make a new array \verb|B| of size \verb|4N|.
+\emph{Pop} removes from \verb|A| and removes the same index from \verb|B|.
+When \verb|A| $<$ \verb|N/4|, set \verb|B = A| and make a new array \verb|A| of size \verb|N/2|.
+
+\timeComplexity{1}
+\spaceComplexity{n} 
+
+\section{Queues}
+\textbf{LIFO} (Last In First Out) data structure.
+
+\begin{enumerate}
+    \setlength\itemsep{0em}
+    \item \textbf{enqueue(x)}: Add element $x$ to the end of the queue.
+    \item \textbf{dequeue()}: Remove and return the front element of the queue.
+    \item \textbf{isEmpty()}: Return true if the queue is empty, false otherwise.
+\end{enumerate}
+
+\subsection{Implementations}
+\subsubsection{Array-based implementation}
+Make an array of size \verb|N| and two variables \verb|f| and \verb|b| to keep track of the front and back indices.
+The queue snakes around the array using modulo.
+
+\begin{list}{}{}
+    \setlength\itemsep{0em}
+    \item \textbf{enqueue(x)}: if \verb|(b+1) % N != f| set \verb|arr[b] = x| and \verb|b = (b+1) % N|.
+    \item \textbf{dequeue()}: if \verb|f != b|, return \verb|arr[f]|, set \verb|f = (f+1) % N|.
+    \item \textbf{isEmpty()}: Return true if \verb|f == b|, false otherwise.
+\end{list}
+\timeComplexity{1}
+\spaceComplexity{N}
+
+\subsubsection{Linked list-based implementation}
+Dynamic data structure. More efficient than array-based implementation.
+\begin{python}
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+class Queue:
+    def __init__(self):
+        self.front = None
+        self.back = None
+    def enqueue(self, x):
+        new_node = Node(x)
+        if self.back is None:
+            self.front = self.back = new_node
+        else:
+            self.back.next = new_node
+            self.back = new_node
+    def dequeue(self):
+        if self.front is None:
+            return None
+        value = self.front.value
+        self.front = self.front.next
+        if self.front is None:
+            self.back = None
+        return value
+    def isEmpty(self):
+        return self.front is None
+\end{python}
+
+\timeComplexity{1}
+\spaceComplexity{n}
+
+\subsubsection{Dynamic array-based implementation}
+Can be done with multiple arrays like with stacks with same complexity.

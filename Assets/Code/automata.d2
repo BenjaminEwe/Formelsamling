@@ -1,0 +1,53 @@
+direction: right
+
+s: {
+    label: start
+    shape: diamond
+}
+
+1: {
+    shape: circle
+}
+2: {
+    shape: circle
+}
+3: {
+    shape: circle
+}
+4: {
+    shape: circle
+}
+5: {
+    shape: circle
+}
+6: {
+    shape: circle
+}
+7: {
+    shape: circle
+}
+8: {
+    shape: circle
+}
+
+e: {
+    label: end
+    shape: diamond
+}
+
+s -> 1: |latex \huge{a} |
+1 -> 2: |latex \huge{\epsilon} |
+2 -> 3: |latex \huge{b} |
+3 -> 2: |latex \huge{\epsilon} |
+3 -> 4: |latex \huge{c} |
+1 -> 4: |latex \huge{\epsilon} |
+
+4 -> 5: |latex \huge{\epsilon} |
+4 -> 6: |latex \huge{\epsilon} |
+5 -> 8: |latex \huge{b} |
+6 -> 7: |latex \huge{c} |
+
+
+
+8 -> e: |latex \huge{\epsilon} |
+7 -> e: |latex \huge{a} |

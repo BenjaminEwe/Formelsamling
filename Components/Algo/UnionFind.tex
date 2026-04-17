@@ -1,0 +1,42 @@
+\section{Union Find}
+Union find is a data structure that keeps track of disjoint subsets. It supports:
+\begin{enumerate}
+    \setlength{\itemsep}{0em}
+    \item \verb|Init(n)|: creates \verb|n| disjoint subsets.
+    \item \verb|Union(a,b)|: merges the subsets containing \verb|a| and \verb|b|.
+    \item \verb|Find(a)|: returns the representative of the subset containing \verb|a|.
+\end{enumerate}
+
+Representatives are one value in the subset that identifies it. In tree representations, the representative is the root of the tree.
+
+\subsection{Enhancements}
+\textbf{Union by rank} makes smaller trees point to large trees. \\
+\textbf{Path compression} makes all nodes on a path point directly to the root after a find operation. \\
+Both keep the trees flat, therefore faster.
+
+
+\begin{python}
+def init(n):
+    return [Node(i) for i in range(n)] # Create n nodes, each in their own subset.
+
+def find(x):
+    if x.parent != x:
+        x.parent = find(x.parent) # Path compression
+    return x.parent
+
+def union(a, b):
+    a_root = find(a)
+    b_root = find(b)
+    if a_root == b_root:
+        return
+    # Weighted union by rank
+    elif a_root.rank < b_root.rank:
+        a_root.parent = b_root
+    elif a_root.rank > b_root.rank:
+        b_root.parent = a_root
+    else:
+        b_root.parent = a_root
+        a_root.rank += 1
+\end{python}
+
+For any sequence of \verb|m| union and find operations \timeComplexity{m \cdot \alpha(n)}{m}

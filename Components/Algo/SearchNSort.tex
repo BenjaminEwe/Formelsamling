@@ -1,0 +1,54 @@
+\section{Search}
+Unsorted List: Linear Search\footnote{Faster than sorting the list and then doing a binary search if you only need to search once. Otherwise it is best to sort the list and then do a binary search.}
+\hfill
+Sorted List: Binary Search
+
+\subsection{Linear search}
+Go through each item from start to end.
+\timeComplexity{n}{1}
+
+\subsection{Binary search}
+Only works on sorted lists.
+
+Start at the middle of the list, and check if it is: the target, lower or higher.
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Target: Return the index of the target.
+    \item Lower: discard upper half and repeat the process on the lower half.
+    \item Higher: discard lower half and repeat the process on the upper half.
+\end{itemize}
+
+\timeComplexity{\lg n}{1}
+
+\begin{python}
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = left + (right - left) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = (mid + 1)
+        else:
+            right = (mid - 1)
+    return -1
+\end{python}
+
+\section{Sorting}
+
+\subsection{Merge Sort}
+Works by splitting the list into halves recursively until size 1.
+Then it merges the halves back together in the correct order.
+
+\timeComplexity{n \lg n}
+
+\begin{python}
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    
+    mid = len(arr) // 2
+    left_half = merge_sort(arr[:mid])
+    right_half = merge_sort(arr[mid:])
+    return merge(left_half, right_half)
+\end{python}

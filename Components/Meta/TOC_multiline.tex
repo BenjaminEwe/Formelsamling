@@ -16,3 +16,11 @@
     [\hspace{3em}]                    % Separator
 
 \usepackage[hidelinks]{hyperref}
+
+% Does this do anything?
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{
+    \newgeometry{left=3cm,right=0cm,top=1cm,bottom=1cm}
+    \oldtableofcontents
+    \restoregeometry
+}
