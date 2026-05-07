@@ -227,11 +227,11 @@ Dvs., for hver basisvektor \( \vec{v_i} \) i \( V \):
 
 \subsubsection{Om afbildningsmatricer med hensyn til baser}
 
-\begin{align*}
-    [L(v)]_\gamma = \gamma [L]_\beta \cdot [v]_\beta \\
+\[
+    [L(v)]_\gamma = \gamma [L]_\beta \cdot [v]_\beta \hspace{4em}
     _\delta [M \circ L]_\beta = _\delta [M]_\gamma \cdot _\gamma [L]_\beta
-\end{align*}
-\kilde{Sætning 11.3.4}
+    \kildetag{Sætning 11.3.4}
+\]
 
 \subsubsection{Afbildningsmatrix på samme vektorrum}
 Giver lineær afbildning \( L : V \rightarrow V \) med ordnet basis \( \beta = \{ \vec{v_1}, \vec{v_2}, \ldots, \vec{v_n} \} \) og ordnet basis \( \gamma = \{ \vec{w_1}, \vec{w_2}, \ldots, \vec{w_n} \} \):
@@ -322,12 +322,9 @@ For vektoren \([\vec{v}]_\beta\) indsættes blot \((x_1, x_2, \ldots, x_n)\) og 
 Da er det $\vec{v}$ som er løsningen til $L(\vec{v}) = w$.
 
 \subsubsection{Kerne ved samme metode}
-På samme måde kan kernen for $L$ findes ved at løse ligningen:
-\[
-_\gamma [L]_\beta \cdot [v]_\beta = 0
-\]
-
-Igen er det her $\vec{v}$ som er løsningen til $L(\vec{v}) = 0$.
+$\ker(L)$ kan findes ved at løse 
+\(_\gamma [L]_\beta \cdot [\vec v]_\beta = 0\)
+hvor $\vec v$ er løsningen til $L(\vec{v}) = 0$.
 
 \subsection{Surjektivitet}
 
