@@ -1,0 +1,24 @@
+\section{Segment Trees}
+
+Segment trees require the number of elements to be a power of 2. If not, pad with $\infty$.
+
+\bemærk{Unless otherwise specified, segment trees are minimum trees.}
+
+\subsection{Segment Tree as Heap Array}
+If the number of elements is static, an array is efficient.
+
+Node $j$ has children $2j$ (left) and $2j+1$ (right) and parent $\lfloor j/2 \rfloor$.
+
+\subsubsection{Building a Segment Tree as a Heap Array}
+\begin{enumerate}
+    \setlength{\itemsep}{0em}
+    \item Pad input until length is a power of 2.
+    \item Make new array of length $2n$. (note the first element is not used)
+    \item Make all indexes $i$ be $n+i$ in the new array.
+    \item For all other indexes $i$, \verb|A[i] = min(A[2i], A[2i+1])|.
+\end{enumerate}
+    
+\subsubsection{Operations on Segment Trees as Heap Arrays}
+To increase element \verb|i|, increase \verb|A[n+i]| and update all ancestors.
+
+

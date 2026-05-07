@@ -12,10 +12,17 @@
 
 \newcommand{\mtrix}[1]{\underline{\underline{#1}}}
 %% /Custom operators
-
 \definecolor{lightmagenta}{rgb}{0.95,0.7,0.95}
 \definecolor{lightblue}{rgb}{0.7,0.85,0.95}
 \definecolor{lightgreen}{rgb}{0.7,0.95,0.7}
+
+% Language-dependent labels: default to Danish, allow override by calling
+% `\documentLanguage{...}` earlier in the preamble. The setter stores the
+% value in `\documentLanguageValue` which is safe to read here.
+\usepackage{xstring}
+\providecommand{\documentLanguageValue}{danish}
+\providecommand{\bemærklabel}{\textbf{Bemærk: }}
+\IfStrEq{\documentLanguageValue}{english}{\renewcommand{\bemærklabel}{\textbf{Notice: }}}{}
 
 % For bemærk boxes
 \newcommand{\bemærk}[1]{%
@@ -27,7 +34,7 @@
         right=6pt,
         top=3pt,
         bottom=3pt,
-        before upper={\textbf{Bemærk: }},
+        before upper={\bemærklabel},
         on line
     ]
     {#1}%
@@ -42,7 +49,7 @@
         right=6pt,
         top=6pt,
         bottom=6pt,
-        before upper={\textbf{Bemærk: }},
+        before upper={\bemærklabel},
         before skip=10pt,    % Space before the box
         after skip=10pt,     % Space after the box
     ]

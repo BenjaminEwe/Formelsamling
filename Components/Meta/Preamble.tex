@@ -91,6 +91,10 @@
 \tcbuselibrary{breakable}
 % /For bemærk boxes
 
+% Set document language. Default is Danish, partial support for English.
+\providecommand{\documentLanguageValue}{danish}
+\newcommand{\documentLanguage}[1]{\renewcommand{\documentLanguageValue}{#1}}
+
 % For pretty tables
 \usepackage{booktabs}
 % /For pretty tables

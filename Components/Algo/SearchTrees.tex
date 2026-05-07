@@ -1,0 +1,120 @@
+\section{Search Trees}
+
+Search trees need to maintain a set that supports:
+\begin{enumerate}
+    \setlength{\itemsep}{0em}
+    \item \verb|Search(k)|, return \verb|x| if \verb|x.key = k|, else \verb|NIL|
+    \item \verb|Insert(x)|, add \verb|x| to the set
+    \item \verb|Delete(x)|, remove \verb|x| from the set
+\end{enumerate}
+
+\subsection{Binary Search Trees}
+BST's are binary trees where all keys are stored in \emph{symmetric order}:
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item For any node \verb|x|, all keys in the left subtree are less than \verb|x.key|
+    \item For any node \verb|x|, all keys in the right subtree are greater than \verb|x.key|
+\end{itemize}
+
+\begin{figure}[h]
+\centering \textbf{Binary Search Tree}
+\begin{python}
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+        self.parent = None
+
+def search(root, k):
+    if root is None or root.key == k:
+        return root
+    elif k < root.key:
+        return search(root.left, k)
+    else:
+        return search(root.right, k)
+
+def insert(root, x):
+    y = None
+    current = root
+    while current is not None:
+        y = current
+        if x.key < current.key:
+            current = current.left
+        else:
+            current = current.right
+    x.parent = y
+    if y is None:
+        root = x  # Tree was empty
+    elif x.key < y.key:
+        y.left = x
+    else:
+        y.right = x
+
+def delete(x):
+    if x.left is None:
+        transplant(x, x.right)
+    elif x.right is None:
+        transplant(x, x.left)
+    else:
+        y = minimum(x.right)
+        if y.parent != x:
+            transplant(y, y.right)
+            y.right = x.right
+            y.right.parent = y
+        transplant(x, y)
+        y.left = x.left
+        y.left.parent = y
+
+def transplant(u, v):
+    if u.parent is None:
+        root = v
+    elif u == u.parent.left:
+        u.parent.left = v
+    else:
+        u.parent.right = v
+    if v is not None:
+        v.parent = u.parent
+
+def minimum(node):
+    while node.left is not None:
+        node = node.left
+    return node
+\end{python}
+\end{figure}
+
+\subsubsection{BST traversal by hand}
+Starting at the root, go countrclockwise around the tree, sticking close to the tree.
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Pre-order: Add to list when on the left of the node
+    \item In-order: Add to list when under the node
+    \item Post-order: Add to list when on the right of the node
+\end{itemize}
+
+They support all the operations in
+\timeComplexity{\text{height}}{1}
+
+Height is on average $\Theta(\lg n)$, but worst case $O(n)$.
+
+\subsection{2-3 Trees}
+2-3 trees always have height $\Theta(\lg n)$.
+Nodes are 2- or 3-nodes.
+
+All leaves are at the same depth, so the tree is perfectly balanced.
+
+\emph{2-node}: 1 key and 2 children. \emph{3-node}: 2 keys and 3 children.
+
+Search, Insert, Delete have \timeComplexity{\lg n}
+
+\subsubsection{Inserting}
+To insert, search for the key until you reach a leaf.
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Node is 2-node $\Rightarrow$ add key and turn into 3-node
+    \item Node is 3-node $\Rightarrow$ add key and turn into 4-node, split into two 2-nodes and insert middle key to parent. (bubble up)
+    \item Node is 3-node and root $\Rightarrow$ add key and turn into 4-node, split into two 2-nodes and make middle key the new root.
+\end{itemize}
+
+\subsubsection{Deleting}
+TBD

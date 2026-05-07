@@ -1,0 +1,53 @@
+\section{Shortest Paths}
+
+All subpaths within a shortest path are also shortest paths.
+
+\bemærk{MSTs \emph{don't} always contain a shortest path between vertices!}
+
+\subsection{Relaxing}
+Relaxing an edge $(u,v)$ means updating the distance estimate of $v$:
+\[
+    \text{est}(v) := \min(\text{est}(v), \text{est}(u) + \text{wgt}(u,v))
+\]
+
+
+\subsection{Dijkstra}
+Works only when all edge weights are non-negative.
+
+\begin{enumerate}
+    \setlength{\itemsep}{0em}
+    \item Set distance estimate of all vertices to $\infty$, except source which is 0.
+    \item While there are unvisited vertices:
+    \begin{enumerate}
+        \setlength{\itemsep}{0em}
+        \item Pick unvisited vertex with smallest distance estimate, call it $u$.
+        \item Mark $u$ as visited.
+        \item Relax all edges outgoing from $u$.
+    \end{enumerate}
+\end{enumerate}
+
+Dijkstra's algorithm uses a priority queue for unvisited vertices.
+
+\timeComplexity{(|V|+|E|) \lg |V|}
+
+\subsection{Bellman-Ford}
+Like Dijkstra's, slower but also works with negative edge weights. 
+
+Works by relaxing every edge $|V|-1$ times.
+Can be made slightly faster by only relaxing edges that were relaxed in the previous iteration.
+
+\timeComplexity{|V| \cdot |E|}
+
+\subsection{DAG}
+For a DAG, shortest paths are found by processing in topological order.
+\begin{enumerate}
+    \setlength{\itemsep}{0em}
+    \item Set distance estimate of all vertices to $\infty$, except source which is 0.
+    \item Add the next vertex in topological order to visited.
+    \item Relax all edges outgoing from the vertex.
+\end{enumerate}
+
+Assuming we first have to topologically sort the graph \timeComplexity{|V|+|E|}
+
+\subsection{Loops}
+If a graph has a negative weight cycle, there is no shortest path between vertices connected to the cycle.
