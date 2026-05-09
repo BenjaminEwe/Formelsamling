@@ -24,9 +24,14 @@
 
 \let\oldtableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{
-    \newgeometry{left=3cm,right=0cm,top=1cm,bottom=1cm}
-    \begin{multicols}{2}
+    \newgeometry{left=3cm,right=0cm,top=1cm,bottom=1.5cm}
+    \pagestyle{empty} % No headers or footers on TOC page
+    \setcounter{tocdepth}{2} % How deep the TOC should go
+    \begin{multicols}{2} 
     \oldtableofcontents
     \end{multicols}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=south west, font=\tiny, xshift=3cm, yshift=1cm] at (current page.south west) {\doctitle \space \docversion \space af \docauthor. \space Compiled \today};
+    \end{tikzpicture}
     \restoregeometry
 }
