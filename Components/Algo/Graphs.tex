@@ -3,7 +3,6 @@
 Graphs have \verb|n| vertices $V$ and \verb|m| edges $E$.
 
 \begin{enumerate}
-    \setlength{\itemsep}{0em}
     \item \textbf{Adjacent(u,v)}: Return wheter there is an edge from vertices \verb|u| to \verb|v|.
     \item \textbf{Neighbors(u)}: Return list of all vertices \verb|v| with edges from \verb|u|.
     \item \textbf{Insert(v,u)}: Insert an edge from vertex \verb|v| to vertex \verb|u|.
@@ -27,7 +26,6 @@ Efficient for sparse graphs.\footnote{Almost all real-world graphs are sparse}
 \subsection{Search}
 \subsubsection{Depth-first search (DFS)}
 \begin{enumerate}
-    \setlength{\itemsep}{0em}
     \item Pick a node.
     \item Add all unseen neighbors to stack.
     \item Pop from stack and repeat until stack is empty.
@@ -162,13 +160,12 @@ $a,b,c, \cdots$ are values, and $\epsilon$ means no value.
 Regular expressions can represent all possible paths on the automata.
 
 \textbf{Components of regular expressions}:
-\begin{list}{}{}
-    \setlength{\itemsep}{0em}
+\begin{itemize}
     \item $a \cdot b$ : $a$ followed by $b$.
     \item $a | b$ : $a$ or $b$.
     \item $a^*$ : $a$ repeated 0 or more times.
     \item $a^+$ : $a$ repeated 1 or more times.
-\end{list}
+\end{itemize}
 
 \begin{figure}[h]
     \centering

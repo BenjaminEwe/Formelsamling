@@ -62,7 +62,6 @@ When \verb|A| $<$ \verb|N/4|, set \verb|B = A| and make a new array \verb|A| of 
 \textbf{LIFO} (Last In First Out) data structure.
 
 \begin{enumerate}
-    \setlength\itemsep{0em}
     \item \textbf{enqueue(x)}: Add element $x$ to the end of the queue.
     \item \textbf{dequeue()}: Remove and return the front element of the queue.
     \item \textbf{isEmpty()}: Return true if the queue is empty, false otherwise.
@@ -73,12 +72,11 @@ When \verb|A| $<$ \verb|N/4|, set \verb|B = A| and make a new array \verb|A| of 
 Make an array of size \verb|N| and two variables \verb|f| and \verb|b| to keep track of the front and back indices.
 The queue snakes around the array using modulo.
 
-\begin{list}{}{}
-    \setlength\itemsep{0em}
+\begin{itemize}
     \item \textbf{enqueue(x)}: if \verb|(b+1) % N != f| set \verb|arr[b] = x| and \verb|b = (b+1) % N|.
     \item \textbf{dequeue()}: if \verb|f != b|, return \verb|arr[f]|, set \verb|f = (f+1) % N|.
     \item \textbf{isEmpty()}: Return true if \verb|f == b|, false otherwise.
-\end{list}
+\end{itemize}
 \timeComplexity{1}
 \spaceComplexity{N}
 

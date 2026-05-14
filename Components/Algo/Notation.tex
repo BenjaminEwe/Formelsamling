@@ -1,13 +1,12 @@
 \section{Notation}
 
-\begin{list}{}{}
-    \setlength\itemsep{0em}
+\begin{itemize}
     \item $O(f(n))$: Upper bound - Rate of growth for worst-case input of size $n$
     \item $\Omega(f(n))$: Lower bound - Rate of growth for best-case input of size $n$
     \item $\Theta(f(n))$: Tight bound - When $O(f(n)) = \Omega(f(n))$
     \item $o(g(n))$: Strictly upper bound - $f(n)$ grows slower than $g(n)$
     \item $\omega(g(n))$: Strictly lower bound - $f(n)$ grows faster than $g(n)$ 
-\end{list}
+\end{itemize}
 
 When finding complexity, only the fastest growing term is kept, and constants are dropped.
 Only $\Theta$ needs be tight, the others just have to be upper/lower bounds, even if they are far from tight.

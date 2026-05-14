@@ -15,11 +15,9 @@ Relaxing an edge $(u,v)$ means updating the distance estimate of $v$:
 Works only when all edge weights are non-negative.
 
 \begin{enumerate}
-    \setlength{\itemsep}{0em}
     \item Set distance estimate of all vertices to $\infty$, except source which is 0.
     \item While there are unvisited vertices:
     \begin{enumerate}
-        \setlength{\itemsep}{0em}
         \item Pick unvisited vertex with smallest distance estimate, call it $u$.
         \item Mark $u$ as visited.
         \item Relax all edges outgoing from $u$.
@@ -41,7 +39,6 @@ Can be made slightly faster by only relaxing edges that were relaxed in the prev
 \subsection{DAG}
 For a DAG, shortest paths are found by processing in topological order.
 \begin{enumerate}
-    \setlength{\itemsep}{0em}
     \item Set distance estimate of all vertices to $\infty$, except source which is 0.
     \item Add the next vertex in topological order to visited.
     \item Relax all edges outgoing from the vertex.

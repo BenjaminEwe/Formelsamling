@@ -2,7 +2,6 @@
 
 Search trees need to maintain a set that supports:
 \begin{enumerate}
-    \setlength{\itemsep}{0em}
     \item \verb|Search(k)|, return \verb|x| if \verb|x.key = k|, else \verb|NIL|
     \item \verb|Insert(x)|, add \verb|x| to the set
     \item \verb|Delete(x)|, remove \verb|x| from the set
@@ -11,7 +10,6 @@ Search trees need to maintain a set that supports:
 \subsection{Binary Search Trees}
 BST's are binary trees where all keys are stored in \emph{symmetric order}:
 \begin{itemize}
-    \setlength{\itemsep}{0em}
     \item For any node \verb|x|, all keys in the left subtree are less than \verb|x.key|
     \item For any node \verb|x|, all keys in the right subtree are greater than \verb|x.key|
 \end{itemize}
@@ -86,7 +84,6 @@ def minimum(node):
 \subsubsection{BST traversal by hand}
 Starting at the root, go countrclockwise around the tree, sticking close to the tree.
 \begin{itemize}
-    \setlength{\itemsep}{0em}
     \item Pre-order: Add to list when on the left of the node
     \item In-order: Add to list when under the node
     \item Post-order: Add to list when on the right of the node
@@ -110,7 +107,6 @@ Search, Insert, Delete have \timeComplexity{\lg n}
 \subsubsection{Inserting}
 To insert, search for the key until you reach a leaf.
 \begin{itemize}
-    \setlength{\itemsep}{0em}
     \item Node is 2-node $\Rightarrow$ add key and turn into 3-node
     \item Node is 3-node $\Rightarrow$ add key and turn into 4-node, split into two 2-nodes and insert middle key to parent. (bubble up)
     \item Node is 3-node and root $\Rightarrow$ add key and turn into 4-node, split into two 2-nodes and make middle key the new root.
