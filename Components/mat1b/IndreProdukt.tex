@@ -1,0 +1,375 @@
+\section{Indre Produkt Rum}
+
+\subsection{Standard indre produkt (dot-produkt)}
+Standard indre produkt mellem to vektorer $\vec u, \vec v \in \mathbb R$ er givet ved
+\[
+\inner{\vec v}{\vec u}
+= \sum_{k=1}^n v_k u_k
+\equiv \vec u^T \vec v
+\]
+
+Standard indre produkt mellem to vektorer $\vec z, \vec w \in \mathbb C$ er givet ved
+\[
+\inner{\vec z}{\vec w} 
+= \sum_{k=1}^n z_k \overline{w_k}
+\equiv \vec w^* \vec z
+\]
+
+
+\subsection{Normer}
+Standard-normen\footnote{p-normen for $p=2$} af en vektor $\vec v \in \mathbb R$ et givet ved
+\[
+|| \vec v || 
+= \sqrt{\sum_{k=1}^n v_k^2}
+= \sqrt{v_1^2 + v_2^2 + \ldots + v_n^2}
+= \sqrt{\inner{\vec v}{\vec v}}
+\]
+
+Standard-normen af en vektor $\vec z \in \mathbb C$ er givet ved
+\[
+|| \vec z ||
+= \sqrt{\sum_{k=1}^n |z_k|^2}
+= \sqrt{\sum_{k=1}^n (\Re{(z_k)})^2 + (\Im{(z_k)})^2}
+= \sqrt{\inner{\vec z}{\vec z}}
+\]
+
+\subsection{Vinkel mellem vektorer}
+Givet vektorer $\vec x, \vec y \in \mathbb R$ er vinklen mellem dem givet ved
+\[
+\inner{\vec x}{\vec y} = ||\vec x|| \cdot ||\vec y|| \cdot \cos \theta
+\implies
+\theta = \arccos \left( \frac{\inner{\vec x}{\vec y}}{||\vec x|| \cdot ||\vec y||} \right)
+\]
+
+Vinkel mellem komplekse vektorer er ikke defineret.
+
+\subsection{Normer i andre rum}
+Givet $V \subseteq \mathbb C$, er en funktion $||x||: V \to \mathbb R$ en norm hvis $\forall x, y \in V$ og $c \in \mathbb F$,
+\begin{enumerate}
+    \item Ikke-negativitet $||\vec x|| \geq 0$ 
+    \item non-degeneracy $||\vec x|| = 0 \iff \vec x = \vec 0$
+    \item Homogenitet $||c \vec x|| = |c| \cdot ||\vec x||$
+    \item Trekants-uligheden $||\vec x + \vec y|| \leq ||\vec x|| + ||\vec y||$
+\end{enumerate}
+
+Et vektorrum $V$ med en norm kaldes et normeret rum.
+
+\kilde{Definition 2.1.1}
+
+\subsection{Indre produkter i andre rum}
+Givet $V \subseteq \mathbb C$, er en funktion $\inner{\cdot}{\cdot}: V \times V \to \mathbb F$ et indre produkt hvis $\forall x, y, z \in V$ og $c, d \in \mathbb F$,
+\begin{enumerate}
+    \item non-negativitet $\inner{\vec x}{\vec x} \geq 0$
+    \item non-degeneracy $\inner{\vec x}{\vec x} = 0 \iff \vec x = \vec 0$
+    \item konjugat-symmetri $\inner{\vec x}{\vec y} = \overline{\inner{\vec y}{\vec x}}$
+    \item lineæritet i første argument $\inner{c \vec x + d \vec y}{\vec z} = c \inner{\vec x}{\vec z} + d \inner{\vec y}{\vec z}$
+\end{enumerate}
+
+Et vektorrum $V$ med et indre produkt kaldes et indre produkt rum.
+
+
+\kilde{Definition 2.1.2}
+
+\subsubsection{Medførte egenskaber}
+
+1. Som i egenskab 4 kan værdier også hives ud af udtrykket, man skal bare per egenskab 3 konjugere det først.
+\[
+\inner{\vec x}{c \vec y + d \vec z} = \overline{c} \inner{\vec x}{\vec y} + \overline{d} \inner{\vec x}{\vec z}
+\]
+
+2. Hvis en vektor er $\vec 0$, er det indre produkt $0$
+\[
+\inner{\vec 0}{\vec y} = \inner{\vec x}{\vec 0} = 0
+\]
+
+3. En \emph{medført norm} findes ved
+\(
+|| \vec x || = \sqrt{\inner{\vec x}{\vec x}}
+\)
+Derfor er indre produkt rum også normerede rum.
+
+4. Relation med adjoint matricer:
+\[
+\inner{\mtrix A \vec x}{\vec y} = \inner{\vec x}{\mtrix A^* \vec y} \land
+\inner{\vec x}{\mtrix A \vec y} = \inner{\mtrix A^* \vec x}{\vec y} 
+\]
+
+\subsection{Andre normer}
+\[
+\text{Max-normen:} \quad
+|| \vec v ||_\infty = \max_{1 \leq k \leq n} |v_k|
+\]
+
+\[
+\text{p-normer:} \quad
+|| \vec v ||_p = \left( \sum_{k=1}^n |v_k|^p \right)^{\frac{1}{p}}
+\]
+
+\[
+\text{1-normen} \quad
+|| \vec v ||_1 = \sum_{k=1}^n |v_k|
+\]
+
+\subsubsection{Frobenius norm og indre produkt}
+For vektorrumet af matricer $\mathbb F^{m \times n}$
+\begin{align*}
+    \text{Frobenius norm: } \quad&
+    \inner{\mtrix A}{\mtrix B}_F 
+    = \text{trace}(\mtrix B^* \mtrix A) \\
+    \text{Frobeinus indre produkt: } \quad&
+    ||\mtrix A||_F 
+    = \sqrt{\inner{\mtrix A}{\mtrix A}_F} 
+    = \sqrt{\text{trace}(\mtrix A^* \mtrix A)} 
+    = \sqrt{\sum_{i=1}^n \sum_{j=1}^m |a_{i,j}|^2}
+\end{align*}
+
+\subsubsection{$L^2$ Indre produkt}
+Givet vektorrumet af funktioner af endelig høj grad $P_n$, og der endelige ikke-tomme reele interval $[a, b]$, er $L^2$ indre produkt givet ved
+\[
+\inner{f}{g}_{L^2} = \int_a^b f(x) \overline{g(x)} dx
+\]
+
+\subsection{Enheds-vektore og ortogonalitet}
+\subsubsection{Enheds-vektor}
+\label{sec:enhedsvektor}
+Hvis $||\vec v|| = 1$, så er $\vec v$ en enhedsvektor.
+En vektor kan normaliseres til en enhedsvektor ved $\vec u = \dfrac{\vec v}{||\vec v||}$.
+Her er $\vec u \in \spanop(\vec v)$.
+
+\subsubsection{Ortogonalitet}
+\label{sec:ortogonalitet}
+
+\[
+\vec x \perp \vec y 
+\iff \inner{\vec x}{\vec y} = 0 
+\iff \vec x, \vec y \text{ er ortogonale på hinanden}
+\]
+
+Et sæt vektorer er:
+\begin{itemize}
+    \item Ortogonale hvis de parvist opfylder $\inner{\vec x}{\vec y} = 0$
+    \item Ortonormale hvis de alle er ortogonale og enhedsvektorer.
+    \item Et ortogonalt komplement $S^\perp$ til sæt $S$ hvis $\forall \vec x \in S, \forall \vec y \in S^\perp : \inner{\vec x}{\vec y} = 0$.
+\end{itemize}
+
+\subsubsection{Egenskaber ved ortogonalitet}
+1. Enheden af ortogonalitet:
+\[
+\forall \vec x \in V :
+\inner{\vec x}{\vec y} = \inner{\vec x}{\vec z} \implies \vec y = \vec z
+\kildetag{Lemma 2.1.2}
+\]
+Dette medfører at $\vec 0$ er ortogonal til alle vektorer.
+
+2. Pythagoras' læresætning gælder for ortogonale vektorer
+\[
+\vec x \perp \vec y \implies
+||\vec x + \vec y||^2 = ||\vec x||^2 + ||\vec y||^2
+\kildetag{Theorem 2.1.3}
+\]
+
+\subsection{Cauchy Schwarz og trekantsuligheden}
+\begin{align*}
+    |\inner{\vec x}{\vec y}| &\leq ||\vec x|| \cdot ||\vec y||
+    \kildetag{{Cauchy Schwarz} uligheden} \\
+    ||\vec x + \vec y|| &\leq ||\vec x|| + ||\vec y||
+    \kildetag{Trekantsuligheden}
+\end{align*}
+
+\subsection{Rand og indre punkter, åbne og afsluttede mængder}
+Et element $\vec x_0$ er et indre punkt, hvis der findes en $r > 0$ sådan at alle andre elementer der opfylder $||\vec x - \vec x_0|| < r$ også er i sættet.
+Ellers er det et randpunkt.
+
+Mængden af randpunkter til $A$ betegnes $\partial A$ og kaldes randen.
+
+En mængde er \emph{åben} hvis den ikke indeholder randpunkter. F.eks. $]a,b[$
+
+En mængde er \emph{afsluttet} hvis den indeholder alle randpunkter. F.eks. $[a,b]$
+
+En mængde er \emph{begrænset} hvis $\max_{x \in A} ||\vec x|| < \infty$
+
+\subsection{Ortogonale afbildninger}
+Afblindingen af $\vec x$ på $\vec y$ er givet ved
+\[
+\text{proj}_{\vec y} (\vec x) = \frac{\inner{\vec x}{\vec y}}{||\vec y||^2} \cdot \vec y
+\]
+
+Alternativt kan man først normalisere $\vec y$ til $\vec u = \dfrac{\vec y}{||\vec y||}$ og så få:
+\[
+\text{proj}_{\vec y} (\vec x) = \inner{\vec x}{\vec u} \cdot \vec u
+\]
+
+\subsubsection{Afbildnings-matrice}
+Givet den normaliserede vektor $\vec u$, er afbildnings-matricen for projektionen på $\vec u$ givet ved
+\[
+P = \vec u \cdot \vec u^*
+\]
+
+\subsection{Orthonormal base}
+Givet et indre produkt rum $V$, er en list $\beta$ af vektorer i $V$ en ortonormal base hvis $\beta$ er en ortonormal mængde og $\spanop(\beta) = V$.
+
+Orthonormale baser gør det nemt at finde koordinaterne for en vektor:
+\[
+_\beta(\vec x) = \begin{bmatrix}
+\inner{\vec x}{\vec u_1} \\
+\inner{\vec x}{\vec u_2} \\
+\vdots \\
+\inner{\vec x}{\vec u_n}
+\end{bmatrix}
+\]
+
+Et sæt vektorer er orthonormale hvis de opfylder sektion \ref{sec:enhedsvektor}, sektion \ref{sec:ortogonalitet} og der er lige så mange vektorer i sættet som dimensionen af rummet.
+
+Standardbasen er en ortonormal base.
+
+\newpage
+
+\subsection{Gramm-Schmidt metoden}
+\label{sec:gramm-schmidt}
+Gramm-Schmidt metoden bruges til at finde ortonormale vektorer der spanner det samme rum som et givet sæt lineært uafhængige vektorer.
+
+\bemærk{
+Listen af standard-basis vektorer er en ortonormal base.
+}
+
+Start med lineært uafhængige vektorer $\beta = \{\vec v_1, \vec v_2, \ldots, \vec v_\ell\}$, og følg algoritmen:
+
+\begin{align*}
+    w_1 &= v_1 \qquad 
+    &u_1 &= \frac{w_1}{||w_1||} \\
+    w_2 &= v_2 - \inner{v_2}{u_1} \cdot u_1 \qquad 
+    &u_2 &= \frac{w_2}{||w_2||} \\
+    w_3 &= v_3 - \inner{v_3}{u_1} \cdot u_1 - \inner{v_3}{u_2} \cdot u_2 \qquad 
+    &u_3 &= \frac{w_3}{||w_3||} \\
+    \vdots
+\end{align*}
+
+Du har nu ortonormale vektorer $\{u_1, u_2, \ldots, u_\ell\}$ med samme span som $\beta$.
+
+\kilde{Theorem 2.5.1}
+
+\subsection{Unitary matricer}
+\label{sec:unitary-matricer}
+Givet en kvadratisk matrix $\mtrix A \in \mathbb C^{n \times n}$, er følgende ækvivalente:
+\begin{itemize}
+    \item $\mtrix A$ er unitary
+    \item $\mtrix A^*$ er unitary
+    \item $\mtrix A^* \mtrix A = \mtrix I$
+    \item Rækkerne i $\mtrix A$ er en ortonormal basis for $\mathbb F^n$
+    \item Kolonnerne i $\mtrix A$ er en ortonormal basis for $\mathbb F^n$
+    \item For alle $\vec x, \vec y \in \mathbb F^n$ er $\inner{\mtrix A \vec x}{\mtrix A \vec y} = \inner{\vec x}{\vec y}$
+    \item For alle $\vec x \in \mathbb F^n$ er $||\mtrix A \vec x|| = ||\vec x||$
+\end{itemize}
+
+\subsection{Diagonaliserbare matricer}
+
+Givet $\mtrix A = \mtrix S^{-1} \mtrix D \mtrix S$ hvor $\mtrix D$ er diagonal.
+
+$\mtrix S$ er invertibel $\iff$ $\mtrix A$ er diagonaliserbar
+
+$\mtrix S$ er invertibel og unitary $\iff \mtrix A$ er unitarily diagonaliserbar.
+
+$\mtrix S$ er invertibel og reel ortogonal $\iff \mtrix A$ er reelt orthogonalt diagonaliserbar.
+
+Det vides at diagonalmatricen og den invertible matrice består af egenpar (søjle $k$ i $\mtrix S$ er en egenvektor til $\mtrix S_{k,k}$).
+Hvis $\mtrix S$ også er unitary eller reel ortogonal, så er egenvektorerne ortonormale.
+
+\subsection{Specktral-sætningen}
+
+\subsubsection{Spektral dekomposition for reel symmetriske matricer}
+
+$\mtrix A = \mtrix Q \mtrix{\Lambda} \mtrix Q^T \implies \mtrix Q$ består af egenvektor-søjler, og at $\mtrix \Lambda$ består af tilhørende egenværdier på diagonalen.
+
+Egenvektorene i $\mtrix Q$ er lineært uafhængige.\footnote{Derfor kan man med Gramm-Schmidt (Se sektion \ref{sec:gramm-schmidt}) finde en ortonormal base}
+
+$\mtrix A$'s spektrale dekomposition findes ved at skifte $\mtrix Q$ ud med matricen af de ortonormale egenvektorer som søjler $\mtrix O$:
+\[
+\mtrix A = \mtrix O \mtrix{\Lambda} \mtrix O^T
+\]
+
+Desuden er $\mtrix Q$ en reel ortogonal matrix.
+\kilde{Corollary 2.8.4}
+
+\subsubsection{Matrix egenskaber}
+Alle egenværdier for en Hermitian matrix er reelle.
+
+To egenvektorer til forskellige egenværdier for en Hermitian matrix er ortogonale.
+
+En reel symmetrisk matrix har mindst en reel egenvektor.
+
+\subsubsection{Spektral-sætningen for reele symmetriske matricer}
+Følgende er ækvivalente for reelle matricer $\mtrix A$:
+\begin{itemize}
+    \item $\mtrix A$ er symmetrisk
+    \item $\mtrix A$ er reel ortogonal diagonaliserbar. Dvs der findes en reel ortogonal matrix $\mtrix Q$ og en diagonal matrix $\mtrix D$ sådan at $\mtrix A = \mtrix Q^{-1} \mtrix D \mtrix Q$
+    \item $\mathbb R^n$ har en ortonormal base af egenvektorer til $\mtrix A$
+\end{itemize}
+
+\subsubsection{Reduktion af kvadratisk form}
+Givet en kvadratisk form 
+\[
+q(\vec x) = \vec x^T \mtrix A \vec x + \vec x^T \vec b + c
+\]
+Kan det reduceres ved at finde den spektrale dekomposition $\mtrix A = \mtrix O \mtrix \Lambda \mtrix O^T$.
+
+Vi udskifter nu $\mtrix A$ i ligningen:
+\[
+q(\vec x) = \vec x^T \mtrix O \mtrix \Lambda \mtrix O^T \vec x + \vec x^T \vec b + c
+\]
+
+Vi definerer nu en ny vektor $\vec y = \mtrix O^T \vec x$, og kan nu skrive $q$ som
+\[
+q(\vec y) = \vec y^T \mtrix \Lambda \vec y + \vec y^T \mtrix O^T \vec b + c
+\]
+
+Da $\mtrix \Lambda$ er diagonal, kan vi nu udvide til
+\[
+q(\vec y) =
+\lambda_1 y_1^2 + \lambda_2 y_2^2 + \ldots + \lambda_n y_n^2 + \vec y^T \mtrix O^T \vec b + c
+\]
+Dermed skal man blot lave basisskiftet $\vec y = \mtrix O^T \vec x$ for at bruge den nye formel.
+
+\subsubsection{Spektral-sætningen for komplekse normale matricer}
+Følgende er ækvivalente for komplekse matricer $\mtrix A$:
+\begin{itemize}
+    \item $\mtrix A$ er normal
+    \item $\mtrix A$ er unitarily diagonaliserbar. Dvs der findes en unitary matrix $\mtrix U$ og en diagonal matrix $\mtrix D$ sådan at $\mtrix A = \mtrix U^* \mtrix D \mtrix U$
+    \item $\mathbb C^n$ har en ortonormal base af egenvektorer til $\mtrix A$
+\end{itemize}
+
+\subsubsection{Spektral dekomposition for komplekse normale matricer}
+\[
+\mtrix A = \mtrix U \mtrix{\Lambda} \mtrix U^* \implies \mtrix U \text{ er unitær}
+\kildetag{Corollary 2.8.7}
+\]
+
+\subsection{Definit af Hermitian matricer}
+\begin{itemize}
+    \item $\mtrix A$ er positivt definit hvis $\forall \vec x \neq \vec 0 : \inner{\vec x}{\mtrix A \vec x} > 0$
+    \item $\mtrix A$ er positivt semidefinit hvis $\forall \vec x : \inner{\vec x}{\mtrix A \vec x} \geq 0$
+    \item $\mtrix A$ er negativt definit hvis $\forall \vec x \neq \vec 0 : \inner{\vec x}{\mtrix A \vec x} < 0$
+    \item $\mtrix A$ er negativt semidefinit hvis $\forall \vec x : \inner{\vec x}{\mtrix A \vec x} \leq 0$
+\end{itemize}
+
+\subsubsection{Om positive definite Hermitian matricer}
+$\mtrix A$ er positivt definit $\iff$ alle egenværdier for $\mtrix A$ er positive $\iff$ der eksisterer positiv $c$ så $\inner{\mtrix A \vec x}{\vec x} \geq c ||\vec x||^2$ for alle $\vec x$.
+
+$\mtrix A$ er positivt semidefinit $\iff$ alle egenværdier for $\mtrix A$ er ikke-negative $\iff$ der eksisterer ikke-negativ $c$ så $\inner{\mtrix A \vec x}{\vec x} \geq c ||\vec x||^2$ for alle $\vec x$. 
+
+\subsection{Projektion på underrum}
+Ofte har man data i rum $\mathbb F^n$, og mener at det kan passe\footnote{Enten perfekt eller bare godt nok} i $\mathbb F^m$ hvor $m < n$.
+
+Givet non-trivielt\footnote{Ikke 0-rummet, og ikke V} underrum $Y \subsetneq V$ med dimension $\ell$, og orthonormal base $\alpha = \{\vec u_1, \vec u_2, \ldots, \vec u_\ell\}$ for $Y$, er projektionen af $\vec x$ fra $V$ på $Y$ givet ved:
+\[
+\text{proj}_Y (\vec x) = \sum_{k=1}^\ell \inner{\vec x}{\vec u_k} \cdot \vec u_k
+\]
+
+Projektionen kan også beskrives som afbildnings-matrice:
+\[
+    \text{proj}_Y (\vec x) 
+    = P \vec x 
+    \qquad \text{hvor } P = U U^* 
+    \qquad \text{hvor } U = \begin{bmatrix}
+        \vec u_1 & \vec u_2 & \ldots & \vec u_\ell
+    \end{bmatrix}
+\]

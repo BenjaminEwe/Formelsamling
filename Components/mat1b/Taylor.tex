@@ -1,0 +1,112 @@
+\section{Taylor Approksimation}
+Taylor approksimation kan ud fra et punkt $x_0$ estimere en funktion $f$.
+
+$\varepsilon(x-x_0)$, er en funktion der går mod 0, når $x$ går mod $x_0$.
+
+For at finde en Taylor approksimation af $f$ af grad $k$ i punkt $x_0$ skal $f$ være $k$-gange differentiabel i $x_0$.
+
+\subsection{Første-grads Taylor approksimation}
+Første-grads Taylor approksimation giver tangenten til funktionen $f$ i punktet $x_0$.
+
+\[
+    f(x) = f(x_0) + f'(x_0)(x-x_0) + \varepsilon(x-x_0) |x-x_0|
+\]
+
+Her er taylor-polynomiet givet ved
+\[
+    P_{1,f,x_0}(x) = f(x_0)+f'(x_0) (x-x_0)
+\]
+
+\subsection{Taylor approksimation af højere grad}
+En Taylor approksimation af grad $n$ giver et $n$-te grads polynomium.
+
+\begin{align*}
+    P_{k,f,x_0}(x) = f(x_0) &+ f'(x_0)(x-x_0) \\
+    &+ \frac{f''(x_0)}{2!}(x-x_0)^2 \\
+    &+ \frac{f^{(3)}(x_0)}{3!}(x-x_0)^3 \\
+    &\vdots \\
+    &+ \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k \\
+\end{align*}
+
+\subsection{Enighed med afledte}
+Givet en $k$-te grads Taylor approksimation, så vil:
+\begin{align*}
+    P_{k,f,x_0}(x_0) &= f(x_0) \\
+    P'_{k,f,x_0}(x_0) &= f'(x_0) \\
+    P''_{k,f,x_0}(x_0) &= f''(x_0) \\
+    &\vdots \\
+    P^{(k)}_{k,f,x_0}(x_0) &= f^{(k)}(x_0)
+    \kildetag{Remark 4.2.1}
+\end{align*}
+
+\subsection{Restleddet i Taylor approksimation}
+For at finde fejlen i Taylor approksimationen i et andet punkt $x_1$, bruger man formlen
+\[
+    R_{1,f,x_0}(x_1) 
+    = f(x_1) - P_{1,f,x_0}(x_1) 
+    = \varepsilon(x_1-x_0) |x_1-x_0|
+\]
+
+\subsection{Taylors Theorem}
+Givet udviklingspunkt $x_0$, konstant $C$ mellem $x$ og $x_0$, gælder:
+\[
+R_{n,f,x_0}(x)
+= \frac{f^{(n+1)}(C)}{(n+1)!}(x - x_0)^{n+1}
+\]
+
+????????????
+
+\subsection{Første-grads Taylor approksimation i flere variable}
+\[
+    P_{1,f,x_0}(\vec x) = f(\vec x_0) + \inner{(\vec x - \vec x_0)}{\nabla f(\vec x_0)}
+\]
+
+For 2 variable kan det også skrives som
+\[
+    P_{1,f,x_0}(x, y) = f(x_0, y_0) + \frac{\partial f}{\partial x}(x_0, y_0)(x-x_0) + \frac{\partial f}{\partial y}(x_0, x_y)(y-y_0)
+\]
+
+\subsection{Anden-grads Taylor approksimation i flere variable}
+Givet en åben mængde $U \subseteq R^n$ og en funktion $f: U \to R$, hvor alle anden-ordens partielafledte eksisterer, og er kontinuerte i $U$,
+og $x_0 \in U$, så er anden-grads Taylor approksimationen givet ved
+\[
+    P_{2,f,x_0}(\vec x) = f(\vec x_0) 
+    + \inner{(\vec x - \vec x_0)}{\nabla f(\vec x_0)} 
+    + \frac{1}{2} \inner{(\vec x - \vec x_0)}{H_f(\vec x_0)(\vec x - \vec x_0)}
+\]
+
+\subsubsection{Anden-grads Taylor approksimation i 2 variable}
+\begin{align*}
+    P_{2,f,x_0}(x, y) = f(x_0, y_0) &+ \frac{\partial f}{\partial x}(x_0, y_0)(x-x_0) \\ 
+    &+ \frac{\partial f}{\partial y}(x_0, y_0)(y-y_0) \\
+    &+ \frac{1}{2} \frac{\partial^2 f}{\partial x^2}(x_0, y_0)(x-x_0)^2 \\
+    &+ \frac{1}{2} \frac{\partial^2 f}{\partial y^2}(x_0, y_0)(y-y_0)^2 \\
+    &+ \frac{\partial^2 f}{\partial x \partial y}(x_0, y_0)(x-x_0)(y-y_0)
+\end{align*}
+
+\subsection{Taylors Formel i flere variable}
+\[
+    R_{2,f,x_0}(\vec x) = f(\vec x) - P_{2,f,x_0}(\vec x) = \varepsilon(\vec x - \vec x_0) \|\vec x - \vec x_0\|^2
+\]
+
+\subsection{Taylor approx af vektorfunktioner}
+Givet en vektorfunktion $\vec f: U \to R^m$, hvor $U \subseteq R^n$ er en åben mængde, og $\vec f$ er $k$-gange differentiabel i $x_0 \in U$, så er Taylor polynomiet af grad $k$ givet ved
+\[
+    P_{k,\vec f, \vec x_0}(\vec x) = 
+    \begin{bmatrix}
+        P_{k,f_1, \vec x_0}(\vec x) \\
+        P_{k,f_2, \vec x_0}(\vec x) \\
+        \vdots \\
+        P_{k,f_m, \vec x_0}(\vec x)
+    \end{bmatrix}
+\]
+
+\subsection{Første-grads Taylor approx på vektorfunktioner}
+\[
+    \vec f(\vec x) = \vec f(\vec x_0) + J_{\vec f}(\vec x_0) (\vec x - \vec x_0) + \varepsilon(\vec x - \vec x_0) \|\vec x - \vec x_0\|
+\]
+
+Her er taylor-polynomiet givet ved
+\[
+    P_{1,\vec f, \vec x_0}(\vec x) = \vec f(\vec x_0) + J_{\vec f}(\vec x_0) (\vec x - \vec x_0)
+\]

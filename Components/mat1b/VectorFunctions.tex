@@ -1,39 +1,48 @@
 \section{Funktioner af flere variable}
 
+\subsection{Kvadratisk Form}
+
+Andengrads-ligninger af flere variable kan skrives som nedenstående, hvor $\vec x$ er en søjlevektor.
+
+\[
+    q: \mathbb{R}^n \to \mathbb{R}, \qquad q(\vec x) = \vec x^T \mtrix A \vec x + \vec x^T \vec b + c
+    \kildetag{Definition 1.2.1}
+\]
+
+\bemærkBig{
+    Transponering af kvadratisk form ($\vec x^T \mtrix A^T \vec x + \vec b^T \vec x + c$) ændrer ikke resultatet.
+}
+
+Matrix $\mtrix A$ er symmetrisk. 
+\kilde{Lemma 2.8.5}
+
+\subsection{Vektor-funktioner}
+Vektor-funktioner tager et input $\mathbb R^n$ og giver et output i $\mathbb R^k$. For hver af $k$ indgange i resultatet kan en funktion skrives der betegner hvordan den indgang beregnes.
+\[
+    \vec f: \mathbb{R}^n \to \mathbb{R}^k, \qquad \vec f(\vec x) = \begin{bmatrix}
+    f_1(\vec x) \\
+    f_2(\vec x) \\
+    \vdots \\
+    f_k(\vec x)
+    \end{bmatrix}
+\]
+
+\subsubsection{Vektor-felter}
+En vektor-funktion er et vektor-felt $\iff \vec f: \dom(\vec f) \to \mathbb R^n, \quad \dom(\vec f) \subseteq \mathbb R^n$
+
+Repræsenteres ved at tegne en vektorpil i punkter i domænet, hvor pilens retning og længde repræsenterer funktionens output i det punkt.
+
 \subsection{Niveaukurver}
 En niveaukurve for en en funktion og et niveau er mængden af alle værdier i domænet, hvor funktionen giver samme niveau.
 
-\subsection{Vektor-felter}
-Vektor-felter tegnes ved at i hvert punkt i domænet, tegne en vektor, der repræsenterer funktionen i det punkt. Kan bruges til at visualisere funktioner der ellers skulle bruge 4 dimensioner.
-
-\subsection{Kontinuitet}
-
-Givet $f: \dom(f) \to \mathbb R, \quad \dom(f) \subseteq \mathbb R$
-og $x_0 \in \dom(f)$ som er et indre punkt af $\dom(f)$ (ikke i randen),
-så er $f$ kontinuert i $x_0$ hvis og kun hvis
 \[
-\lim_{x \to x_0} f(x) = f(x_0) \kildetag{Definition 3.1.1}
+    \{\vec x \in \dom(\vec f) | \vec f(\vec x) = c\}
 \]
-
-For vektorer:
-\[
-    \lim_{\vec x \to \vec x_0} f(\vec x) = f(\vec x_0) \iff ||f(\vec x) - f(\vec x_0)|| \to 0 \text{ for } ||\vec x - \vec x_0|| \to 0
-    \kildetag{Definition 3.2.1}
-\]
-
-\subsubsection{Præcis Definition}
-\[
-\forall \varepsilon > 0, \exists \delta > 0: \forall x \in \dom(f) : |x - x_0| < \delta \implies |f(x) - f(x_0)| < \varepsilon.
-\]
-
-\subsubsection{Overførsel af kontinuitet}
-Sum, produkt, skalarmultiplikation og sammensætningen af kontinuert funktioner er kontinuert.
-
-Polynomier er kontinuerte.
 
 \subsection{Nogle funktioner}
 \subsubsection{ReLU}
-ReLU er en aktiveringsfunktion.
+ReLU er en aktiveringsfunktion. Aktiveringsfunktioner betegnes $\sigma$ og er ikke-lineære.
+ReLU kan også bruges på vektorer, elementvist på hver indgang.
 \[
 \text{ReLU}(x) =
     \begin{cases}
@@ -42,83 +51,24 @@ ReLU er en aktiveringsfunktion.
     \end{cases}
 \]
 
+\subsubsection{SoftMax}
+SoftMax er en aktiveringsfunktion, og en vektor-funktion. Den tager for hver ingang i vektoren $x_i$, og finder eksponentialet af den, og dividerer det med summen af eksponentialerne for alle indgange i vektoren:
+\[
+    \text{SoftMax}: \mathbb R^n \to \mathbb R^n, \qquad 
+    \text{SoftMax}(x_i) = \frac{e^{x_i}}{\sum_{j=1}^n e^{x_j}} \quad
+    \forall i \in \{1, 2, \ldots, n\}
+\]
+SoftMax giver en sandsynlighedsvektor.
+
 \subsubsection{Netværksfunktion}
-Netværksfunktionen $\Phi$ tager $\vec x$ og multiplicerer den med en matrix $\mathbf{A}$ og lægger $\vec b$ til, hvorefter en aktiveringsfunktion $\sigma$ anvendes elementvist på resultatet:
-\[
-    \sigma(\mathbf{A} \cdot \vec x + \vec b)
-\]
-Bemærk at output vil være en vektor. Derfor kan netværksfunktioner laves med flere lag, f.eks.
-\[
-    \sigma_2(\mathbf{A}_2 \cdot \left( \sigma_1(\mathbf{A}_1 \cdot \vec x + \vec b_1) \right) + \vec b_2)
-\]
+Netværksfunktionen $\Phi$ består af vægt-matricer $\mtrix A$, bias-vektorer $\vec b$ og aktiveringsfunktioner $\sigma$.
+Funktionen laver altså først en affin afbildning ($\mtrix A x + \vec b$) og laver en ikke-lineær afbildning af resultatet.
 
-\subsection{Normer}
-Normer er en funktion $\|\cdot\|: V \to \mathbb{R}$, hvor $V$ er et vektorrum, der opfylder følgende egenskaber
-for alle $\vec u, \vec v \in V$ og skalar $c \in \mathbb{R}$:
-\begin{enumerate}
-    \item \textbf{Positivitet:} $\|\vec v\| \geq 0$, og $\|\vec v\| = 0 \implies \vec v = 0$.
-    \item \textbf{Homogenitet:} $\|c\vec v\| = |c| \cdot \|\vec v\|$.
-    \item \textbf{Trekantsuligheden:} $\|\vec u + \vec v\| \leq \|\vec u\| + \|\vec v\|$.
-\end{enumerate}
-
-\kilde{Definition 2.1.1}
-
-\subsection{Kvadratisk Form}
-
-Tt 2. grads polynomium og giver et tal.
 
 \[
-    q: \mathbb{R}^n \to \mathbb{R}, \qquad q(\vec x) = \vec x^T \mtrix A \vec x + \vec x^T \vec b + c
+    \vec \Phi(\vec x) = \sigma(\mtrix A \cdot \vec x + \vec b)
 \]
-
-\kilde{Definition 1.2.1}
-
+Netværksfunktioner kan laves med flere lag, f.eks.
 \[
-    \vec x^T \mtrix A \vec x + \vec x^T \vec b + c = \vec x^T \mtrix A^T \vec x + \vec b^T \vec x + c
+    \vec \Phi(\vec x) = \text{softMax}(\mtrix A_3 \text{ReLU}(\mtrix A_2 + \text{ReLU}(\mtrix A_1 \vec x + \vec b_1) \vec b_2) + \vec b_3)
 \]
-
-I nogle bøger anses kun første led \( (\vec x^T \mtrix A \vec x) \) for at være en kvadratisk form.
-
-\subsection{Åbne og Afsluttede mængder}
-
-\subsubsection{Rand}
-Randen til $A$, kaldet $\partial A$, er mængden af punkter på kanten af A: Enhver kugle omkring et punkt i randen indeholder både punkter i $A$ og udenfor $A$.
-
-\begin{itemize}
-    \item \textbf{Åben}: Mængden indeholder \emph{intet} af sin rand. F.eks. $]a,b[$ er åben.
-    \item \textbf{Afsluttet}: Mængden indeholder \emph{hele} sin rand. F.eks. $[a,b]$ er afsluttet.
-
-\end{itemize}
-
-
-%Givet en funktion $f(x) = \mathbf{A} \cdot \mathbf{x}$, hvor $\mathbf{A}$ er en $m \times n$ matrix og $\mathbf{x}$ er en $n \times 1$ vektor, kan vi udlede følgende egenskaber:
-%\begin{itemize}
-%    \item \textbf{Lineær transformation:} Funktionen $f$ er en lineær transformation, da den opfylder både additivitet og homogenitet:
-%    \begin{align*}
-%        f(\mathbf{x} + \mathbf{y}) &= \mathbf{A} \cdot (\mathbf{x} + \mathbf{y}) = \mathbf{A} \cdot \mathbf{x} + \mathbf{A} \cdot \mathbf{y} = f(\mathbf{x}) + f(\mathbf{y}), \\
-%        f(c\mathbf{x}) &= \mathbf{A} \cdot (c\mathbf{x}) = c(\mathbf{A} \cdot \mathbf{x}) = c f(\mathbf{x}),
-%    \end{align*}
-%    hvor $\mathbf{y}$ er en anden $n \times 1$ vektor og $c$ er en skalar.
-%    
-%    \item \textbf{Kernel og billede:} Kernel (nulrum) af $f$ er mængden af alle vektorer $\mathbf{x}$, der opfylder $f(\mathbf{x}) = \mathbf{0}$, hvilket svarer til løsningen af det homogene system $\mathbf{A} \cdot \mathbf{x} = \mathbf{0}$. Billedet (range) af $f$ er mængden af alle vektorer $\mathbf{y}$, der kan skrives som $f(\mathbf{x})$ for nogen $\mathbf{x}$, hvilket svarer til søjlerummet af $\mathbf{A}$.
-%    
-%    \item \textbf{Injektivitet og surjektivitet:} Funktionen $f$ er injektiv (en-til-en) hvis og kun hvis kernel kun indeholder den trivielle løsning $\{\mathbf{0}\}$, hvilket sker når $\text{rank}(\mathbf{A}) = n$. Funktionen er surjektiv (på) hvis og kun hvis billedet dækker hele codomain, hvilket sker når $\text{rank}(\mathbf{A}) = m$.
-%    
-%    \item \textbf{Matrixrepræsentation:} Hvis vi har en basis for både domænet og codomain, kan vi repræsentere funktionen $f$ som en matrix. For eksempel, hvis vi har standardbasen for $\mathbb{R}^n$ og $\mathbb{R}^m$, så er matrixen $\mathbf{A}$ netop den matrix, der repræsenterer $f$ i disse baser.
-%    
-%\end{itemize}
-%
-%\subsection{Normer}
-%
-%En norm er en funktion $\|\cdot\|: V \to \mathbb{R}$, hvor $V$ er et vektorrum, der opfylder følgende egenskaber for alle $\mathbf{u}, \mathbf{v} \in V$ og skalar $c \in \mathbb{R}$:
-%\begin{itemize}
-%    \item \textbf{Positivitet:} $\|\mathbf{v}\| \geq 0$, og $\|\mathbf{v}\| = 0 \implies \mathbf{v} = 0$.
-%    \item \textbf{Homogenitet:} $\|c\mathbf{v}\| = |c| \cdot \|\mathbf{v}\|$.
-%    \item \textbf{Trekantsuligheden:} $\|\mathbf{u} + \mathbf{v}\| \leq \|\mathbf{u}\| + \|\mathbf{v}\|$.
-%\end{itemize}
-%
-%\subsection{Andre noter}
-%
-%Vectorer er ortogonale hvis deres indre produkt er nul, dvs. $\mathbf{u} \cdot \mathbf{v} = 0$. Dette betyder, at de er vinkelrette på hinanden i det geometriske rum.
-
-%(Indre produkt er u1*v1 + u2*v2 + ... + un*vn for vektorer u og v i R^n)

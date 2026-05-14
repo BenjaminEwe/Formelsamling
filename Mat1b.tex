@@ -1,36 +1,45 @@
 \date{\today}
 \newcommand{\doctitle}{Mat1b Formelsamling}
 \newcommand{\docauthor}{Benjamin Bjørn Ewe}
-\newcommand{\docversion}{v1.0.0}
+\newcommand{\docversion}{v0.2.0}
+
+%%TBD reduce textsize to 10, requires refactor of TOC and some other things
 
 \input{Components/Meta/BookStuffs.tex}
 \input{Components/Meta/Preamble}
+\setcounter{section}{-1} %% Start at section 0 to match book
 \input{Components/Meta/TOC_dual.tex}
 \input{Components/Meta/Commands}
 
+\usepackage[danish]{babel}
+
 \begin{document}
 
-\pagestyle{empty}
-%%\include{Components/forside}
-%%\include{Components/forord}
-\setcounter{tocdepth}{2}
-\tableofcontents
 
-%% Actual start of document
-\newpage
-\clearpage
+\tableofcontents
 \pagestyle{fancy}
-% Beware, will mess with book-style page indentation
-% \setcounter{page}{1}
+\clearpage
+
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
 
 \input{Components/mat1b/Preliminaries.tex}
-
 \newpage
-
 \input{Components/mat1b/VectorFunctions.tex}
+\cleartoleftpage
+\input{Components/mat1b/IndreProdukt.tex}
+\cleartoleftpage
+\input{Components/mat1b/Kontinuitet.tex}
+\cleartoleftpage
+\input{Components/mat1b/Differentiabilitet.tex}
+\cleartoleftpage
+\input{Components/mat1b/Taylor.tex}
+\cleartoleftpage
+\input{Components/mat1b/Extrema.tex}
+\cleartoleftpage
+\input{Components/mat1b/Integration.tex}
 
 \newpage
-\input{Components/mat1b/Derivatives.tex}
+\input{Components/mat1b/VectorFields.tex}
 
 \newpage
 \hiddensection{Bilag}

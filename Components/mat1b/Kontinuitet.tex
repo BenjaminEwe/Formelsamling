@@ -1,0 +1,106 @@
+\section{Kontinuitet}
+
+Differentiabilitet $\implies$ Kontinuitet \hfill Kontinuitet $\centernot \implies$ Differentiabilitet
+
+\kilde{Theorem 3.6.4}
+
+\subsection{Kontinuitet}
+
+Givet funktionen $f$ og et indre punkt $\vec x_0 \in \dom(f)$ er $f$ kontinuert i $\vec x_0$ iff
+
+\[
+    ||\vec x - \vec x_0|| \to 0 \implies ||f(\vec x) - f(\vec x_0)|| \to 0
+    \kildetag{Definition 3.2.1}
+\]
+
+\subsubsection{Epsilon-delta definitionen}
+\[
+\forall \varepsilon > 0, \exists \delta > 0: \forall x \in \dom(f) : |x - x_0| < \delta \implies |f(x) - f(x_0)| < \varepsilon.
+\]
+
+For enhver positiv $\varepsilon$ kan vi finde en positiv $\delta$, som medfører at for alle $x$ i domænet der er mindre end $\delta$ væk fra $x_0$, så er $f(x)$ mindre end $\varepsilon$ væk fra $f(x_0)$.
+
+\eksempel{
+Vis at $f(x) = 3x + 2$ er kontinuert i $x_0 = 1$.
+
+Vi skal vise, at hvis $|x - x_0| < \delta$, så er $|f(x) - f(x_0)| < \varepsilon$.
+
+Det bliver her at hvis $|x-1| < \delta$, så er $|(3x+2) - 5| < \varepsilon$.
+
+Nu simplificerer vi udtrykket $|(3x+2) - 5|$
+\[
+|(3x+2) - 5| = |3x - 3| = 3|x - 1|
+\]
+
+Her ser vi at $3|x-1| < \varepsilon$ kun er sandt hvis $|x-1| < \varepsilon/3$.
+
+Derfor kan vi vælge $\delta = \varepsilon/3$. Hermed er $f$ kontinuert i $x_0 = 1$.
+
+}
+
+\subsubsection{Overførsel af kontinuitet}
+Sum, produkt, skalarmultiplikation og sammensætningen af kontinuerte funktioner er kontinuert.
+
+Polynomier er kontinuerte.
+
+\subsubsection{Kontinuitet af vektorfunktioner}
+En vektorfunktion er kontinuert i et punkt $\iff$ hver komponentfunktion er kontinuert i punktet.
+
+\kilde{Theorem 3.2.1}
+
+\subsubsection{Sammensætning af vektor-funktioner}
+Hvis $\vec f$ og $\vec g$ er kontinuerte i $x$, så er følgende kontinuerte i $x$:
+
+\begin{center}
+    $\vec f \pm \vec g$
+    \hfill
+    $\vec f \cdot \vec g$
+    \hfill
+    $h \cdot \vec f$
+    \hfill
+    $||\vec f||$
+    \hfill
+    $\inner{\vec f}{\vec g}$
+    \hfill
+    $\vec f / h$
+\end{center}
+
+\kilde{Theorem 3.2.2}
+
+Hvis $\vec f$ er kontinuert i $x_0$ og $h$ er kontinuert i $f(x_0)$, så er $h \circ \vec f$ kontinuert i $x_0$.
+
+\kilde{Theorem 3.2.3}
+
+\subsubsection{Nogle kontinuerte funktioner}
+
+Polynomier, Rationelle, Eksponentielle, Logaritmiske, Trigonometriske og Hyperboliske.
+
+\eksempel{
+    Er
+    \(
+        \vec h: \mathbb R^2 \to \mathbb R^2, \vec h(x,y) = 
+        \begin{bmatrix}
+            x^2 + xy + \sin(x+y) & e^{xy}
+        \end{bmatrix}^T
+    \)
+    kontinuert?
+
+    Siden $x^2$, $xy$, $\sin(x+y)$ og $e^{xy}$ alle er kontinuerte funktioner, så er $\vec h$ også kontinuert.
+}
+
+\eksempel{
+    Er den givne funktion kontinuert?
+    \[
+    f: \mathbb R^2 \to \mathbb R, f(x,y) = 
+    \begin{cases}
+        \frac{x^2y}{x^4+y^2} & (x,y) \neq (0,0) \\
+        0 & (x,y) = (0,0)
+    \end{cases}
+    \]
+
+    For at simplificere udtrykket vil vi kigge på et tilfælde hvor kun $x$ indgår. Dette kan gøres ved at sætte $y = x^2$, hvilket giver os:
+    \[
+    f(x,y) = f(x,x^2) = \frac{x^2x^2}{x^4 + (x^2)^2} = \frac{x^4}{2x^4} = \frac{1}{2}
+    \]
+    Her kan vi se at funktionen, når $x \to 0$, og dermed også $y \to 0$, altid vil forblive konstant lig med $\frac{1}{2}$, og dermed ikke gå mod $0$. Derfor er funktionen ikke kontinuert i $(0,0)$, og derfor ikke kontinuert.
+}

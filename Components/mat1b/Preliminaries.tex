@@ -2,29 +2,58 @@
 
 \subsection{Adjoint}
 
-Aka \textit{conjugate transpose}. For en matrix $A \in \mathbb{C}^{m \times n}$, er adjoint defineret som
+Aka \textit{conjugate transpose}. For en matrix $\mtrix A \in \mathbb{C}^{m \times n}$, er adjoint defineret som
 \[
-    A^* = \overline{A}^T
+    \mtrix A^* = \overline{\mtrix A^T}
 \]
 (Den komplekst konjugerede af hver indgang, så transponeret).
 
 
 \subsection{Egenskaber for kvadratiske matricer}
 
-$A \in \mathbb{R}^{n \times n}$ er \textbf{symetrisk} hvis \dotfill $A^T = A$
+\bemærk{
+For reelle matricer er $\mtrix A^* = \mtrix A^T$
+}
 
-$A \in \mathbb{R}^{n \times n}$ er \textbf{real orthogonal} hvis \hrulefill $A^T A = I$
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
 
-$A \in \mathbb{C}^{n \times n}$ er \textbf{unitary} hvis \hfill $A^* A = I$
+    \begin{tabular}{r@{$\;=\;$}l|l|l}
+        \multicolumn{2}{l|}{Egenskab} & Reelt navn & Komplekst navn \\
+        \hline
+        $\mtrix A^*$ & $\mtrix A $ & Symmetrisk & Hermitian \\
+        $\mtrix A^* \mtrix A$ & $\mtrix I$ & Ortogonal & Unitary \\
+        $\mtrix A^* \mtrix A$ & $\mtrix A \mtrix A^*$ & \multicolumn{2}{l}{Normal} \\
+        $\mtrix A^2$ & $\mtrix A$ & \multicolumn{2}{l}{Idempotent} \\
+    \end{tabular}
 
-$A \in \mathbb{C}^{n \times n}$ er \textbf{normal} hvis \dotfill $A^* A = A A^*$
+    \vspace{2em}
 
-$A \in \mathbb{C}^{n \times n}$ er \textbf{idempotent} hvis \hrulefill $A^2 = A$
+    \textbf{Specielt for Hermitian}
 
-$A \in \mathbb{C}^{n \times n}$ er \textbf{hermitian} hvis \hfill $A^* = A$
+    \begin{tabular}{l|l}
+        Egenskab & Navn \\
+        \hline
+        $\forall \lambda \in \mtrix A : \lambda > 0$ & Positiv Definit \\
+        $\forall \lambda \in \mtrix A : \lambda \ge 0$ & Positiv Semidefinit \\
+        $\forall \lambda \in \mtrix A : \lambda < 0$ & Negativ Definit \\
+        $\exists \lambda < 0 \land \exists \lambda > 0$ & Indefinit \\
+        $\mtrix A^2 = \mtrix A$ & Ortogonal Projektion
 
-$A \in \mathbb{C}^{n \times n}$ er \textbf{positive definite} hvis \dotfill alle egneværdier er positive
+    \end{tabular}
+\end{table}
 
-$A \in \mathbb{C}^{n \times n}$ er \textbf{positive semidefinite} hvis \hrulefill $\ge 1$ ikke-negativ egenværdi
+\begin{itemize}
+    \item Afbildnings-matricer er idempotente
+    \item Ikke-invertible matricer kaldes singulær.
+\end{itemize}
 
-Idompotent + hermitian $\implies$ \textbf{orthogonal projection matrix}
+For unitære matricer, se sektion \ref{sec:unitary-matricer}.
+
+\[
+\text{Symmetrisk} \subsetneq \text{Hermitian} \subsetneq \text{Normal}
+\]
+
+Alle egenværdier for en Hermitian matrix er reelle.
+\kilde{Lemma 2.8.1}
